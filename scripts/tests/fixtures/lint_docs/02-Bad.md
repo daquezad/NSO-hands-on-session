@@ -1,7 +1,7 @@
 ---
 title: "Lab 2: Bad filename pattern"
 chapter: 2
-nso_version: "6.3"
+nso_version: "6.5"
 ned_versions:
   - "cisco-ios-cli-6.x"
 estimated_duration: "45 min"

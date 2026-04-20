@@ -4,7 +4,7 @@ chapter: 8
 nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "45 min"
+estimated_duration: "30 min"
 prerequisites:
   - "Lab 7: Device Groups & Templates completed — you can commit from Configuration Editor and use Service Manager."
 learning_objectives:
@@ -29,7 +29,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=45, segments=[[10,"Service skeleton"],[30,"Implement & test"],[5,"Verify CLI"]]) }}
+{{ time_budget(total=30, segments=[[7,"Service skeleton"],[19,"Implement & test"],[4,"Verify CLI"]]) }}
 
 ## Prerequisites
 

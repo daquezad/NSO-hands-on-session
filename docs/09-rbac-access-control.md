@@ -4,7 +4,7 @@ chapter: 9
 nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "40 min"
+estimated_duration: "30 min"
 prerequisites:
   - "Labs 1–7 completed — devices xr-1 and xr-2 exist, and you can edit NACM as admin."
 learning_objectives:
@@ -27,7 +27,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=40, segments=[[15,"Users & authgroups"],[20,"NACM rules"],[5,"Broaden rule"]]) }}
+{{ time_budget(total=30, segments=[[10,"Users & authgroups"],[15,"NACM rules"],[5,"Broaden rule"]]) }}
 
 ## Prerequisites
 

@@ -5,7 +5,7 @@ nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-ios-cli-6.x"
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "15 min"
+estimated_duration: "10 min"
 prerequisites:
   - "Access to the hosted lab portal and Remote Access (VM console) for this workbook."
 learning_objectives:
@@ -28,7 +28,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=15, segments=[[5,"Console & desktop"],[7,"VS Code & terminal"],[3,"Verify shell"]]) }}
+{{ time_budget(total=10, segments=[[3,"Console & desktop"],[5,"VS Code & terminal"],[2,"Verify shell"]]) }}
 
 ## Prerequisites
 

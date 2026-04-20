@@ -4,7 +4,7 @@ chapter: 7
 nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "35 min"
+estimated_duration: "25 min"
 prerequisites:
   - "Lab 6: Out-of-Band Sync completed — xr-1 and xr-2 are in sync with NSO."
 learning_objectives:
@@ -27,7 +27,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=35, segments=[[15,"Device group"],[20,"Template & apply"]]) }}
+{{ time_budget(total=25, segments=[[10,"Device group"],[15,"Template & apply"]]) }}
 
 ## Prerequisites
 

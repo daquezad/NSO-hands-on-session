@@ -4,7 +4,7 @@ chapter: 6
 nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "30 min"
+estimated_duration: "20 min"
 prerequisites:
   - "Lab 5: Rollbacks completed — NSO and devices are in a known, in-sync state."
 learning_objectives:
@@ -27,7 +27,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=30, segments=[[15,"Out-of-band change"],[15,"Detect & reconcile"]]) }}
+{{ time_budget(total=20, segments=[[10,"Out-of-band change"],[10,"Detect & reconcile"]]) }}
 
 ## Prerequisites
 

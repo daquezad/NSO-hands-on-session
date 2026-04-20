@@ -4,7 +4,7 @@ chapter: 5
 nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "25 min"
+estimated_duration: "20 min"
 prerequisites:
   - "Lab 4: Configure Devices completed — you committed a change on xr-1 (for example IPv4 10.1.1.30 on GigabitEthernet0/0/0/0)."
 learning_objectives:
@@ -27,7 +27,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=25, segments=[[10,"Load rollback"],[15,"Verify on device"]]) }}
+{{ time_budget(total=20, segments=[[8,"Load rollback"],[12,"Verify on device"]]) }}
 
 ## Prerequisites
 

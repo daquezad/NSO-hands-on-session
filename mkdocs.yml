@@ -1,4 +1,4 @@
-site_name: NSO Hands-On Training Workbook
+site_name: NSO Hands-On Adoption Workbook
 site_description: Cisco Network Services Orchestrator - Hands-On Lab Guide
 site_author: Customer Success Specialists - Internet and Mass Scale Infrastructure
 copyright: "&copy; Cisco Confidential"
@@ -63,6 +63,8 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.mark
   - pymdownx.keys
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -112,16 +114,11 @@ nav:
     - 7. Device Groups & Templates: 07-device-groups-templates.md
     - 8. Create a Service: 08-create-service.md
     - 9. RBAC Access Control: 09-rbac-access-control.md
-    - "Reset the Lab": reset-lab.md
-    - "Reset lab test log": reset-lab-log.md
-    - "Responsive check log": responsive-check-log.md
-    - "Scrub protocol": scrub-protocol.md
-    - "Second-pair scrub log": scrub-logs/second-pair-review.md
 
 extra:
   version:
     provider: mike
-  nso_version: "6.3"          # stub — update when workbook targets a specific NSO release
+  nso_version: "6.5"          # stub — update when workbook targets a specific NSO release
   LAB_SAFETY_MESSAGE: "Lab safety — follow your site’s electrical and equipment guidelines."
   social:
     - icon: fontawesome/brands/github

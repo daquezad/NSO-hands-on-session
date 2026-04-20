@@ -21,7 +21,7 @@ def _load_lint_module():
 _FM_BASE = """---
 title: "Lab fixture"
 chapter: {chapter}
-nso_version: "6.3"
+nso_version: "6.5"
 ned_versions: ["cisco-ios-cli-6.x"]
 estimated_duration: "45 min"
 prerequisites: ["None"]

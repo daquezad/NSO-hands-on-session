@@ -4,7 +4,7 @@ chapter: 3
 nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "25 min"
+estimated_duration: "20 min"
 prerequisites:
   - "Lab 2: Install NSO and NEDs completed — NSO is running and the IOS-XR NED is loaded."
 learning_objectives:
@@ -27,7 +27,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=25, segments=[[10,"Verify containers"],[15,"Load devices & sync"]]) }}
+{{ time_budget(total=20, segments=[[8,"Verify containers"],[12,"Load devices & sync"]]) }}
 
 ## Prerequisites
 

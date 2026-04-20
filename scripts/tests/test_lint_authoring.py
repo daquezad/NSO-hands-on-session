@@ -135,7 +135,7 @@ class TestLintAuthoring(unittest.TestCase):
             docs.mkdir()
             md = docs / "01-lab.md"
             md.write_text(
-                "---\ntitle: t\nchapter: 1\nnso_version: \"6.3\"\n"
+                "---\ntitle: t\nchapter: 1\nnso_version: \"6.5\"\n"
                 'ned_versions: ["cisco-ios-cli-6.x"]\nestimated_duration: "45 min"\n'
                 'prerequisites: ["None"]\nlearning_objectives: ["x"]\n'
                 'idempotent: true\nclassification: "Cisco Confidential"\n'
@@ -180,7 +180,7 @@ class TestLintAuthoring(unittest.TestCase):
         lint = _load_lint_module()
         text = (
             "---\nidempotent: false\nclassification: \"Cisco Confidential\"\n"
-            "title: t\nchapter: 1\nnso_version: \"6.3\"\nned_versions: [x]\n"
+            "title: t\nchapter: 1\nnso_version: \"6.5\"\nned_versions: [x]\n"
             'estimated_duration: "1 min"\nprerequisites: [n]\nlearning_objectives: [o]\n---\n'
             "# L\n\n## Learning Objectives\nx\n## Time Budget\nx\n## Prerequisites\nx\n"
             "## Procedure\n\nnoop\n\n## Verification\nx\n## Common Errors\nx\n"

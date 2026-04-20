@@ -5,7 +5,7 @@ nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-ios-cli-6.x"
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "50 min"
+estimated_duration: "35 min"
 prerequisites:
   - "Lab 1: Connect to the Workstation completed."
 learning_objectives:
@@ -28,7 +28,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=50, segments=[[10,"Extract installer"],[30,"Install & instance"],[10,"Web UI & NED"]]) }}
+{{ time_budget(total=35, segments=[[5,"Extract installer"],[22,"Install & instance"],[8,"Web UI & NED"]]) }}
 
 ## Prerequisites
 

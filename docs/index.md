@@ -4,13 +4,11 @@ hide:
 classification: "Cisco Confidential"
 ---
 
-# 3 hours, 9 labs — build an NSO service that survives real drift
+# 3.5 hours, 9 labs — build an NSO service that survives real drift
 
 {{ home_subtitle(text="For network engineers and automation leads working through a guided Cisco NSO hands-on lab with XRd peers.") }}
 
 {{ home_meta() }}
-
-{{ lab_safety(variant="general") }}
 
 ## Reference topology
 

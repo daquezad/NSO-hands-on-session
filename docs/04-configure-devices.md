@@ -4,7 +4,7 @@ chapter: 4
 nso_version: "{{ nso_version }}"
 ned_versions:
   - "cisco-iosxr-cli-7.x"
-estimated_duration: "30 min"
+estimated_duration: "20 min"
 prerequisites:
   - "Lab 3: Register XRd Routers completed — devices xr-1 and xr-2 are in NSO and sync-from succeeded."
 learning_objectives:
@@ -27,7 +27,7 @@ By the end of this lab you will be able to:
 
 ## Time Budget
 
-{{ time_budget(total=30, segments=[[15,"Web UI edit & commit"],[15,"Device CLI verify"]]) }}
+{{ time_budget(total=20, segments=[[10,"Web UI edit & commit"],[10,"Device CLI verify"]]) }}
 
 ## Prerequisites
 
