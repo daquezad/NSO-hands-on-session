@@ -137,15 +137,15 @@ xr-2  …                        unlocked     …
 {{ common_error(
   "docker ps does not list xr-1 and xr-2.",
   "Containers stopped, Docker not running, or wrong host session.",
-  "On linux-host: `docker ps -a` and start containers per your lab guide; if broken, use Reset the Lab."
+  "On linux-host: `docker ps -a` and start containers per your lab guide; if broken, restore the VM snapshot."
 ) }}
 
 {{ common_error(
   "sync-from fails with authentication or host key errors.",
   "SSH keys not fetched or management IP mismatch in NSO vs device.",
-  "Run Fetch SSH Host Keys, verify addresses in `devices.xml`, retry sync-from. See Reset the Lab if CDB is corrupt."
+  "Run Fetch SSH Host Keys, verify addresses in `devices.xml`, retry sync-from. Restore the VM snapshot if CDB is corrupt."
 ) }}
 
 {{ common_errors_end() }}
 
-If devices cannot be added or **sync-from** never succeeds after fetching SSH host keys, see **[Reset the Lab](reset-lab.md)** for snapshot restore versus re-loading device definitions.
+If devices cannot be added or **sync-from** never succeeds after fetching SSH host keys, restore the VM snapshot and retry.

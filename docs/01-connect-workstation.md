@@ -117,7 +117,7 @@ cisco
 {{ common_error(
   "Black or frozen VM console after Remote Access.",
   "Browser session timed out, GPU acceleration glitch, or console tab lost focus.",
-  "Refresh the Remote Access page, close other heavy tabs, and reopen VM Console. If it persists, snapshot-restore per Reset the Lab."
+  "Refresh the Remote Access page, close other heavy tabs, and reopen VM Console. If it persists, restore the VM snapshot."
 ) }}
 
 {{ common_error(
@@ -128,4 +128,4 @@ cisco
 
 {{ common_errors_end() }}
 
-If the desktop or console is unusable after these steps, restore the lab VM snapshot and retry. For the full reset playbook, see **[Reset the Lab](reset-lab.md)**.
+If the desktop or console is unusable after these steps, restore the lab VM snapshot and retry.

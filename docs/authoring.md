@@ -63,10 +63,10 @@ pip install -r requirements.txt
 | `make build-instructor` | Instructor site → `site-instructor/` (`INSTRUCTOR=1`). |
 | `make lint` | Authoring lint (**AR13 rules 1–11 + AR15**). Default **warn mode** (exit 0). `LINT_RULES_1_3_MODE=fail` / `LINT_RULES_4_7_MODE=fail` / `LINT_RULES_5_6_MODE=fail` / `LINT_RULES_8_11_MODE=fail` hard-fail matching rule groups (rule 8 stays warning-only). |
 | `make pdf-learner` / `make pdf-instructor` | PDF via Chromium headless (see Makefile). |
-| `make rollback-lab LAB=N` | Story 3.9 — prints non-destructive rollback hints for chapter `N` (1–9); see `docs/reset-lab.md` for full VM / NSO procedures. |
+| `make rollback-lab LAB=N` | Story 3.9 — prints non-destructive rollback hints for chapter `N` (1–9). |
 | `make ci-quality-gates` | Story 3.11 — `npm ci` then `scripts/ci/run_quality_gates.sh` (perf budget, links, Lighthouse, axe); requires Chromium or Chrome on `PATH`. |
 
-**Learner journey (Story 3.8):** `mkdocs.yml` defines the left **navigation** (all chapters + **Reset the Lab**). Material’s **table of contents** follows the current page (`toc.follow` in `mkdocs.yml`). **Search** is the built-in offline index (`plugins: search`) — no network at runtime. After `make build-learner`, run `python3 scripts/check_noindex.py site/` to confirm every generated `.html` includes a `robots` meta with **noindex** and **nofollow** and that `site/sitemap.xml` is absent (CI runs this step on every PR).
+**Learner journey (Story 3.8):** `mkdocs.yml` defines the left **navigation** (all chapters). Material’s **table of contents** follows the current page (`toc.follow` in `mkdocs.yml`). **Search** is the built-in offline index (`plugins: search`) — no network at runtime. After `make build-learner`, run `python3 scripts/check_noindex.py site/` to confirm every generated `.html` includes a `robots` meta with **noindex** and **nofollow** and that `site/sitemap.xml` is absent (CI runs this step on every PR).
 
 **Responsive / touch (Story 3.10):** At **≤768px** width, Material collapses primary nav to the hamburger; a **Contents** pill (in `overrides/main.html`) toggles the same `#__toc` control as the in-page table of contents. **≥44×44px** touch targets are enforced for header actions and code-copy buttons in `extra.css`. The **`time_budget`** legend stacks vertically at **≤600px**; **`journey_table`** uses stacked cards at **≤600px** (see `extra.css`). Record spot-checks in **`docs/responsive-check-log.md`**.
 

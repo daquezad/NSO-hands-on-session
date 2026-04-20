@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Story 3.9 — learner-facing wrapper: prints per-lab rollback hints and points to docs/reset-lab.md.
+# Story 3.9 — learner-facing wrapper: prints per-lab rollback hints.
 set -euo pipefail
 
 LAB="${LAB:-}"
 if [[ -z "$LAB" ]]; then
   echo "Usage: make rollback-lab LAB=N"
   echo "  N must be an integer from 1 through 9 (workbook chapter number)."
-  echo "Full procedures, VM reset, and NSO rollback patterns: docs/reset-lab.md"
+  echo "Ask your instructor for full VM reset and NSO rollback procedures."
   exit 1
 fi
 
@@ -17,7 +17,7 @@ fi
 
 echo "NSO workbook — rollback hints for Lab $LAB"
 echo "-------------------------------------------"
-echo "Canonical steps and safety notes: docs/reset-lab.md"
+echo "Ask your instructor for canonical steps and safety notes."
 echo ""
 
 case "$LAB" in

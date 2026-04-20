@@ -168,4 +168,4 @@ domain name-server 2.2.2.2
 
 {{ common_errors_end() }}
 
-If **apply-template** fails for all devices or leaves partial state, roll back the last commits or follow **[Reset the Lab](reset-lab.md)**.
+If **apply-template** fails for all devices or leaves partial state, roll back the last commits or restore the VM snapshot.

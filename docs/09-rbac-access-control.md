@@ -273,4 +273,4 @@ echo "show configuration nacm nacm rule-list read_rule" | ncs_cli -u admin -C
 
 {{ common_errors_end() }}
 
-If you lock yourself out or rules conflict, log in as **admin**, revert the last **NACM** commits in **Commit Manager**, or use **[Reset the Lab](reset-lab.md)** for snapshot restore.
+If you lock yourself out or rules conflict, log in as **admin** and revert the last **NACM** commits in **Commit Manager**.

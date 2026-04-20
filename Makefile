@@ -44,7 +44,7 @@ help:
 	@printf "  %-22s %s\n" "lint-fail-all"    "Lint with all rule groups in fail mode (Epic 4 / dry run)"
 	@printf "  %-22s %s\n" "pre-render-mermaid" "Mermaid .mmd → SVG/PNG under docs/assets/images/mermaid/ (Story 3.5)"
 	@printf "  %-22s %s\n" "optimize-images"  "oxipng on PNGs in docs/assets/images/ (optional; Story 3.5)"
-	@printf "  %-22s %s\n" "rollback-lab"      "Print rollback hints for LAB=1..9 (Story 3.9; see docs/reset-lab.md)"
+	@printf "  %-22s %s\n" "rollback-lab"      "Print rollback hints for LAB=1..9 (Story 3.9)"
 	@printf "  %-22s %s\n" "ci-quality-gates" "Story 3.11 — npm ci + perf budget, links, Lighthouse, axe (needs Chromium on PATH)"
 	@printf "  %-22s %s\n" "clean"            "Remove built site directories"
 	@echo ""
@@ -142,7 +142,7 @@ ci-quality-gates: build-learner
 rollback-lab:
 	@if [ -z "$(LAB)" ]; then \
 	  echo "Usage: make rollback-lab LAB=N   (N = 1–9)"; \
-	  echo "See docs/reset-lab.md for full VM / NSO reset guidance."; \
+	  echo "See your instructor for full VM / NSO reset guidance."; \
 	  exit 1; \
 	fi
 	@LAB=$(LAB) $(SHELL) scripts/rollback-lab.sh

@@ -31,7 +31,7 @@ By the end of this lab you will be able to:
 
 ## Prerequisites
 
-- [ ] [Lab 5: Rollbacks](05-rollbacks.md) completed — **Check-Sync** should be **green** for **xr-1** before you start (restore with **Reset the Lab** if not).
+- [ ] [Lab 5: Rollbacks](05-rollbacks.md) completed — **Check-Sync** should be **green** for **xr-1** before you start.
 - [ ] You can SSH from **linux-host** to **xr-1** (examples use **198.51.100.2** — use your lab address).
 
 ## Procedure
@@ -128,7 +128,7 @@ The Loopback **100** configuration is gone — NSO restored the device to its kn
 
 {% if instructor %}
 !!! tip "Instructor"
-    **Duration:** +10 min if Sync-To blocks on locks. **FAQs:** Red but empty diff — refresh device session. **Breaks:** Stuck sync — restart `ncs` only as last resort; prefer Reset the Lab.
+    **Duration:** +10 min if Sync-To blocks on locks. **FAQs:** Red but empty diff — refresh device session. **Breaks:** Stuck sync — restart `ncs` only as last resort; prefer restoring the VM snapshot.
 {% endif %}
 
 ## Verification
@@ -166,7 +166,7 @@ echo "show devices check-sync" | ncs_cli -u admin -C
 {{ common_error(
   "Check-Sync stays red after Sync-To or shows a looping diff.",
   "Concurrent edits, partial sync, or SSH session left in config mode on the device.",
-  "Close extra sessions, run **Check-Sync** again, then **Sync-To** once; capture Compare-config for the instructor. Use Reset the Lab if stuck."
+  "Close extra sessions, run **Check-Sync** again, then **Sync-To** once; capture Compare-config for the instructor. Restore the VM snapshot if stuck."
 ) }}
 
 {{ common_error(
@@ -177,4 +177,4 @@ echo "show devices check-sync" | ncs_cli -u admin -C
 
 {{ common_errors_end() }}
 
-If **sync-to** / **sync-from** loops or **check-sync** stays red with no clear diff, capture screenshots for your instructor and consider **[Reset the Lab](reset-lab.md)** if time is short.
+If **sync-to** / **sync-from** loops or **check-sync** stays red with no clear diff, capture screenshots for your instructor and consider restoring the VM snapshot if time is short.

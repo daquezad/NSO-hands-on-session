@@ -154,4 +154,4 @@ If you already confirmed on the device CLI in Step 4, that counts as a second, i
 
 {{ common_errors_end() }}
 
-If commits leave the device and CDB out of sync, use Commit Manager rollbacks (see [5. Rollbacks](05-rollbacks.md)) or **[Reset the Lab](reset-lab.md)** for a broader recovery path.
+If commits leave the device and CDB out of sync, use Commit Manager rollbacks (see [5. Rollbacks](05-rollbacks.md)).

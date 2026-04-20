@@ -270,7 +270,7 @@ In the Web UI, confirm **ncs:packages** lists **cisco-ios-xr** (name may vary sl
 {{ common_error(
   "Installer or ncs-setup fails with permission or existing directory errors.",
   "Prior partial install or wrong working directory leaves files in ~/NSO-INSTALL or work/.",
-  "Stop NSO (`ncs --stop`), remove the partial trees after backup if needed, or restore the VM snapshot — see Rollback below and Reset the Lab."
+  "Stop NSO (`ncs --stop`), remove the partial trees after backup if needed, or restore the VM snapshot."
 ) }}
 
 {{ common_error(
@@ -289,6 +289,4 @@ In the Web UI, confirm **ncs:packages** lists **cisco-ios-xr** (name may vary sl
     rm -rf ~/NSO-INSTALL ~/NSO-{{ nso_version }}-free/work/nso-instance
     ```
 
-    Prefer **[Reset the Lab](reset-lab.md)** (snapshot restore) when the system is in an unknown state.
-
-If NSO will not start or packages will not reload after multiple attempts, restore the VM snapshot and repeat this lab. Details: **[Reset the Lab](reset-lab.md)**.
+If NSO will not start or packages will not reload after multiple attempts, restore the VM snapshot and repeat this lab.

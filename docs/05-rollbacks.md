@@ -130,4 +130,4 @@ address 10.1.1.3 255.255.255.0
 
 {{ common_errors_end() }}
 
-If you cannot find a suitable rollback file or loads fail repeatedly, see **[Reset the Lab](reset-lab.md)** for VM-level reset options.
+If you cannot find a suitable rollback file or loads fail repeatedly, restore the VM snapshot and retry.

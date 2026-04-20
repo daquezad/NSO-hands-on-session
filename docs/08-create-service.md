@@ -365,6 +365,6 @@ router static
     ncs
     ```
 
-    Then **Reload packages** in the Web UI and confirm **STATIC** is gone. Prefer **[Reset the Lab](reset-lab.md)** if the NSO instance is inconsistent.
+    Then **Reload packages** in the Web UI and confirm **STATIC** is gone.
 
-If re-deploy cannot clear drift or the service model is inconsistent, use **Commit Manager** rollbacks first, then **[Reset the Lab](reset-lab.md)** if you need a clean VM.
+If re-deploy cannot clear drift or the service model is inconsistent, use **Commit Manager** rollbacks first, then restore the VM snapshot if you need a clean start.
