@@ -1,0 +1,2230 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cisco Network Services Orchestrator - Hands-On Lab Guide">
+      
+      
+        <meta name="author" content="Customer Success Specialists - Internet and Mass Scale Infrastructure">
+      
+      
+        <link rel="canonical" href="https://daquezad.github.io/NSO-hands-on-session/latest/print_page/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>NSO Hands-On Training Workbook (print) - NSO Hands-On Adoption Workbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../css/print-site.css">
+    
+      <link rel="stylesheet" href="../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../assets/css/print.css">
+    
+    <script>__md_scope=new URL("/NSO-hands-on-session/latest",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <meta name="robots" content="noindex, nofollow">
+
+  
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
+        })
+        </script>
+        <style id="pdf-page-margin-footer">
+@page :first {
+  @bottom-left { content: none; }
+  @bottom-center { content: none; }
+  @bottom-right { content: none; }
+}
+@page {
+  @bottom-center { content: none; }
+  @bottom-left {
+    content: "Cisco Confidential";
+    font-size: 8pt;
+    font-family: "Inter", "Cisco Sans", "CiscoSansTT", sans-serif;
+  }
+  @bottom-right {
+    content: "NSO 6.5";
+    font-size: 8pt;
+    font-family: "Inter", "Cisco Sans", "CiscoSansTT", sans-serif;
+  }
+}
+</style>
+
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#index" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  
+  
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+  
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="NSO Hands-On Adoption Workbook" class="md-header__button md-logo" aria-label="NSO Hands-On Adoption Workbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4v2h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7 7l4 4-4 4h2.85l3.28-3.28c.37-.39.37-1.02 0-1.42L9.83 7zm10 6h-3v2h3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NSO Hands-On Adoption Workbook
+            <span class="css-workbook-header-nso" aria-label="NSO release"> · NSO </span>
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NSO Hands-On Training Workbook (print)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+  
+  <label class="css-toc-fab" for="__toc" title="Table of contents" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M3 14h4v-2H3v2zm0 5h4v-2H3v2zm0-10h4V7H3v2zm5 5h14v-2H8v2zm0 5h14v-2H8v2zM8 7v2h14V7H8z"/></svg>
+    <span class="css-toc-fab__text">Contents</span>
+  </label>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="NSO Hands-On Adoption Workbook" class="md-nav__button md-logo" aria-label="NSO Hands-On Adoption Workbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4v2h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7 7l4 4-4 4h2.85l3.28-3.28c.37-.39.37-1.02 0-1.42L9.83 7zm10 6h-3v2h3z"/></svg>
+
+    </a>
+    NSO Hands-On Adoption Workbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-connect-workstation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Connect to the Workstation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-install-nso-neds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Install NSO and NEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-register-xrd-routers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Register XRd Routers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-configure-devices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Configure Devices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-rollbacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Rollbacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-out-of-band-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Out-of-Band Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-device-groups-templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Device Groups & Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-create-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Create a Service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-rbac-access-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. RBAC Access Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 Home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 Lab Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Lab Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01-connect-workstation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 1. Connect to the Workstation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#02-install-nso-neds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 2. Install NSO and NEDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#03-register-xrd-routers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 3. Register XRd Routers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#04-configure-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 4. Configure Devices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#05-rollbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 5. Rollbacks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#06-out-of-band-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 6. Out-of-Band Sync
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07-device-groups-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 7. Device Groups & Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#08-create-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 8. Create a Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#09-rbac-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 9. RBAC Access Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div id="print-site-page" class="print-site-add-full-url print-site-enumerate-headings print-site-enumerate-figures">
+        <section id="print-site-cover-page">
+            
+<div class="pdf-cover">
+  <div class="pdf-cover__classification" role="status">Cisco Confidential</div>
+  
+  <h1 class="pdf-cover__title">NSO Hands-On Adoption Workbook</h1>
+  
+  <p class="pdf-cover__meta">
+    <strong>
+      NSO
+      
+      6.5
+      
+    </strong>
+  </p>
+  
+  <p class="pdf-cover__meta pdf-cover__meta--date">
+    <strong>Build date (UTC)</strong> 2026-04-20
+  </p>
+  
+  
+  <p class="pdf-cover__bug">
+    <a class="pdf-cover__bug-link" href="https://github.com/daquezad/NSO-hands-on-session/issues/new?template=bug_report.md&title=Workbook%3A+&labels=bug">Report an issue</a>
+  </p>
+  
+</div>
+        </section>
+        
+        <section class="print-page">
+            <div id="print-page-toc" data-toc-depth="3">
+                <nav role='navigation' class='print-page-toc-nav'>
+                <h1 class='print-page-toc-title'>Table of Contents</h1>
+                </nav>
+            </div>
+        </section>
+        <section class="print-page" id="index" heading-number="1"><h1 id="index-35-hours-9-labs-build-an-nso-service-that-survives-real-drift">3.5 hours, 9 labs — build an NSO service that survives real drift<a class="headerlink" href="#index-35-hours-9-labs-build-an-nso-service-that-survives-real-drift" title="Permanent link">&para;</a></h1>
+<p class="css-home-subtitle md-typeset">For network engineers and automation leads working through a guided Cisco NSO hands-on lab with XRd peers.</p>
+
+<div class="css-home-meta" role="group" aria-label="About 3 h 30 min total, 9 labs, NSO 6.5 sandbox"><span class="css-home-meta__item"><strong>Time</strong> ~3 h 30 min total</span><span class="css-home-meta__sep" aria-hidden="true">·</span><span class="css-home-meta__item"><strong>Labs</strong> 9 hands-on</span><span class="css-home-meta__sep" aria-hidden="true">·</span><span class="css-home-meta__item"><strong>NSO</strong> 6.5 (sandbox)</span></div>
+
+<h2 id="index-reference-topology">Reference topology<a class="headerlink" href="#index-reference-topology" title="Permanent link">&para;</a></h2>
+<figure class="css-topology" role="group"><img class="css-topology__img" src="../assets/images/mermaid/index/lab-home-topology.svg" alt="Lab reference topology: linux-host workstation, nso-server orchestrator, and xr-1 and xr-2 XRd routers. All devices interconnect for hands-on NSO labs."  decoding="async" /><figcaption class="css-topology__caption">Lab sandbox — workstation, NSO, and XRd peers</figcaption></figure>
+
+<h2 id="index-lab-journey">Lab journey<a class="headerlink" href="#index-lab-journey" title="Permanent link">&para;</a></h2>
+<div class="css-journey-shell"><table class="css-journey-table"><caption class="css-journey-caption">Hands-on lab journey</caption><thead><tr><th scope="col">Lab</th><th scope="col">Title</th><th scope="col">Time</th><th scope="col">Description</th></tr></thead><tbody><tr class="css-journey-tr"><th scope="row" data-label="Lab #">1</th><td data-label="Title"><a href="#01-connect-workstation">Connect to the Workstation</a></td><td data-label="Time">10 min</td><td data-label="Description">Access the lab VM and terminal</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">2</th><td data-label="Title"><a href="#02-install-nso-neds">Install NSO and NEDs</a></td><td data-label="Time">35 min</td><td data-label="Description">Local NSO install, environment, IOS-XR NED</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">3</th><td data-label="Title"><a href="#03-register-xrd-routers">Register XRd Routers</a></td><td data-label="Time">20 min</td><td data-label="Description">Device definitions and sync-from</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">4</th><td data-label="Title"><a href="#04-configure-devices">Configure Devices</a></td><td data-label="Time">20 min</td><td data-label="Description">Push changes via NSO Web UI</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">5</th><td data-label="Title"><a href="#05-rollbacks">Rollbacks</a></td><td data-label="Time">20 min</td><td data-label="Description">Rollback files and revert commits</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">6</th><td data-label="Title"><a href="#06-out-of-band-sync">Out-of-Band Sync</a></td><td data-label="Time">20 min</td><td data-label="Description">Detect and reconcile OOB changes</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">7</th><td data-label="Title"><a href="#07-device-groups-templates">Device Groups &amp; Templates</a></td><td data-label="Time">25 min</td><td data-label="Description">Groups and templates at scale</td></tr>
+<tr class="css-journey-tr css-journey-row--intentional"><th scope="row" data-label="Lab #">8</th><td data-label="Title"><a href="#08-create-service">Create a Service</a></td><td data-label="Time">30 min</td><td data-label="Description"><span class="css-journey-chip" title="This lab includes an intentional failure path">intentional break</span> Python-and-template service package</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">9</th><td data-label="Title"><a href="#09-rbac-access-control">RBAC Access Control</a></td><td data-label="Time">30 min</td><td data-label="Description">Users, authgroups, NACM rules</td></tr></tbody></table></div>
+
+<div class="admonition info">
+<p class="admonition-title">Before you begin</p>
+<p>Provision your sandbox and open a console to the <strong>linux-host</strong> workstation. Commands assume that environment unless noted.</p>
+</div></section>
+                    <section class='print-page md-section' id='section-2' heading-number='2'>
+                        <h1>Lab Guide<a class='headerlink' href='#section-2' title='Permanent link'></a>
+                        </h1>
+                    <section class="print-page" id="01-connect-workstation" heading-number="2.1"><h1 id="01-connect-workstation-lab-1-connect-to-the-workstation">Lab 1: Connect to the Workstation<a class="headerlink" href="#01-connect-workstation-lab-1-connect-to-the-workstation" title="Permanent link">&para;</a></h1>
+<h2 id="01-connect-workstation-learning-objectives">Learning Objectives<a class="headerlink" href="#01-connect-workstation-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Connect to the Ubuntu lab desktop through the hosted Remote Access console.</li>
+<li>Open Visual Studio Code and use the integrated terminal on linux-host.</li>
+<li>Verify workstation identity using basic shell commands.</li>
+</ul>
+<h2 id="01-connect-workstation-time-budget">Time Budget<a class="headerlink" href="#01-connect-workstation-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 10 minutes total — Console &amp; desktop 3 min, VS Code &amp; terminal 5 min, Verify shell 2 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:3"><span class="css-time-budget__seg-label">Console &amp; desktop</span></div><div class="css-time-budget__seg seg--b" style="flex:5"><span class="css-time-budget__seg-label">VS Code &amp; terminal</span></div><div class="css-time-budget__seg seg--c" style="flex:2"><span class="css-time-budget__seg-label">Verify shell</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Console &amp; desktop — 3 min</li><li><span class="css-time-budget__swatch seg--b"></span>VS Code &amp; terminal — 5 min</li><li><span class="css-time-budget__swatch seg--c"></span>Verify shell — 2 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 10 min</p></div>
+
+<h2 id="01-connect-workstation-prerequisites">Prerequisites<a class="headerlink" href="#01-connect-workstation-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can sign in to the hosted lab environment and open <strong>Remote Access</strong> (or equivalent) for this workbook.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You have a modern browser; pop-up blockers are disabled or allow-listed for the lab portal if your site requires it.</li>
+</ul>
+<h2 id="01-connect-workstation-procedure">Procedure<a class="headerlink" href="#01-connect-workstation-procedure" title="Permanent link">&para;</a></h2>
+<p>You will use the <strong>linux-host</strong> Ubuntu desktop and its integrated terminal for all following labs. Choose <strong>Ubuntu 24.04 Desktop</strong> unless your facilitator directs otherwise.</p>
+<h3 id="01-connect-workstation-step-1-open-the-lab-vm-console">Step 1: Open the lab VM console<a class="headerlink" href="#01-connect-workstation-step-1-open-the-lab-vm-console" title="Permanent link">&para;</a></h3>
+<ol>
+<li>From the lab environment, select <strong>Ubuntu 24.04 Desktop</strong> (recommended) or <strong>Win11</strong> if you must use Windows for this session.</li>
+<li>Open <strong>VM Console</strong> from the <strong>Remote Access</strong> menu (wording may vary slightly by platform).</li>
+</ol>
+<p><img alt="Lab portal — select the VM and open VM Console from Remote Access" src="../assets/images/01/lab-portal-vm-console.png" /></p>
+<ol>
+<li>On Windows, if you see “You’re almost done setting up your PC,” choose <strong>Remind me in 3 days</strong> to reach the desktop.</li>
+</ol>
+<p><img alt="Windows desktop after initial setup prompt" src="../assets/images/01/windows-desktop-setup.png" /></p>
+<p>Wait until you see the desktop background and can move the pointer inside the VM.</p>
+<h3 id="01-connect-workstation-step-2-orient-yourself-on-the-desktop">Step 2: Orient yourself on the desktop<a class="headerlink" href="#01-connect-workstation-step-2-orient-yourself-on-the-desktop" title="Permanent link">&para;</a></h3>
+<p>Alternatively, if you chose <strong>Ubuntu 24.04 Desktop</strong>, you will see a desktop similar to this:</p>
+<p><img alt="Ubuntu 24.04 Desktop — VM Console view" src="../assets/images/01/ubuntu-desktop-vm-console.png" /></p>
+<h3 id="01-connect-workstation-step-3-open-visual-studio-code-and-the-integrated-terminal">Step 3: Open Visual Studio Code and the integrated terminal<a class="headerlink" href="#01-connect-workstation-step-3-open-visual-studio-code-and-the-integrated-terminal" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Visual Studio Code</strong> from the applications menu or the dock.</li>
+<li>Open the integrated terminal (<strong>Terminal → New Terminal</strong> or the shortcut shown in your environment).</li>
+</ol>
+<p><img alt="VS Code with the integrated terminal open" src="../assets/images/01/vscode-terminal-open.png" /></p>
+<ol>
+<li>Stay in this terminal for command examples in later labs.</li>
+</ol>
+<h3 id="01-connect-workstation-step-4-confirm-the-workstation-hostname">Step 4: Confirm the workstation hostname<a class="headerlink" href="#01-connect-workstation-step-4-confirm-the-workstation-hostname" title="Permanent link">&para;</a></h3>
+<p>Run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#01-connect-workstation-__codelineno-0-1"></a>hostname
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="linux-host"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#01-connect-workstation-__codelineno-1-1"></a>linux-host
+</span></code></pre></div>
+<p>If the name differs, ask your facilitator—some environments use a different label, but the workflow is the same.</p>
+<h2 id="01-connect-workstation-verification">Verification<a class="headerlink" href="#01-connect-workstation-verification" title="Permanent link">&para;</a></h2>
+<p>Confirm you are on <strong>linux-host</strong> and the shell is responsive. Run these in order in the same terminal:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#01-connect-workstation-__codelineno-2-1"></a>hostname
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#01-connect-workstation-__codelineno-2-2"></a>whoami
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#01-connect-workstation-__codelineno-2-3"></a><span class="nb">pwd</span>
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="linux-host"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#01-connect-workstation-__codelineno-3-1"></a>linux-host
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#01-connect-workstation-__codelineno-3-2"></a>cisco
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#01-connect-workstation-__codelineno-3-3"></a>/home/cisco
+</span></code></pre></div>
+<h2 id="01-connect-workstation-common-errors">Common Errors<a class="headerlink" href="#01-connect-workstation-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Black or frozen VM console after Remote Access.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Browser session timed out, GPU acceleration glitch, or console tab lost focus.</p><p class="css-common-error__fix"><strong>Fix</strong> Refresh the Remote Access page, close other heavy tabs, and reopen VM Console. If it persists, snapshot-restore per Reset the Lab.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Integrated terminal in VS Code does not open or closes immediately.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> VS Code started before the desktop session finished loading, or extension host crashed.</p><p class="css-common-error__fix"><strong>Fix</strong> Quit VS Code fully and reopen from the menu. If needed, use an external terminal app temporarily and continue Lab 2 from there.</p></div></details>
+
+</div>
+
+<p>If the desktop or console is unusable after these steps, restore the lab VM snapshot and retry. For the full reset playbook, see <strong><a href="#reset-lab">Reset the Lab</a></strong>.</p></section><section class="print-page" id="02-install-nso-neds" heading-number="2.2"><h1 id="02-install-nso-neds-lab-2-install-nso-and-neds">Lab 2: Install NSO and NEDs<a class="headerlink" href="#02-install-nso-neds-lab-2-install-nso-and-neds" title="Permanent link">&para;</a></h1>
+<h2 id="02-install-nso-neds-learning-objectives">Learning Objectives<a class="headerlink" href="#02-install-nso-neds-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Locate and extract the NSO free-trial installer for the release pinned in this workbook (<code>{{ nso_version }}</code>).</li>
+<li>Perform a local NSO install, create an instance, and confirm the daemon is running.</li>
+<li>Install the Cisco IOS-XR NED package and reload packages in the Web UI.</li>
+</ul>
+<h2 id="02-install-nso-neds-time-budget">Time Budget<a class="headerlink" href="#02-install-nso-neds-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 35 minutes total — Extract installer 5 min, Install &amp; instance 22 min, Web UI &amp; NED 8 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:5"><span class="css-time-budget__seg-label">Extract installer</span></div><div class="css-time-budget__seg seg--b" style="flex:22"><span class="css-time-budget__seg-label">Install &amp; instance</span></div><div class="css-time-budget__seg seg--c" style="flex:8"><span class="css-time-budget__seg-label">Web UI &amp; NED</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Extract installer — 5 min</li><li><span class="css-time-budget__swatch seg--b"></span>Install &amp; instance — 22 min</li><li><span class="css-time-budget__swatch seg--c"></span>Web UI &amp; NED — 8 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 35 min</p></div>
+
+<h2 id="02-install-nso-neds-prerequisites">Prerequisites<a class="headerlink" href="#02-install-nso-neds-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#01-connect-workstation">Lab 1: Connect to the Workstation</a> completed — you have a shell on <strong>linux-host</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The NSO free-trial bundle for this workbook is available under your home directory (folder name may match <code>NSO-{{ nso_version }}-free</code> or your site’s layout — adjust paths below if your facilitator uses a different bundle).</li>
+</ul>
+<h2 id="02-install-nso-neds-procedure">Procedure<a class="headerlink" href="#02-install-nso-neds-procedure" title="Permanent link">&para;</a></h2>
+<p>Commands use <strong><code>{{ nso_version }}</code></strong> so they track <code>mkdocs.yml</code> <code>extra.nso_version</code>. If your lab still ships a different directory name, substitute your path <strong>inside the command fences</strong> only.</p>
+<h3 id="02-install-nso-neds-step-1-locate-the-installer-files">Step 1: Locate the installer files<a class="headerlink" href="#02-install-nso-neds-step-1-locate-the-installer-files" title="Permanent link">&para;</a></h3>
+<p>Open VS Code and work in the <strong>Terminal</strong> panel (or any shell on <strong>linux-host</strong>).</p>
+<p><img alt="VS Code connected via SSH to linux-host with terminal open" src="../assets/images/lab02/vscode-terminal-open.png" /></p>
+<p>Navigate to the NSO installer directory and list the available binaries:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#02-install-nso-neds-__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-free/
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#02-install-nso-neds-__codelineno-0-2"></a>ls<span class="w"> </span>*.bin
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="signed.bin list"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#02-install-nso-neds-__codelineno-1-1"></a>ncs-{{ nso_version }}-cisco-asa-6.x-freetrial.signed.bin
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#02-install-nso-neds-__codelineno-1-2"></a>ncs-{{ nso_version }}-cisco-ios-6.x-freetrial.signed.bin
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#02-install-nso-neds-__codelineno-1-3"></a>ncs-{{ nso_version }}-cisco-iosxr-7.x-freetrial.signed.bin
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#02-install-nso-neds-__codelineno-1-4"></a>ncs-{{ nso_version }}-cisco-nx-5.x-freetrial.signed.bin
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#02-install-nso-neds-__codelineno-1-5"></a>nso-{{ nso_version }}-freetrial.container-image-build.linux.x86_64.signed.bin
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#02-install-nso-neds-__codelineno-1-6"></a>nso-{{ nso_version }}-freetrial.container-image-prod.linux.x86_64.signed.bin
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#02-install-nso-neds-__codelineno-1-7"></a>nso-{{ nso_version }}-freetrial.linux.x86_64.signed.bin
+</span></code></pre></div>
+<p><em>(Exact NED patch versions may differ; you need the Linux <code>nso-…freetrial.linux.x86_64.signed.bin</code> and the IOS-XR <code>ncs-…-cisco-iosxr-….signed.bin</code>.)</em></p>
+<h3 id="02-install-nso-neds-step-2-extract-the-nso-installer">Step 2: Extract the NSO installer<a class="headerlink" href="#02-install-nso-neds-step-2-extract-the-nso-installer" title="Permanent link">&para;</a></h3>
+<p>Create a work directory and extract the signed installer (output is verbose; this can take a few minutes):</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#02-install-nso-neds-__codelineno-2-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>work
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#02-install-nso-neds-__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>work
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#02-install-nso-neds-__codelineno-2-3"></a>bash<span class="w"> </span>../nso-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-freetrial.linux.x86_64.signed.bin<span class="w"> </span>--skip-verification
+</span></code></pre></div>
+<h3 id="02-install-nso-neds-step-3-install-nso-locally">Step 3: Install NSO locally<a class="headerlink" href="#02-install-nso-neds-step-3-install-nso-locally" title="Permanent link">&para;</a></h3>
+<p>Run the extracted installer with the <code>--local-install</code> flag:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#02-install-nso-neds-__codelineno-3-1"></a>bash<span class="w"> </span>nso-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>.linux.x86_64.installer.bin<span class="w"> </span>--local-install<span class="w"> </span>~/NSO-INSTALL
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="NCS installation complete"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#02-install-nso-neds-__codelineno-4-1"></a>INFO  Using temporary directory /tmp/ncs_installer.XXXXXX to stage NCS installation bundle
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#02-install-nso-neds-__codelineno-4-2"></a>INFO  Unpacked ncs-{{ nso_version }} in /home/cisco/NSO-INSTALL
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#02-install-nso-neds-__codelineno-4-3"></a>INFO  Found and unpacked corresponding DOCUMENTATION_PACKAGE
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#02-install-nso-neds-__codelineno-4-4"></a>INFO  Found and unpacked corresponding EXAMPLE_PACKAGE
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#02-install-nso-neds-__codelineno-4-5"></a>INFO  Found and unpacked corresponding JAVA_PACKAGE
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#02-install-nso-neds-__codelineno-4-6"></a>INFO  Generating default SSH hostkey (this may take some time)
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#02-install-nso-neds-__codelineno-4-7"></a>INFO  NCS installation complete
+</span></code></pre></div>
+<p><em>(Additional INFO lines about SSH keys, certificates, NETSIM, and <code>ncsrc</code> are normal.)</em></p>
+<h3 id="02-install-nso-neds-step-4-source-the-nso-environment">Step 4: Source the NSO environment<a class="headerlink" href="#02-install-nso-neds-step-4-source-the-nso-environment" title="Permanent link">&para;</a></h3>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#02-install-nso-neds-__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-INSTALL/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#02-install-nso-neds-__codelineno-5-2"></a><span class="nb">source</span><span class="w"> </span>ncsrc
+</span></code></pre></div>
+<h3 id="02-install-nso-neds-step-5-create-an-nso-instance">Step 5: Create an NSO instance<a class="headerlink" href="#02-install-nso-neds-step-5-create-an-nso-instance" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#02-install-nso-neds-__codelineno-6-1"></a>ncs-setup<span class="w"> </span>--dest<span class="w"> </span>nso-instance
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#02-install-nso-neds-__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>nso-instance/
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#02-install-nso-neds-__codelineno-6-3"></a>ls
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="README.ncs"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#02-install-nso-neds-__codelineno-7-1"></a>README.ncs  logs  ncs-cdb  ncs.conf  packages  scripts  state
+</span></code></pre></div>
+<h3 id="02-install-nso-neds-step-6-configure-webui-access">Step 6: Configure WebUI access<a class="headerlink" href="#02-install-nso-neds-step-6-configure-webui-access" title="Permanent link">&para;</a></h3>
+<p>Starting with <strong>NSO {{ nso_version }}</strong>, WebUI and RESTCONF may only allow access via the server hostname. To allow access by <strong>IP address</strong>, edit <strong><code>ncs.conf</code></strong> in your instance (for example <code>~/NSO-INSTALL/nso-instance/ncs.conf</code> — confirm with your facilitator).</p>
+<ol>
+<li>Open <code>ncs.conf</code> and find the <strong><code>&lt;webui&gt;</code></strong> … <strong><code>&lt;/webui&gt;</code></strong> block (create it under the top-level config if your template does not include it).</li>
+<li><strong>Inside <code>&lt;webui&gt;</code></strong>, add a <strong><code>&lt;server-alias&gt;</code></strong> whose value is the <strong>same IPv4 address</strong> learners will type in the browser (the management address of <strong>linux-host</strong> running NSO — <strong>not</strong> the router address from Lab 4).</li>
+</ol>
+<p>Example (RFC 5737 documentation range — <strong>substitute your lab IP</strong>):</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#02-install-nso-neds-__codelineno-8-1"></a><span class="nt">&lt;server-alias&gt;</span>198.51.100.27<span class="nt">&lt;/server-alias&gt;</span>
+</span></code></pre></div>
+<ol>
+<li>Ensure the Web UI listens where you expect (often <strong><code>&lt;transport&gt;&lt;tcp&gt;&lt;ip&gt;0.0.0.0&lt;/ip&gt;</code></strong> … under <code>&lt;webui&gt;</code>). If your file already has TCP/WebUI transport settings, <strong>do not duplicate</strong> them — only add or fix <strong><code>server-alias</code></strong> so it matches the URL you publish in Step 9.</li>
+</ol>
+<p><strong>Consistency check:</strong> <strong><code>server-alias</code></strong> = IP in <strong><code>http://&lt;IP&gt;:8080/...</code></strong> (same host as NSO). It must <strong>not</strong> be the XRd device management IP (Lab 4 uses a <strong>different</strong> example address for <strong>xr-1</strong>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Security Note</p>
+<p>Binding Web UI to <code>0.0.0.0</code> is for lab use only. In production, restrict access to specific interfaces.</p>
+</div>
+<h3 id="02-install-nso-neds-step-7-start-nso">Step 7: Start NSO<a class="headerlink" href="#02-install-nso-neds-step-7-start-nso" title="Permanent link">&para;</a></h3>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#02-install-nso-neds-__codelineno-9-1"></a>ncs
+</span></code></pre></div>
+<p><em>(No stdout is normal; the daemon starts in the background. Use the next step to confirm.)</em></p>
+<h3 id="02-install-nso-neds-step-8-confirm-nso-is-running">Step 8: Confirm NSO is running<a class="headerlink" href="#02-install-nso-neds-step-8-confirm-nso-is-running" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#02-install-nso-neds-__codelineno-10-1"></a>ncs<span class="w"> </span>--status<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>started
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="started"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#02-install-nso-neds-__codelineno-11-1"></a>status: started
+</span></code></pre></div>
+<h3 id="02-install-nso-neds-step-9-access-the-web-ui">Step 9: Access the Web UI<a class="headerlink" href="#02-install-nso-neds-step-9-access-the-web-ui" title="Permanent link">&para;</a></h3>
+<p>Open Firefox and navigate to the login URL your environment provides. Example:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#02-install-nso-neds-__codelineno-12-1"></a>http://198.51.100.27:8080/login.html
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Default Credentials</p>
+<p><strong>Username:</strong> <code>admin</code> | <strong>Password:</strong> <code>admin</code></p>
+</div>
+<p><img alt="Crosswork NSO login form — enter admin / admin" src="../assets/images/lab02/webui-login-form.png" /></p>
+<p>After logging in, you will see the NSO main page showing <strong>Devices</strong>, <strong>Services</strong>, <strong>Config editor</strong>, and <strong>Tools</strong> tiles.</p>
+<p><img alt="NSO Home page after login — Devices, Services, Config editor, Tools" src="../assets/images/lab02/webui-home-after-login.png" /></p>
+<p>Navigate to the <strong>Config Editor</strong> section.</p>
+<p><img alt="Configuration editor showing available YANG modules" src="../assets/images/lab02/webui-config-editor.png" /></p>
+<h3 id="02-install-nso-neds-step-10-install-the-ios-xr-ned">Step 10: Install the IOS-XR NED<a class="headerlink" href="#02-install-nso-neds-step-10-install-the-ios-xr-ned" title="Permanent link">&para;</a></h3>
+<h4 id="02-install-nso-neds-extract-the-ned-package">Extract the NED package<a class="headerlink" href="#02-install-nso-neds-extract-the-ned-package" title="Permanent link">&para;</a></h4>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#02-install-nso-neds-__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-free/work/
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#02-install-nso-neds-__codelineno-13-2"></a>bash<span class="w"> </span>../ncs-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-cisco-iosxr-7.x-freetrial.signed.bin<span class="w"> </span>--skip-verification
+</span></code></pre></div>
+<p><em>(Replace <code>7.x</code> in the filename with the exact IOS-XR NED package name from <code>ls *.bin</code> in Step 1 if it differs.)</em></p>
+<h4 id="02-install-nso-neds-copy-the-ned-archive-into-the-instance">Copy the NED archive into the instance<a class="headerlink" href="#02-install-nso-neds-copy-the-ned-archive-into-the-instance" title="Permanent link">&para;</a></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#02-install-nso-neds-__codelineno-14-1"></a>cp<span class="w"> </span>ncs-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-cisco-iosxr-*.tar.gz<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="packages"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#02-install-nso-neds-__codelineno-15-1"></a>
+</span></code></pre></div>
+<p><em>(No output on success; verify with <code>ls ~/NSO-INSTALL/nso-instance/packages/</code> if needed.)</em></p>
+<h4 id="02-install-nso-neds-reload-packages-in-the-web-ui">Reload packages in the Web UI<a class="headerlink" href="#02-install-nso-neds-reload-packages-in-the-web-ui" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Go to the NSO Web UI.</li>
+<li>Navigate to <strong>ncs:packages</strong>.</li>
+<li>Select <strong>Actions</strong> → <strong>Reload</strong> → <strong>Run reload action</strong>.</li>
+</ol>
+<p><img alt="Web UI packages reload action page" src="../assets/images/lab02/webui-packages-reload.png" /></p>
+<p>After reloading, you should see the <code>cisco-iosxr-cli</code> package in the list.</p>
+<p><img alt="Packages list showing cisco-iosxr-cli-7.69 loaded" src="../assets/images/lab02/webui-packages-iosxr-loaded.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Verify</p>
+<p>Open <strong>Devices</strong> — it should be empty until Lab 3.</p>
+</div>
+<p><img alt="Devices page with no devices — ready for Lab 3" src="../assets/images/lab02/webui-devices-empty.png" /></p>
+<h2 id="02-install-nso-neds-verification">Verification<a class="headerlink" href="#02-install-nso-neds-verification" title="Permanent link">&para;</a></h2>
+<p>Confirm the daemon and package reload:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#02-install-nso-neds-__codelineno-16-1"></a>ncs<span class="w"> </span>--status<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>started
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="started"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#02-install-nso-neds-__codelineno-17-1"></a>status: started
+</span></code></pre></div>
+<p>In the Web UI, confirm <strong>ncs:packages</strong> lists <strong>cisco-ios-xr</strong> (name may vary slightly by build).</p>
+<h2 id="02-install-nso-neds-common-errors">Common Errors<a class="headerlink" href="#02-install-nso-neds-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Installer or ncs-setup fails with permission or existing directory errors.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Prior partial install or wrong working directory leaves files in ~/NSO-INSTALL or work/.</p><p class="css-common-error__fix"><strong>Fix</strong> Stop NSO (`ncs --stop`), remove the partial trees after backup if needed, or restore the VM snapshot — see Rollback below and Reset the Lab.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Web UI returns connection refused or TLS errors after editing ncs.conf.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong server-alias IP, daemon not restarted, or firewall blocking the port.</p><p class="css-common-error__fix"><strong>Fix</strong> Fix `server-alias` to match how learners browse (IP vs hostname), restart `ncs`, and retest. Ask the class to use the exact URL you published.</p></div></details>
+
+</div>
+
+<div class="admonition warning">
+<p class="admonition-title">Rollback</p>
+<p>If you must discard this install and start over on the same VM (destructive):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#02-install-nso-neds-__codelineno-18-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#02-install-nso-neds-__codelineno-18-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL<span class="w"> </span>~/NSO-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-free/work/nso-instance
+</span></code></pre></div>
+<p>Prefer <strong><a href="#reset-lab">Reset the Lab</a></strong> (snapshot restore) when the system is in an unknown state.</p>
+</div>
+<p>If NSO will not start or packages will not reload after multiple attempts, restore the VM snapshot and repeat this lab. Details: <strong><a href="#reset-lab">Reset the Lab</a></strong>.</p></section><section class="print-page" id="03-register-xrd-routers" heading-number="2.3"><h1 id="03-register-xrd-routers-lab-3-register-xrd-routers">Lab 3: Register XRd Routers<a class="headerlink" href="#03-register-xrd-routers-lab-3-register-xrd-routers" title="Permanent link">&para;</a></h1>
+<h2 id="03-register-xrd-routers-learning-objectives">Learning Objectives<a class="headerlink" href="#03-register-xrd-routers-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Verify XRd Docker containers are running on the lab host.</li>
+<li>Load device definitions into NSO and confirm devices appear in the Web UI.</li>
+<li>Run <strong>sync-from</strong> to populate the NSO CDB with device configuration.</li>
+</ul>
+<h2 id="03-register-xrd-routers-time-budget">Time Budget<a class="headerlink" href="#03-register-xrd-routers-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 20 minutes total — Verify containers 8 min, Load devices &amp; sync 12 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:8"><span class="css-time-budget__seg-label">Verify containers</span></div><div class="css-time-budget__seg seg--b" style="flex:12"><span class="css-time-budget__seg-label">Load devices &amp; sync</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Verify containers — 8 min</li><li><span class="css-time-budget__swatch seg--b"></span>Load devices &amp; sync — 12 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 20 min</p></div>
+
+<h2 id="03-register-xrd-routers-prerequisites">Prerequisites<a class="headerlink" href="#03-register-xrd-routers-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#02-install-nso-neds">Lab 2: Install NSO and NEDs</a> completed — NSO daemon is <strong>started</strong> and the <strong>cisco-ios-xr</strong> package shows in <strong>ncs:packages</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the NSO Web UI and run commands in a terminal on <strong>linux-host</strong>.</li>
+</ul>
+<h2 id="03-register-xrd-routers-procedure">Procedure<a class="headerlink" href="#03-register-xrd-routers-procedure" title="Permanent link">&para;</a></h2>
+<h3 id="03-register-xrd-routers-step-1-verify-xrd-containers-are-running">Step 1: Verify XRd containers are running<a class="headerlink" href="#03-register-xrd-routers-step-1-verify-xrd-containers-are-running" title="Permanent link">&para;</a></h3>
+<p>Two XRd routers run as Docker containers on the same host. Confirm they are up:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#03-register-xrd-routers-__codelineno-0-1"></a>docker<span class="w"> </span>ps
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="xr-1"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#03-register-xrd-routers-__codelineno-1-1"></a>CONTAINER ID   IMAGE                             COMMAND                CREATED      STATUS      NAMES
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#03-register-xrd-routers-__codelineno-1-2"></a>…              ios-xr/xrd-control-plane:…        &quot;/usr/local/sbin/init&quot; …         Up …        xr-2
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#03-register-xrd-routers-__codelineno-1-3"></a>…              ios-xr/xrd-control-plane:…        &quot;/usr/local/sbin/init&quot; …         Up …        xr-1
+</span></code></pre></div>
+<p>You should see <strong>xr-1</strong> and <strong>xr-2</strong> with the same <code>ios-xr/xrd-control-plane</code> image (tag may differ from the example). Other lab containers (for example <strong>source</strong> / <strong>dest</strong>) may appear — that is expected.</p>
+<h3 id="03-register-xrd-routers-step-2-load-device-definitions">Step 2: Load device definitions<a class="headerlink" href="#03-register-xrd-routers-step-2-load-device-definitions" title="Permanent link">&para;</a></h3>
+<p>A prepared XML template defines both routers. From the bundle directory (adjust if your site places <code>devices.xml</code> elsewhere):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#03-register-xrd-routers-__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-free/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#03-register-xrd-routers-__codelineno-2-2"></a>ncs_load<span class="w"> </span>-l<span class="w"> </span>-m<span class="w"> </span>devices.xml
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="ncs_load"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#03-register-xrd-routers-__codelineno-3-1"></a>
+</span></code></pre></div>
+<p><em>(Empty stdout is normal when load succeeds.)</em></p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-l</code></td>
+<td>Load operation</td>
+</tr>
+<tr>
+<td><code>-m</code></td>
+<td>Merge with existing configuration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="03-register-xrd-routers-step-3-verify-devices-in-the-web-ui">Step 3: Verify devices in the Web UI<a class="headerlink" href="#03-register-xrd-routers-step-3-verify-devices-in-the-web-ui" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open the NSO Web UI.</li>
+<li>Click <strong>Devices</strong>.</li>
+<li>Confirm <strong>xr-1</strong> and <strong>xr-2</strong> are listed.</li>
+</ol>
+<p><img alt="Devices page showing xr-1 and xr-2 after loading definitions" src="../assets/images/lab03/webui-devices-two-xrd.png" /></p>
+<h3 id="03-register-xrd-routers-step-4-sync-device-configuration">Step 4: Sync device configuration<a class="headerlink" href="#03-register-xrd-routers-step-4-sync-device-configuration" title="Permanent link">&para;</a></h3>
+<p>The first action after adding devices is <strong>sync-from</strong> so the NSO CDB matches each device’s running configuration.</p>
+<ol>
+<li>Select <strong>all devices</strong> (or each device in turn).</li>
+<li>Execute <strong>sync-from</strong>.</li>
+</ol>
+<p><img alt="Select all devices and run sync-from" src="../assets/images/lab03/webui-devices-sync-from-select.png" /></p>
+<p><img alt="Sync-from result — both devices synchronized successfully" src="../assets/images/lab03/webui-devices-sync-from-result.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">If sync-from fails</p>
+<p>Run <strong>Fetch SSH Host Keys</strong> first, then retry <strong>sync-from</strong>.</p>
+</div>
+<p>After a successful sync-from, NSO’s CDB holds the full running configuration of both routers.</p>
+<h2 id="03-register-xrd-routers-verification">Verification<a class="headerlink" href="#03-register-xrd-routers-verification" title="Permanent link">&para;</a></h2>
+<p>Confirm both devices appear in NSO (source the environment as in Lab 2, then run one non-interactive CLI session):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#03-register-xrd-routers-__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#03-register-xrd-routers-__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show devices list&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="xr-1"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#03-register-xrd-routers-__codelineno-5-1"></a>NAME  ADDRESS     DESCRIPTION  ADMIN-STATE  NODE  TAG
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#03-register-xrd-routers-__codelineno-5-2"></a>xr-1  …                        unlocked     …
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#03-register-xrd-routers-__codelineno-5-3"></a>xr-2  …                        unlocked     …
+</span></code></pre></div>
+<p><em>(Addresses and columns follow your lab’s <code>devices.xml</code>.)</em></p>
+<h2 id="03-register-xrd-routers-common-errors">Common Errors<a class="headerlink" href="#03-register-xrd-routers-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: docker ps does not list xr-1 and xr-2.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Containers stopped, Docker not running, or wrong host session.</p><p class="css-common-error__fix"><strong>Fix</strong> On linux-host: `docker ps -a` and start containers per your lab guide; if broken, use Reset the Lab.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: sync-from fails with authentication or host key errors.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> SSH keys not fetched or management IP mismatch in NSO vs device.</p><p class="css-common-error__fix"><strong>Fix</strong> Run Fetch SSH Host Keys, verify addresses in `devices.xml`, retry sync-from. See Reset the Lab if CDB is corrupt.</p></div></details>
+
+</div>
+
+<p>If devices cannot be added or <strong>sync-from</strong> never succeeds after fetching SSH host keys, see <strong><a href="#reset-lab">Reset the Lab</a></strong> for snapshot restore versus re-loading device definitions.</p></section><section class="print-page" id="04-configure-devices" heading-number="2.4"><h1 id="04-configure-devices-lab-4-configure-devices">Lab 4: Configure Devices<a class="headerlink" href="#04-configure-devices-lab-4-configure-devices" title="Permanent link">&para;</a></h1>
+<h2 id="04-configure-devices-learning-objectives">Learning Objectives<a class="headerlink" href="#04-configure-devices-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Navigate the NSO Web UI to a device configuration path on <strong>xr-1</strong>.</li>
+<li>Stage a candidate configuration change and commit it through <strong>Commit Manager</strong>.</li>
+<li>Verify the change on the device CLI.</li>
+</ul>
+<h2 id="04-configure-devices-time-budget">Time Budget<a class="headerlink" href="#04-configure-devices-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 20 minutes total — Web UI edit &amp; commit 10 min, Device CLI verify 10 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:10"><span class="css-time-budget__seg-label">Web UI edit &amp; commit</span></div><div class="css-time-budget__seg seg--b" style="flex:10"><span class="css-time-budget__seg-label">Device CLI verify</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Web UI edit &amp; commit — 10 min</li><li><span class="css-time-budget__swatch seg--b"></span>Device CLI verify — 10 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 20 min</p></div>
+
+<h2 id="04-configure-devices-prerequisites">Prerequisites<a class="headerlink" href="#04-configure-devices-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#03-register-xrd-routers">Lab 3: Register XRd Routers</a> completed — <strong>xr-1</strong> and <strong>xr-2</strong> show as <strong>unlocked</strong> and <strong>sync-from</strong> has succeeded at least once.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the NSO Web UI and SSH from <strong>linux-host</strong> to the device management address (your lab sheet lists the address).</li>
+</ul>
+<h2 id="04-configure-devices-procedure">Procedure<a class="headerlink" href="#04-configure-devices-procedure" title="Permanent link">&para;</a></h2>
+<h3 id="04-configure-devices-step-1-browse-device-configuration-in-the-web-ui">Step 1: Browse device configuration in the Web UI<a class="headerlink" href="#04-configure-devices-step-1-browse-device-configuration-in-the-web-ui" title="Permanent link">&para;</a></h3>
+<p>Navigate to <strong>xr-1</strong> in the Web UI to inspect interface configuration. Use the search bar or expand the configuration tree.</p>
+<p><img alt="xr-1 device detail — type config in the search bar to navigate to the configuration section" src="../assets/images/lab04/webui-xr1-device-detail.png" /></p>
+<p>Follow this path to reach the GigabitEthernet IPv4 address container:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#04-configure-devices-__codelineno-0-1"></a>/ncs:devices/device{xr-1}/config/cisco-ios-xr:interface/GigabitEthernet{0/0/0/0}/ipv4/address/
+</span></code></pre></div>
+<p><img alt="GigabitEthernet 0/0/0/0 IPv4 address showing current IP 10.1.1.3" src="../assets/images/lab04/webui-gige-ipv4-path.png" /></p>
+<h3 id="04-configure-devices-step-2-make-a-configuration-change">Step 2: Make a configuration change<a class="headerlink" href="#04-configure-devices-step-2-make-a-configuration-change" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Click <strong>Edit Config</strong>.</li>
+<li>Change the IPv4 address from <code>10.1.1.3</code> to <code>10.1.1.30</code> (documentation-style lab addressing).</li>
+</ol>
+<p><img alt="IP field shows 10.1.1.3 before editing" src="../assets/images/lab04/webui-gige-ip-before-edit.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Candidate Configuration</p>
+<p>A green bar appears on edited fields — this is <strong>candidate</strong> configuration. Changes apply to the device only after you <strong>commit</strong>.</p>
+</div>
+<p><img alt="After editing: IP changed to 10.1.1.30 with green candidate bar on the ip field" src="../assets/images/lab04/webui-gige-ip-after-edit.png" /></p>
+<h3 id="04-configure-devices-step-3-review-and-commit">Step 3: Review and commit<a class="headerlink" href="#04-configure-devices-step-3-review-and-commit" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Tools → Commit Manager</strong>.</li>
+<li>Open the <strong>config</strong> tab for a diff view.</li>
+</ol>
+<p><img alt="Commit Manager diff view — ip 10.1.1.3 (red, removed) → ip 10.1.1.30 (green, added)" src="../assets/images/lab04/webui-commit-manager-diff.png" /></p>
+<ol>
+<li>Review the change, then click <strong>Commit</strong>.</li>
+</ol>
+<p><img alt="Commit confirmation dialog — click Yes, commit to push the change to the device" src="../assets/images/lab04/webui-commit-confirmation.png" /></p>
+<p>After commit, NSO creates a <strong>rollback</strong> file automatically (covered further in Lab 5).</p>
+<p><img alt="Commit Manager shows no pending changes — transaction is EMPTY after a successful commit" src="../assets/images/lab04/webui-commit-manager-empty.png" /></p>
+<h3 id="04-configure-devices-step-4-verify-on-the-device">Step 4: Verify on the device<a class="headerlink" href="#04-configure-devices-step-4-verify-on-the-device" title="Permanent link">&para;</a></h3>
+<p>SSH to <strong>xr-1</strong> and confirm the interface address in running configuration.</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#04-configure-devices-__codelineno-1-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+</span></code></pre></div>
+<p><em>(Use the management IP your lab assigns; <code>198.51.100.2</code> is an example documentation address.)</em></p>
+<p>At the XR prompt, run:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#04-configure-devices-__codelineno-2-1"></a>show run interface gigabitEthernet 0/0/0/0
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="10.1.1.30"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#04-configure-devices-__codelineno-3-1"></a>interface GigabitEthernet0/0/0/0
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#04-configure-devices-__codelineno-3-2"></a> ipv4 address 10.1.1.30 255.255.255.0
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#04-configure-devices-__codelineno-3-3"></a>!
+</span></code></pre></div>
+<p><em>(Timestamps and banner lines may appear above the <code>interface</code> block.)</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Password</p>
+<p>If prompted: <code>cisco123</code> (or the password your facilitator provides).</p>
+</div>
+<h2 id="04-configure-devices-verification">Verification<a class="headerlink" href="#04-configure-devices-verification" title="Permanent link">&para;</a></h2>
+<p>From <strong>linux-host</strong>, confirm the committed value is visible in NSO (same shell environment as prior labs):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#04-configure-devices-__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#04-configure-devices-__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="10.1.1.30"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#04-configure-devices-__codelineno-5-1"></a>address 10.1.1.30 255.255.255.0
+</span></code></pre></div>
+<p><em>(Path or spacing may wrap differently; look for </em><em>10.1.1.30</em><em>.)</em></p>
+<p>If you already confirmed on the device CLI in Step 4, that counts as a second, independent check.</p>
+<h2 id="04-configure-devices-common-errors">Common Errors<a class="headerlink" href="#04-configure-devices-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Commit fails or device shows out-of-sync after commit.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Another session holds a lock, or sync-from needed before edit.</p><p class="css-common-error__fix"><strong>Fix</strong> Close other NSO sessions, run check-sync, retry commit; see Lab 5 for rollback files.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: SSH to xr-1 refused or wrong interface output.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong management IP, routing from linux-host, or change not committed.</p><p class="css-common-error__fix"><strong>Fix</strong> Confirm IP in Web UI devices detail, ping from linux-host, re-check Commit Manager succeeded.</p></div></details>
+
+</div>
+
+<p>If commits leave the device and CDB out of sync, use Commit Manager rollbacks (see <a href="#05-rollbacks">5. Rollbacks</a>) or <strong><a href="#reset-lab">Reset the Lab</a></strong> for a broader recovery path.</p></section><section class="print-page" id="05-rollbacks" heading-number="2.5"><h1 id="05-rollbacks-lab-5-rollbacks">Lab 5: Rollbacks<a class="headerlink" href="#05-rollbacks-lab-5-rollbacks" title="Permanent link">&para;</a></h1>
+<h2 id="05-rollbacks-learning-objectives">Learning Objectives<a class="headerlink" href="#05-rollbacks-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Locate rollback metadata in <strong>Commit Manager</strong> and load a rollback file.</li>
+<li>Commit a loaded rollback as a new candidate and complete the workflow in Commit Manager.</li>
+<li>Verify on the device CLI that configuration matches the rolled-back state.</li>
+</ul>
+<h2 id="05-rollbacks-time-budget">Time Budget<a class="headerlink" href="#05-rollbacks-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 20 minutes total — Load rollback 8 min, Verify on device 12 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:8"><span class="css-time-budget__seg-label">Load rollback</span></div><div class="css-time-budget__seg seg--b" style="flex:12"><span class="css-time-budget__seg-label">Verify on device</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Load rollback — 8 min</li><li><span class="css-time-budget__swatch seg--b"></span>Verify on device — 12 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 20 min</p></div>
+
+<h2 id="05-rollbacks-prerequisites">Prerequisites<a class="headerlink" href="#05-rollbacks-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#04-configure-devices">Lab 4: Configure Devices</a> completed — at least one successful <strong>commit</strong> exists so NSO generated rollback files.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the NSO Web UI as <strong>admin</strong> and SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (use the management IP from your lab sheet; examples use <strong>198.51.100.2</strong>).</li>
+</ul>
+<h2 id="05-rollbacks-procedure">Procedure<a class="headerlink" href="#05-rollbacks-procedure" title="Permanent link">&para;</a></h2>
+<p>NSO creates a <strong>rollback file</strong> for every commit so you can revert configuration changes safely.</p>
+<h3 id="05-rollbacks-step-1-open-commit-manager">Step 1: Open Commit Manager<a class="headerlink" href="#05-rollbacks-step-1-open-commit-manager" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <strong>Commit Manager</strong>.</li>
+<li>Click <strong>Load/Save</strong>.</li>
+<li>Select the rollback file that corresponds to the state <strong>before</strong> the Lab 4 address change (metadata shows <strong>User</strong>, <strong>Northbound interface</strong>, timestamp — pick the rollback that restores <strong>10.1.1.3</strong> on the interface).</li>
+</ol>
+<p><img alt="Commit Manager Load/Save — Rollbacks tab showing recent commits by admin via webui" src="../assets/images/lab05/webui-rollback-load-save.png" /></p>
+<h3 id="05-rollbacks-step-2-load-the-rollback">Step 2: Load the rollback<a class="headerlink" href="#05-rollbacks-step-2-load-the-rollback" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Click <strong>Load</strong> — the revert appears as a <strong>candidate</strong> configuration.</li>
+<li>Review the diff: the rollback reverses Lab 4's change (<strong>10.1.1.30</strong> removed → <strong>10.1.1.3</strong> restored).</li>
+</ol>
+<p><img alt="Rollback diff — ip 10.1.1.30 (red, removed) → ip 10.1.1.3 (green, restored)" src="../assets/images/lab05/webui-rollback-diff-loaded.png" /></p>
+<ol>
+<li>Click <strong>Commit</strong> to apply.</li>
+</ol>
+<p><img alt="Commit confirmation for the rollback — click Yes, commit" src="../assets/images/lab05/webui-rollback-commit-result.png" /></p>
+<h3 id="05-rollbacks-step-3-verify-on-the-device">Step 3: Verify on the device<a class="headerlink" href="#05-rollbacks-step-3-verify-on-the-device" title="Permanent link">&para;</a></h3>
+<p>SSH to <strong>xr-1</strong> and confirm the IPv4 address on the data interface is restored to <strong>10.1.1.3</strong>.</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#05-rollbacks-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+</span></code></pre></div>
+<p><em>(Replace with your lab management address.)</em></p>
+<p>At the XR prompt:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#05-rollbacks-__codelineno-1-1"></a>show run interface gigabitEthernet 0/0/0/0
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="10.1.1.3"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#05-rollbacks-__codelineno-2-1"></a>interface GigabitEthernet0/0/0/0
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#05-rollbacks-__codelineno-2-2"></a> ipv4 address 10.1.1.3 255.255.255.0
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#05-rollbacks-__codelineno-2-3"></a>!
+</span></code></pre></div>
+<p><em>(Timestamps and comments may vary.)</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Key takeaway</p>
+<p>Every NSO commit is reversible. Rollback files are your safety net when testing configuration changes.</p>
+</div>
+<h2 id="05-rollbacks-verification">Verification<a class="headerlink" href="#05-rollbacks-verification" title="Permanent link">&para;</a></h2>
+<p>Confirm the same address from NSO (optional second check):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#05-rollbacks-__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#05-rollbacks-__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="10.1.1.3"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#05-rollbacks-__codelineno-4-1"></a>address 10.1.1.3 255.255.255.0
+</span></code></pre></div>
+<h2 id="05-rollbacks-common-errors">Common Errors<a class="headerlink" href="#05-rollbacks-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Load is greyed out or rollback list is empty.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> No prior commit in this session, or wrong NSO instance.</p><p class="css-common-error__fix"><strong>Fix</strong> Confirm you committed at least one change in Lab 4; check **Commit Manager** history and lab instructions for the correct instance path.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Device still shows 10.1.1.30 after commit.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong rollback selected, or commit not applied to devices.</p><p class="css-common-error__fix"><strong>Fix</strong> Re-open the diff in Commit Manager, pick the rollback whose metadata matches the pre-change state, commit again, then re-run Check-Sync / sync-to if your site requires it.</p></div></details>
+
+</div>
+
+<p>If you cannot find a suitable rollback file or loads fail repeatedly, see <strong><a href="#reset-lab">Reset the Lab</a></strong> for VM-level reset options.</p></section><section class="print-page" id="06-out-of-band-sync" heading-number="2.6"><h1 id="06-out-of-band-sync-lab-6-out-of-band-sync">Lab 6: Out-of-Band Sync<a class="headerlink" href="#06-out-of-band-sync-lab-6-out-of-band-sync" title="Permanent link">&para;</a></h1>
+<h2 id="06-out-of-band-sync-learning-objectives">Learning Objectives<a class="headerlink" href="#06-out-of-band-sync-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Create a configuration change <strong>directly on xr-1</strong> (out-of-band) without using NSO.</li>
+<li>Run <strong>Check-Sync</strong> in the Web UI to detect configuration drift.</li>
+<li>Use <strong>Sync-To</strong> to align the device with NSO and verify the loopback is removed.</li>
+</ul>
+<h2 id="06-out-of-band-sync-time-budget">Time Budget<a class="headerlink" href="#06-out-of-band-sync-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 20 minutes total — Out-of-band change 10 min, Detect &amp; reconcile 10 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:10"><span class="css-time-budget__seg-label">Out-of-band change</span></div><div class="css-time-budget__seg seg--b" style="flex:10"><span class="css-time-budget__seg-label">Detect &amp; reconcile</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Out-of-band change — 10 min</li><li><span class="css-time-budget__swatch seg--b"></span>Detect &amp; reconcile — 10 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 20 min</p></div>
+
+<h2 id="06-out-of-band-sync-prerequisites">Prerequisites<a class="headerlink" href="#06-out-of-band-sync-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#05-rollbacks">Lab 5: Rollbacks</a> completed — <strong>Check-Sync</strong> should be <strong>green</strong> for <strong>xr-1</strong> before you start (restore with <strong>Reset the Lab</strong> if not).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (examples use <strong>198.51.100.2</strong> — use your lab address).</li>
+</ul>
+<h2 id="06-out-of-band-sync-procedure">Procedure<a class="headerlink" href="#06-out-of-band-sync-procedure" title="Permanent link">&para;</a></h2>
+<p>One of NSO’s core workflows is detecting changes made <strong>on the device</strong> that did not go through NSO — <strong>out-of-band</strong> configuration.</p>
+<h3 id="06-out-of-band-sync-step-1-create-an-out-of-band-change-on-xr-1">Step 1: Create an out-of-band change on xr-1<a class="headerlink" href="#06-out-of-band-sync-step-1-create-an-out-of-band-change-on-xr-1" title="Permanent link">&para;</a></h3>
+<p>SSH to <strong>xr-1</strong> and configure <strong>Loopback100</strong> on the device CLI (not through NSO).</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#06-out-of-band-sync-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+</span></code></pre></div>
+<p>At the XR prompt, use a configuration session like this (prompts and timestamps will match your session):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#06-out-of-band-sync-__codelineno-1-1"></a>RP/0/RP0/CPU0:xr-1#configure terminal
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#06-out-of-band-sync-__codelineno-1-2"></a>RP/0/RP0/CPU0:xr-1(config)#interface Loopback 100
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#06-out-of-band-sync-__codelineno-1-3"></a>RP/0/RP0/CPU0:xr-1(config-if)#description out-of-band change
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#06-out-of-band-sync-__codelineno-1-4"></a>RP/0/RP0/CPU0:xr-1(config-if)#commit
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#06-out-of-band-sync-__codelineno-1-5"></a>RP/0/RP0/CPU0:xr-1(config-if)#end
+</span></code></pre></div>
+<h3 id="06-out-of-band-sync-step-2-verify-the-loopback-on-the-device">Step 2: Verify the loopback on the device<a class="headerlink" href="#06-out-of-band-sync-step-2-verify-the-loopback-on-the-device" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#06-out-of-band-sync-__codelineno-2-1"></a>show run interface Loopback 100
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="Loopback100"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#06-out-of-band-sync-__codelineno-3-1"></a>interface Loopback100
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#06-out-of-band-sync-__codelineno-3-2"></a> description out-of-band change
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#06-out-of-band-sync-__codelineno-3-3"></a>!
+</span></code></pre></div>
+<h3 id="06-out-of-band-sync-step-3-detect-drift-in-nso">Step 3: Detect drift in NSO<a class="headerlink" href="#06-out-of-band-sync-step-3-detect-drift-in-nso" title="Permanent link">&para;</a></h3>
+<p>In the NSO Web UI, run <strong>Check-Sync</strong> on <strong>xr-1</strong>.</p>
+<p><img alt="Check-Sync result — xr-1 is out-of-sync (transaction hash mismatch)" src="../assets/images/lab06/webui-check-sync-out-of-sync.png" /></p>
+<div class="admonition danger">
+<p class="admonition-title">Out-of-sync alert</p>
+<p>NSO typically shows a <strong>red</strong> indicator because the device differs from the CDB. Open <strong>Compare-config</strong> to see the out-of-band change.</p>
+</div>
+<p><img alt="Compare config shows Loopback 100 with description &quot;out-of-band change&quot; added on the device" src="../assets/images/lab06/webui-compare-config-loopback.png" /></p>
+<h3 id="06-out-of-band-sync-step-4-resolve-with-sync-to-vs-sync-from">Step 4: Resolve with Sync-To vs Sync-From<a class="headerlink" href="#06-out-of-band-sync-step-4-resolve-with-sync-to-vs-sync-from" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Action</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sync-From</strong></td>
+<td>Pull device config into NSO</td>
+<td>NSO <strong>accepts</strong> the out-of-band change</td>
+</tr>
+<tr>
+<td><strong>Sync-To</strong></td>
+<td>Push NSO’s config to the device</td>
+<td>Device <strong>matches</strong> NSO (drops OOB change)</td>
+</tr>
+</tbody>
+</table>
+<p>To <strong>remove</strong> the loopback and match the prior NSO-known state, use <strong>Sync-To</strong>.</p>
+<h3 id="06-out-of-band-sync-step-5-execute-sync-to">Step 5: Execute Sync-To<a class="headerlink" href="#06-out-of-band-sync-step-5-execute-sync-to" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Select <strong>xr-1</strong> in the Web UI.</li>
+<li>Open the actions menu and choose <strong>Sync to</strong>.</li>
+</ol>
+<p><img alt="Device actions dropdown with Sync to highlighted" src="../assets/images/lab06/webui-device-actions-sync-to.png" /></p>
+<h3 id="06-out-of-band-sync-step-6-verify-reconciliation">Step 6: Verify reconciliation<a class="headerlink" href="#06-out-of-band-sync-step-6-verify-reconciliation" title="Permanent link">&para;</a></h3>
+<p>Run <strong>Check-Sync</strong> again — both devices should show <strong>in-sync</strong>.</p>
+<p><img alt="Check-Sync after Sync-To — both xr-1 and xr-2 report in-sync" src="../assets/images/lab06/webui-check-sync-both-in-sync.png" /></p>
+<p>On the device:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#06-out-of-band-sync-__codelineno-4-1"></a>show run interface Loopback 100
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="No such configuration"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#06-out-of-band-sync-__codelineno-5-1"></a>% No such configuration item(s)
+</span></code></pre></div>
+<p>The Loopback <strong>100</strong> configuration is gone — NSO restored the device to its known-good state.</p>
+<div class="admonition tip">
+<p class="admonition-title">Key takeaway</p>
+<p>Use <strong>check-sync</strong> regularly; pair it with <strong>sync-from</strong> or <strong>sync-to</strong> deliberately — <strong>sync-from</strong> ingests reality, <strong>sync-to</strong> enforces the NSO-intended configuration.</p>
+</div>
+<h2 id="06-out-of-band-sync-verification">Verification<a class="headerlink" href="#06-out-of-band-sync-verification" title="Permanent link">&para;</a></h2>
+<p>Confirm <strong>xr-1</strong> is clear of Loopback <strong>100</strong> and NSO agrees:</p>
+<ol>
+<li>In the Web UI, <strong>Check-Sync</strong> for <strong>xr-1</strong> is <strong>green</strong>.</li>
+<li>On the device CLI:</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#06-out-of-band-sync-__codelineno-6-1"></a>show run interface Loopback 100
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="No such configuration"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#06-out-of-band-sync-__codelineno-7-1"></a>% No such configuration item(s)
+</span></code></pre></div>
+<p>Optional — inspect sync from the NSO CLI (output varies by release; rely on the Web UI if this is empty):</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#06-out-of-band-sync-__codelineno-8-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#06-out-of-band-sync-__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show devices check-sync&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span></code></pre></div>
+<h2 id="06-out-of-band-sync-common-errors">Common Errors<a class="headerlink" href="#06-out-of-band-sync-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Check-Sync stays red after Sync-To or shows a looping diff.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Concurrent edits, partial sync, or SSH session left in config mode on the device.</p><p class="css-common-error__fix"><strong>Fix</strong> Close extra sessions, run **Check-Sync** again, then **Sync-To** once; capture Compare-config for the instructor. Use Reset the Lab if stuck.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Loopback still present after Sync-To.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong device selected, or sync targeted a different NSO instance.</p><p class="css-common-error__fix"><strong>Fix</strong> Confirm **xr-1** address and authgroup; re-run **Sync-To** and verify with `show run interface Loopback 100` on the device.</p></div></details>
+
+</div>
+
+<p>If <strong>sync-to</strong> / <strong>sync-from</strong> loops or <strong>check-sync</strong> stays red with no clear diff, capture screenshots for your instructor and consider <strong><a href="#reset-lab">Reset the Lab</a></strong> if time is short.</p></section><section class="print-page" id="07-device-groups-templates" heading-number="2.7"><h1 id="07-device-groups-templates-lab-7-device-groups-templates">Lab 7: Device Groups &amp; Templates<a class="headerlink" href="#07-device-groups-templates-lab-7-device-groups-templates" title="Permanent link">&para;</a></h1>
+<h2 id="07-device-groups-templates-learning-objectives">Learning Objectives<a class="headerlink" href="#07-device-groups-templates-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Create a <strong>device group</strong> that contains <strong>xr-1</strong> and <strong>xr-2</strong>.</li>
+<li>Define a <strong>device template</strong> with IOS-XR DNS settings.</li>
+<li>Run <strong>Apply-Template</strong> for the group and verify <strong>DNS</strong> configuration on a device.</li>
+</ul>
+<h2 id="07-device-groups-templates-time-budget">Time Budget<a class="headerlink" href="#07-device-groups-templates-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 25 minutes total — Device group 10 min, Template &amp; apply 15 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:10"><span class="css-time-budget__seg-label">Device group</span></div><div class="css-time-budget__seg seg--b" style="flex:15"><span class="css-time-budget__seg-label">Template &amp; apply</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Device group — 10 min</li><li><span class="css-time-budget__swatch seg--b"></span>Template &amp; apply — 15 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 25 min</p></div>
+
+<h2 id="07-device-groups-templates-prerequisites">Prerequisites<a class="headerlink" href="#07-device-groups-templates-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#06-out-of-band-sync">Lab 6: Out-of-Band Sync</a> completed — both devices are <strong>in-sync</strong> and reachable.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open <strong>Configuration Editor</strong> and <strong>Commit Manager</strong> as <strong>admin</strong>.</li>
+</ul>
+<h2 id="07-device-groups-templates-procedure">Procedure<a class="headerlink" href="#07-device-groups-templates-procedure" title="Permanent link">&para;</a></h2>
+<p>Device <strong>groups</strong> and <strong>templates</strong> let you push configuration to <strong>multiple</strong> devices with one action.</p>
+<h3 id="07-device-groups-templates-step-1-create-a-device-group">Step 1: Create a device group<a class="headerlink" href="#07-device-groups-templates-step-1-create-a-device-group" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <strong>Devices → Device groups</strong>.</li>
+<li>Click <strong>+ Add device group</strong>.</li>
+<li>Name it <strong><code>ios-xr-devices</code></strong> and click <strong>Create</strong>.</li>
+</ol>
+<p><img alt="Enter a group name like ios-xr-devices" src="../assets/images/lab07/webui-device-group-create-name.png" /></p>
+<ol>
+<li>Select <strong>xr-1</strong> and <strong>xr-2</strong>, then <strong>+ Add to device group</strong>.</li>
+</ol>
+<p><img alt="Select devices to add to the group" src="../assets/images/lab07/webui-device-group-add-devices.png" /></p>
+<ol>
+<li>Click <strong>Create device group</strong>.</li>
+</ol>
+<p>Both devices should appear in <strong><code>ios-xr-devices</code></strong>.</p>
+<p><img alt="Device group ios-xr-devices created with both devices" src="../assets/images/lab07/webui-device-group-created.png" /></p>
+<h3 id="07-device-groups-templates-step-2-create-a-device-template">Step 2: Create a device template<a class="headerlink" href="#07-device-groups-templates-step-2-create-a-device-template" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Configuration Editor</strong>.</li>
+<li>Select the <strong>ncs:devices</strong> module and click <strong>Edit config</strong>.</li>
+</ol>
+<p><img alt="Configuration Editor showing the ncs:devices module" src="../assets/images/lab07/webui-config-editor-devices.png" /></p>
+<ol>
+<li>In the <strong>template</strong> tile, click <strong>+</strong>.</li>
+</ol>
+<p><img alt="Click the + button to create a new template" src="../assets/images/lab07/webui-template-create-plus.png" /></p>
+<ol>
+<li>Choose NED <strong>cisco-iosxr</strong>, then <strong>Confirm</strong>.</li>
+</ol>
+<p><img alt="Select the IOS-XR NED for the template" src="../assets/images/lab07/webui-template-ned-select.png" /></p>
+<ol>
+<li>Open the NED subtree to edit template content.</li>
+</ol>
+<p><img alt="NED config subtree inside the template" src="../assets/images/lab07/webui-template-ned-config.png" /></p>
+<h3 id="07-device-groups-templates-step-3-configure-dns-in-the-template">Step 3: Configure DNS in the template<a class="headerlink" href="#07-device-groups-templates-step-3-configure-dns-in-the-template" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Navigate to <strong>Domain</strong> (path may read <strong>domain</strong> / <strong>Domain name</strong> depending on UI skin).</li>
+</ol>
+<p><img alt="Search for the Domain configuration inside the NED" src="../assets/images/lab07/webui-template-domain-search.png" /></p>
+<ol>
+<li>Add a <strong>domain name</strong> and <strong>name-server</strong> IP (example: <strong><code>2.2.2.2</code></strong> — documentation-style resolver).</li>
+</ol>
+<p><img alt="Fill in the domain name and name-server fields" src="../assets/images/lab07/webui-template-domain-fields.png" /></p>
+<h3 id="07-device-groups-templates-step-4-review-and-commit">Step 4: Review and commit<a class="headerlink" href="#07-device-groups-templates-step-4-review-and-commit" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Commit Manager</strong> and review the diff — you should see the new <strong>device group</strong> and <strong>template</strong> objects.</li>
+</ol>
+<p><img alt="Commit Manager diff showing device-group and template configuration" src="../assets/images/lab07/webui-template-commit-diff.png" /></p>
+<p><img alt="Commit detail with the template and device group definitions" src="../assets/images/lab07/webui-template-commit-detail.png" /></p>
+<ol>
+<li><strong>Commit</strong>.</li>
+</ol>
+<h3 id="07-device-groups-templates-step-5-apply-the-template-to-the-group">Step 5: Apply the template to the group<a class="headerlink" href="#07-device-groups-templates-step-5-apply-the-template-to-the-group" title="Permanent link">&para;</a></h3>
+<ol>
+<li>In <strong>Configuration Editor → ncs:devices</strong>, open the device group <strong><code>ios-xr-devices</code></strong>.</li>
+<li>Click <strong>Actions</strong>.</li>
+</ol>
+<p><img alt="Device group Actions menu in the Configuration Editor" src="../assets/images/lab07/webui-device-group-actions.png" /></p>
+<ol>
+<li>Click <strong>Apply-Template</strong>.</li>
+</ol>
+<p><img alt="Apply-Template button" src="../assets/images/lab07/webui-apply-template-button.png" /></p>
+<ol>
+<li>Select your template name (scroll if needed).</li>
+</ol>
+<p><img alt="Select the template name to apply" src="../assets/images/lab07/webui-apply-template-select.png" /></p>
+<ol>
+<li>Run <strong>Apply-Template</strong>.</li>
+</ol>
+<p>The action result should show <strong>ok</strong> for each member device.</p>
+<p><img alt="Apply-Template result — ok for both xr-1 and xr-2" src="../assets/images/lab07/webui-apply-template-result.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Templates vs services</p>
+<p>Templates are flexible but lack <strong>service lifecycle</strong> semantics. Uncontrolled edits on devices can drift from the template intent — <strong>services</strong> (Lab 8) add structure and reconciliation.</p>
+</div>
+<h2 id="07-device-groups-templates-verification">Verification<a class="headerlink" href="#07-device-groups-templates-verification" title="Permanent link">&para;</a></h2>
+<p>On <strong>xr-1</strong>, confirm DNS settings from the template:</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#07-device-groups-templates-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#07-device-groups-templates-__codelineno-1-1"></a>show run domain
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="name-server"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#07-device-groups-templates-__codelineno-2-1"></a>domain name-server 2.2.2.2
+</span></code></pre></div>
+<p><img alt="Device CLI showing DNS domain configuration applied via template" src="../assets/images/lab07/terminal-device-dns-verify.png" /></p>
+<p><em>(Additional <code>domain name</code> lines may appear if you set them in the template.)</em></p>
+<h2 id="07-device-groups-templates-common-errors">Common Errors<a class="headerlink" href="#07-device-groups-templates-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Apply-Template returns failed or only one device updates.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Authgroup mapping, device lock, or template path not committed.</p><p class="css-common-error__fix"><strong>Fix</strong> Verify both devices in the group share credentials; check Commit Manager for errors, then sync-from on failing device.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: show run domain is empty after a successful apply.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Template targeted wrong NED branch or DNS not under domain in your IOS-XR model.</p><p class="css-common-error__fix"><strong>Fix</strong> Re-open the template in Configuration Editor, confirm **Domain** leaves exist in the diff, commit, and re-run Apply-Template.</p></div></details>
+
+</div>
+
+<p>If <strong>apply-template</strong> fails for all devices or leaves partial state, roll back the last commits or follow <strong><a href="#reset-lab">Reset the Lab</a></strong>.</p></section><section class="print-page" id="08-create-service" heading-number="2.8"><h1 id="08-create-service-lab-8-create-a-service">Lab 8: Create a Service<a class="headerlink" href="#08-create-service-lab-8-create-a-service" title="Permanent link">&para;</a></h1>
+<!-- lab_safety: LAB_SAFETY_MESSAGE empty in mkdocs.yml -->
+
+<h2 id="08-create-service-learning-objectives">Learning Objectives<a class="headerlink" href="#08-create-service-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Generate a <strong>python-and-template</strong> service package with <strong><code>ncs-make-package</code></strong>.</li>
+<li>Define <strong>YANG</strong> inputs, map them into an IOS-XR <strong>XML</strong> template, <strong>compile</strong>, and <strong>reload</strong> packages.</li>
+<li><strong>Deploy</strong> a service, <strong>intentionally remove</strong> configuration on devices to create drift, then <strong>re-deploy</strong> to restore intent.</li>
+</ul>
+<h2 id="08-create-service-time-budget">Time Budget<a class="headerlink" href="#08-create-service-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 30 minutes total — Service skeleton 7 min, Implement &amp; test 19 min, Verify CLI 4 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:7"><span class="css-time-budget__seg-label">Service skeleton</span></div><div class="css-time-budget__seg seg--b" style="flex:19"><span class="css-time-budget__seg-label">Implement &amp; test</span></div><div class="css-time-budget__seg seg--c" style="flex:4"><span class="css-time-budget__seg-label">Verify CLI</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Service skeleton — 7 min</li><li><span class="css-time-budget__swatch seg--b"></span>Implement &amp; test — 19 min</li><li><span class="css-time-budget__swatch seg--c"></span>Verify CLI — 4 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 30 min</p></div>
+
+<h2 id="08-create-service-prerequisites">Prerequisites<a class="headerlink" href="#08-create-service-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#07-device-groups-templates">Lab 7: Device Groups &amp; Templates</a> completed — you are comfortable with <strong>Commit Manager</strong> and device configuration.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> NSO instance path matches your environment (examples use <strong><code>~/NSO-INSTALL/nso-instance/</code></strong>).</li>
+</ul>
+<h2 id="08-create-service-procedure">Procedure<a class="headerlink" href="#08-create-service-procedure" title="Permanent link">&para;</a></h2>
+<p>Unlike <strong>templates</strong>, <strong>services</strong> attach <strong>lifecycle</strong> semantics: NSO tracks what a service applied and can <strong>detect drift</strong> when someone changes the network outside the service.</p>
+<h3 id="08-create-service-context-services-vs-templates">Context: services vs templates<a class="headerlink" href="#08-create-service-context-services-vs-templates" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Template</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push config to multiple devices</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Detect if config was changed</td>
+<td>No</td>
+<td><strong>Yes</strong> (check-sync)</td>
+</tr>
+<tr>
+<td>Re-deploy to restore config</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td>Rollback service-level changes</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="08-create-service-step-1-inspect-ncs-make-package">Step 1: Inspect ncs-make-package<a class="headerlink" href="#08-create-service-step-1-inspect-ncs-make-package" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#08-create-service-__codelineno-0-1"></a>ncs-make-package<span class="w"> </span>-h<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span>
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="python-and-template"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#08-create-service-__codelineno-1-1"></a>… python-and-template …
+</span></code></pre></div>
+<p><em>(Use <code>ncs-make-package -h</code> without piping if your shell lacks <code>head</code>.)</em></p>
+<h3 id="08-create-service-step-2-create-the-service-skeleton">Step 2: Create the service skeleton<a class="headerlink" href="#08-create-service-step-2-create-the-service-skeleton" title="Permanent link">&para;</a></h3>
+<p>Run the generator <strong>inside</strong> the instance <code>packages/</code> directory so you do not need to move folders afterward.</p>
+<div class="admonition tip">
+<p class="admonition-title">Run inside <code>packages/</code></p>
+<p>If you generate elsewhere, copy the resulting folder into <code>~/NSO-INSTALL/nso-instance/packages/</code> before compiling.</p>
+</div>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#08-create-service-__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#08-create-service-__codelineno-2-2"></a>ncs-make-package<span class="w"> </span>--service-skeleton<span class="w"> </span>python-and-template<span class="w"> </span>STATIC
+</span></code></pre></div>
+<h3 id="08-create-service-step-3-understand-the-package-layout">Step 3: Understand the package layout<a class="headerlink" href="#08-create-service-step-3-understand-the-package-layout" title="Permanent link">&para;</a></h3>
+<p>Open the project in VS Code and expand the explorer to the <strong>packages</strong> folder.</p>
+<p><img alt="VS Code — open the NSO folder" src="../assets/images/lab08/vscode-open-nso-folder.png" /></p>
+<p>After the script finishes, <strong><code>STATIC/</code></strong> should resemble:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#08-create-service-__codelineno-3-1"></a>STATIC/
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#08-create-service-__codelineno-3-2"></a>├── package-meta-data.xml
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#08-create-service-__codelineno-3-3"></a>├── src/
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#08-create-service-__codelineno-3-4"></a>│   └── yang/
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#08-create-service-__codelineno-3-5"></a>│       └── STATIC.yang
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#08-create-service-__codelineno-3-6"></a>├── templates/
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#08-create-service-__codelineno-3-7"></a>│   └── STATIC-template.xml
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#08-create-service-__codelineno-3-8"></a>└── python/
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#08-create-service-__codelineno-3-9"></a>    └── STATIC/
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#08-create-service-__codelineno-3-10"></a>        └── main.py
+</span></code></pre></div>
+<p><img alt="VS Code explorer showing the STATIC package structure" src="../assets/images/lab08/vscode-package-explorer.png" /></p>
+<p><strong><code>package-meta-data.xml</code></strong> contains the service version and other metadata.</p>
+<p><img alt="package-meta-data.xml content" src="../assets/images/lab08/vscode-package-meta-data.png" /></p>
+<h3 id="08-create-service-step-4-capture-xml-with-commit-dry-run">Step 4: Capture XML with commit dry-run<a class="headerlink" href="#08-create-service-step-4-capture-xml-with-commit-dry-run" title="Permanent link">&para;</a></h3>
+<p>Build the target IOS-XR static route in the NSO CLI, then export <strong>XML</strong> with <strong><code>commit dry-run outformat xml</code></strong> — <strong>do not</strong> leave the candidate committed.</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#08-create-service-__codelineno-4-1"></a>ncs_cli<span class="w"> </span>-Cu<span class="w"> </span>admin
+</span></code></pre></div>
+<p>Example session (prompts may differ):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#08-create-service-__codelineno-5-1"></a>admin@ncs# config
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#08-create-service-__codelineno-5-2"></a>admin@ncs(config)# devices device xr-1 config
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#08-create-service-__codelineno-5-3"></a>admin@ncs(config-config)# router static
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#08-create-service-__codelineno-5-4"></a>admin@ncs(config-static)# address-family ipv4 unicast
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#08-create-service-__codelineno-5-5"></a>admin@ncs(config-static-afi)# 11.11.11.11/32 10.1.1.2 metric 100 description &quot;set by NSO&quot;
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#08-create-service-__codelineno-5-6"></a>admin@ncs(config-static-afi)# commit dry-run outformat xml
+</span></code></pre></div>
+<p>You should see XML shaped like the fragment below (namespaces may vary by NED build):</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#08-create-service-__codelineno-6-1"></a><span class="nt">&lt;devices</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://tail-f.com/ns/ncs&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#08-create-service-__codelineno-6-2"></a><span class="w">  </span><span class="nt">&lt;device&gt;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#08-create-service-__codelineno-6-3"></a><span class="w">    </span><span class="nt">&lt;name&gt;</span>xr-1<span class="nt">&lt;/name&gt;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#08-create-service-__codelineno-6-4"></a><span class="w">    </span><span class="nt">&lt;config&gt;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#08-create-service-__codelineno-6-5"></a><span class="w">      </span><span class="nt">&lt;router</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://tail-f.com/ned/cisco-ios-xr&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#08-create-service-__codelineno-6-6"></a><span class="w">        </span><span class="nt">&lt;static&gt;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#08-create-service-__codelineno-6-7"></a><span class="w">          </span><span class="nt">&lt;address-family&gt;</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#08-create-service-__codelineno-6-8"></a><span class="w">            </span><span class="nt">&lt;ipv4&gt;</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#08-create-service-__codelineno-6-9"></a><span class="w">              </span><span class="nt">&lt;unicast&gt;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#08-create-service-__codelineno-6-10"></a><span class="w">                </span><span class="nt">&lt;routes-ip&gt;</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#08-create-service-__codelineno-6-11"></a><span class="w">                  </span><span class="nt">&lt;net&gt;</span>11.11.11.11/32<span class="nt">&lt;/net&gt;</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#08-create-service-__codelineno-6-12"></a><span class="w">                  </span><span class="nt">&lt;address&gt;</span>10.1.1.2<span class="nt">&lt;/address&gt;</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#08-create-service-__codelineno-6-13"></a><span class="w">                  </span><span class="nt">&lt;metric2&gt;</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#08-create-service-__codelineno-6-14"></a><span class="w">                    </span><span class="nt">&lt;metric&gt;</span>100<span class="nt">&lt;/metric&gt;</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#08-create-service-__codelineno-6-15"></a><span class="w">                  </span><span class="nt">&lt;/metric2&gt;</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#08-create-service-__codelineno-6-16"></a><span class="w">                  </span><span class="nt">&lt;description&gt;</span>set<span class="w"> </span>by<span class="w"> </span>NSO<span class="nt">&lt;/description&gt;</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#08-create-service-__codelineno-6-17"></a><span class="w">                </span><span class="nt">&lt;/routes-ip&gt;</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#08-create-service-__codelineno-6-18"></a><span class="w">              </span><span class="nt">&lt;/unicast&gt;</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#08-create-service-__codelineno-6-19"></a><span class="w">            </span><span class="nt">&lt;/ipv4&gt;</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#08-create-service-__codelineno-6-20"></a><span class="w">          </span><span class="nt">&lt;/address-family&gt;</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#08-create-service-__codelineno-6-21"></a><span class="w">        </span><span class="nt">&lt;/static&gt;</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#08-create-service-__codelineno-6-22"></a><span class="w">      </span><span class="nt">&lt;/router&gt;</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#08-create-service-__codelineno-6-23"></a><span class="w">    </span><span class="nt">&lt;/config&gt;</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#08-create-service-__codelineno-6-24"></a><span class="w">  </span><span class="nt">&lt;/device&gt;</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#08-create-service-__codelineno-6-25"></a><span class="nt">&lt;/devices&gt;</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Do not commit the dry-run candidate</p>
+<p>Exit without committing the exploratory static route — answer <strong><code>no</code></strong> if asked to commit, or <code>end</code> / <code>exit</code> per your CLI help.</p>
+</div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#08-create-service-__codelineno-7-1"></a>Uncommitted changes found, commit them? [yes/no/CANCEL] no
+</span></code></pre></div>
+<h3 id="08-create-service-step-5-populate-the-service-template">Step 5: Populate the service template<a class="headerlink" href="#08-create-service-step-5-populate-the-service-template" title="Permanent link">&para;</a></h3>
+<p>The generated skeleton includes an <strong>XML template</strong> and a <strong>YANG model</strong> — you will edit both.</p>
+<p><img alt="Default STATIC-template.xml content" src="../assets/images/lab08/vscode-xml-template-file.png" /></p>
+<p><img alt="Default STATIC.yang content" src="../assets/images/lab08/vscode-yang-file.png" /></p>
+<p>Copy only the <strong><code>router</code></strong> subtree (inside <strong><code>&lt;config&gt;</code></strong>) into <strong><code>STATIC-template.xml</code></strong>:</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#08-create-service-__codelineno-8-1"></a><span class="nt">&lt;router</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://tail-f.com/ned/cisco-ios-xr&quot;</span><span class="nt">&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#08-create-service-__codelineno-8-2"></a><span class="w">  </span><span class="nt">&lt;static&gt;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#08-create-service-__codelineno-8-3"></a><span class="w">    </span><span class="nt">&lt;address-family&gt;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#08-create-service-__codelineno-8-4"></a><span class="w">      </span><span class="nt">&lt;ipv4&gt;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#08-create-service-__codelineno-8-5"></a><span class="w">        </span><span class="nt">&lt;unicast&gt;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#08-create-service-__codelineno-8-6"></a><span class="w">          </span><span class="nt">&lt;routes-ip&gt;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#08-create-service-__codelineno-8-7"></a><span class="w">            </span><span class="nt">&lt;net&gt;</span>11.11.11.11/32<span class="nt">&lt;/net&gt;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#08-create-service-__codelineno-8-8"></a><span class="w">            </span><span class="nt">&lt;address&gt;</span>10.1.1.2<span class="nt">&lt;/address&gt;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#08-create-service-__codelineno-8-9"></a><span class="w">            </span><span class="nt">&lt;metric2&gt;</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#08-create-service-__codelineno-8-10"></a><span class="w">              </span><span class="nt">&lt;metric&gt;</span>100<span class="nt">&lt;/metric&gt;</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#08-create-service-__codelineno-8-11"></a><span class="w">            </span><span class="nt">&lt;/metric2&gt;</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#08-create-service-__codelineno-8-12"></a><span class="w">            </span><span class="nt">&lt;description&gt;</span>set<span class="w"> </span>by<span class="w"> </span>NSO<span class="nt">&lt;/description&gt;</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#08-create-service-__codelineno-8-13"></a><span class="w">          </span><span class="nt">&lt;/routes-ip&gt;</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#08-create-service-__codelineno-8-14"></a><span class="w">        </span><span class="nt">&lt;/unicast&gt;</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#08-create-service-__codelineno-8-15"></a><span class="w">      </span><span class="nt">&lt;/ipv4&gt;</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#08-create-service-__codelineno-8-16"></a><span class="w">    </span><span class="nt">&lt;/address-family&gt;</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#08-create-service-__codelineno-8-17"></a><span class="w">  </span><span class="nt">&lt;/static&gt;</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#08-create-service-__codelineno-8-18"></a><span class="nt">&lt;/router&gt;</span>
+</span></code></pre></div>
+<h3 id="08-create-service-step-6-add-yang-variables">Step 6: Add YANG variables<a class="headerlink" href="#08-create-service-step-6-add-yang-variables" title="Permanent link">&para;</a></h3>
+<p>Replace literals with service inputs. Typical leaves:</p>
+<ol>
+<li><strong>Destination prefix</strong> (for example <code>11.11.11.11/32</code>)</li>
+<li><strong>Forwarding address</strong> (for example <code>10.1.1.2</code>)</li>
+<li><strong>Metric</strong> (default <strong>100</strong>)</li>
+<li><strong>Description</strong> (default <strong><code>set by NSO</code></strong>)</li>
+</ol>
+<p><img alt="Four variables identified: destination prefix, forwarding address, metric, description" src="../assets/images/lab08/slide-variables-identification.png" /></p>
+<h4 id="08-create-service-update-static-templatexml">Update <code>STATIC-template.xml</code><a class="headerlink" href="#08-create-service-update-static-templatexml" title="Permanent link">&para;</a></h4>
+<p>Reference those leaves with your template engine’s variable syntax (for example <code>{$DEST}</code> / <code>{$CONTEXT}</code> patterns — follow the generated skeleton comments).</p>
+<p><img alt="XML template with variable placeholders" src="../assets/images/lab08/slide-xml-with-variables.png" /></p>
+<h4 id="08-create-service-update-staticyang">Update <code>STATIC.yang</code><a class="headerlink" href="#08-create-service-update-staticyang" title="Permanent link">&para;</a></h4>
+<p>Make <strong><code>dest-prefix</code></strong> and <strong><code>fwd-address</code></strong> mandatory; give <strong><code>metric</code></strong> and <strong><code>description</code></strong> defaults (exact syntax follows your YANG tutorial).</p>
+<p><img alt="YANG model with leaf definitions and defaults" src="../assets/images/lab08/slide-yang-with-variables.png" /></p>
+<h3 id="08-create-service-step-7-compile-the-package">Step 7: Compile the package<a class="headerlink" href="#08-create-service-step-7-compile-the-package" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#08-create-service-__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC/src
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#08-create-service-__codelineno-9-2"></a>make
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="STATIC.fxs"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#08-create-service-__codelineno-10-1"></a>… ncsc … -o ../load-dir/STATIC.fxs yang/STATIC.yang
+</span></code></pre></div>
+<p><em>(Warnings policy depends on your flags; </em><em><code>--fail-on-warnings</code></em><em> may stop the build if YANG has issues.)</em></p>
+<h3 id="08-create-service-step-8-reload-packages">Step 8: Reload packages<a class="headerlink" href="#08-create-service-step-8-reload-packages" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Web UI → <strong>ncs:packages → Actions → Reload</strong>.</li>
+<li>Confirm <strong>result</strong> is <strong>true</strong>.</li>
+</ol>
+<p><img alt="Packages reload — result true" src="../assets/images/lab08/webui-packages-reload-true.png" /></p>
+<ol>
+<li>Verify package <strong>STATIC</strong> appears.</li>
+</ol>
+<p><img alt="STATIC package listed after reload" src="../assets/images/lab08/webui-packages-static-listed.png" /></p>
+<h3 id="08-create-service-step-9-deploy-the-service-instance">Step 9: Deploy the service instance<a class="headerlink" href="#08-create-service-step-9-deploy-the-service-instance" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Homepage → Services</strong>.</li>
+</ol>
+<p><img alt="Services section on the NSO homepage" src="../assets/images/lab08/webui-services-homepage.png" /></p>
+<ol>
+<li>Select the <strong>STATIC</strong> service.</li>
+</ol>
+<p><img alt="Select the STATIC service" src="../assets/images/lab08/webui-services-static-select.png" /></p>
+<ol>
+<li><strong>+ Add service</strong> — click the <strong>+</strong> button.</li>
+</ol>
+<p><img alt="Click + Add service" src="../assets/images/lab08/webui-services-add-instance.png" /></p>
+<ol>
+<li>Name it (for example <strong><code>static-11.11.11.11</code></strong>) and fill <strong>dest-prefix</strong>, <strong>fwd-address</strong>.</li>
+</ol>
+<p><img alt="Enter service instance name and mandatory fields" src="../assets/images/lab08/webui-services-instance-name.png" /></p>
+<p>Service created — now attach devices.</p>
+<p><img alt="Service instance created" src="../assets/images/lab08/webui-services-instance-created.png" /></p>
+<ol>
+<li>Attach devices <strong>xr-1</strong> and <strong>xr-2</strong> (defaults for metric/description if shown).</li>
+</ol>
+<p><img alt="Add devices to the service instance" src="../assets/images/lab08/webui-services-add-devices.png" /></p>
+<ol>
+<li><strong>Commit Manager → config</strong> — inspect diff; use <strong>native config</strong> if offered.</li>
+</ol>
+<p><img alt="Commit Manager diff for the service deployment" src="../assets/images/lab08/webui-service-commit-diff.png" /></p>
+<p><img alt="Native config view showing CLI commands NSO will send" src="../assets/images/lab08/webui-service-native-config.png" /></p>
+<ol>
+<li><strong>Commit</strong>.</li>
+</ol>
+<h3 id="08-create-service-step-10-test-lifecycle-intentional-drift">Step 10: Test lifecycle (intentional drift)<a class="headerlink" href="#08-create-service-step-10-test-lifecycle-intentional-drift" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Service Manager</strong> — service should be <strong>green</strong> / in-sync after commit.</li>
+</ol>
+<p><img alt="Service check-sync — green (in-sync) after deploy" src="../assets/images/lab08/webui-service-check-sync-green.png" /></p>
+<ol>
+<li><strong>Simulate a problem (required for this lab):</strong> on <strong>each</strong> device, <strong>Device Manager → Edit Config</strong>, delete the <strong>static route</strong> the service applied.</li>
+</ol>
+<p><img alt="Device Manager — select and delete the static route" src="../assets/images/lab08/webui-device-delete-static.png" /></p>
+<ol>
+<li><strong>Commit</strong> the deletion on the device context.</li>
+</ol>
+<p><img alt="Commit the device-level deletion" src="../assets/images/lab08/webui-device-delete-commit.png" /></p>
+<ol>
+<li>Return to <strong>Service Manager → Check-Sync</strong> — expect a <strong>red</strong> / out-of-sync indication.</li>
+</ol>
+<p><img alt="Service check-sync — red (out-of-sync) after device drift" src="../assets/images/lab08/webui-service-check-sync-red.png" /></p>
+<p><img alt="Out-of-sync detail showing the drift" src="../assets/images/lab08/webui-service-check-sync-red-detail.png" /></p>
+<ol>
+<li>Run <strong>Re-deploy</strong> on the service — NSO should push intent back to devices until the service is <strong>green</strong> again.</li>
+</ol>
+<p><img alt="Select Re-deploy from the service actions" src="../assets/images/lab08/webui-service-redeploy.png" /></p>
+<p><img alt="Service check-sync — green again after re-deploy" src="../assets/images/lab08/webui-service-redeploy-green.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Key takeaway</p>
+<p>Services are <strong>self-healing</strong> for configuration they own: drift is visible, and <strong>re-deploy</strong> reapplies the service’s intended configuration.</p>
+</div>
+<h2 id="08-create-service-verification">Verification<a class="headerlink" href="#08-create-service-verification" title="Permanent link">&para;</a></h2>
+<p>On <strong>xr-1</strong>, confirm the static route exists after re-deploy (documentation address — use yours):</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#08-create-service-__codelineno-11-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#08-create-service-__codelineno-12-1"></a>show run router static
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="11.11.11.11"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#08-create-service-__codelineno-13-1"></a>router static
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#08-create-service-__codelineno-13-2"></a> address-family ipv4 unicast
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#08-create-service-__codelineno-13-3"></a>  11.11.11.11/32 10.1.1.2 description &quot;set by NSO&quot; metric 100
+</span></code></pre></div>
+<h2 id="08-create-service-common-errors">Common Errors<a class="headerlink" href="#08-create-service-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: make fails or STATIC.fxs is missing after compile.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> YANG error, wrong NED namespace in template, or wrong working directory.</p><p class="css-common-error__fix"><strong>Fix</strong> Run `make clean` if present, fix YANG/XML per compiler errors, rebuild from `STATIC/src`.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Service stays red after re-deploy or devices reject the route.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Overlapping static routes, VRF mismatch, or device not in service device list.</p><p class="css-common-error__fix"><strong>Fix</strong> Verify service instance targets **xr-1** / **xr-2**, check device trace logs, roll back last service commit if needed.</p></div></details>
+
+</div>
+
+<div class="admonition warning">
+<p class="admonition-title">Rollback</p>
+<p>To remove this lab’s <strong>STATIC</strong> package and instance (destructive — coordinate with your class):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#08-create-service-__codelineno-14-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#08-create-service-__codelineno-14-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#08-create-service-__codelineno-14-3"></a>ncs
+</span></code></pre></div>
+<p>Then <strong>Reload packages</strong> in the Web UI and confirm <strong>STATIC</strong> is gone. Prefer <strong><a href="#reset-lab">Reset the Lab</a></strong> if the NSO instance is inconsistent.</p>
+</div>
+<p>If re-deploy cannot clear drift or the service model is inconsistent, use <strong>Commit Manager</strong> rollbacks first, then <strong><a href="#reset-lab">Reset the Lab</a></strong> if you need a clean VM.</p></section><section class="print-page" id="09-rbac-access-control" heading-number="2.9"><h1 id="09-rbac-access-control-lab-9-rbac-access-control">Lab 9: RBAC Access Control<a class="headerlink" href="#09-rbac-access-control-lab-9-rbac-access-control" title="Permanent link">&para;</a></h1>
+<h2 id="09-rbac-access-control-learning-objectives">Learning Objectives<a class="headerlink" href="#09-rbac-access-control-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Create a local NSO user and attach it to device credentials through an <strong>authgroup</strong>.</li>
+<li>Configure <strong>NACM</strong> groups, rule-lists, and rules that target paths with <strong>XPath</strong>.</li>
+<li>Log in as a restricted user and confirm allowed vs denied actions in the Web UI.</li>
+</ul>
+<h2 id="09-rbac-access-control-time-budget">Time Budget<a class="headerlink" href="#09-rbac-access-control-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 30 minutes total — Users &amp; authgroups 10 min, NACM rules 15 min, Broaden rule 5 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:10"><span class="css-time-budget__seg-label">Users &amp; authgroups</span></div><div class="css-time-budget__seg seg--b" style="flex:15"><span class="css-time-budget__seg-label">NACM rules</span></div><div class="css-time-budget__seg seg--c" style="flex:5"><span class="css-time-budget__seg-label">Broaden rule</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Users &amp; authgroups — 10 min</li><li><span class="css-time-budget__swatch seg--b"></span>NACM rules — 15 min</li><li><span class="css-time-budget__swatch seg--c"></span>Broaden rule — 5 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 30 min</p></div>
+
+<h2 id="09-rbac-access-control-prerequisites">Prerequisites<a class="headerlink" href="#09-rbac-access-control-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can log in to the NSO Web UI as <strong>admin</strong> and open <strong>Configuration Editor</strong> for <strong>aaa</strong>, <strong>nacm</strong>, and <strong>devices</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Device definitions for <strong>xr-1</strong> / <strong>xr-2</strong> use management addresses consistent with your lab (examples use <strong>198.51.100.2</strong> for <strong>xr-1</strong> in XPath samples).</li>
+</ul>
+<h2 id="09-rbac-access-control-procedure">Procedure<a class="headerlink" href="#09-rbac-access-control-procedure" title="Permanent link">&para;</a></h2>
+<p>NSO combines <strong>AAA users</strong>, <strong>authgroups</strong> (device credential mapping), and <strong>NACM</strong> (northbound access rules) for fine-grained control.</p>
+<h3 id="09-rbac-access-control-step-1-create-a-read-only-test-user">Step 1: Create a read-only test user<a class="headerlink" href="#09-rbac-access-control-step-1-create-a-read-only-test-user" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open <strong>Configuration Editor → aaa:aaa</strong>.</li>
+</ol>
+<p><img alt="Configuration Editor showing the aaa:aaa module" src="../assets/images/lab09/webui-aaa-module.png" /></p>
+<ol>
+<li>Navigate to <strong>authentication → users</strong>, click <strong>Edit config</strong>, then <strong>+</strong> to add a user.</li>
+</ol>
+<p><img alt="Click + to add a new user under authentication/users" src="../assets/images/lab09/webui-aaa-users-add.png" /></p>
+<ol>
+<li>Create <strong><code>read_user</code></strong> (password per your lab policy).</li>
+</ol>
+<p><img alt="Create the read_user account" src="../assets/images/lab09/webui-aaa-create-read-user.png" /></p>
+<ol>
+<li><strong>Commit</strong>.</li>
+</ol>
+<p>You can log out and confirm login as <strong><code>read_user</code></strong> (limited until NACM is configured).</p>
+<p><img alt="Log in as read_user to verify the account works" src="../assets/images/lab09/webui-login-read-user.png" /></p>
+<h3 id="09-rbac-access-control-step-2-map-the-user-through-an-authgroup">Step 2: Map the user through an authgroup<a class="headerlink" href="#09-rbac-access-control-step-2-map-the-user-through-an-authgroup" title="Permanent link">&para;</a></h3>
+<p>As <strong><code>read_user</code></strong>, open <strong>Device Manager</strong> — note that <strong>ping</strong> fails because the user has no authgroup mapping yet.</p>
+<p><img alt="Device Manager as read_user — limited access" src="../assets/images/lab09/webui-device-manager-read-user.png" /></p>
+<p><img alt="Ping fails — read_user is not mapped to any authgroup" src="../assets/images/lab09/webui-ping-no-authgroup.png" /></p>
+<p>Log back in as <strong>admin</strong> to fix this:</p>
+<ol>
+<li>Open <strong>Configuration Editor → ncs:devices → authgroup</strong> (select the group your devices use, often <strong><code>XR</code></strong>).</li>
+</ol>
+<p><img alt="Select the XR authgroup" src="../assets/images/lab09/webui-authgroup-select-xr.png" /></p>
+<ol>
+<li>Inside the authgroup, locate the <strong>umap</strong> section (maps NSO users to device credentials).</li>
+</ol>
+<p><img alt="Umap section inside the XR authgroup" src="../assets/images/lab09/webui-authgroup-umap.png" /></p>
+<ol>
+<li>Add <strong><code>read_user</code></strong> with <strong>remote-name</strong> / <strong>remote-password</strong> matching device login (<strong><code>admin</code></strong> / <strong><code>cisco123</code></strong> in many labs).</li>
+</ol>
+<p><img alt="Add read_user to the XR authgroup umap" src="../assets/images/lab09/webui-authgroup-add-read-user.png" /></p>
+<p><img alt="Set remote credentials for read_user" src="../assets/images/lab09/webui-authgroup-remote-creds.png" /></p>
+<ol>
+<li><strong>Commit</strong>.</li>
+</ol>
+<p>Log in as <strong><code>read_user</code></strong> and open <strong>Device Manager</strong> — you should now reach <strong>connect</strong>, <strong>ping</strong>, and <strong>check-sync</strong>.</p>
+<p><img alt="Operations available to read_user after authgroup mapping" src="../assets/images/lab09/webui-authgroup-operations.png" /></p>
+<h3 id="09-rbac-access-control-step-3-create-a-nacm-group-and-rule-list">Step 3: Create a NACM group and rule-list<a class="headerlink" href="#09-rbac-access-control-step-3-create-a-nacm-group-and-rule-list" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Log in as <strong>admin</strong>.</li>
+<li>Open <strong>Configuration Editor → nacm:nacm</strong>.</li>
+</ol>
+<p><img alt="NACM module in the Configuration Editor" src="../assets/images/lab09/webui-nacm-module.png" /></p>
+<p>The NACM module contains <strong>rule-list</strong> and <strong>groups</strong> sections.</p>
+<p><img alt="NACM rule-list and groups overview" src="../assets/images/lab09/webui-nacm-rule-list-groups.png" /></p>
+<ol>
+<li>Create <strong><code>read_group</code></strong>.</li>
+</ol>
+<p><img alt="Create the read_group" src="../assets/images/lab09/webui-nacm-create-read-group.png" /></p>
+<ol>
+<li>Assign <strong>group-id</strong> (for example <strong><code>1</code></strong>) and add user <strong><code>read_user</code></strong>.</li>
+</ol>
+<p><img alt="Set group-id and add read_user to the group" src="../assets/images/lab09/webui-nacm-group-id-user.png" /></p>
+<ol>
+<li>Under <strong>rule-lists</strong>, create <strong><code>read_rule</code></strong>.</li>
+</ol>
+<p><img alt="Create the read_rule rule-list" src="../assets/images/lab09/webui-nacm-create-read-rule.png" /></p>
+<ol>
+<li>Attach <strong><code>read_group</code></strong> so all rules in the list apply to that membership.</li>
+</ol>
+<p><img alt="Attach read_group to the read_rule rule-list" src="../assets/images/lab09/webui-nacm-rule-attach-group.png" /></p>
+<h3 id="09-rbac-access-control-step-4-discover-xpath-targets">Step 4: Discover XPath targets<a class="headerlink" href="#09-rbac-access-control-step-4-discover-xpath-targets" title="Permanent link">&para;</a></h3>
+<p>Use the NSO CLI to print XPath forms of configuration (paths vary slightly by release):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#09-rbac-access-control-__codelineno-0-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#09-rbac-access-control-__codelineno-0-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show devices device | display xpath&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="devices/device"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#09-rbac-access-control-__codelineno-1-1"></a>/devices/device[name=&#39;xr-1&#39;]/…
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#09-rbac-access-control-__codelineno-1-2"></a>/devices/device[name=&#39;xr-2&#39;]/…
+</span></code></pre></div>
+<p><em>(Truncated — you need the <code>/devices/device[...]</code> prefixes for rules.)</em></p>
+<p><img alt="CLI output showing XPath form of device configuration" src="../assets/images/lab09/terminal-xpath-display.png" /></p>
+<p>For deeper paths:</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#09-rbac-access-control-__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#09-rbac-access-control-__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration devices device xr-1 | display xpath&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span></code></pre></div>
+<p><em>Expected output (illustrative — addresses follow your lab):</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#09-rbac-access-control-__codelineno-3-1"></a>/devices/device[name=&#39;xr-1&#39;]/address 198.51.100.2
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#09-rbac-access-control-__codelineno-3-2"></a>/devices/device[name=&#39;xr-1&#39;]/authgroup XR
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#09-rbac-access-control-__codelineno-3-3"></a>/devices/device[name=&#39;xr-1&#39;]/device-type/cli/ned-id cisco-iosxr-cli-7.x
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Access operations</p>
+<p>Use the UI help on <strong>access-operations</strong> to see <strong>create</strong>, <strong>update</strong>, <strong>delete</strong>, <strong>exec</strong>, and related keywords for your release.</p>
+</div>
+<h3 id="09-rbac-access-control-step-5-create-a-deny-rule-for-domain-configuration-on-xr-1">Step 5: Create a deny rule for domain configuration on xr-1<a class="headerlink" href="#09-rbac-access-control-step-5-create-a-deny-rule-for-domain-configuration-on-xr-1" title="Permanent link">&para;</a></h3>
+<p>Inside the rule-list you have two options: <strong>cmdrule</strong> (command authorization) and <strong>rule</strong> (data/rpc authorization).</p>
+<p><img alt="cmdrule vs rule options in the rule-list" src="../assets/images/lab09/webui-nacm-cmdrule-vs-rule.png" /></p>
+<ol>
+<li>Inside <strong><code>read_rule</code></strong>, add a rule to deny sync-from or domain access.</li>
+</ol>
+<p><img alt="Add a deny rule targeting sync-from" src="../assets/images/lab09/webui-nacm-deny-sync-from.png" /></p>
+<ol>
+<li>In the rule <strong>data-node</strong>, set the <strong>path</strong> using the XPath from Step 4:
+   <code>/devices/device[name='xr-1']/config/cisco-ios-xr:domain</code></li>
+<li><strong>Action:</strong> <code>deny</code></li>
+<li><strong>Access-operations:</strong> <code>create</code>, <code>update</code>, <code>delete</code>, <code>exec</code> (adjust to your NACM schema).</li>
+</ol>
+<p><img alt="Rule with XPath path and deny action configured" src="../assets/images/lab09/webui-nacm-rule-xpath-deny.png" /></p>
+<p>Use the <strong>info</strong> button on <strong>access-operations</strong> to see all available keywords.</p>
+<p><img alt="Access-operations info showing available keywords" src="../assets/images/lab09/webui-nacm-access-operations-info.png" /></p>
+<ol>
+<li><strong>Commit</strong>.</li>
+</ol>
+<h3 id="09-rbac-access-control-step-6-test-as-read_user">Step 6: Test as read_user<a class="headerlink" href="#09-rbac-access-control-step-6-test-as-read_user" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Log out, then log in as <strong><code>read_user</code></strong>.</li>
+<li>Open <strong>Device Manager</strong>.</li>
+</ol>
+<p>You should observe:</p>
+<ul>
+<li><strong>sync-from</strong> may be hidden or disabled (depending on remaining default rules).</li>
+</ul>
+<p><img alt="read_user Device Manager — sync-from is not available" src="../assets/images/lab09/webui-read-user-no-sync-from.png" /></p>
+<ul>
+<li>On <strong>xr-1</strong>, <strong>domain</strong> configuration is not visible or not editable.</li>
+</ul>
+<p><img alt="xr-1 config as read_user — domain is hidden by the NACM rule" src="../assets/images/lab09/webui-read-user-xr1-no-domain.png" /></p>
+<ul>
+<li>On <strong>xr-2</strong>, <strong>domain</strong> may still appear if the rule only names <strong>xr-1</strong>.</li>
+</ul>
+<p><img alt="xr-2 still shows domain because the rule targets only xr-1" src="../assets/images/lab09/webui-read-user-xr2-still-domain.png" /></p>
+<h3 id="09-rbac-access-control-step-7-broaden-the-rule-to-all-devices">Step 7: Broaden the rule to all devices<a class="headerlink" href="#09-rbac-access-control-step-7-broaden-the-rule-to-all-devices" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Log in as <strong>admin</strong>.</li>
+<li>Change the rule path from:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#09-rbac-access-control-__codelineno-4-1"></a>/devices/device[name=&#39;xr-1&#39;]/config/cisco-ios-xr:domain
+</span></code></pre></div>
+   to:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#09-rbac-access-control-__codelineno-5-1"></a>/devices/device/config/cisco-ios-xr:domain
+</span></code></pre></div></li>
+</ol>
+<p><img alt="Update the rule path to target all devices" src="../assets/images/lab09/webui-nacm-broadened-path.png" /></p>
+<ol>
+<li><strong>Commit</strong>.</li>
+</ol>
+<p>Log in as <strong><code>read_user</code></strong> again — <strong>domain</strong> should be hidden on <strong>all</strong> managed devices covered by the rule.</p>
+<p><img alt="All devices — domain configuration is hidden for read_user" src="../assets/images/lab09/webui-read-user-all-no-domain.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Key takeaway</p>
+<p>NACM rules target <strong>XPath</strong> expressions — from entire subtrees down to single leaves — to control who can see or change configuration.</p>
+</div>
+<h2 id="09-rbac-access-control-verification">Verification<a class="headerlink" href="#09-rbac-access-control-verification" title="Permanent link">&para;</a></h2>
+<p>Confirm <strong><code>read_user</code></strong> still exists (admin session):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#09-rbac-access-control-__codelineno-6-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#09-rbac-access-control-__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration aaa authentication users user read_user&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="read_user"></span></p>
+<p><em>Expected output:</em></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#09-rbac-access-control-__codelineno-7-1"></a>user read_user {
+</span></code></pre></div>
+<p><em>(Additional password / key lines may follow — you only need to see the </em><em><code>read_user</code></em><em> stanza.)</em></p>
+<p>Confirm NACM rules in the Web UI under <strong>Configuration Editor → nacm:nacm</strong> — <strong><code>read_rule</code></strong> should list <strong><code>deny-config-domain</code></strong>. Optional CLI (output varies):</p>
+<!-- lint-skip: no-output -->
+
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#09-rbac-access-control-__codelineno-8-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#09-rbac-access-control-__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration nacm nacm rule-list read_rule&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span></code></pre></div>
+<h2 id="09-rbac-access-control-common-errors">Common Errors<a class="headerlink" href="#09-rbac-access-control-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: read_user sees the same UI as admin or changes still apply after…</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Session cache, wrong user, or rule path typo / wrong NACM group attachment.</p><p class="css-common-error__fix"><strong>Fix</strong> Log out fully, clear site data if needed, re-check **groups** ↔ **read_user** mapping and XPath spelling (including namespace prefix).</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: ncs_cli XPath commands return errors or empty.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong `-u` user, environment not sourced, or display xpath not supported in your build.</p><p class="css-common-error__fix"><strong>Fix</strong> Run `source ~/NSO-INSTALL/ncsrc` first; use **Configuration Editor** copy-path features as a fallback.</p></div></details>
+
+</div>
+
+<p>If you lock yourself out or rules conflict, log in as <strong>admin</strong>, revert the last <strong>NACM</strong> commits in <strong>Commit Manager</strong>, or use <strong><a href="#reset-lab">Reset the Lab</a></strong> for snapshot restore.</p></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+
+                .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
+                .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
+            
+                .print-site-enumerate-headings #index h3:before { content: '1.' counter(counter-index-2) '.' counter(counter-index-3) ' ' }
+                .print-site-enumerate-headings #index h3 {  counter-increment: counter-index-3 }
+            
+.print-site-enumerate-headings #section-2 > h1:before { content: '2 ' }
+.print-site-enumerate-headings #01-connect-workstation > h1:before { content: '2.1 ' }
+
+                .print-site-enumerate-headings #01-connect-workstation h2:before { content: '2.1.' counter(counter-01-connect-workstation-2) ' ' }
+                .print-site-enumerate-headings #01-connect-workstation h2 {  counter-increment: counter-01-connect-workstation-2 }
+            
+.print-site-enumerate-headings #02-install-nso-neds > h1:before { content: '2.2 ' }
+
+                .print-site-enumerate-headings #02-install-nso-neds h2:before { content: '2.2.' counter(counter-02-install-nso-neds-2) ' ' }
+                .print-site-enumerate-headings #02-install-nso-neds h2 {  counter-increment: counter-02-install-nso-neds-2 }
+            
+.print-site-enumerate-headings #03-register-xrd-routers > h1:before { content: '2.3 ' }
+
+                .print-site-enumerate-headings #03-register-xrd-routers h2:before { content: '2.3.' counter(counter-03-register-xrd-routers-2) ' ' }
+                .print-site-enumerate-headings #03-register-xrd-routers h2 {  counter-increment: counter-03-register-xrd-routers-2 }
+            
+.print-site-enumerate-headings #04-configure-devices > h1:before { content: '2.4 ' }
+
+                .print-site-enumerate-headings #04-configure-devices h2:before { content: '2.4.' counter(counter-04-configure-devices-2) ' ' }
+                .print-site-enumerate-headings #04-configure-devices h2 {  counter-increment: counter-04-configure-devices-2 }
+            
+.print-site-enumerate-headings #05-rollbacks > h1:before { content: '2.5 ' }
+
+                .print-site-enumerate-headings #05-rollbacks h2:before { content: '2.5.' counter(counter-05-rollbacks-2) ' ' }
+                .print-site-enumerate-headings #05-rollbacks h2 {  counter-increment: counter-05-rollbacks-2 }
+            
+.print-site-enumerate-headings #06-out-of-band-sync > h1:before { content: '2.6 ' }
+
+                .print-site-enumerate-headings #06-out-of-band-sync h2:before { content: '2.6.' counter(counter-06-out-of-band-sync-2) ' ' }
+                .print-site-enumerate-headings #06-out-of-band-sync h2 {  counter-increment: counter-06-out-of-band-sync-2 }
+            
+.print-site-enumerate-headings #07-device-groups-templates > h1:before { content: '2.7 ' }
+
+                .print-site-enumerate-headings #07-device-groups-templates h2:before { content: '2.7.' counter(counter-07-device-groups-templates-2) ' ' }
+                .print-site-enumerate-headings #07-device-groups-templates h2 {  counter-increment: counter-07-device-groups-templates-2 }
+            
+.print-site-enumerate-headings #08-create-service > h1:before { content: '2.8 ' }
+
+                .print-site-enumerate-headings #08-create-service h2:before { content: '2.8.' counter(counter-08-create-service-2) ' ' }
+                .print-site-enumerate-headings #08-create-service h2 {  counter-increment: counter-08-create-service-2 }
+            
+.print-site-enumerate-headings #09-rbac-access-control > h1:before { content: '2.9 ' }
+
+                .print-site-enumerate-headings #09-rbac-access-control h2:before { content: '2.9.' counter(counter-09-rbac-access-control-2) ' ' }
+                .print-site-enumerate-headings #09-rbac-access-control h2 {  counter-increment: counter-09-rbac-access-control-2 }
+            </style>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Cisco Confidential
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/daquezad/NSO-hands-on-session" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+  <div class="css-classification-banner md-typeset" role="contentinfo" aria-label="Classification: Cisco Confidential">
+    <div class="css-classification-banner__inner md-grid">
+      Cisco Confidential
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "/NSO-hands-on-session/latest", "features": ["navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+  <div id="css-a11y-announcer" class="css-sr-only" aria-live="polite" aria-atomic="true" role="status"></div>
+  
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../js/print-site.js"></script>
+      
+        <script src="../javascripts/paired.js"></script>
+      
+        <script src="../javascripts/common-errors.js"></script>
+      
+    
+  <script>
+    (function () {
+      var toc = document.getElementById("__toc");
+      var fab = document.querySelector(".css-toc-fab");
+      if (toc && fab) fab.removeAttribute("hidden");
+    })();
+  </script>
+
+  </body>
+</html>

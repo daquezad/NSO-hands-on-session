@@ -1,0 +1,1031 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Cisco Network Services Orchestrator - Hands-On Lab Guide" name="description"/>
+<meta content="Customer Success Specialists - Internet and Mass Scale Infrastructure" name="author"/>
+<link href="https://daquezad.github.io/NSO-hands-on-session/latest/authoring/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<title>Cisco NSO Workbook — Authoring Guide - NSO Hands-On Adoption Workbook</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../css/print-site.css" rel="stylesheet"/>
+<link href="../css/print-site-material.css" rel="stylesheet"/>
+<link href="../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../assets/css/print.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<meta content="noindex, nofollow" name="robots"/>
+</head>
+<body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#cisco-nso-workbook-authoring-guide">
+          Skip to content
+        </a>
+<a class="md-skip" href="#workbook-navigation">Skip to navigation</a></div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+</div>
+</aside>
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="NSO Hands-On Adoption Workbook" class="md-header__button md-logo" data-md-component="logo" href=".." title="NSO Hands-On Adoption Workbook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4v2h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7 7l4 4-4 4h2.85l3.28-3.28c.37-.39.37-1.02 0-1.42L9.83 7zm10 6h-3v2h3z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            NSO Hands-On Adoption Workbook
+            <span aria-label="NSO release" class="css-workbook-header-nso"> · NSO </span>
+</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Cisco NSO Workbook — Authoring Guide
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="custom" data-md-color-media="" data-md-color-primary="custom" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="custom" data-md-color-media="" data-md-color-primary="custom" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<label class="css-toc-fab" for="__toc" hidden="" title="Table of contents">
+<svg aria-hidden="true" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 14h4v-2H3v2zm0 5h4v-2H3v2zm0-10h4V7H3v2zm5 5h14v-2H8v2zm0 5h14v-2H8v2zM8 7v2h14V7H8z"></path></svg>
+<span class="css-toc-fab__text">Contents</span>
+</label>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" id="workbook-navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="NSO Hands-On Adoption Workbook" class="md-nav__button md-logo" data-md-component="logo" href=".." title="NSO Hands-On Adoption Workbook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4v2h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7 7l4 4-4 4h2.85l3.28-3.28c.37-.39.37-1.02 0-1.42L9.83 7zm10 6h-3v2h3z"></path></svg>
+</a>
+    NSO Hands-On Adoption Workbook
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Lab Guide
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-connect-workstation/">
+<span class="md-ellipsis">
+    
+  
+    1. Connect to the Workstation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-install-nso-neds/">
+<span class="md-ellipsis">
+    
+  
+    2. Install NSO and NEDs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-register-xrd-routers/">
+<span class="md-ellipsis">
+    
+  
+    3. Register XRd Routers
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-configure-devices/">
+<span class="md-ellipsis">
+    
+  
+    4. Configure Devices
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-rollbacks/">
+<span class="md-ellipsis">
+    
+  
+    5. Rollbacks
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-out-of-band-sync/">
+<span class="md-ellipsis">
+    
+  
+    6. Out-of-Band Sync
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-device-groups-templates/">
+<span class="md-ellipsis">
+    
+  
+    7. Device Groups &amp; Templates
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-create-service/">
+<span class="md-ellipsis">
+    
+  
+    8. Create a Service
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-rbac-access-control/">
+<span class="md-ellipsis">
+    
+  
+    9. RBAC Access Control
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites-local-build">
+<span class="md-ellipsis">
+      
+        Prerequisites &amp; local build
+      
+    </span>
+</a>
+<nav aria-label="Prerequisites &amp; local build" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tooling">
+<span class="md-ellipsis">
+      
+        Tooling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clone-and-install">
+<span class="md-ellipsis">
+      
+        Clone and install
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#build-and-serve">
+<span class="md-ellipsis">
+      
+        Build and serve
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-you-should-see">
+<span class="md-ellipsis">
+      
+        What you should see
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timing-log-nfr-m3-feedback-loop">
+<span class="md-ellipsis">
+      
+        Timing log (NFR-M3 feedback loop)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#anatomy-of-a-lab-chapter">
+<span class="md-ellipsis">
+      
+        Anatomy of a lab chapter
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#voice-style-ux-dr27">
+<span class="md-ellipsis">
+      
+        Voice &amp; style (UX-DR27)
+      
+    </span>
+</a>
+<nav aria-label="Voice &amp; style (UX-DR27)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#second-person-present-indicative-imperatives">
+<span class="md-ellipsis">
+      
+        Second person; present indicative imperatives
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cli-prompts-are-literal-userncs-never-or">
+<span class="md-ellipsis">
+      
+        CLI prompts are literal: user@ncs&gt; — never $ or &gt;
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cisco-capitalization-nso-ned-cli-yang-all-caps-command-names-in-backticks-every-time">
+<span class="md-ellipsis">
+      
+        Cisco capitalization: NSO, NED, CLI, YANG (all caps); command names in backticks every time
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#banned-as-you-know-and-assumed-prior-knowledge">
+<span class="md-ellipsis">
+      
+        Banned: "As you know…" and assumed prior knowledge
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#density-rules-ux-dr28">
+<span class="md-ellipsis">
+      
+        Density rules (UX-DR28)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#callout-scarcity-ux-dr29">
+<span class="md-ellipsis">
+      
+        Callout scarcity (UX-DR29)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#allowed-admonition-types-ux-dr16">
+<span class="md-ellipsis">
+      
+        Allowed admonition types (UX-DR16)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#code-and-expected-output-pattern-ux-dr17">
+<span class="md-ellipsis">
+      
+        Code and expected-output pattern (UX-DR17)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#screenshots-and-diagrams">
+<span class="md-ellipsis">
+      
+        Screenshots and diagrams
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#commit-conventions">
+<span class="md-ellipsis">
+      
+        Commit conventions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instructor-only-content-epic-5">
+<span class="md-ellipsis">
+      
+        Instructor-only content (Epic 5)
+      
+    </span>
+</a>
+<nav aria-label="Instructor-only content (Epic 5)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ux-dr30-minimum-content-per-chapter">
+<span class="md-ellipsis">
+      
+        UX-DR30 minimum content per chapter
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#quick-reference-run-checks-locally">
+<span class="md-ellipsis">
+      
+        Quick reference: run checks locally
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="cisco-nso-workbook-authoring-guide">Cisco NSO Workbook — Authoring Guide<a class="headerlink" href="#cisco-nso-workbook-authoring-guide" title="Permanent link">¶</a></h1>
+<!--
+  Covers FR42, NFR-M3, NFR-M4, FR41, UX-DR27–29, UX-DR16–17.
+  Epic 1 quickstart is preserved below as "Prerequisites & local build".
+  Full content contract: lint rules AR13 (Stories 2.3–2.6), instructor model (Epic 5).
+-->
+<p>This guide is the single canonical reference for <strong>voice</strong>, <strong>structure</strong>, and <strong>lint</strong> for lab chapters.
+Use it when writing or reviewing Markdown under <code>docs/</code>.</p>
+<hr/>
+<h2 id="prerequisites-local-build">Prerequisites &amp; local build<a class="headerlink" href="#prerequisites-local-build" title="Permanent link">¶</a></h2>
+<p><strong>Target (NFR-M3):</strong> From <code>git clone</code> to <code>make serve</code> with a working site in <strong>≤ 30 minutes</strong> on a standard Cisco corporate laptop.</p>
+<h3 id="tooling">Tooling<a class="headerlink" href="#tooling" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.12</td>
+<td>See <code>.python-version</code>. Use <code>pyenv</code> or Cisco-blessed Python.</td>
+</tr>
+<tr>
+<td>GNU Make</td>
+<td>Any</td>
+<td>macOS/Linux; Windows use <strong>WSL2</strong> (native PowerShell not supported).</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>Modern</td>
+<td>Chrome, Firefox, or Edge.</td>
+</tr>
+<tr>
+<td><code>git</code></td>
+<td>Any</td>
+<td>For clone and commits.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>macOS</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>brew<span class="w"> </span>install<span class="w"> </span>pyenv
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.12
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>pyenv<span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="m">3</span>.12
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>python<span class="w"> </span>--version
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>make<span class="w"> </span>--version
+</span></code></pre></div>
+<p><strong>Linux (Ubuntu / Debian)</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>make<span class="w"> </span>python3.12<span class="w"> </span>python3.12-venv
+</span></code></pre></div>
+<p><strong>Windows:</strong> use WSL2 and follow Linux steps inside the Ubuntu terminal.</p>
+<h3 id="clone-and-install">Clone and install<a class="headerlink" href="#clone-and-install" title="Permanent link">¶</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/daquezad/NSO-hands-on-session.git<span class="w"> </span>&lt;YOUR_DIR&gt;
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>&lt;YOUR_DIR&gt;
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</span></code></pre></div>
+<p><code>&lt;YOUR_DIR&gt;</code> is the only placeholder — replace it with your local path.</p>
+<h3 id="build-and-serve">Build and serve<a class="headerlink" href="#build-and-serve" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make serve</code></td>
+<td>Live reload at <a href="http://localhost:8000">http://localhost:8000</a> (learner build).</td>
+</tr>
+<tr>
+<td><code>make build-learner</code></td>
+<td>Static site → <code>site/</code>.</td>
+</tr>
+<tr>
+<td><code>make build-instructor</code></td>
+<td>Instructor site → <code>site-instructor/</code> (<code>INSTRUCTOR=1</code>).</td>
+</tr>
+<tr>
+<td><code>make lint</code></td>
+<td>Authoring lint (<strong>AR13 rules 1–11 + AR15</strong>). Default <strong>warn mode</strong> (exit 0). <code>LINT_RULES_1_3_MODE=fail</code> / <code>LINT_RULES_4_7_MODE=fail</code> / <code>LINT_RULES_5_6_MODE=fail</code> / <code>LINT_RULES_8_11_MODE=fail</code> hard-fail matching rule groups (rule 8 stays warning-only).</td>
+</tr>
+<tr>
+<td><code>make pdf-learner</code> / <code>make pdf-instructor</code></td>
+<td>PDF via Chromium headless (see Makefile).</td>
+</tr>
+<tr>
+<td><code>make rollback-lab LAB=N</code></td>
+<td>Story 3.9 — prints non-destructive rollback hints for chapter <code>N</code> (1–9); see <code>docs/reset-lab.md</code> for full VM / NSO procedures.</td>
+</tr>
+<tr>
+<td><code>make ci-quality-gates</code></td>
+<td>Story 3.11 — <code>npm ci</code> then <code>scripts/ci/run_quality_gates.sh</code> (perf budget, links, Lighthouse, axe); requires Chromium or Chrome on <code>PATH</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Learner journey (Story 3.8):</strong> <code>mkdocs.yml</code> defines the left <strong>navigation</strong> (all chapters + <strong>Reset the Lab</strong>). Material’s <strong>table of contents</strong> follows the current page (<code>toc.follow</code> in <code>mkdocs.yml</code>). <strong>Search</strong> is the built-in offline index (<code>plugins: search</code>) — no network at runtime. After <code>make build-learner</code>, run <code>python3 scripts/check_noindex.py site/</code> to confirm every generated <code>.html</code> includes a <code>robots</code> meta with <strong>noindex</strong> and <strong>nofollow</strong> and that <code>site/sitemap.xml</code> is absent (CI runs this step on every PR).</p>
+<p><strong>Responsive / touch (Story 3.10):</strong> At <strong>≤768px</strong> width, Material collapses primary nav to the hamburger; a <strong>Contents</strong> pill (in <code>overrides/main.html</code>) toggles the same <code>#__toc</code> control as the in-page table of contents. <strong>≥44×44px</strong> touch targets are enforced for header actions and code-copy buttons in <code>extra.css</code>. The <strong><code>time_budget</code></strong> legend stacks vertically at <strong>≤600px</strong>; <strong><code>journey_table</code></strong> uses stacked cards at <strong>≤600px</strong> (see <code>extra.css</code>). Record spot-checks in <strong><code>docs/responsive-check-log.md</code></strong>.</p>
+<p><strong>CI quality gates (Story 3.11 / 6.10):</strong> PR workflow runs <strong><code>scripts/check_perf_budget.py</code></strong> (≤500 KB HTML+CSS+JS per page, NFR-P5), <strong><code>scripts/check_internal_links.py</code></strong> (NFR-R4), <strong><code>scripts/check_noindex.py</code></strong> (NFR-S8), <strong>Lighthouse</strong> performance ≥90 on home + Lab 8 (mobile + simulated throttling, NFR-P7), and <strong><code>scripts/check_axe_warn.py</code></strong> (axe-core against URLs in <strong><code>scripts/ci/axe-pages.yaml</code></strong>; default <strong><code>AXE_MODE=warn</code></strong> with optional <strong><code>a11y_baseline.yaml</code></strong> ceilings; set <strong><code>AXE_MODE=fail</code></strong> in CI to block on <strong>serious/critical</strong> — NFR-A8 / FR39). Locally: <code>make ci-quality-gates</code> (needs <code>npm ci</code> and Chromium/Chrome on <code>PATH</code>). See <strong><code>docs/_internal/accessibility.md</code></strong>.</p>
+<p><strong>Lint cross-reference:</strong> Rules <strong>1–3</strong> — frontmatter, filename, headings (Story 2.3). <strong>Rule 3d</strong> — every <code>docs/NN-*.md</code> chapter must call <code>time_budget(...)</code> (Story 3.4). <strong>Rule 3f</strong> — <code>docs/index.md</code> home cover macros (Story 3.6). Rules <strong>4a–4d, 7</strong> — language tags, <em>Expected output</em> pairing, bare commands, <code>expected_output</code> landmark (Story 3.3), Jinja allow-list includes <code>topology</code>, <code>home_subtitle</code>, <code>home_meta</code>, <code>journey_table</code>. Rules <strong>5–6</strong> — alt text, links (Story 2.5). Rules <strong>8–10</strong> — instructor coherence, versions, classification (Story 2.6). <strong>Rule 11</strong> — lab-safety partial + <code>LAB_SAFETY_MESSAGE</code> + <code>lab_safety</code> only on index (general) and Lab 8 (intentional_failure) (Story 3.4). Rule <strong>12</strong> — instructor block parity (Story 5.7).</p>
+<h3 id="what-you-should-see">What you should see<a class="headerlink" href="#what-you-should-see" title="Permanent link">¶</a></h3>
+<p>After <code>make serve</code>, the home page shows the workbook title, navigation for Labs 1–9, and Material chrome (search, dark mode). If the page is blank, confirm the venv is active and you are in the repo root (directory containing <code>mkdocs.yml</code>).</p>
+<h3 id="timing-log-nfr-m3-feedback-loop">Timing log (NFR-M3 feedback loop)<a class="headerlink" href="#timing-log-nfr-m3-feedback-loop" title="Permanent link">¶</a></h3>
+<p>If onboarding takes <strong>longer than 30 minutes</strong>, file a GitHub issue titled <code>onboarding: exceeded 30-minute SLA — &lt;date&gt; — &lt;OS&gt;</code> and add a row to <code>docs/onboarding-log.md</code> with your timings.</p>
+<hr/>
+<h2 id="anatomy-of-a-lab-chapter">Anatomy of a lab chapter<a class="headerlink" href="#anatomy-of-a-lab-chapter" title="Permanent link">¶</a></h2>
+<p>Copy <code>docs/_template/chapter-template.md</code> to <code>docs/NN-your-lab-title.md</code> where <code>NN</code> is a two-digit chapter index (<code>01</code>–<code>99</code>). Fill <strong>YAML frontmatter</strong> and all <strong>six</strong> mandatory sections.</p>
+<p><strong>Mandatory section order (AR14):</strong></p>
+<ol>
+<li><code>## Learning Objectives</code></li>
+<li><code>## Time Budget</code></li>
+<li><code>## Prerequisites</code></li>
+<li><code>## Procedure</code></li>
+<li><code>## Verification</code></li>
+<li><code>## Common Errors</code></li>
+</ol>
+<p>Machine-readable schema: <code>docs/_template/schema.yaml</code>. <strong>Lint rule 1</strong> validates frontmatter against that schema; <strong>lint rule 3</strong> enforces section order, a single H1, and no skipped heading levels (e.g. H1 → H3 without H2).</p>
+<p><strong>Story 3.4 — section macros</strong></p>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time_budget(total=N, segments=[[minutes,"label"],...])</code></td>
+<td>Under <code>## Time Budget</code> on every <code>docs/NN-*.md</code> lab chapter. Minutes must sum to <code>N</code>. Invoke as a Jinja macro call in Markdown (double curly braces around the call).</td>
+</tr>
+<tr>
+<td><code>common_errors_start</code> … <code>common_error(symptom, cause, fix)</code> … <code>common_errors_end</code></td>
+<td>Optional, inside <code>## Common Errors</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;!-- lab_safety: LAB_SAFETY_MESSAGE empty in mkdocs.yml --&gt;</code></td>
+<td><code>docs/index.md</code> only.</td>
+</tr>
+<tr>
+<td><code>&lt;!-- lab_safety: LAB_SAFETY_MESSAGE empty in mkdocs.yml --&gt;</code></td>
+<td><code>08-*.md</code> (Lab 8) only.</td>
+</tr>
+</tbody>
+</table>
+<p>Do not call <code>lab_safety</code> on labs 01–07 or 09. <strong>Lint rules 3d and 11</strong> enforce this.</p>
+<p><strong>Story 3.5 — topology + images</strong></p>
+<table>
+<thead>
+<tr>
+<th>Piece</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docs/assets/mermaid-sources/&lt;chapter&gt;/&lt;id&gt;.mmd</code></td>
+<td>Mermaid source (≤ 8 nodes; names like <code>xr-1</code>, <code>nso-server</code>, …).</td>
+</tr>
+<tr>
+<td><code>docs/assets/mermaid-sources/&lt;chapter&gt;/&lt;id&gt;.alt.txt</code></td>
+<td>Long description for accessibility; copied next to renders.</td>
+</tr>
+<tr>
+<td><code>make pre-render-mermaid</code></td>
+<td>Runs <code>scripts/pre_render_mermaid.py</code> → <code>docs/assets/images/mermaid/&lt;chapter&gt;/&lt;id&gt;.{svg,png,alt.txt}</code> (requires Node + <code>@mermaid-js/mermaid-cli</code>; Chromium must launch). Commit generated SVG/PNG/alt.</td>
+</tr>
+<tr>
+<td><code>topology(diagram_id, chapter, caption)</code></td>
+<td>Embeds the pre-rendered <strong>SVG</strong> for web (wrap the call in Jinja macro syntax in source).</td>
+</tr>
+<tr>
+<td>Screenshots</td>
+<td>Drop PNGs under <code>docs/assets/images/</code> (see subfolders as needed). <code>make optimize-images</code> runs <strong>oxipng</strong> when installed. <strong>WebP</strong> variants for PNGs are produced at <code>mkdocs build</code> time (not committed) when <strong>cwebp</strong> is on <code>PATH</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Story 3.6 — home cover (<code>docs/index.md</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>home_subtitle(text="…")</code></td>
+<td>One-line audience line directly under the H1.</td>
+</tr>
+<tr>
+<td><code>home_meta()</code></td>
+<td>Meta row: total time (from journey data), 9 labs, NSO version from <code>mkdocs.yml</code> <code>extra.nso_version</code>.</td>
+</tr>
+<tr>
+<td><code>journey_table()</code></td>
+<td>Accessible <code>&lt;table&gt;</code> with caption; Lab 8 row includes an <strong>intentional break</strong> chip with visible text.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Order (required):</strong> H1 headline → <code>home_subtitle</code> → <code>home_meta</code> → <code>lab_safety(general)</code> → <code>topology</code> → <code>journey_table</code>. No generic “welcome to…” copy. <strong>Lint rule 3f</strong> enforces the macros and a single H1.</p>
+<p><strong>Story 3.7 — accessibility baseline</strong></p>
+<p>Skip links (Material “Skip to content” plus <strong>Skip to navigation</strong> and <strong>Skip to verification</strong> on pages that have <code>## Verification</code>), Cisco-blue focus rings on Material controls, global copy announcer (<code>#css-a11y-announcer</code>), and <code>docs/a11y-log.md</code> for spot-check records.</p>
+<hr/>
+<h2 id="voice-style-ux-dr27">Voice &amp; style (UX-DR27)<a class="headerlink" href="#voice-style-ux-dr27" title="Permanent link">¶</a></h2>
+<p>Reviewer-gated (not automatically linted). AI-generated content <strong>must</strong> follow this section.</p>
+<h3 id="second-person-present-indicative-imperatives">Second person; present indicative imperatives<a class="headerlink" href="#second-person-present-indicative-imperatives" title="Permanent link">¶</a></h3>
+<p><strong>Right</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>Run <span class="sb">`devices sync-from`</span>. Verify the device reaches sync-result <span class="sb">`true`</span>.
+</span></code></pre></div>
+<p><strong>Wrong</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>Now you will run <span class="sb">`devices sync-from`</span>, and we'll check that sync-result is true.
+</span></code></pre></div>
+<p><strong>Lint:</strong> — (reviewer / FR42)</p>
+<h3 id="cli-prompts-are-literal-userncs-never-or">CLI prompts are literal: <code>user@ncs&gt;</code> — never <code>$</code> or <code>&gt;</code><a class="headerlink" href="#cli-prompts-are-literal-userncs-never-or" title="Permanent link">¶</a></h3>
+<p><strong>Right</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>At the <span class="sb">`user@ncs&gt;`</span> prompt, run <span class="sb">`show devices list`</span>.
+</span></code></pre></div>
+<p><strong>Wrong</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>At <span class="sb">`$`</span> run <span class="sb">`show devices list`</span>.
+</span></code></pre></div>
+<p><strong>Lint:</strong> — (reviewer); <strong>rule 4c</strong> will reject <code>$</code> / <code>&gt;</code> <em>inside</em> command fences when rules 4–7 are enforced.</p>
+<h3 id="cisco-capitalization-nso-ned-cli-yang-all-caps-command-names-in-backticks-every-time">Cisco capitalization: NSO, NED, CLI, YANG (all caps); command names in backticks every time<a class="headerlink" href="#cisco-capitalization-nso-ned-cli-yang-all-caps-command-names-in-backticks-every-time" title="Permanent link">¶</a></h3>
+<p><strong>Right</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>Use the NSO CLI to commit the YANG-backed change. Run <span class="sb">`commit dry-run`</span> first.
+</span></code></pre></div>
+<p><strong>Wrong</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>Use the Nso cli to commit the yang change.
+</span></code></pre></div>
+<p><strong>Lint:</strong> — (reviewer)</p>
+<h3 id="banned-as-you-know-and-assumed-prior-knowledge">Banned: "As you know…" and assumed prior knowledge<a class="headerlink" href="#banned-as-you-know-and-assumed-prior-knowledge" title="Permanent link">¶</a></h3>
+<p><strong>Right</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>If you have not completed Lab 3, stop and finish it before this step.
+</span></code></pre></div>
+<p><strong>Wrong</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>As you know, NSO stores configuration in CDB.
+</span></code></pre></div>
+<p><strong>Lint:</strong> — (reviewer)</p>
+<hr/>
+<h2 id="density-rules-ux-dr28">Density rules (UX-DR28)<a class="headerlink" href="#density-rules-ux-dr28" title="Permanent link">¶</a></h2>
+<p><strong>Limits:</strong> ≤ <strong>3</strong> sentences per paragraph; ≤ <strong>5</strong> paired command/output blocks per <code>## Procedure</code> subsection; blank line between paired blocks and the next step or <code>## Common Errors</code>.</p>
+<p><strong>Right</strong> (short paragraph; one paired block; blank line before next step)</p>
+<blockquote>
+<p>Sync devices from NSO. Run <code>devices sync-from</code>.<br/>
+Show <code>result true</code> in the sync summary before you continue.</p>
+</blockquote>
+<p><strong>Wrong</strong> (one overloaded paragraph; violates ≤ 3 sentences and hurts scanning)</p>
+<blockquote>
+<p>Sync is important because it pulls config and you should always sync before commit and if sync fails you need to check the trace and also verify NED versions because mismatches cause errors and then commit might not work.</p>
+</blockquote>
+<p><strong>Lint:</strong> prose density warnings planned; not in rules 1–3.</p>
+<hr/>
+<h2 id="callout-scarcity-ux-dr29">Callout scarcity (UX-DR29)<a class="headerlink" href="#callout-scarcity-ux-dr29" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Lab-safety banner:</strong> only <strong>home</strong> and <strong>Lab 8</strong> (architecture / UX-DR29).</li>
+<li><strong><code>!!! danger</code>:</strong> ≤ <strong>1</strong> per lab.</li>
+<li><strong><code>!!! warning</code>:</strong> ≤ <strong>3</strong> per lab.</li>
+<li><strong><code>!!! note</code> / <code>!!! tip</code>:</strong> allowed without a hard cap (still subject to density).</li>
+</ul>
+<p><strong>Right</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>!!! warning "Data loss risk"
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>    This commit cannot be rolled back automatically.
+</span></code></pre></div>
+<p><strong>Wrong</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>!!! danger "Minor note"
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>    Casual over-use of danger callouts trains learners to ignore them.
+</span></code></pre></div>
+<p><strong>Lint:</strong> — (reviewer until rule 11 extended).</p>
+<hr/>
+<h2 id="allowed-admonition-types-ux-dr16">Allowed admonition types (UX-DR16)<a class="headerlink" href="#allowed-admonition-types-ux-dr16" title="Permanent link">¶</a></h2>
+<p>Only these Material types are allowed in v1.0 (architecture Pattern 1). <strong>Lint rule 11</strong> will enforce the allow-list.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>!!! note</code></td>
+<td>Factual clarification</td>
+</tr>
+<tr>
+<td><code>!!! info</code></td>
+<td>Reference / side detail</td>
+</tr>
+<tr>
+<td><code>!!! tip</code></td>
+<td>Shortcut or better workflow</td>
+</tr>
+<tr>
+<td><code>!!! warning</code></td>
+<td>Could cause data loss or break the lab</td>
+</tr>
+<tr>
+<td><code>!!! danger</code></td>
+<td>Will break the lab or host</td>
+</tr>
+<tr>
+<td><code>!!! example</code></td>
+<td>Worked example</td>
+</tr>
+<tr>
+<td><code>!!! question</code></td>
+<td>Reflection question</td>
+</tr>
+<tr>
+<td><code>!!! tip "Instructor"</code> inside an instructor <code>if</code> / <code>endif</code> block</td>
+<td>Instructor-only hint (≤5 lines)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Banned</strong> unless added by PR with semantics: <code>quote</code>, <code>abstract</code>, <code>failure</code>, <code>success</code>, <code>bug</code>, etc.</p>
+<p><strong>Right</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>!!! tip "Faster path"
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>    Use <span class="sb">`commit dry-run`</span> before every commit.
+</span></code></pre></div>
+<p><strong>Wrong</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>!!! success "You did it!"
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>    Great job.
+</span></code></pre></div>
+<p><strong>Lint:</strong> <strong>rule 11</strong> (Story 2.6).</p>
+<hr/>
+<h2 id="code-and-expected-output-pattern-ux-dr17">Code and expected-output pattern (UX-DR17)<a class="headerlink" href="#code-and-expected-output-pattern-ux-dr17" title="Permanent link">¶</a></h2>
+<p>Every command block uses a <strong>language-tagged</strong> fence (<code>cli</code>, <code>bash</code>, <code>shell</code>, …). Immediately after (ignoring blank lines), provide an italic <strong>*Expected output:*</strong> label and a <code>text</code> or <code>console</code> fence — <strong>or</strong> place <code>&lt;!-- lint-skip: no-output --&gt;</code> before the block to opt out.</p>
+<p><strong>Right</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>```cli
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>show devices list
+</span></code></pre></div>
+<p><em>Expected output:</em></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>NAME    ADDRESS
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>xr-1    192.0.2.1
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>**Wrong**
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a>```markdown
+</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a>```cli
+</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a>show devices list
+</span></code></pre></div></p>
+<p>(No labelled output fence — learners cannot distinguish input from output.)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>**Lint:** **rules 4a–4c**, **rule 7** (Story 2.4).
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a>### Paired rendering + landmark hint (Story 3.3)
+</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a>The build wraps each **command fence → *Expected output:* → output fence** sequence into a **paired** block (shared border, label bar, copy on the command half only). Optionally, on the line **before** *Expected output:*, add:
+</span><span id="__span-18-6"><a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a>
+</span><span id="__span-18-8"><a href="#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a>`{{ expected_output(landmark="commit complete") }}`
+</span><span id="__span-18-9"><a href="#__codelineno-18-9" id="__codelineno-18-9" name="__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a href="#__codelineno-18-10" id="__codelineno-18-10" name="__codelineno-18-10"></a>
+</span><span id="__span-18-11"><a href="#__codelineno-18-11" id="__codelineno-18-11" name="__codelineno-18-11"></a>Use a short **landmark** string (≤ 60 characters) learners should look for in the output. **Lint rule 4d** requires a non-empty `landmark="..."` whenever `expected_output` is used.
+</span><span id="__span-18-12"><a href="#__codelineno-18-12" id="__codelineno-18-12" name="__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a href="#__codelineno-18-13" id="__codelineno-18-13" name="__codelineno-18-13"></a>---
+</span><span id="__span-18-14"><a href="#__codelineno-18-14" id="__codelineno-18-14" name="__codelineno-18-14"></a>
+</span><span id="__span-18-15"><a href="#__codelineno-18-15" id="__codelineno-18-15" name="__codelineno-18-15"></a>## Idempotency and rollback
+</span><span id="__span-18-16"><a href="#__codelineno-18-16" id="__codelineno-18-16" name="__codelineno-18-16"></a>
+</span><span id="__span-18-17"><a href="#__codelineno-18-17" id="__codelineno-18-17" name="__codelineno-18-17"></a>Frontmatter `idempotent: true|false` (see `docs/_template/schema.yaml`). If `idempotent: false`, the chapter **must** include a rollback admonition (typically under `## Common Errors` or end of `## Procedure`) with the exact commands to restore prior state — **Story 2.6** lint will enforce pairing.
+</span><span id="__span-18-18"><a href="#__codelineno-18-18" id="__codelineno-18-18" name="__codelineno-18-18"></a>
+</span><span id="__span-18-19"><a href="#__codelineno-18-19" id="__codelineno-18-19" name="__codelineno-18-19"></a>**Right**
+</span><span id="__span-18-20"><a href="#__codelineno-18-20" id="__codelineno-18-20" name="__codelineno-18-20"></a>
+</span><span id="__span-18-21"><a href="#__codelineno-18-21" id="__codelineno-18-21" name="__codelineno-18-21"></a>```markdown
+</span><span id="__span-18-22"><a href="#__codelineno-18-22" id="__codelineno-18-22" name="__codelineno-18-22"></a>idempotent: false
+</span></code></pre></div></p>
+<p>…and later a <code>!!! warning "Rollback"</code> with the <code>rollback</code> / <code>revert</code> sequence for this lab.</p>
+<p><strong>Wrong</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>idempotent: false
+</span></code></pre></div>
+<p>…with no rollback instructions anywhere in the chapter.</p>
+<p><strong>Lint:</strong> extended rule under Story 2.6.</p>
+<hr/>
+<h2 id="screenshots-and-diagrams">Screenshots and diagrams<a class="headerlink" href="#screenshots-and-diagrams" title="Permanent link">¶</a></h2>
+<p><strong>Binding reference:</strong> <strong><code>docs/scrub-protocol.md</code></strong> (Epic 4 Story 4.1) — scope, identifiers to remove vs permitted lab names and RFC 5737 ranges, scrub tools, worked example assets under <code>docs/assets/images/scrub-example/</code>, author self-review, and second-pair review (NFR-S6). Log per-chapter passes under <strong><code>docs/scrub-logs/NN.md</code></strong>; second-pair sign-off in <strong><code>docs/scrub-logs/second-pair-review.md</code></strong>.</p>
+<p><strong>Lint:</strong> <strong>rule 5</strong> (Story 2.5) requires alt text and Mermaid/title conventions; rule 5 messages for empty image alt point at the scrub protocol for screenshot hygiene.</p>
+<hr/>
+<h2 id="commit-conventions">Commit conventions<a class="headerlink" href="#commit-conventions" title="Permanent link">¶</a></h2>
+<p>Use <strong>Conventional Commits</strong> (<code>feat:</code>, <code>fix:</code>, <code>docs:</code>, <code>ci:</code>, …) and scoped subjects where helpful. Full policy and CI wiring land in <strong>Story 2.7</strong>.</p>
+<p><strong>Right:</strong> <code>docs: clarify verification steps in Lab 4</code><br/>
+<strong>Wrong:</strong> <code>updates</code></p>
+<hr/>
+<h2 id="instructor-only-content-epic-5">Instructor-only content (Epic 5)<a class="headerlink" href="#instructor-only-content-epic-5" title="Permanent link">¶</a></h2>
+<p>Dual-audience builds use three mechanisms (AR5):</p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Where</th>
+<th>Learner <code>site/</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inline</strong> Jinja instructor gate (<code>if instructor</code> … <code>endif</code>)</td>
+<td>Inside <code>docs/NN-*.md</code></td>
+<td>Block omitted when <code>instructor</code> is false (macros env)</td>
+</tr>
+<tr>
+<td><strong>Companion</strong> <code>docs/NN-*-instructor-notes.md</code></td>
+<td>Next to the lab file</td>
+<td>File <strong>omitted</strong> from the build (<code>hooks.py</code> <code>on_files</code>)</td>
+</tr>
+<tr>
+<td><strong>Shared facilitator docs</strong> <code>docs/instructor-artifacts/**</code></td>
+<td>e.g. <code>proctor-checklist.md</code>, <code>timing-sheet.md</code> (Stories 5.4–5.5; instructor site only)</td>
+<td><strong>Omitted</strong> from learner builds</td>
+</tr>
+</tbody>
+</table>
+<p><code>make build-learner</code> and default <code>mkdocs serve</code> exclude companion paths and <code>instructor-artifacts/</code>. <strong><code>make build-instructor</code></strong> sets <code>INSTRUCTOR=1</code> and includes them in <code>site-instructor/</code>.</p>
+<p><strong><code>instructor_block</code> macro (UX-DR12, Story 5.3)</strong> — use for pacing, FAQs, and Lab 8 choreography inside a lab chapter. Pass facilitator copy as markdown in the <code>body</code> argument (Jinja allows multiline strings). <strong><code>variant</code></strong> is <code>generic</code> (default) or <code>choreography</code> (Lab 8 extended script). When <code>instructor</code> is false, the macro expands to <strong>nothing</strong> (no empty wrapper, no hidden DOM). Styling lives in <code>docs/stylesheets/components/instructor-block.css</code>; the macro output includes a stable data attribute used by <code>make build-all</code> smoke checks (lab + <code>_test-fixtures/</code> HTML only).</p>
+<p><strong>Right (instructor_block)</strong></p>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>
+</span></code></pre></div>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>
+</span></code></pre></div>
+<p><strong>Wrong (instructor_block)</strong></p>
+<p>Putting facilitator-only guidance in plain chapter prose with no gate or macro.</p>
+<h3 id="ux-dr30-minimum-content-per-chapter">UX-DR30 minimum content per chapter<a class="headerlink" href="#ux-dr30-minimum-content-per-chapter" title="Permanent link">¶</a></h3>
+<p><strong>Lint rule 12</strong> (Story 5.7) enforces these minimums in every lab chapter <code>docs/NN-*.md</code> (warn-first; see <code>docs/lint-cutover-plan.md</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Where</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Expected duration</strong></td>
+<td>Chapter frontmatter (<code>estimated_duration</code> / schema)</td>
+<td>Already part of the lab contract; not duplicated inside the macro body.</td>
+</tr>
+<tr>
+<td><strong>Two learner FAQs</strong></td>
+<td>Inside <code>instructor_block(variant="generic", …)</code></td>
+<td>Use a <code>### FAQs</code> sub-heading with <strong>at least two</strong> bullet lines (<code>-</code> or <code>*</code>).</td>
+</tr>
+<tr>
+<td><strong>One thing that breaks</strong></td>
+<td>Same generic block</td>
+<td>Use <code>### What breaks</code> with <strong>at least one</strong> bullet.</td>
+</tr>
+<tr>
+<td><strong>Lab 8 only: choreography</strong></td>
+<td>Second macro: <code>instructor_block(variant="choreography", …)</code></td>
+<td>Requires <code>chapter: 8</code> in frontmatter. Body uses <code>### Pause points</code>, <code>### Narrating check-sync</code>, and <code>### Red-to-green flip</code>, each with facilitator content (bullets recommended).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example — generic block</strong></p>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a>
+</span></code></pre></div>
+<p><strong>Example — Lab 8 generic + choreography</strong></p>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>
+</span></code></pre></div>
+<p><strong>Right (inline <code>if instructor</code>)</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>{% if instructor %}
+</span><span id="__span-24-2"><a href="#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a>!!! tip "Instructor"
+</span><span id="__span-24-3"><a href="#__codelineno-24-3" id="__codelineno-24-3" name="__codelineno-24-3"></a>    Allow 5 extra minutes if the class hit sync issues in Lab 2.
+</span><span id="__span-24-4"><a href="#__codelineno-24-4" id="__codelineno-24-4" name="__codelineno-24-4"></a>{% endif %}
+</span></code></pre></div>
+<p><strong>Wrong</strong></p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a>Facilitators: skip this section in a 90-minute session.
+</span></code></pre></div>
+<p><em>(Learner-visible facilitator instruction with no gate.)</em></p>
+<p>Do not put facilitator-only timing or answers in learner-visible prose without a gate. Details: <strong>AR5</strong>, Epic 5 stories 5.1–5.3, <strong>lint rule 12</strong> (Story 5.7).</p>
+<hr/>
+<h2 id="quick-reference-run-checks-locally">Quick reference: run checks locally<a class="headerlink" href="#quick-reference-run-checks-locally" title="Permanent link">¶</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a>make<span class="w"> </span>build-learner
+</span><span id="__span-26-2"><a href="#__codelineno-26-2" id="__codelineno-26-2" name="__codelineno-26-2"></a>make<span class="w"> </span>build-all<span class="w">          </span><span class="c1"># learner + instructor static sites (Story 5.2)</span>
+</span><span id="__span-26-3"><a href="#__codelineno-26-3" id="__codelineno-26-3" name="__codelineno-26-3"></a>make<span class="w"> </span>serve-instructor<span class="w">   </span><span class="c1"># optional: live reload with facilitator paths (default :8001)</span>
+</span><span id="__span-26-4"><a href="#__codelineno-26-4" id="__codelineno-26-4" name="__codelineno-26-4"></a>make<span class="w"> </span>lint
+</span><span id="__span-26-5"><a href="#__codelineno-26-5" id="__codelineno-26-5" name="__codelineno-26-5"></a><span class="c1"># Full fail-mode dry run (same as CI strict cutover):</span>
+</span><span id="__span-26-6"><a href="#__codelineno-26-6" id="__codelineno-26-6" name="__codelineno-26-6"></a>make<span class="w"> </span>lint-fail-all
+</span></code></pre></div>
+<p>Cutover sequencing and CI behavior: <strong><code>docs/lint-cutover-plan.md</code></strong>.</p>
+<p>Unit tests for the linter:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a>python<span class="w"> </span>-m<span class="w"> </span>unittest<span class="w"> </span>scripts.tests.test_lint_authoring<span class="w"> </span>-v
+</span></code></pre></div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      © Cisco Confidential
+    </div>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/daquezad/NSO-hands-on-session" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div aria-label="Classification: Cisco Confidential" class="css-classification-banner md-typeset" role="contentinfo">
+<div class="css-classification-banner__inner md-grid">
+      Cisco Confidential
+    </div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<div aria-atomic="true" aria-live="polite" class="css-sr-only" id="css-a11y-announcer" role="status"></div>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../js/print-site.js"></script>
+<script src="../javascripts/paired.js"></script>
+<script src="../javascripts/common-errors.js"></script>
+<script>
+    (function () {
+      var toc = document.getElementById("__toc");
+      var fab = document.querySelector(".css-toc-fab");
+      if (toc && fab) fab.removeAttribute("hidden");
+    })();
+  </script>
+</body>
+</html>
