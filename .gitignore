@@ -15,3 +15,6 @@ __pycache__/
 venv/
 *.docx
 *.pdf
+
+# Generated workbook asset extractions (regenerate with scripts/extract_*.py)
+build/

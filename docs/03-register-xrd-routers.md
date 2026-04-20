@@ -86,12 +86,18 @@ ncs_load -l -m devices.xml
 2. Click **Devices**.
 3. Confirm **xr-1** and **xr-2** are listed.
 
+![Devices page showing xr-1 and xr-2 after loading definitions](assets/images/lab03/webui-devices-two-xrd.png)
+
 ### Step 4: Sync device configuration
 
 The first action after adding devices is **sync-from** so the NSO CDB matches each device’s running configuration.
 
 1. Select **all devices** (or each device in turn).
 2. Execute **sync-from**.
+
+![Select all devices and run sync-from](assets/images/lab03/webui-devices-sync-from-select.png)
+
+![Sync-from result — both devices synchronized successfully](assets/images/lab03/webui-devices-sync-from-result.png)
 
 !!! warning "If sync-from fails"
     Run **Fetch SSH Host Keys** first, then retry **sync-from**.

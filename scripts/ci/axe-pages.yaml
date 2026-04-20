@@ -1,0 +1,9 @@
+# Story 6.10 — axe scan targets (paths relative to built site root, served under QUALITY_BASE_URL).
+# Expand over time toward full nav coverage; document rationale when using a sample set (AR21).
+pages:
+  - path: /
+    key: home
+  - path: /01-connect-workstation/
+    key: lab1
+  - path: /08-create-service/
+    key: lab8

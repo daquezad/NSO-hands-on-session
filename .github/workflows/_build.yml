@@ -16,6 +16,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Story 6.10 — warn until serious/critical axe issues are cleared; set fail to block merges.
+      AXE_MODE: warn
     steps:
       - uses: actions/checkout@v4
 
@@ -38,19 +41,25 @@ jobs:
           echo "Got: $TITLE"
           exit 1
 
-      - name: Authoring lint (warn mode — Epic 4 migration)
+      - name: Authoring lint (rule 12 fail — Story 6.10, UX-DR30)
+        id: authoring_lint
+        env:
+          LINT_RULES_12_MODE: fail
         run: make lint
 
       - name: Build learner site
+        id: build_learner
         run: make build-learner
 
       - name: Build learner PDF (Story 6.2–6.4)
+        id: pdf_build
         run: make pdf
 
       - name: Install veraPDF (Story 6.5)
         run: bash scripts/ci/install-verapdf-ubuntu.sh
 
       - name: veraPDF PDF/UA-1 report
+        id: verapdf
         env:
           VERAPDF_NON_BLOCKING: "1"
         run: |
@@ -59,6 +68,7 @@ jobs:
           bash scripts/ci/run_verapdf.sh "dist/cisco-secure-services-nso-${V}.pdf"
 
       - name: Validate PDF bookmarks (Story 6.5)
+        id: pdf_bookmarks
         run: |
           set -euo pipefail
           V="$(python3 scripts/read_nso_version.py)"
@@ -66,12 +76,14 @@ jobs:
             --report "bookmark-report-${GITHUB_RUN_ID}.txt"
 
       - name: External resource allowlist (Story 6.6, FR38/NFR-S3)
+        id: external_res
         run: |
           set -euo pipefail
           V="$(python3 scripts/read_nso_version.py)"
           python3 scripts/ci/check-external-resources.py site "dist/cisco-secure-services-nso-${V}.pdf"
 
       - name: Cisco Confidential classification (Story 6.6, AR18/FR23/NFR-S4)
+        id: classification
         run: |
           set -euo pipefail
           V="$(python3 scripts/read_nso_version.py)"
@@ -89,13 +101,24 @@ jobs:
           if-no-files-found: ignore
 
       - name: Instructor leakage guard (FR37, Story 5.6)
+        id: instructor_leak
         run: python3 scripts/check_instructor_leak.py site/
 
       - name: Check noindex + no sitemap (Story 3.8, NFR-S8)
+        id: noindex_learner
         run: python3 scripts/check_noindex.py site/
 
-      - name: Quality gates — perf budget, links, Lighthouse, axe warn (Story 3.11)
+      - name: Quality gates — perf budget, links, Lighthouse, axe (Story 3.11 / 6.10)
+        id: quality_gates
         run: bash scripts/ci/run_quality_gates.sh site
+
+      - name: Upload axe merged JSON (Story 6.10)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axe-report-${{ github.run_id }}
+          path: axe-report-${{ github.run_id }}.json
+          if-no-files-found: warn
 
       - name: Upload Lighthouse JSON artifacts
         if: always()
@@ -108,9 +131,11 @@ jobs:
           if-no-files-found: ignore
 
       - name: Build instructor site
+        id: build_instructor
         run: make build-instructor
 
       - name: Check noindex on instructor build (NFR-S8)
+        id: noindex_instr
         run: python3 scripts/check_noindex.py site-instructor/
 
       - name: Upload learner PDF (release / downstream)
@@ -120,5 +145,29 @@ jobs:
           path: dist/cisco-secure-services-nso-*.pdf
           if-no-files-found: error
 
-      # To block merges on any lint violation, switch lint step to: make lint-fail-all
+      - name: Release readiness summary (Story 6.10)
+        if: always()
+        run: |
+          {
+            echo "## Release readiness summary"
+            echo ""
+            echo "| Gate | Outcome |"
+            echo "|------|---------|"
+            echo "| Authoring lint (rule 12 fail) | ${{ steps.authoring_lint.outcome }} |"
+            echo "| Learner HTML | ${{ steps.build_learner.outcome }} |"
+            echo "| Learner PDF | ${{ steps.pdf_build.outcome }} |"
+            echo "| veraPDF | ${{ steps.verapdf.outcome }} |"
+            echo "| PDF bookmarks | ${{ steps.pdf_bookmarks.outcome }} |"
+            echo "| External resources | ${{ steps.external_res.outcome }} |"
+            echo "| Classification | ${{ steps.classification.outcome }} |"
+            echo "| Instructor leakage | ${{ steps.instructor_leak.outcome }} |"
+            echo "| noindex (learner) | ${{ steps.noindex_learner.outcome }} |"
+            echo "| Quality gates (Lighthouse + axe) | ${{ steps.quality_gates.outcome }} |"
+            echo "| Instructor HTML | ${{ steps.build_instructor.outcome }} |"
+            echo "| noindex (instructor) | ${{ steps.noindex_instr.outcome }} |"
+            echo ""
+            echo "Axe mode: \`$AXE_MODE\` (set \`AXE_MODE: fail\` in this workflow to block on serious/critical — see \`docs/_internal/accessibility.md\`)."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # To block merges on every lint rule, switch lint step to: make lint-fail-all
       # See docs/lint-cutover-plan.md for the warn → fail playbook.

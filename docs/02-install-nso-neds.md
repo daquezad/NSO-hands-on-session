@@ -41,6 +41,10 @@ Commands use **`{{ nso_version }}`** so they track `mkdocs.yml` `extra.nso_versi
 
 ### Step 1: Locate the installer files
 
+Open VS Code and work in the **Terminal** panel (or any shell on **linux-host**).
+
+![VS Code connected via SSH to linux-host with terminal open](assets/images/lab02/vscode-terminal-open.png)
+
 Navigate to the NSO installer directory and list the available binaries:
 
 ```bash
@@ -127,25 +131,23 @@ README.ncs  logs  ncs-cdb  ncs.conf  packages  scripts  state
 
 ### Step 6: Configure WebUI access
 
-Starting with **NSO {{ nso_version }}**, WebUI and RESTCONF may only allow access via the server hostname. To allow access by IP address, edit `ncs.conf` under your instance (path may vary — use the file your facilitator points to).
+Starting with **NSO {{ nso_version }}**, WebUI and RESTCONF may only allow access via the server hostname. To allow access by **IP address**, edit **`ncs.conf`** in your instance (for example `~/NSO-INSTALL/nso-instance/ncs.conf` — confirm with your facilitator).
 
-Add a `<server-alias>` for your lab management address (example below uses a documentation-style address — **use the IP your environment provides**):
+1. Open `ncs.conf` and find the **`<webui>`** … **`</webui>`** block (create it under the top-level config if your template does not include it).
+2. **Inside `<webui>`**, add a **`<server-alias>`** whose value is the **same IPv4 address** learners will type in the browser (the management address of **linux-host** running NSO — **not** the router address from Lab 4).
+
+Example (RFC 5737 documentation range — **substitute your lab IP**):
 
 ```xml
-<allow-case-insensitive-enums>true</allow-case-insensitive-enums>
-</cli>
-
-<webui>
 <server-alias>198.51.100.27</server-alias>
-<enabled>true</enabled>
-<transport>
-<tcp>
-<enabled>true</enabled>
-<ip>0.0.0.0</ip>
 ```
 
+3. Ensure the Web UI listens where you expect (often **`<transport><tcp><ip>0.0.0.0</ip>`** … under `<webui>`). If your file already has TCP/WebUI transport settings, **do not duplicate** them — only add or fix **`server-alias`** so it matches the URL you publish in Step 9.
+
+**Consistency check:** **`server-alias`** = IP in **`http://<IP>:8080/...`** (same host as NSO). It must **not** be the XRd device management IP (Lab 4 uses a **different** example address for **xr-1**).
+
 !!! warning "Security Note"
-    Binding to `0.0.0.0` is for lab use only. In production, restrict access to specific interfaces.
+    Binding Web UI to `0.0.0.0` is for lab use only. In production, restrict access to specific interfaces.
 
 ### Step 7: Start NSO
 
@@ -182,7 +184,15 @@ http://198.51.100.27:8080/login.html
 !!! info "Default Credentials"
     **Username:** `admin` | **Password:** `admin`
 
-After logging in, you will see the NSO main page. Navigate to the **Config Editor** section.
+![Crosswork NSO login form — enter admin / admin](assets/images/lab02/webui-login-form.png)
+
+After logging in, you will see the NSO main page showing **Devices**, **Services**, **Config editor**, and **Tools** tiles.
+
+![NSO Home page after login — Devices, Services, Config editor, Tools](assets/images/lab02/webui-home-after-login.png)
+
+Navigate to the **Config Editor** section.
+
+![Configuration editor showing available YANG modules](assets/images/lab02/webui-config-editor.png)
 
 ### Step 10: Install the IOS-XR NED
 
@@ -219,10 +229,16 @@ cp ncs-{{ nso_version }}-cisco-iosxr-*.tar.gz ~/NSO-INSTALL/nso-instance/package
 2. Navigate to **ncs:packages**.
 3. Select **Actions** → **Reload** → **Run reload action**.
 
-After reloading, you should see the `cisco-ios-xr` package in the list.
+![Web UI packages reload action page](assets/images/lab02/webui-packages-reload.png)
+
+After reloading, you should see the `cisco-iosxr-cli` package in the list.
+
+![Packages list showing cisco-iosxr-cli-7.69 loaded](assets/images/lab02/webui-packages-iosxr-loaded.png)
 
 !!! tip "Verify"
     Open **Devices** — it should be empty until Lab 3.
+
+![Devices page with no devices — ready for Lab 3](assets/images/lab02/webui-devices-empty.png)
 
 {% if instructor %}
 !!! tip "Instructor"

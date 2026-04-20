@@ -40,27 +40,42 @@ By the end of this lab you will be able to:
 
 Navigate to **xr-1** in the Web UI to inspect interface configuration. Use the search bar or expand the configuration tree.
 
+![xr-1 device detail — type config in the search bar to navigate to the configuration section](assets/images/lab04/webui-xr1-device-detail.png)
+
 Follow this path to reach the GigabitEthernet IPv4 address container:
 
 ```text
 /ncs:devices/device{xr-1}/config/cisco-ios-xr:interface/GigabitEthernet{0/0/0/0}/ipv4/address/
 ```
 
+![GigabitEthernet 0/0/0/0 IPv4 address showing current IP 10.1.1.3](assets/images/lab04/webui-gige-ipv4-path.png)
+
 ### Step 2: Make a configuration change
 
 1. Click **Edit Config**.
 2. Change the IPv4 address from `10.1.1.3` to `10.1.1.30` (documentation-style lab addressing).
 
+![IP field shows 10.1.1.3 before editing](assets/images/lab04/webui-gige-ip-before-edit.png)
+
 !!! info "Candidate Configuration"
     A green bar appears on edited fields — this is **candidate** configuration. Changes apply to the device only after you **commit**.
+
+![After editing: IP changed to 10.1.1.30 with green candidate bar on the ip field](assets/images/lab04/webui-gige-ip-after-edit.png)
 
 ### Step 3: Review and commit
 
 1. Open **Tools → Commit Manager**.
 2. Open the **config** tab for a diff view.
+
+![Commit Manager diff view — ip 10.1.1.3 (red, removed) → ip 10.1.1.30 (green, added)](assets/images/lab04/webui-commit-manager-diff.png)
+
 3. Review the change, then click **Commit**.
 
+![Commit confirmation dialog — click Yes, commit to push the change to the device](assets/images/lab04/webui-commit-confirmation.png)
+
 After commit, NSO creates a **rollback** file automatically (covered further in Lab 5).
+
+![Commit Manager shows no pending changes — transaction is EMPTY after a successful commit](assets/images/lab04/webui-commit-manager-empty.png)
 
 ### Step 4: Verify on the device
 

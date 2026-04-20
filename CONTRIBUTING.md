@@ -21,7 +21,7 @@ Run these from the project root after `pip install -r requirements.txt`:
 
 See `docs/authoring.md` for the full onboarding quickstart and content contract. See **`docs/lint-cutover-plan.md`** for warn → fail rollout and CI notes (Story 2.7).
 
-### GitHub Actions workflows (Stories 6.7–6.8, AR9)
+### GitHub Actions workflows (Stories 6.7–6.9, AR9)
 
 Three workflows — each file is a separate entrypoint:
 
@@ -29,13 +29,24 @@ Three workflows — each file is a separate entrypoint:
 |----------|---------|------|
 | **`build.yml`** | Pull requests and pushes to **`main`** | Full CI via reusable **`_build.yml`** (learner + instructor sites, PDF, veraPDF, bookmarks, 6.6 checks, quality gates). PRs also enforce Conventional Commit **titles**. |
 | **`deploy.yml`** | After a successful **`Build`** run on a **`push` to `main`** | Rebuilds the same commit, uploads the learner PDF as an artifact, runs **`mike deploy`** to the **`gh-pages`** branch (NSO version + **`main`** alias — rolling docs from `main`), and runs a **private Pages** smoke check (warns if anonymous GET returns **200**). |
-| **`release.yml`** | Push of a tag matching **`v*`** | Same CI as **`build.yml`**, then **`mike deploy`** (semver from tag + **`latest`** alias), **`mike set-default`**, **GitHub Release** with PDF attached. |
+| **`release.yml`** | Push of a tag matching **`v*`** | Runs **`ci`** first — if anything fails, **no** Release and **no** **`mike`** (Story **6.9 AC6**). On success: release notes + checklist + **`CHANGELOG.md`** update, **`mike deploy`** / **`set-default`**, **GitHub Release** (PDF + checklist), then commits **`CHANGELOG.md`** to **`main`**. |
 
 Shared install steps live in **`.github/actions/setup-toolchain`**; the full job is **`.github/workflows/_build.yml`** (`workflow_call`) so **`build.yml`** and **`release.yml`** stay DRY.
+
+**Accessibility (Story 6.10):** CI sets **`AXE_MODE=warn`** on the build job (axe still runs; serious/critical do not fail the job). The merged report is uploaded as **`axe-report-{run_id}.json`**. To block merges on **serious/critical** axe findings, set **`AXE_MODE: fail`** in **`.github/workflows/_build.yml`**. Authoring **lint rule 12** (instructor-block macro) runs in **fail** mode in CI. Details: **`docs/_internal/accessibility.md`**.
+
+**v1.0 release gates (PRD):** calendar checklist (**v0.7 → v0.9 → v1.0**) — **`docs/_internal/v1-release-checklist.md`** (not in the published site).
 
 **Repo settings (Pages):** Use **Deploy from a branch** → **`gh-pages`** → **`/(root)`** — **not** “GitHub Actions” static upload (Story **6.7** OIDC deploy was replaced by **`mike`** in **6.8**). Set **Pages visibility** to **private** to the org where required (FR33). Details: **`docs/_internal/deploy.md`**.
 
 **Versioning:** **`mike`** is configured in **`mkdocs.yml`** (`plugins.mike`, `extra.version.provider: mike`). **`SITE_URL`** is set in CI for correct redirects; locally use e.g. **`SITE_URL=http://127.0.0.1:8000/ mkdocs serve`** (default in **`mkdocs.yml`** matches this).
+
+### Cutting a release (Story 6.9, FR35/FR36)
+
+1. Ensure **`main`** is green (**`build.yml`**).
+2. Create an annotated or lightweight tag: **`git tag v0.4.0`** and **`git push origin v0.4.0`** (semver after **`v`**).
+3. **`release.yml`** builds notes from **`git log`** since the previous tag, attaches **`release-checklist-{tag}.md`** and the learner PDF, and updates **`CHANGELOG.md`** on **`main`** (requires **`contents: write`** and a **`main`** branch that allows the GitHub Actions bot to push — adjust branch protection if needed).
+4. Rollback: **`docs/_internal/rollback.md`**.
 
 ### PDF metadata (`_data/site.yaml`, Story 6.3)
 

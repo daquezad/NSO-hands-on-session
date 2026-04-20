@@ -81,6 +81,10 @@ ncs-make-package --service-skeleton python-and-template STATIC
 
 ### Step 3: Understand the package layout
 
+Open the project in VS Code and expand the explorer to the **packages** folder.
+
+![VS Code — open the NSO folder](assets/images/lab08/vscode-open-nso-folder.png)
+
 After the script finishes, **`STATIC/`** should resemble:
 
 ```text
@@ -95,6 +99,12 @@ STATIC/
     └── STATIC/
         └── main.py
 ```
+
+![VS Code explorer showing the STATIC package structure](assets/images/lab08/vscode-package-explorer.png)
+
+**`package-meta-data.xml`** contains the service version and other metadata.
+
+![package-meta-data.xml content](assets/images/lab08/vscode-package-meta-data.png)
 
 ### Step 4: Capture XML with commit dry-run
 
@@ -156,6 +166,12 @@ Uncommitted changes found, commit them? [yes/no/CANCEL] no
 
 ### Step 5: Populate the service template
 
+The generated skeleton includes an **XML template** and a **YANG model** — you will edit both.
+
+![Default STATIC-template.xml content](assets/images/lab08/vscode-xml-template-file.png)
+
+![Default STATIC.yang content](assets/images/lab08/vscode-yang-file.png)
+
 Copy only the **`router`** subtree (inside **`<config>`**) into **`STATIC-template.xml`**:
 
 ```xml
@@ -188,13 +204,19 @@ Replace literals with service inputs. Typical leaves:
 3. **Metric** (default **100**)
 4. **Description** (default **`set by NSO`**)
 
-#### Update `STATIC.yang`
-
-Make **`dest-prefix`** and **`fwd-address`** mandatory; give **`metric`** and **`description`** defaults (exact syntax follows your YANG tutorial).
+![Four variables identified: destination prefix, forwarding address, metric, description](assets/images/lab08/slide-variables-identification.png)
 
 #### Update `STATIC-template.xml`
 
 Reference those leaves with your template engine’s variable syntax (for example `{$DEST}` / `{$CONTEXT}` patterns — follow the generated skeleton comments).
+
+![XML template with variable placeholders](assets/images/lab08/slide-xml-with-variables.png)
+
+#### Update `STATIC.yang`
+
+Make **`dest-prefix`** and **`fwd-address`** mandatory; give **`metric`** and **`description`** defaults (exact syntax follows your YANG tutorial).
+
+![YANG model with leaf definitions and defaults](assets/images/lab08/slide-yang-with-variables.png)
 
 ### Step 7: Compile the package
 
@@ -217,22 +239,72 @@ make
 
 1. Web UI → **ncs:packages → Actions → Reload**.
 2. Confirm **result** is **true**.
+
+![Packages reload — result true](assets/images/lab08/webui-packages-reload-true.png)
+
 3. Verify package **STATIC** appears.
+
+![STATIC package listed after reload](assets/images/lab08/webui-packages-static-listed.png)
 
 ### Step 9: Deploy the service instance
 
-1. **Homepage → Services → STATIC**.
-2. **+ Add service** — name it (for example **`static-11.11.11.11`**).
-3. Fill **dest-prefix**, **fwd-address**, attach devices **xr-1** and **xr-2** (defaults for metric/description if shown).
-4. **Commit Manager → config** — inspect diff; use **native config** if offered.
-5. **Commit**.
+1. **Homepage → Services**.
+
+![Services section on the NSO homepage](assets/images/lab08/webui-services-homepage.png)
+
+2. Select the **STATIC** service.
+
+![Select the STATIC service](assets/images/lab08/webui-services-static-select.png)
+
+3. **+ Add service** — click the **+** button.
+
+![Click + Add service](assets/images/lab08/webui-services-add-instance.png)
+
+4. Name it (for example **`static-11.11.11.11`**) and fill **dest-prefix**, **fwd-address**.
+
+![Enter service instance name and mandatory fields](assets/images/lab08/webui-services-instance-name.png)
+
+Service created — now attach devices.
+
+![Service instance created](assets/images/lab08/webui-services-instance-created.png)
+
+5. Attach devices **xr-1** and **xr-2** (defaults for metric/description if shown).
+
+![Add devices to the service instance](assets/images/lab08/webui-services-add-devices.png)
+
+6. **Commit Manager → config** — inspect diff; use **native config** if offered.
+
+![Commit Manager diff for the service deployment](assets/images/lab08/webui-service-commit-diff.png)
+
+![Native config view showing CLI commands NSO will send](assets/images/lab08/webui-service-native-config.png)
+
+7. **Commit**.
 
 ### Step 10: Test lifecycle (intentional drift)
 
 1. **Service Manager** — service should be **green** / in-sync after commit.
-2. **Simulate a problem (required for this lab):** on **each** device, **Device Manager → Edit Config**, delete the **static route** the service applied, **Commit** on the device context.
-3. Return to **Service Manager → Check-Sync** — expect a **red** / out-of-sync indication.
-4. Run **Re-deploy** on the service — NSO should push intent back to devices until the service is **green** again.
+
+![Service check-sync — green (in-sync) after deploy](assets/images/lab08/webui-service-check-sync-green.png)
+
+2. **Simulate a problem (required for this lab):** on **each** device, **Device Manager → Edit Config**, delete the **static route** the service applied.
+
+![Device Manager — select and delete the static route](assets/images/lab08/webui-device-delete-static.png)
+
+3. **Commit** the deletion on the device context.
+
+![Commit the device-level deletion](assets/images/lab08/webui-device-delete-commit.png)
+
+4. Return to **Service Manager → Check-Sync** — expect a **red** / out-of-sync indication.
+
+![Service check-sync — red (out-of-sync) after device drift](assets/images/lab08/webui-service-check-sync-red.png)
+
+![Out-of-sync detail showing the drift](assets/images/lab08/webui-service-check-sync-red-detail.png)
+
+5. Run **Re-deploy** on the service — NSO should push intent back to devices until the service is **green** again.
+
+![Select Re-deploy from the service actions](assets/images/lab08/webui-service-redeploy.png)
+
+![Service check-sync — green again after re-deploy](assets/images/lab08/webui-service-redeploy-green.png)
 
 !!! tip "Key takeaway"
     Services are **self-healing** for configuration they own: drift is visible, and **re-deploy** reapplies the service’s intended configuration.

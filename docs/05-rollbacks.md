@@ -44,10 +44,18 @@ NSO creates a **rollback file** for every commit so you can revert configuration
 2. Click **Load/Save**.
 3. Select the rollback file that corresponds to the state **before** the Lab 4 address change (metadata shows **User**, **Northbound interface**, timestamp — pick the rollback that restores **10.1.1.3** on the interface).
 
+![Commit Manager Load/Save — Rollbacks tab showing recent commits by admin via webui](assets/images/lab05/webui-rollback-load-save.png)
+
 ### Step 2: Load the rollback
 
 1. Click **Load** — the revert appears as a **candidate** configuration.
-2. Review the diff, then **Commit** to apply.
+2. Review the diff: the rollback reverses Lab 4's change (**10.1.1.30** removed → **10.1.1.3** restored).
+
+![Rollback diff — ip 10.1.1.30 (red, removed) → ip 10.1.1.3 (green, restored)](assets/images/lab05/webui-rollback-diff-loaded.png)
+
+3. Click **Commit** to apply.
+
+![Commit confirmation for the rollback — click Yes, commit](assets/images/lab05/webui-rollback-commit-result.png)
 
 ### Step 3: Verify on the device
 

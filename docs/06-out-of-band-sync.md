@@ -78,8 +78,12 @@ interface Loopback100
 
 In the NSO Web UI, run **Check-Sync** on **xr-1**.
 
+![Check-Sync result — xr-1 is out-of-sync (transaction hash mismatch)](assets/images/lab06/webui-check-sync-out-of-sync.png)
+
 !!! danger "Out-of-sync alert"
     NSO typically shows a **red** indicator because the device differs from the CDB. Open **Compare-config** to see the out-of-band change.
+
+![Compare config shows Loopback 100 with description "out-of-band change" added on the device](assets/images/lab06/webui-compare-config-loopback.png)
 
 ### Step 4: Resolve with Sync-To vs Sync-From
 
@@ -93,11 +97,15 @@ To **remove** the loopback and match the prior NSO-known state, use **Sync-To**.
 ### Step 5: Execute Sync-To
 
 1. Select **xr-1** in the Web UI.
-2. Run **Sync-To** and wait for success.
+2. Open the actions menu and choose **Sync to**.
+
+![Device actions dropdown with Sync to highlighted](assets/images/lab06/webui-device-actions-sync-to.png)
 
 ### Step 6: Verify reconciliation
 
-Run **Check-Sync** again — status should be **green**.
+Run **Check-Sync** again — both devices should show **in-sync**.
+
+![Check-Sync after Sync-To — both xr-1 and xr-2 report in-sync](assets/images/lab06/webui-check-sync-both-in-sync.png)
 
 On the device:
 

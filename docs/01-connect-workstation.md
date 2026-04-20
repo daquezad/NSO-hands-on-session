@@ -43,20 +43,28 @@ You will use the **linux-host** Ubuntu desktop and its integrated terminal for a
 
 1. From the lab environment, select **Ubuntu 24.04 Desktop** (recommended) or **Win11** if you must use Windows for this session.
 2. Open **VM Console** from the **Remote Access** menu (wording may vary slightly by platform).
+
+![Lab portal — select the VM and open VM Console from Remote Access](assets/images/01/lab-portal-vm-console.png)
+
 3. On Windows, if you see “You’re almost done setting up your PC,” choose **Remind me in 3 days** to reach the desktop.
+
+![Windows desktop after initial setup prompt](assets/images/01/windows-desktop-setup.png)
 
 Wait until you see the desktop background and can move the pointer inside the VM.
 
 ### Step 2: Orient yourself on the desktop
 
-The figure below is a **placeholder** for a workbook screenshot—your live console shows the actual vendor chrome.
+Alternatively, if you chose **Ubuntu 24.04 Desktop**, you will see a desktop similar to this:
 
-![Ubuntu desktop with VS Code and integrated terminal open on linux-host](assets/images/01/ubuntu-workstation-placeholder.png)
+![Ubuntu 24.04 Desktop — VM Console view](assets/images/01/ubuntu-desktop-vm-console.png)
 
 ### Step 3: Open Visual Studio Code and the integrated terminal
 
 1. Open **Visual Studio Code** from the applications menu or the dock.
 2. Open the integrated terminal (**Terminal → New Terminal** or the shortcut shown in your environment).
+
+![VS Code with the integrated terminal open](assets/images/01/vscode-terminal-open.png)
+
 3. Stay in this terminal for command examples in later labs.
 
 ### Step 4: Confirm the workstation hostname
