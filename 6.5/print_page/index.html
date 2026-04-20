@@ -932,7 +932,7 @@
 <h2 id="02-install-nso-neds-learning-objectives">Learning Objectives<a class="headerlink" href="#02-install-nso-neds-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
-<li>Locate and extract the NSO free-trial installer for the release pinned in this workbook (<code>{{ nso_version }}</code>).</li>
+<li>Locate and extract the NSO free-trial installer for the release pinned in this workbook (<code>6.5</code>).</li>
 <li>Perform a local NSO install, create an instance, and confirm the daemon is running.</li>
 <li>Install the Cisco IOS-XR NED package and reload packages in the Web UI.</li>
 </ul>
@@ -942,26 +942,26 @@
 <h2 id="02-install-nso-neds-prerequisites">Prerequisites<a class="headerlink" href="#02-install-nso-neds-prerequisites" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#01-connect-workstation">Lab 1: Connect to the Workstation</a> completed — you have a shell on <strong>linux-host</strong>.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The NSO free-trial bundle for this workbook is available under your home directory (folder name may match <code>NSO-{{ nso_version }}-free</code> or your site’s layout — adjust paths below if your facilitator uses a different bundle).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The NSO free-trial bundle for this workbook is available under your home directory (folder name may match <code>NSO-6.5-free</code> or your site’s layout — adjust paths below if your facilitator uses a different bundle).</li>
 </ul>
 <h2 id="02-install-nso-neds-procedure">Procedure<a class="headerlink" href="#02-install-nso-neds-procedure" title="Permanent link">&para;</a></h2>
-<p>Commands use <strong><code>{{ nso_version }}</code></strong> so they track <code>mkdocs.yml</code> <code>extra.nso_version</code>. If your lab still ships a different directory name, substitute your path <strong>inside the command fences</strong> only.</p>
+<p>Commands use <strong><code>6.5</code></strong> so they track <code>mkdocs.yml</code> <code>extra.nso_version</code>. If your lab still ships a different directory name, substitute your path <strong>inside the command fences</strong> only.</p>
 <h3 id="02-install-nso-neds-step-1-locate-the-installer-files">Step 1: Locate the installer files<a class="headerlink" href="#02-install-nso-neds-step-1-locate-the-installer-files" title="Permanent link">&para;</a></h3>
 <p>Open VS Code and work in the <strong>Terminal</strong> panel (or any shell on <strong>linux-host</strong>).</p>
 <p><img alt="VS Code connected via SSH to linux-host with terminal open" src="../assets/images/lab02/vscode-terminal-open.png" /></p>
 <p>Navigate to the NSO installer directory and list the available binaries:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#02-install-nso-neds-__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-free/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#02-install-nso-neds-__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-6.5-free/
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#02-install-nso-neds-__codelineno-0-2"></a>ls<span class="w"> </span>*.bin
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="signed.bin list"></span></p>
 <p><em>Expected output:</em></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#02-install-nso-neds-__codelineno-1-1"></a>ncs-{{ nso_version }}-cisco-asa-6.x-freetrial.signed.bin
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#02-install-nso-neds-__codelineno-1-2"></a>ncs-{{ nso_version }}-cisco-ios-6.x-freetrial.signed.bin
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#02-install-nso-neds-__codelineno-1-3"></a>ncs-{{ nso_version }}-cisco-iosxr-7.x-freetrial.signed.bin
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#02-install-nso-neds-__codelineno-1-4"></a>ncs-{{ nso_version }}-cisco-nx-5.x-freetrial.signed.bin
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#02-install-nso-neds-__codelineno-1-5"></a>nso-{{ nso_version }}-freetrial.container-image-build.linux.x86_64.signed.bin
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#02-install-nso-neds-__codelineno-1-6"></a>nso-{{ nso_version }}-freetrial.container-image-prod.linux.x86_64.signed.bin
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#02-install-nso-neds-__codelineno-1-7"></a>nso-{{ nso_version }}-freetrial.linux.x86_64.signed.bin
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#02-install-nso-neds-__codelineno-1-1"></a>ncs-6.5-cisco-asa-6.x-freetrial.signed.bin
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#02-install-nso-neds-__codelineno-1-2"></a>ncs-6.5-cisco-ios-6.x-freetrial.signed.bin
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#02-install-nso-neds-__codelineno-1-3"></a>ncs-6.5-cisco-iosxr-7.x-freetrial.signed.bin
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#02-install-nso-neds-__codelineno-1-4"></a>ncs-6.5-cisco-nx-5.x-freetrial.signed.bin
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#02-install-nso-neds-__codelineno-1-5"></a>nso-6.5-freetrial.container-image-build.linux.x86_64.signed.bin
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#02-install-nso-neds-__codelineno-1-6"></a>nso-6.5-freetrial.container-image-prod.linux.x86_64.signed.bin
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#02-install-nso-neds-__codelineno-1-7"></a>nso-6.5-freetrial.linux.x86_64.signed.bin
 </span></code></pre></div>
 <p><em>(Exact NED patch versions may differ; you need the Linux <code>nso-…freetrial.linux.x86_64.signed.bin</code> and the IOS-XR <code>ncs-…-cisco-iosxr-….signed.bin</code>.)</em></p>
 <h3 id="02-install-nso-neds-step-2-extract-the-nso-installer">Step 2: Extract the NSO installer<a class="headerlink" href="#02-install-nso-neds-step-2-extract-the-nso-installer" title="Permanent link">&para;</a></h3>
@@ -970,16 +970,16 @@
 
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#02-install-nso-neds-__codelineno-2-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>work
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#02-install-nso-neds-__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>work
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#02-install-nso-neds-__codelineno-2-3"></a>bash<span class="w"> </span>../nso-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-freetrial.linux.x86_64.signed.bin<span class="w"> </span>--skip-verification
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#02-install-nso-neds-__codelineno-2-3"></a>bash<span class="w"> </span>../nso-6.5-freetrial.linux.x86_64.signed.bin<span class="w"> </span>--skip-verification
 </span></code></pre></div>
 <h3 id="02-install-nso-neds-step-3-install-nso-locally">Step 3: Install NSO locally<a class="headerlink" href="#02-install-nso-neds-step-3-install-nso-locally" title="Permanent link">&para;</a></h3>
 <p>Run the extracted installer with the <code>--local-install</code> flag:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#02-install-nso-neds-__codelineno-3-1"></a>bash<span class="w"> </span>nso-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>.linux.x86_64.installer.bin<span class="w"> </span>--local-install<span class="w"> </span>~/NSO-INSTALL
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#02-install-nso-neds-__codelineno-3-1"></a>bash<span class="w"> </span>nso-6.5.linux.x86_64.installer.bin<span class="w"> </span>--local-install<span class="w"> </span>~/NSO-INSTALL
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="NCS installation complete"></span></p>
 <p><em>Expected output:</em></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#02-install-nso-neds-__codelineno-4-1"></a>INFO  Using temporary directory /tmp/ncs_installer.XXXXXX to stage NCS installation bundle
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#02-install-nso-neds-__codelineno-4-2"></a>INFO  Unpacked ncs-{{ nso_version }} in /home/cisco/NSO-INSTALL
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#02-install-nso-neds-__codelineno-4-2"></a>INFO  Unpacked ncs-6.5 in /home/cisco/NSO-INSTALL
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#02-install-nso-neds-__codelineno-4-3"></a>INFO  Found and unpacked corresponding DOCUMENTATION_PACKAGE
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#02-install-nso-neds-__codelineno-4-4"></a>INFO  Found and unpacked corresponding EXAMPLE_PACKAGE
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#02-install-nso-neds-__codelineno-4-5"></a>INFO  Found and unpacked corresponding JAVA_PACKAGE
@@ -1003,7 +1003,7 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#02-install-nso-neds-__codelineno-7-1"></a>README.ncs  logs  ncs-cdb  ncs.conf  packages  scripts  state
 </span></code></pre></div>
 <h3 id="02-install-nso-neds-step-6-configure-webui-access">Step 6: Configure WebUI access<a class="headerlink" href="#02-install-nso-neds-step-6-configure-webui-access" title="Permanent link">&para;</a></h3>
-<p>Starting with <strong>NSO {{ nso_version }}</strong>, WebUI and RESTCONF may only allow access via the server hostname. To allow access by <strong>IP address</strong>, edit <strong><code>ncs.conf</code></strong> in your instance (for example <code>~/NSO-INSTALL/nso-instance/ncs.conf</code> — confirm with your facilitator).</p>
+<p>Starting with <strong>NSO 6.5</strong>, WebUI and RESTCONF may only allow access via the server hostname. To allow access by <strong>IP address</strong>, edit <strong><code>ncs.conf</code></strong> in your instance (for example <code>~/NSO-INSTALL/nso-instance/ncs.conf</code> — confirm with your facilitator).</p>
 <ol>
 <li>Open <code>ncs.conf</code> and find the <strong><code>&lt;webui&gt;</code></strong> … <strong><code>&lt;/webui&gt;</code></strong> block (create it under the top-level config if your template does not include it).</li>
 <li><strong>Inside <code>&lt;webui&gt;</code></strong>, add a <strong><code>&lt;server-alias&gt;</code></strong> whose value is the <strong>same IPv4 address</strong> learners will type in the browser (the management address of <strong>linux-host</strong> running NSO — <strong>not</strong> the router address from Lab 4).</li>
@@ -1049,12 +1049,12 @@
 <h4 id="02-install-nso-neds-extract-the-ned-package">Extract the NED package<a class="headerlink" href="#02-install-nso-neds-extract-the-ned-package" title="Permanent link">&para;</a></h4>
 <!-- lint-skip: no-output -->
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#02-install-nso-neds-__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-free/work/
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#02-install-nso-neds-__codelineno-13-2"></a>bash<span class="w"> </span>../ncs-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-cisco-iosxr-7.x-freetrial.signed.bin<span class="w"> </span>--skip-verification
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#02-install-nso-neds-__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-6.5-free/work/
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#02-install-nso-neds-__codelineno-13-2"></a>bash<span class="w"> </span>../ncs-6.5-cisco-iosxr-7.x-freetrial.signed.bin<span class="w"> </span>--skip-verification
 </span></code></pre></div>
 <p><em>(Replace <code>7.x</code> in the filename with the exact IOS-XR NED package name from <code>ls *.bin</code> in Step 1 if it differs.)</em></p>
 <h4 id="02-install-nso-neds-copy-the-ned-archive-into-the-instance">Copy the NED archive into the instance<a class="headerlink" href="#02-install-nso-neds-copy-the-ned-archive-into-the-instance" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#02-install-nso-neds-__codelineno-14-1"></a>cp<span class="w"> </span>ncs-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-cisco-iosxr-*.tar.gz<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#02-install-nso-neds-__codelineno-14-1"></a>cp<span class="w"> </span>ncs-6.5-cisco-iosxr-*.tar.gz<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="packages"></span></p>
 <p><em>Expected output:</em></p>
@@ -1097,7 +1097,7 @@
 <p class="admonition-title">Rollback</p>
 <p>If you must discard this install and start over on the same VM (destructive):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#02-install-nso-neds-__codelineno-18-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#02-install-nso-neds-__codelineno-18-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL<span class="w"> </span>~/NSO-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-free/work/nso-instance
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#02-install-nso-neds-__codelineno-18-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL<span class="w"> </span>~/NSO-6.5-free/work/nso-instance
 </span></code></pre></div>
 <p>Prefer <strong><a href="#reset-lab">Reset the Lab</a></strong> (snapshot restore) when the system is in an unknown state.</p>
 </div>
@@ -1131,7 +1131,7 @@
 <p>You should see <strong>xr-1</strong> and <strong>xr-2</strong> with the same <code>ios-xr/xrd-control-plane</code> image (tag may differ from the example). Other lab containers (for example <strong>source</strong> / <strong>dest</strong>) may appear — that is expected.</p>
 <h3 id="03-register-xrd-routers-step-2-load-device-definitions">Step 2: Load device definitions<a class="headerlink" href="#03-register-xrd-routers-step-2-load-device-definitions" title="Permanent link">&para;</a></h3>
 <p>A prepared XML template defines both routers. From the bundle directory (adjust if your site places <code>devices.xml</code> elsewhere):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#03-register-xrd-routers-__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-<span class="o">{{</span><span class="w"> </span>nso_version<span class="w"> </span><span class="o">}}</span>-free/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#03-register-xrd-routers-__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-6.5-free/
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#03-register-xrd-routers-__codelineno-2-2"></a>ncs_load<span class="w"> </span>-l<span class="w"> </span>-m<span class="w"> </span>devices.xml
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="ncs_load"></span></p>
