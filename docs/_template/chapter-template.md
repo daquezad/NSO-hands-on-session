@@ -6,7 +6,7 @@
 # ============================================================
 title: "Lab N: Your Lab Title Here"
 chapter: 0                          # integer — matches the NN prefix of the filename
-nso_version: "{{ nso_version }}"    # injected from mkdocs.yml extra.nso_version at build time
+
 ned_versions:                        # list — at least one entry; use exact version strings
   - "cisco-ios-cli-6.x"
   - "cisco-iosxr-cli-7.x"

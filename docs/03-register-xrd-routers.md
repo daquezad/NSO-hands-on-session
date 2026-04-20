@@ -1,7 +1,7 @@
 ---
 title: "Lab 3: Register XRd Routers"
 chapter: 3
-nso_version: "{{ nso_version }}"
+
 ned_versions:
   - "cisco-iosxr-cli-7.x"
 estimated_duration: "20 min"

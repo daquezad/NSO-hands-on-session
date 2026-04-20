@@ -1,7 +1,7 @@
 ---
 title: "Lab 9: RBAC Access Control"
 chapter: 9
-nso_version: "{{ nso_version }}"
+
 ned_versions:
   - "cisco-iosxr-cli-7.x"
 estimated_duration: "30 min"

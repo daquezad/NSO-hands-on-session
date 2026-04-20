@@ -1,7 +1,7 @@
 ---
 title: "Lab 7: Device Groups & Templates"
 chapter: 7
-nso_version: "{{ nso_version }}"
+
 ned_versions:
   - "cisco-iosxr-cli-7.x"
 estimated_duration: "25 min"

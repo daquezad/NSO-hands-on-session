@@ -1,7 +1,7 @@
 ---
 title: "Lab 1: Connect to the Workstation"
 chapter: 1
-nso_version: "{{ nso_version }}"
+
 ned_versions:
   - "cisco-ios-cli-6.x"
   - "cisco-iosxr-cli-7.x"

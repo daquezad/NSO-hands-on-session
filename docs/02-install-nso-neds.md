@@ -1,7 +1,7 @@
 ---
 title: "Lab 2: Install NSO and NEDs"
 chapter: 2
-nso_version: "{{ nso_version }}"
+
 ned_versions:
   - "cisco-ios-cli-6.x"
   - "cisco-iosxr-cli-7.x"
