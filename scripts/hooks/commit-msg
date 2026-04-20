@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Conventional Commits (AR19) — optional local hook. Install: ./scripts/install-hooks.sh
+# Types: feat|fix|docs|chore|ci|refactor|lint|content — scope: ch03, scripts, workflow, repo, …
+
+set -euo pipefail
+
+msg_file="${1:?}"
+msg=$(cat "$msg_file")
+
+# Allow Git-generated merge/revert messages
+if echo "$msg" | grep -qE '^(Merge|Revert) '; then
+  exit 0
+fi
+
+pattern='^(feat|fix|docs|chore|ci|refactor|lint|content)(\([a-zA-Z0-9._-]+\))?: .+'
+
+if echo "$msg" | grep -qE "$pattern"; then
+  exit 0
+fi
+
+echo "commit-msg: message must match Conventional Commits (AR19)." >&2
+echo "  Expected: <type>(<scope>): <subject>" >&2
+echo "  Types: feat|fix|docs|chore|ci|refactor|lint|content" >&2
+echo "  Example: docs(ch03): fix procedure numbering" >&2
+echo "" >&2
+echo "Got:" >&2
+echo "$msg" >&2
+exit 1

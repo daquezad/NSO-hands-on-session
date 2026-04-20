@@ -1,0 +1,16 @@
+# Curated hosts for AR13 rule 6b (external http/https links outside code fences).
+# One host per line; inline # starts a comment. Hostnames are matched case-insensitively.
+# Always blocked (deny list in lint): fonts.googleapis.com, fonts.gstatic.com (AR17).
+
+# Local dev and lab VMs
+localhost
+127.0.0.1
+198.18.134.27
+
+# Source / docs (brownfield-approved references)
+github.com
+
+# Cisco (seed for sanctioned documentation links)
+www.cisco.com
+developer.cisco.com
+learningnetwork.cisco.com

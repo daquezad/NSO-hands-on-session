@@ -1,0 +1,11 @@
+%% Reference topology — official device names (UX-DR11). Cisco palette: primary #0A60FF, navy #0C2340
+flowchart LR
+  host["linux-host"]
+  nso["nso-server"]
+  xr1["xr-1"]
+  xr2["xr-2"]
+  host <--> nso
+  xr1 <--> nso
+  xr2 <--> nso
+  classDef cisco fill:#0A60FF,stroke:#0C2340,stroke-width:2px,color:#fff
+  class host,nso,xr1,xr2 cisco

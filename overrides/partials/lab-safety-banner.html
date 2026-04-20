@@ -1,0 +1,6 @@
+{# Lab safety notice — wired for AR13 rule 11; content from mkdocs.yml extra.LAB_SAFETY_MESSAGE #}
+{% if config.extra and config.extra.LAB_SAFETY_MESSAGE %}
+<div class="md-banner lab-safety-banner" role="status" data-lab-safety="true">
+  {{ config.extra.LAB_SAFETY_MESSAGE }}
+</div>
+{% endif %}

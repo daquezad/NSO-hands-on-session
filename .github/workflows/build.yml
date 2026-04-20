@@ -1,0 +1,20 @@
+# PR + main — full CI (reusable job). Deploy is workflow_run in deploy.yml (Story 6.7, AR9).
+name: Build
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: ./.github/workflows/_build.yml
+    with:
+      check_pr_title: ${{ github.event_name == 'pull_request' }}

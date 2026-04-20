@@ -1,0 +1,50 @@
+# Shared setup for Build / Deploy / Release (Story 6.7, AR9, DRY).
+name: Setup toolchain
+description: Python 3.12, pip deps, optional Node/npm and Chromium (Lighthouse + PDF).
+inputs:
+  install_npm:
+    description: Install Node 20 and run npm ci (Story 3.11 quality gates)
+    required: false
+    default: "true"
+  install_chromium:
+    description: Install Chromium for Lighthouse and make pdf
+    required: false
+    default: "true"
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install Python dependencies
+      shell: bash
+      run: pip install -r requirements.txt
+
+    - uses: actions/setup-node@v4
+      if: inputs.install_npm == 'true'
+      with:
+        node-version: "20"
+        cache: npm
+        cache-dependency-path: package-lock.json
+
+    - name: Install npm tools (Lighthouse + axe)
+      if: inputs.install_npm == 'true'
+      shell: bash
+      run: npm ci
+
+    - name: Install Chromium
+      if: inputs.install_chromium == 'true'
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-browser || sudo apt-get install -y chromium
+        CHROME="$(command -v chromium-browser || command -v chromium || true)"
+        echo "CHROME_PATH=$CHROME" >> "$GITHUB_ENV"

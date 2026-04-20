@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PDF engine spike — representative corpus</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.45; max-width: 48rem; margin: 1rem auto; color: #111; }
+    h1 { font-size: 1.5rem; border-bottom: 1px solid #ccc; padding-bottom: 0.25rem; }
+    h2 { font-size: 1.2rem; margin-top: 1.5rem; }
+    pre, code { font-family: ui-monospace, monospace; background: #f6f8fa; border: 1px solid #d0d7de; }
+    pre { padding: 0.75rem; overflow-x: auto; }
+    .admonition { border-left: 4px solid #0969da; padding: 0.5rem 1rem; background: #f6f8fa; margin: 1rem 0; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.35rem 0.5rem; text-align: left; }
+    a { color: #0969da; }
+    ul { margin: 0.5rem 0 0 1.25rem; }
+  </style>
+</head>
+<body>
+  <h1>Lab 8 — Spike corpus (not production content)</h1>
+  <p>Standalone HTML for Chromium vs WeasyPrint comparison. Mirrors workbook patterns: headings, admonition-like block, code, table, link.</p>
+
+  <div class="admonition">
+    <strong>Note.</strong> This block stands in for Material admonitions in the real MkDocs build.
+  </div>
+
+  <h2>Procedure</h2>
+  <p>Run a command and verify output:</p>
+  <pre><code>show packages package state</code></pre>
+
+  <h2>Verification table</h2>
+  <table>
+    <thead><tr><th>Check</th><th>Expected</th></tr></thead>
+    <tbody>
+      <tr><td>Service</td><td>reachable</td></tr>
+      <tr><td>Template</td><td>committed</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Reference</h2>
+  <p>See <a href="https://example.invalid/spike-test">example link target</a> (invalid host — tests link preservation in PDF).</p>
+
+  <ul>
+    <li>First bullet for list semantics.</li>
+    <li>Second bullet.</li>
+  </ul>
+</body>
+</html>

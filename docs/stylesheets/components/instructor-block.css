@@ -1,0 +1,85 @@
+/**
+ * Instructor note panel (Epic 5 Story 5.3, UX-DR12) — facilitator-only macro output.
+ * Learner builds omit the macro entirely (no CSS-hidden placeholders).
+ */
+
+.instructor-notes {
+  --instructor-notes-accent: var(--cisco-blue, #0a60ff);
+  margin: var(--space-md, 1rem) 0;
+  padding: var(--space-md, 1rem) var(--space-md, 1rem) var(--space-md, 1rem)
+    calc(var(--space-md, 1rem) + 3px);
+  border-radius: 4px;
+  border: 1px solid var(--color-paired-gutter, #d0d7de);
+  border-left: 3px solid var(--instructor-notes-accent);
+  background: var(--color-code-bg, #f6f8fa);
+  color: var(--md-typeset-color, #0c2340);
+}
+
+[data-md-color-scheme="slate"] .instructor-notes,
+[data-md-color-scheme="cisco-dark"] .instructor-notes {
+  background: var(--cisco-bg-inset, #051525);
+  border-color: rgba(255, 255, 255, 0.12);
+  --instructor-notes-accent: var(--cisco-cyan, #02c8ff);
+}
+
+.instructor-notes__title {
+  margin: 0 0 var(--space-sm, 0.75rem);
+  font-size: var(--fs-h3, 1.1rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.instructor-notes__body {
+  margin: 0;
+}
+
+.instructor-notes__body > :first-child {
+  margin-top: 0;
+}
+
+.instructor-notes__body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Lab 8 choreography variant — stronger hierarchy for pause / narration sections */
+.instructor-notes--choreography .instructor-notes__body h3,
+.instructor-notes--choreography .instructor-notes__body h4 {
+  margin-top: var(--space-md, 1rem);
+  margin-bottom: var(--space-xs, 0.35rem);
+  font-size: var(--fs-body, 0.95rem);
+  font-weight: 600;
+  color: var(--cisco-navy, #0c2340);
+}
+
+[data-md-color-scheme="slate"] .instructor-notes--choreography .instructor-notes__body h3,
+[data-md-color-scheme="slate"] .instructor-notes--choreography .instructor-notes__body h4,
+[data-md-color-scheme="cisco-dark"] .instructor-notes--choreography .instructor-notes__body h3,
+[data-md-color-scheme="cisco-dark"] .instructor-notes--choreography .instructor-notes__body h4 {
+  color: var(--md-typeset-color, #e6edf3);
+}
+
+.instructor-notes .md-typeset a:focus-visible {
+  outline: 2px solid var(--cisco-blue, #0a60ff);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .instructor-notes {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  .instructor-notes {
+    border: 1pt solid #000;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .instructor-notes__title::after {
+    content: " — Instructor notes";
+    font-weight: 500;
+    font-size: 0.85em;
+  }
+}

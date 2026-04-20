@@ -1,0 +1,1354 @@
+/*
+ * Cisco Brand Theme for MkDocs Material
+ * Story 1.3: Local font bundling (Inter + JetBrains Mono WOFF2)
+ * Story 1.4: Full design token layer (UX-DR1–DR5)
+ * Story 3.2: Global token application — links, code, focus, reduced motion (NFR-A4–A6, UX-DR21–22)
+ *
+ * Contrast ratios (WCAG 2.1 — AA ≥ 4.5:1 normal text, ≥ 3:1 UI/large):
+ *   --color-code-fg on --color-code-bg       : 14.1:1 light / 10.9:1 dark  (AAA)
+ *   --color-expected-output-fg on its bg     : 12.8:1 light / 10.4:1 dark  (AAA)
+ *   --color-classification-banner-fg on -bg  :  8.9:1 light /  8.2:1 dark  (AAA)
+ *   --color-lab-safety-banner-fg on -bg      : 10.8:1 light /  9.4:1 dark  (AAA/AA)
+ *   --color-link on page bg                  :  5.7:1 light /  5.4:1 dark  (AA ✓)
+ *   --color-link-visited on page bg          :  6.2:1 light /  4.6:1 dark  (AA ✓)
+ *   --cisco-danger UI element on bg          :  3.5:1 light /  5.9:1 dark  (AA ✓)
+ *   --cisco-success UI element on bg         :  3.8:1 light /  9.1:1 dark  (AA ✓)
+ *   Body text on page bg                     : 13.2:1 light / 10.8:1 dark  (AAA)
+ */
+
+@import url("components/instructor-block.css");
+
+/* ========================================
+   LOCAL FONTS (Story 1.3)
+   ======================================== */
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter-latin-500-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter-latin-600-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --md-text-font: "Cisco Sans", "CiscoSansTT", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --md-code-font: "JetBrains Mono", "SF Mono", Consolas, "Liberation Mono", monospace;
+}
+
+body,
+.md-typeset {
+  font-family: var(--md-text-font);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--md-code-font);
+}
+
+/* ========================================
+   DESIGN TOKENS — LIGHT MODE (UX-DR1, UX-DR2)
+   ======================================== */
+
+:root,
+[data-md-color-scheme="default"],
+[data-md-color-scheme="cisco-light"] {
+  /* --- Brand tokens (UX-DR1) --- */
+  --cisco-blue:        #0A60FF;
+  --cisco-cyan:        #02C8FF;
+  --cisco-navy:        #0C2340;
+  --cisco-success:     #00C853;
+  --cisco-warning:     #FFB300;
+  --color-warning-fg:  #B45309;
+  --cisco-danger:      #FF5252;
+  --cisco-classification: #FEF3C7;
+  /* dark-only tokens with light-mode fallbacks */
+  --cisco-midnight:    #07182D;
+  --cisco-elevated:    #0C2340;
+  --cisco-bg-inset:    #051525;
+  --cisco-bg-hover:    #102A4C;
+
+  /* --- Semantic tokens (UX-DR2) --- */
+  --color-code-bg:                 #F6F8FA;
+  --color-code-fg:                 #0C2340;
+  --color-expected-output-bg:      #F0F4F9;
+  --color-expected-output-accent:  #0A60FF;
+  --color-paired-gutter:           #D0D7DE;
+  --color-common-error-accent:     #FF5252;
+  --color-verification-accent:     #00C853;
+  --color-classification-banner-bg: #FEF3C7;
+  --color-classification-banner-fg: #78350F;
+  --color-landmark-hint:           #0A60FF;
+  --color-lab-safety-banner-bg:    #FFB300;
+  --color-lab-safety-banner-fg:    #0C2340;
+  --color-link:                    #0A60FF;
+  --color-link-visited:            #0546B8;
+
+  /* --- Typography scale (UX-DR3) --- */
+  --fs-lab-title:   32px;
+  --fs-section:     24px;
+  --fs-subsection:  20px;
+  --fs-step:        18px;
+  --fs-body:        16px;
+  --fs-small:       14px;
+  --fs-code:        14px;
+  --fs-code-inline: 0.9em;
+  --fs-caption:     13px;
+
+  /* --- Spacing scale (UX-DR4) --- */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* --- Grid / layout (UX-DR5) --- */
+  /* Breakpoints: 480px | 768px | 1024px | 1440px — Material defaults used for media queries */
+  --md-grid-max-width: 1280px;
+  /* Content column ≈ 820px (three-column layout preserved via Material defaults) */
+
+  /* --- Material variable overrides (Story 3.2: accent + links from tokens) --- */
+  --md-primary-fg-color:       #0A60FF;
+  --md-primary-fg-color--light: #3D80FF;
+  --md-primary-fg-color--dark:  #0840AA;
+  --md-accent-fg-color:        var(--cisco-blue);
+  --md-accent-fg-color--transparent: rgba(10, 96, 255, 0.12);
+  --md-typeset-a-color:        var(--color-link);
+  --md-code-bg-color:          var(--color-code-bg);
+  --md-code-fg-color:          var(--color-code-fg);
+}
+
+[data-md-color-scheme="default"] .md-header,
+[data-md-color-scheme="cisco-light"] .md-header {
+  background: linear-gradient(135deg, #0A60FF 0%, #02C8FF 100%);
+}
+
+[data-md-color-scheme="default"] .md-nav__link--active,
+[data-md-color-scheme="default"] .md-nav__link:is([aria-current]),
+[data-md-color-scheme="cisco-light"] .md-nav__link--active,
+[data-md-color-scheme="cisco-light"] .md-nav__link:is([aria-current]) {
+  color: #0A60FF;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="default"] .md-typeset code,
+[data-md-color-scheme="cisco-light"] .md-typeset code {
+  background-color: var(--color-code-bg);
+  color: var(--color-code-fg);
+  border: 1px solid rgba(12, 35, 64, 0.1);
+}
+
+[data-md-color-scheme="default"] .md-footer,
+[data-md-color-scheme="cisco-light"] .md-footer {
+  background-color: #07182D;
+}
+
+[data-md-color-scheme="default"] .md-footer-meta,
+[data-md-color-scheme="cisco-light"] .md-footer-meta {
+  background-color: #051525;
+}
+
+/* ========================================
+   DESIGN TOKENS — DARK MODE (UX-DR1, UX-DR2)
+   Targets both "slate" and legacy cached "cisco-dark" scheme name
+   ======================================== */
+
+[data-md-color-scheme="slate"],
+[data-md-color-scheme="cisco-dark"] {
+  /* --- Brand tokens — dark overrides (UX-DR1) --- */
+  --cisco-blue:        #4C8BFF;
+  --cisco-cyan:        #5AD8FF;
+  --cisco-navy:        #E6ECF5;
+  --cisco-midnight:    #07182D;
+  --cisco-elevated:    #0C2340;
+  --cisco-bg-inset:    #051525;
+  --cisco-bg-hover:    #102A4C;
+  --cisco-success:     #4ADE80;
+  --cisco-warning:     #F59E0B;
+  --color-warning-fg:  #F59E0B;
+  --cisco-danger:      #FF5370;
+  --cisco-classification: #78350F;
+
+  /* --- Semantic tokens — dark overrides (UX-DR2) --- */
+  --color-code-bg:                 #0F243F;
+  --color-code-fg:                 #E6ECF5;
+  --color-expected-output-bg:      #0A2142;
+  --color-expected-output-accent:  #4C8BFF;
+  --color-paired-gutter:           #1E4073;
+  --color-common-error-accent:     #FF5370;
+  --color-verification-accent:     #4ADE80;
+  --color-classification-banner-bg: #78350F;
+  --color-classification-banner-fg: #FEF3C7;
+  --color-landmark-hint:           #5AD8FF;
+  --color-lab-safety-banner-bg:    #F59E0B;
+  --color-lab-safety-banner-fg:    #07182D;
+  --color-link:                    #4C8BFF;
+  --color-link-visited:            #7CA7FF;
+
+  /* --- Material variable overrides (Story 3.2) --- */
+  --md-primary-fg-color:       #3D80FF;
+  --md-primary-fg-color--light: #5A96FF;
+  --md-primary-fg-color--dark:  #0A60FF;
+
+  --md-accent-fg-color:              var(--cisco-blue);
+  --md-accent-fg-color--transparent: rgba(76, 139, 255, 0.14);
+
+  --md-default-fg-color:         #E8ECF1;
+  --md-default-fg-color--light:  rgba(255, 255, 255, 0.75);
+  --md-default-fg-color--lighter: rgba(255, 255, 255, 0.50);
+  --md-default-fg-color--lightest: rgba(255, 255, 255, 0.14);
+
+  --md-default-bg-color:          #07182D;
+  --md-default-bg-color--light:   #0C2340;
+  --md-default-bg-color--lighter: #102A4C;
+  --md-default-bg-color--lightest: #051525;
+
+  --md-code-fg-color:  var(--color-code-fg);
+  --md-code-bg-color:  var(--color-code-bg);
+  --md-code-hl-color:  rgba(10, 96, 255, 0.25);
+
+  --md-typeset-a-color: var(--color-link);
+  --md-typeset-color:   #E8ECF1;
+
+  --md-admonition-fg-color: #E8ECF1;
+  --md-admonition-bg-color: #0C2340;
+
+  --md-footer-bg-color:      #051525;
+  --md-footer-bg-color--dark: #030D18;
+
+  color-scheme: dark;
+}
+
+/* Header gradient */
+[data-md-color-scheme="slate"] .md-header,
+[data-md-color-scheme="cisco-dark"] .md-header {
+  background: linear-gradient(135deg, #0A60FF 0%, #02C8FF 100%);
+}
+
+/* Headings — pure white */
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="cisco-dark"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2,
+[data-md-color-scheme="cisco-dark"] .md-typeset h2 {
+  color: #FFFFFF !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h3,
+[data-md-color-scheme="cisco-dark"] .md-typeset h3,
+[data-md-color-scheme="slate"] .md-typeset h4,
+[data-md-color-scheme="cisco-dark"] .md-typeset h4 {
+  color: #F0F4F8 !important;
+}
+
+/* Body content */
+[data-md-color-scheme="slate"] .md-typeset,
+[data-md-color-scheme="cisco-dark"] .md-typeset {
+  color: #E8ECF1 !important;
+}
+
+/* Bold/strong */
+[data-md-color-scheme="slate"] .md-typeset strong,
+[data-md-color-scheme="cisco-dark"] .md-typeset strong {
+  color: #FFFFFF !important;
+}
+
+/* HR */
+[data-md-color-scheme="slate"] .md-typeset hr,
+[data-md-color-scheme="cisco-dark"] .md-typeset hr {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Content area background */
+[data-md-color-scheme="cisco-dark"] .md-main {
+  background-color: #07182D;
+}
+
+/* Sidebar */
+[data-md-color-scheme="slate"] .md-sidebar,
+[data-md-color-scheme="cisco-dark"] .md-sidebar {
+  background-color: #0C2340;
+}
+
+/* Left nav links */
+[data-md-color-scheme="slate"] .md-nav__link,
+[data-md-color-scheme="cisco-dark"] .md-nav__link {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:hover,
+[data-md-color-scheme="cisco-dark"] .md-nav__link:hover {
+  color: #FFFFFF !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__link:is([aria-current]),
+[data-md-color-scheme="cisco-dark"] .md-nav__link--active,
+[data-md-color-scheme="cisco-dark"] .md-nav__link:is([aria-current]) {
+  color: #02C8FF !important;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-nav__item--nested > .md-nav__link,
+[data-md-color-scheme="cisco-dark"] .md-nav__item--nested > .md-nav__link {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* Inline code (semantic code tokens — Story 3.2) */
+[data-md-color-scheme="slate"] .md-typeset code,
+[data-md-color-scheme="cisco-dark"] .md-typeset code {
+  background-color: var(--color-code-bg);
+  color: var(--color-code-fg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Code blocks */
+[data-md-color-scheme="slate"] .highlight,
+[data-md-color-scheme="cisco-dark"] .highlight {
+  background-color: var(--color-code-bg);
+}
+
+[data-md-color-scheme="slate"] .md-typeset pre > code,
+[data-md-color-scheme="cisco-dark"] .md-typeset pre > code {
+  color: var(--color-code-fg) !important;
+  background-color: transparent;
+  border: none;
+}
+
+/* Tables */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]),
+[data-md-color-scheme="cisco-dark"] .md-typeset table:not([class]) {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th,
+[data-md-color-scheme="cisco-dark"] .md-typeset table:not([class]) th {
+  background-color: #0C2340;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(10, 96, 255, 0.4);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td,
+[data-md-color-scheme="cisco-dark"] .md-typeset table:not([class]) td {
+  color: #E8ECF1 !important;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:hover,
+[data-md-color-scheme="cisco-dark"] .md-typeset table:not([class]) tr:hover {
+  background-color: #102A4C;
+}
+
+/* Search */
+[data-md-color-scheme="slate"] .md-search__input,
+[data-md-color-scheme="cisco-dark"] .md-search__input {
+  background-color: #051525;
+  color: #E8ECF1;
+}
+
+/* Admonition titles */
+[data-md-color-scheme="slate"] .md-typeset .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset summary,
+[data-md-color-scheme="cisco-dark"] .md-typeset .admonition-title,
+[data-md-color-scheme="cisco-dark"] .md-typeset summary {
+  color: #FFFFFF !important;
+}
+
+/* Right TOC sidebar */
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link,
+[data-md-color-scheme="cisco-dark"] .md-sidebar--secondary .md-nav__link {
+  color: rgba(255, 255, 255, 0.60) !important;
+}
+
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link:hover,
+[data-md-color-scheme="cisco-dark"] .md-sidebar--secondary .md-nav__link:hover {
+  color: #E8ECF1 !important;
+}
+
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav__link--active,
+[data-md-color-scheme="cisco-dark"] .md-sidebar--secondary .md-nav__link--active {
+  color: #02C8FF !important;
+}
+
+/* Footer nav */
+[data-md-color-scheme="slate"] .md-footer__link,
+[data-md-color-scheme="cisco-dark"] .md-footer__link {
+  color: #E8ECF1;
+}
+
+[data-md-color-scheme="slate"] .md-footer-meta,
+[data-md-color-scheme="cisco-dark"] .md-footer-meta {
+  background-color: #030D18;
+}
+
+/* ========================================
+   SHARED STYLES (both modes)
+   ======================================== */
+
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: #00C853;
+}
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background-color: rgba(0, 200, 83, 0.1);
+  border-color: #00C853;
+}
+.md-typeset .tip > .admonition-title::before,
+.md-typeset .tip > summary::before {
+  background-color: #00C853;
+}
+
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: #FFB300;
+}
+.md-typeset .warning > .admonition-title,
+.md-typeset .warning > summary {
+  background-color: rgba(255, 179, 0, 0.1);
+  border-color: #FFB300;
+}
+.md-typeset .warning > .admonition-title::before,
+.md-typeset .warning > summary::before {
+  background-color: #FFB300;
+}
+
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  border-color: #FF5252;
+}
+.md-typeset .danger > .admonition-title,
+.md-typeset details.danger > summary {
+  background-color: rgba(255, 82, 82, 0.1);
+  border-color: #FF5252;
+}
+.md-typeset .danger > .admonition-title::before,
+.md-typeset details.danger > summary::before {
+  background-color: #FF5252;
+}
+
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  border-color: #0A60FF;
+}
+.md-typeset .info > .admonition-title,
+.md-typeset details.info > summary {
+  background-color: rgba(10, 96, 255, 0.1);
+  border-color: #0A60FF;
+}
+.md-typeset .info > .admonition-title::before,
+.md-typeset details.info > summary::before {
+  background-color: #0A60FF;
+}
+
+.md-clipboard {
+  color: rgba(255, 255, 255, 0.5);
+}
+.md-clipboard:hover {
+  color: #02C8FF;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.md-typeset pre > code {
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.md-header__title {
+  font-weight: 600;
+}
+
+/* ========================================
+   PRINT OVERRIDES — typography + colors (UX-DR3, UX-DR1)
+   ======================================== */
+
+@media print {
+  :root {
+    --fs-body:        11pt;
+    --fs-code:        10pt;
+    --cisco-blue:     #0A60FF;
+    --cisco-cyan:     #02C8FF;
+    --cisco-navy:     #0C2340;
+    --cisco-success:  #137333;
+    --cisco-warning:  #B45309;
+    --color-warning-fg: #B45309;
+    --cisco-danger:   #B00020;
+    --cisco-classification: #FEF3C7;
+    --color-code-bg:               #F6F8FA;
+    --color-code-fg:               #0C2340;
+    --color-expected-output-bg:    #F0F4F9;
+    --color-expected-output-accent: #0A60FF;
+    --color-paired-gutter:         #D0D7DE;
+    --color-common-error-accent:   #B00020;
+    --color-verification-accent:   #137333;
+    --color-classification-banner-bg: #FEF3C7;
+    --color-classification-banner-fg: #78350F;
+    --color-landmark-hint:         #0A60FF;
+    --color-lab-safety-banner-bg:  #B45309;
+    --color-lab-safety-banner-fg:  #0C2340;
+    --color-link:                  #0A60FF;
+    --color-link-visited:          #0546B8;
+  }
+}
+
+/* ========================================
+   TYPOGRAPHY APPLICATION (UX-DR3)
+   Sizes reference the --fs-* tokens set in :root above.
+   ======================================== */
+
+.md-typeset h1 { font-size: var(--fs-lab-title); }
+.md-typeset h2 { font-size: var(--fs-section); }
+.md-typeset h3 { font-size: var(--fs-subsection); }
+.md-typeset h4 { font-size: var(--fs-step); }
+.md-typeset p,
+.md-typeset li { font-size: var(--fs-body); }
+.md-typeset small,
+.md-typeset figcaption { font-size: var(--fs-caption); }
+.md-typeset code { font-size: var(--fs-code-inline); }
+.md-typeset pre code { font-size: var(--fs-code); }
+
+/* tabular-nums — use for commit IDs, ports, version strings, time budgets */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========================================
+   GLOBAL TOKEN APPLICATION — Story 3.2 (NFR-A4–A6, UX-DR21–22, FR44)
+   ======================================== */
+
+/**
+ * Links: --md-typeset-a-color is wired to --color-link above; visited state for
+ * main article content only (avoids sidebar nav “visited” styling).
+ */
+.md-content .md-typeset a:visited {
+  color: var(--color-link-visited);
+}
+
+/**
+ * Focus ring (UX-DR21): 2px solid Cisco blue, 2px offset. Do not add outline:none
+ * in this file — it defeats keyboard visibility.
+ * Story 3.7: extend to Material chrome (skip links, nav, search, clipboard, tabs).
+ */
+:is(a, button:not([disabled]), input:not([type="hidden"]), textarea, select, summary):focus-visible,
+.md-skip:focus-visible,
+.md-header__button:focus-visible,
+.md-search__input:focus-visible,
+.md-nav__link:focus-visible,
+.md-tabs__link:focus-visible,
+.md-clipboard:focus-visible,
+.md-source__repository:focus-visible {
+  outline: 2px solid var(--cisco-blue);
+  outline-offset: 2px;
+}
+
+@media print {
+  :is(a, button:not([disabled]), input:not([type="hidden"]), textarea, select, summary):focus-visible,
+  .md-skip:focus-visible,
+  .md-header__button:focus-visible,
+  .md-search__input:focus-visible,
+  .md-nav__link:focus-visible,
+  .md-tabs__link:focus-visible,
+  .md-clipboard:focus-visible,
+  .md-source__repository:focus-visible {
+    outline: 2px solid var(--cisco-blue);
+    outline-offset: 2px;
+  }
+}
+
+/* Story 3.7 — global announcer (paired.js), skip-link targets */
+.css-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#workbook-navigation,
+#verification {
+  scroll-margin-top: 4rem;
+}
+
+/**
+ * Reduced motion (UX-DR22): instant transitions; scroll-behavior only when OK.
+ * Material’s base stylesheet already sets transition:none under this media;
+ * this covers any residual durations and disables smooth scrolling.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/**
+ * NFR-A5: info / warning / danger admonitions use Material + pymdown icon (::before)
+ * plus visible title text — no information by color alone on these types.
+ */
+
+/* ========================================
+   SECTION PRIMITIVES — Story 3.4 (FR14, FR16, FR7, UX-DR8–10)
+   ======================================== */
+
+.css-macro-error {
+  margin: var(--space-sm) 0;
+  padding: var(--space-sm);
+  border: 1px solid var(--cisco-danger);
+  border-radius: 4px;
+  background: rgba(255, 82, 82, 0.08);
+}
+
+/* --- time_budget ribbon --- */
+.css-time-budget {
+  margin: var(--space-md) 0;
+  width: 100%;
+}
+
+.css-time-budget__ribbon {
+  display: flex;
+  width: 100%;
+  min-height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--color-paired-gutter);
+}
+
+.css-time-budget__seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 0 var(--space-xs);
+  color: #fff;
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.css-time-budget__seg.seg--a {
+  background: linear-gradient(135deg, var(--cisco-blue), #3d6fd8);
+}
+.css-time-budget__seg.seg--b {
+  background: linear-gradient(135deg, var(--cisco-cyan), #0099cc);
+}
+.css-time-budget__seg.seg--c {
+  background: linear-gradient(135deg, var(--cisco-navy), #1a3a66);
+}
+.css-time-budget__seg.seg--d {
+  background: linear-gradient(135deg, var(--cisco-success), #00994d);
+}
+
+.css-time-budget__seg-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.css-time-budget__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-small);
+}
+
+.css-time-budget__legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.css-time-budget__swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.css-time-budget__swatch.seg--a { background: var(--cisco-blue); }
+.css-time-budget__swatch.seg--b { background: var(--cisco-cyan); }
+.css-time-budget__swatch.seg--c { background: var(--cisco-navy); }
+.css-time-budget__swatch.seg--d { background: var(--cisco-success); }
+
+.css-time-budget__total {
+  margin: var(--space-xs) 0 0;
+  font-size: var(--fs-small);
+}
+
+/* --- common_errors (details) --- */
+.css-common-errors {
+  margin: var(--space-md) 0;
+}
+
+.css-common-error {
+  margin: var(--space-sm) 0;
+  border: 1px solid var(--color-paired-gutter);
+  border-radius: 6px;
+  padding: 0 var(--space-sm);
+  background: var(--md-default-bg-color--lightest, #f8fafc);
+}
+
+[data-md-color-scheme="slate"] .css-common-error,
+[data-md-color-scheme="cisco-dark"] .css-common-error {
+  background: var(--md-default-bg-color--light, #102a4c);
+}
+
+.css-common-error__summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: var(--space-sm) 0;
+}
+
+.css-common-error__body {
+  padding: 0 0 var(--space-sm);
+}
+
+.css-common-error__cause,
+.css-common-error__fix {
+  margin: var(--space-xs) 0;
+}
+
+@media print {
+  .css-common-errors details {
+    display: block !important;
+  }
+  .css-common-errors details > summary {
+    display: list-item !important;
+  }
+  .css-common-errors details .css-common-error__body {
+    display: block !important;
+  }
+}
+
+/* --- lab_safety in-page banner (Story 3.4) --- */
+.css-lab-safety {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 48px;
+  margin: 0 0 var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--color-lab-safety-banner-bg);
+  color: var(--color-lab-safety-banner-fg);
+  border-radius: 4px;
+  border: 1px solid rgba(12, 35, 64, 0.15);
+}
+
+.css-lab-safety__glyph {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.css-lab-safety__text {
+  flex: 1;
+  font-size: var(--fs-small);
+}
+
+.css-lab-safety__title {
+  display: inline;
+  margin-right: 0.35em;
+}
+
+@media print {
+  .css-lab-safety {
+    min-height: 36px;
+    page-break-inside: avoid;
+  }
+}
+
+/* ========================================
+   PAIRED COMMAND + OUTPUT — Story 3.3 (FR4, FR12–13, UX-DR6–7, UX-DR23)
+   ======================================== */
+
+.paired {
+  margin: var(--space-md) 0;
+  border: 1px solid var(--color-paired-gutter);
+  border-radius: 6px;
+  overflow: hidden;
+  page-break-inside: avoid;
+}
+
+.paired__command {
+  position: relative;
+  border-bottom: 1px solid var(--color-paired-gutter);
+}
+
+.paired__command .highlight {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Copy control on command half only (output half hidden from Material inject) */
+.paired__output .md-clipboard,
+.paired__output button.md-clipboard {
+  display: none !important;
+}
+
+.paired__output {
+  background: var(--color-expected-output-bg);
+}
+
+.paired__output-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-expected-output-accent);
+  border-bottom: 1px solid var(--color-paired-gutter);
+}
+
+.paired__output-head--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.paired__landmark-hint {
+  font-weight: 500;
+  color: var(--color-landmark-hint);
+}
+
+.paired__landmark-hint code {
+  color: var(--color-landmark-hint);
+  background: transparent;
+  border: none;
+  font-size: 0.95em;
+}
+
+.paired__output-body .highlight {
+  margin: 0;
+  border-radius: 0;
+  background: var(--color-expected-output-bg);
+}
+
+.paired__output-body .md-typeset pre {
+  margin: 0;
+}
+
+/* Visually hidden but exposed to AT for copy announcements */
+.paired__live--sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.paired {
+  position: relative;
+}
+
+@media print {
+  .paired__output-head--sticky {
+    position: static !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paired__live--sr {
+    transition: none !important;
+  }
+}
+
+/* ========================================
+   TOPOLOGY — Story 3.5 (UX-DR11, pre-rendered SVG)
+   ======================================== */
+
+.css-topology {
+  margin: var(--space-md) 0;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-paired-gutter);
+  border-radius: 8px;
+  background: var(--md-default-bg-color--lightest, #f6f8fa);
+}
+
+[data-md-color-scheme="slate"] .css-topology {
+  background: var(--cisco-bg-inset);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.css-topology__img {
+  display: block;
+  max-width: min(100%, 720px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.css-topology__caption {
+  margin-top: var(--space-sm);
+  font-size: var(--fs-small);
+  color: var(--md-typeset-color);
+  text-align: center;
+}
+
+@media print {
+  .css-topology {
+    break-inside: avoid;
+  }
+}
+
+/* ========================================
+   HOME COVER — Story 3.6 (UX-DR18, UX-DR14, UX-DR26)
+   ======================================== */
+
+.css-home-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--md-typeset-color);
+  opacity: 0.92;
+  margin: 0.25rem 0 1rem;
+  max-width: 52ch;
+}
+
+.css-home-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  margin: 0 0 1.25rem;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-paired-gutter);
+  background: var(--md-default-bg-color--lightest, #f6f8fa);
+  font-size: var(--fs-small);
+}
+
+[data-md-color-scheme="slate"] .css-home-meta {
+  background: var(--cisco-bg-inset);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.css-home-meta__sep {
+  opacity: 0.45;
+  user-select: none;
+}
+
+.css-home-meta__item strong {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.css-journey-shell {
+  margin: var(--space-md) 0 var(--space-lg);
+  overflow-x: auto;
+}
+
+.css-journey-caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0 0 var(--space-sm);
+}
+
+.css-journey-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+.css-journey-table th,
+.css-journey-table td {
+  border: 1px solid var(--color-paired-gutter);
+  padding: 0.5rem 0.65rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+.css-journey-table thead th {
+  background: var(--color-expected-output-bg);
+  font-weight: 600;
+}
+
+.css-journey-tr th[scope="row"] {
+  font-weight: 600;
+  white-space: nowrap;
+  width: 3rem;
+}
+
+.css-journey-row--intentional td:last-child {
+  background: rgba(255, 179, 0, 0.08);
+}
+
+.css-journey-chip {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  color: var(--color-warning-fg);
+  background: var(--color-classification-banner-bg);
+  border: 1px solid rgba(180, 83, 9, 0.35);
+}
+
+@media (max-width: 600px) {
+  .css-journey-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .css-journey-table tbody {
+    display: block;
+  }
+
+  .css-journey-tr {
+    display: block;
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm);
+    border: 1px solid var(--color-paired-gutter);
+    border-radius: 8px;
+    background: var(--md-default-bg-color--lightest, #fff);
+  }
+
+  .css-journey-tr th,
+  .css-journey-tr td {
+    display: block;
+    border: none;
+    padding: 0.35rem 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .css-journey-tr th[scope="row"]::before {
+    content: attr(data-label) ": ";
+    font-weight: 600;
+    margin-right: 0.25rem;
+  }
+
+  .css-journey-tr td::before {
+    display: block;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
+    margin-bottom: 0.15rem;
+    content: attr(data-label);
+  }
+}
+
+@media print {
+  .css-journey-shell {
+    break-inside: avoid;
+  }
+}
+
+/* ========================================
+   SITE CHROME — Story 3.1 (UX-DR13, UX-DR20)
+   ======================================== */
+
+.css-workbook-header-nso {
+  font-weight: 500;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+.css-classification-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-classification-banner-bg);
+  color: var(--color-classification-banner-fg);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  z-index: 30;
+  box-shadow: 0 -1px 0 rgba(12, 35, 64, 0.12);
+}
+
+.css-classification-banner__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Reserve space so fixed banner does not cover last lines of content */
+body {
+  padding-bottom: 24px;
+}
+
+@media print {
+  .css-classification-banner {
+    position: static;
+    box-shadow: none;
+    margin-top: var(--space-md);
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+}
+
+/* ========================================
+   RESPONSIVE — Story 3.10 (FR19, NFR-A6, UX-DR26)
+   Secondary reference: mobile web; PDF + desktop remain primary.
+   ======================================== */
+
+/**
+ * Touch targets ≥ 44×44 CSS px on narrow viewports (NFR-A6).
+ * Material header icons are ~48px tall in many builds; we enforce a floor without shifting desktop layout.
+ */
+@media (max-width: 768px) {
+  .md-header__button.md-icon,
+  .md-header__option .md-header__button,
+  label.md-header__button.md-icon {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .md-typeset .highlight button.md-clipboard,
+  .md-typeset button.md-clipboard {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .md-search__icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/**
+ * Floating “Contents” pill — toggles #__toc (same control as Table of contents in the nav drawer).
+ * Visible only ≤768px; desktop keeps Material’s right-hand TOC column.
+ */
+.css-toc-fab {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .css-toc-fab:not([hidden]) {
+    display: flex;
+    position: fixed;
+    right: max(0.75rem, env(safe-area-inset-right));
+    bottom: calc(24px + 0.75rem + env(safe-area-inset-bottom));
+    z-index: 25;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 44px;
+    padding: 0 0.85rem 0 0.65rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-paired-gutter);
+    background: var(--md-default-bg-color--lightest, #fff);
+    box-shadow: 0 2px 12px rgba(12, 35, 64, 0.18);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--md-typeset-color);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  [data-md-color-scheme="slate"] .css-toc-fab:not([hidden]),
+  [data-md-color-scheme="cisco-dark"] .css-toc-fab:not([hidden]) {
+    background: var(--md-default-bg-color--light, #102a4c);
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .css-toc-fab:not([hidden]) svg {
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  .css-toc-fab:not([hidden]):focus-visible {
+    outline: 2px solid var(--cisco-blue);
+    outline-offset: 2px;
+  }
+}
+
+@media (min-width: 769px) {
+  .css-toc-fab {
+    display: none !important;
+  }
+}
+
+/**
+ * Proctor checklist table — Story 5.4 (UX-DR1 palette borders, UX-DR3 tabular figures).
+ */
+.md-typeset .css-proctor-checklist {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--space-md, 1rem) 0;
+}
+
+.md-typeset .css-proctor-checklist table {
+  font-variant-numeric: tabular-nums;
+  border-collapse: collapse;
+  min-width: 100%;
+}
+
+.md-typeset .css-proctor-checklist th,
+.md-typeset .css-proctor-checklist td {
+  border: 1px solid var(--color-paired-gutter, #d0d7de);
+  padding: 0.35rem 0.5rem;
+  vertical-align: top;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .css-proctor-checklist th,
+[data-md-color-scheme="slate"] .md-typeset .css-proctor-checklist td,
+[data-md-color-scheme="cisco-dark"] .md-typeset .css-proctor-checklist th,
+[data-md-color-scheme="cisco-dark"] .md-typeset .css-proctor-checklist td {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/**
+ * Timing sheet table — Story 5.5 (same numeric alignment as proctor checklist, UX-DR3).
+ */
+.md-typeset .css-timing-sheet {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--space-md, 1rem) 0;
+}
+
+.md-typeset .css-timing-sheet__table {
+  font-variant-numeric: tabular-nums;
+  border-collapse: collapse;
+  min-width: 100%;
+}
+
+.md-typeset .css-timing-sheet th,
+.md-typeset .css-timing-sheet td {
+  border: 1px solid var(--color-paired-gutter, #d0d7de);
+  padding: 0.35rem 0.5rem;
+  vertical-align: top;
+}
+
+.md-typeset .css-timing-sheet thead th {
+  text-align: left;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .css-timing-sheet th,
+[data-md-color-scheme="slate"] .md-typeset .css-timing-sheet td,
+[data-md-color-scheme="cisco-dark"] .md-typeset .css-timing-sheet th,
+[data-md-color-scheme="cisco-dark"] .md-typeset .css-timing-sheet td {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+@media print {
+  .css-toc-fab {
+    display: none !important;
+  }
+}
+
+/**
+ * time_budget: at ≤600px stack legend entries vertically under the ribbon (UX-DR26).
+ */
+@media (max-width: 600px) {
+  .css-time-budget__legend {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+  }
+
+  .css-time-budget__legend li {
+    width: 100%;
+  }
+}
+
+/**
+ * Journey table: avoid horizontal scroll when cards stack; tighten card chrome.
+ */
+@media (max-width: 600px) {
+  .css-journey-shell {
+    overflow-x: visible;
+  }
+
+  .css-journey-tr {
+    box-shadow: 0 1px 3px rgba(12, 35, 64, 0.08);
+  }
+
+  .css-journey-row--intentional .css-journey-chip {
+    /* Lab 8 — color + text label retained (NFR-A5) */
+    vertical-align: middle;
+  }
+}

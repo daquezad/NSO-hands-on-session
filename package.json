@@ -1,0 +1,9 @@
+{
+  "name": "nso-workbook-ci-tools",
+  "private": true,
+  "description": "Pinned Lighthouse + axe-cli for PR quality gates (Story 3.11)",
+  "devDependencies": {
+    "@axe-core/cli": "4.10.2",
+    "lighthouse": "11.6.0"
+  }
+}

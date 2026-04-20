@@ -1,0 +1,125 @@
+---
+title: "Lab 5: Rollbacks"
+chapter: 5
+nso_version: "{{ nso_version }}"
+ned_versions:
+  - "cisco-iosxr-cli-7.x"
+estimated_duration: "25 min"
+prerequisites:
+  - "Lab 4: Configure Devices completed — you committed a change on xr-1 (for example IPv4 10.1.1.30 on GigabitEthernet0/0/0/0)."
+learning_objectives:
+  - "Locate rollback metadata in Commit Manager and load a rollback file."
+  - "Commit a loaded rollback as a new candidate and push it through Commit Manager."
+  - "Verify on the device that configuration matches the rollback (for example IPv4 10.1.1.3)."
+idempotent: true
+classification: "Cisco Confidential"
+---
+
+# Lab 5: Rollbacks
+
+## Learning Objectives
+
+By the end of this lab you will be able to:
+
+- Locate rollback metadata in **Commit Manager** and load a rollback file.
+- Commit a loaded rollback as a new candidate and complete the workflow in Commit Manager.
+- Verify on the device CLI that configuration matches the rolled-back state.
+
+## Time Budget
+
+{{ time_budget(total=25, segments=[[10,"Load rollback"],[15,"Verify on device"]]) }}
+
+## Prerequisites
+
+- [ ] [Lab 4: Configure Devices](04-configure-devices.md) completed — at least one successful **commit** exists so NSO generated rollback files.
+- [ ] You can open the NSO Web UI as **admin** and SSH from **linux-host** to **xr-1** (use the management IP from your lab sheet; examples use **198.51.100.2**).
+
+## Procedure
+
+NSO creates a **rollback file** for every commit so you can revert configuration changes safely.
+
+### Step 1: Open Commit Manager
+
+1. Go to **Commit Manager**.
+2. Click **Load/Save**.
+3. Select the rollback file that corresponds to the state **before** the Lab 4 address change (metadata shows **User**, **Northbound interface**, timestamp — pick the rollback that restores **10.1.1.3** on the interface).
+
+### Step 2: Load the rollback
+
+1. Click **Load** — the revert appears as a **candidate** configuration.
+2. Review the diff, then **Commit** to apply.
+
+### Step 3: Verify on the device
+
+SSH to **xr-1** and confirm the IPv4 address on the data interface is restored to **10.1.1.3**.
+
+<!-- lint-skip: no-output -->
+
+```bash
+ssh admin@198.51.100.2
+```
+
+*(Replace with your lab management address.)*
+
+At the XR prompt:
+
+```cli
+show run interface gigabitEthernet 0/0/0/0
+```
+
+{{ expected_output(landmark="10.1.1.3") }}
+
+*Expected output:*
+
+```text
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.1.1.3 255.255.255.0
+!
+```
+
+*(Timestamps and comments may vary.)*
+
+!!! tip "Key takeaway"
+    Every NSO commit is reversible. Rollback files are your safety net when testing configuration changes.
+
+{% if instructor %}
+!!! tip "Instructor"
+    **Duration:** +5 min if learners picked wrong rollback file. **FAQs:** No rollback listed — ensure Lab 4 commit completed. **Breaks:** Commit Manager empty — refresh Web UI session.
+{% endif %}
+
+## Verification
+
+Confirm the same address from NSO (optional second check):
+
+```bash
+source ~/NSO-INSTALL/ncsrc
+echo "show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address" | ncs_cli -u admin -C
+```
+
+{{ expected_output(landmark="10.1.1.3") }}
+
+*Expected output:*
+
+```text
+address 10.1.1.3 255.255.255.0
+```
+
+## Common Errors
+
+{{ common_errors_start() }}
+
+{{ common_error(
+  "Load is greyed out or rollback list is empty.",
+  "No prior commit in this session, or wrong NSO instance.",
+  "Confirm you committed at least one change in Lab 4; check **Commit Manager** history and lab instructions for the correct instance path."
+) }}
+
+{{ common_error(
+  "Device still shows 10.1.1.30 after commit.",
+  "Wrong rollback selected, or commit not applied to devices.",
+  "Re-open the diff in Commit Manager, pick the rollback whose metadata matches the pre-change state, commit again, then re-run Check-Sync / sync-to if your site requires it."
+) }}
+
+{{ common_errors_end() }}
+
+If you cannot find a suitable rollback file or loads fail repeatedly, see **[Reset the Lab](reset-lab.md)** for VM-level reset options.

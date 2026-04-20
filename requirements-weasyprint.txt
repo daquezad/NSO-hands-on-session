@@ -1,0 +1,3 @@
+# Optional — WeasyPrint fallback for `PDF_ENGINE_FORCE_FAIL=1` / AR6 (Story 6.2).
+# Install system libraries first on Linux (see WeasyPrint docs). Exact pin (NFR-S4).
+weasyprint==66.0

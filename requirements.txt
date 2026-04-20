@@ -1,0 +1,7 @@
+mkdocs-material==9.7.6
+mkdocs-macros-plugin==1.5.0
+mkdocs-print-site-plugin==2.8
+mike==2.1.4
+PyYAML==6.0.1
+beautifulsoup4==4.12.3
+pypdf==5.1.0

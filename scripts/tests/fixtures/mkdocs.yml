@@ -1,0 +1,5 @@
+# Minimal mkdocs stub for lint fixtures — only `extra` keys matter for rule 7.
+site_name: lint-fixtures
+extra:
+  nso_version: "6.3"
+  generator: false

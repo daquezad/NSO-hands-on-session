@@ -1,0 +1,16 @@
+# Story 6.6 — Allowed external hostnames for built HTML + learner PDF link annotations.
+# Subdomains match: `github.com` allows `api.github.com` unless you list a more specific rule.
+# Keep in sync with authoring intent (NFR-S3, FR38). Changes require review.
+
+blocked_hosts:
+  - fonts.googleapis.com
+  - fonts.gstatic.com
+
+hosts:
+  - github.com
+  - www.cisco.com
+  - developer.cisco.com
+  - learningnetwork.cisco.com
+  - localhost
+  - 127.0.0.1
+  - 198.18.134.27

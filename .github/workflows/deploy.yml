@@ -1,0 +1,85 @@
+# After a successful Build on main — `mike deploy` to `gh-pages` (Story 6.8).
+# Pages source must be the **gh-pages** branch (not “GitHub Actions” static upload).
+name: Deploy
+
+on:
+  workflow_run:
+    workflows:
+      - Build
+    types:
+      - completed
+
+concurrency:
+  group: deploy-pages-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.public_url.outputs.url }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+
+      - name: Public site URL (mike + smoke check)
+        id: public_url
+        run: |
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          echo "url=https://${OWNER}.github.io/${REPO}/" >> "$GITHUB_OUTPUT"
+          echo "SITE_URL=https://${OWNER}.github.io/${REPO}/" >> "$GITHUB_ENV"
+
+      - uses: ./.github/actions/setup-toolchain
+        with:
+          install_npm: "true"
+          install_chromium: "true"
+
+      - name: Rebuild learner site + PDF (same commit as green Build)
+        run: |
+          set -euo pipefail
+          make build-learner
+          make pdf
+
+      - name: Upload learner PDF (main-branch artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: learner-pdf-main-${{ github.event.workflow_run.run_number }}
+          path: dist/cisco-secure-services-nso-*.pdf
+          if-no-files-found: error
+
+      - name: Git identity for mike
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Mike deploy (NSO version + main alias — not latest)
+        run: |
+          set -euo pipefail
+          VERSION="$(python3 scripts/read_nso_version.py)"
+          mike deploy --push --ignore-remote-status "$VERSION" main --update-aliases
+
+      - name: Private Pages smoke check (FR33 / NFR-S2)
+        env:
+          CHECK_URL: ${{ steps.public_url.outputs.url }}
+        run: |
+          set -euo pipefail
+          CODE="$(curl -sS -L -o /dev/null -w "%{http_code}" --max-time 45 "${CHECK_URL}" || echo "000")"
+          echo "HTTP ${CODE} for unauthenticated GET ${CHECK_URL}"
+          if [[ "$CODE" == "200" ]]; then
+            echo "::warning::Anonymous request returned 200 — verify repository Pages visibility is **private** to the org (Settings → Pages → Visibility)."
+          fi
+          if [[ "$CODE" == "000" ]]; then
+            echo "::notice::Could not reach site (network or Pages not provisioned yet)."
+          fi

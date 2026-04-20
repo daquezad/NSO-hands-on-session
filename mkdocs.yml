@@ -1,0 +1,129 @@
+site_name: NSO Hands-On Training Workbook
+site_description: Cisco Network Services Orchestrator - Hands-On Lab Guide
+site_author: Customer Success Specialists - Internet and Mass Scale Infrastructure
+copyright: "&copy; Cisco Confidential"
+# Public site URL — required for mike version links/redirects. Override locally: SITE_URL=http://127.0.0.1:8000/
+site_url: !ENV [SITE_URL, "http://127.0.0.1:8000/"]
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  font: false
+  icon:
+    logo: material/console-network
+    repo: fontawesome/brands/github
+  favicon: assets/images/favicon.png
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+    - search.share
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
+  - assets/css/print.css
+
+extra_javascript:
+  - javascripts/paired.js
+  - javascripts/common-errors.js
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.mark
+  - pymdownx.keys
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+# Learner-only omission for `instructor-artifacts/**` is enforced in `hooks.py` (`on_files` + `on_nav`).
+# A global `exclude_docs` glob for that path would also exclude these pages from instructor builds.
+exclude_docs: |
+  _template/**
+  _bmad*/**
+  _internal/**
+
+hooks:
+  - hooks.py
+
+plugins:
+  - search
+  - macros:
+      module_name: main
+  # Story 6.8 — versioned docs; must run before print-site.
+  - mike:
+      alias_type: redirect
+      canonical_version: latest
+  # Story 6.2 — must remain last so the print page sees final nav/content (mkdocs-print-site-plugin).
+  - print-site:
+      add_to_navigation: false
+      print_page_title: NSO Hands-On Training Workbook (print)
+      print_page_basename: print_page
+      add_cover_page: true
+      cover_page_template: overrides/cover_page.tpl
+      add_full_urls: true
+
+nav:
+  - Home: index.md
+  - Lab Guide:
+    - 1. Connect to the Workstation: 01-connect-workstation.md
+    - 2. Install NSO and NEDs: 02-install-nso-neds.md
+    - 3. Register XRd Routers: 03-register-xrd-routers.md
+    - 4. Configure Devices: 04-configure-devices.md
+    - 5. Rollbacks: 05-rollbacks.md
+    - 6. Out-of-Band Sync: 06-out-of-band-sync.md
+    - 7. Device Groups & Templates: 07-device-groups-templates.md
+    - 8. Create a Service: 08-create-service.md
+    - 9. RBAC Access Control: 09-rbac-access-control.md
+    - "Reset the Lab": reset-lab.md
+    - "Reset lab test log": reset-lab-log.md
+    - "Responsive check log": responsive-check-log.md
+    - "Scrub protocol": scrub-protocol.md
+    - "Second-pair scrub log": scrub-logs/second-pair-review.md
+
+extra:
+  version:
+    provider: mike
+  nso_version: "6.3"          # stub — update when workbook targets a specific NSO release
+  LAB_SAFETY_MESSAGE: "Lab safety — follow your site’s electrical and equipment guidelines."
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/daquezad/NSO-hands-on-session
+  generator: false

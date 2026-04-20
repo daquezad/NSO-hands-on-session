@@ -1,0 +1,6 @@
+# NFR-A8 — max axe violation *count* per page before CI emits a warning (warn-only).
+# Tighten keys after running `npx @axe-core/cli` on main and recording stable counts.
+violations_max:
+  home: 100
+  lab1: 100
+  lab8: 100

@@ -1,0 +1,13 @@
+# Headless Chromium pin for PDF build pipeline (NFR-R1, AR2).
+# Updated via PR with architecture sign-off (NFR-S4 supply-chain integrity).
+# Consumed by: scripts/build_pdf.py (Story 3 — v0.3 PDF prototype).
+#
+# Value is TBD until Story 3 (v0.3 PDF prototype, architecture.md line 508)
+# locks the Chromium version. Story 1.2 creates the manifest file and the
+# pinning contract; Story 3 fills in the version string.
+
+chromium_channel = stable
+chromium_version = TBD-pinned-at-v0.3-prototype
+source_url = https://pypi.org/project/pyppeteer/  # or equivalent vendor source
+pinned_date = 2026-04-17
+pinned_by = CX engineering (Story 1.2)

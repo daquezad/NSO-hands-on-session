@@ -1,0 +1,66 @@
+# docs/_template/schema.yaml
+# AR14 frontmatter schema — machine-readable format consumed by scripts/lint_authoring.py (Story 2.3, rule 1).
+#
+# Schema format: each top-level key is a frontmatter field.
+# Fields:
+#   type        : Python type name(s) — "str", "int", "bool", "list[str]"
+#   required    : true / false
+#   enum        : allowed values (if constrained); lint fails on any value not in this list
+#   pattern     : regex the value must match (for str fields)
+#   description : human-readable intent (not used by lint; for authoring reference)
+
+title:
+  type: str
+  required: true
+  description: "Full lab title including the 'Lab N:' prefix. Must match the H1 heading."
+
+chapter:
+  type: int
+  required: true
+  description: "Integer chapter number. Must match the NN prefix of the filename."
+
+nso_version:
+  type: str
+  required: true
+  description: "NSO release this lab targets. Use the mkdocs.yml macro {{ nso_version }} for auto-injection."
+
+ned_versions:
+  type: list[str]
+  required: true
+  description: "One or more NED version strings (e.g. 'cisco-iosxr-cli-7.x'). At least one entry required."
+
+estimated_duration:
+  type: str
+  required: true
+  pattern: "^\\d+ min$"
+  description: "Estimated lab duration in the format '<integer> min' (e.g. '45 min')."
+
+prerequisites:
+  type: list[str]
+  required: true
+  description: "Ordered list of prerequisites. At least one entry. Reference prior lab numbers where applicable."
+
+learning_objectives:
+  type: list[str]
+  required: true
+  description: "Ordered list of learning objectives. At least one entry. Each must start with an action verb."
+
+idempotent:
+  type: bool
+  required: true
+  enum:
+    - true
+    - false
+  description: "True if the Procedure section can be safely re-run from any point without side effects."
+
+classification:
+  type: str
+  required: true
+  enum:
+    - "Cisco Confidential"
+  description: "Data classification. LITERAL 'Cisco Confidential' — no other value is permitted."
+
+instructor_pace_note:
+  type: str
+  required: false
+  description: "Optional facilitator-only pacing hint (Story 5.5); shown on instructor timing sheet only."

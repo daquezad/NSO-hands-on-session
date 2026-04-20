@@ -1,0 +1,17 @@
+site/
+site-instructor/
+# BMAD planning / module tooling (not part of the published workbook)
+_bmad-output/
+_bmad/
+.cursor/
+.DS_Store
+node_modules/
+lh-home.json
+lh-lab8.json
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+*.docx
+*.pdf

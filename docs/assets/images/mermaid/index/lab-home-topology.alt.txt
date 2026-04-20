@@ -1,0 +1,1 @@
+Lab reference topology: linux-host workstation, nso-server orchestrator, and xr-1 and xr-2 XRd routers. All devices interconnect for hands-on NSO labs.

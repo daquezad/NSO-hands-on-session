@@ -1,0 +1,14 @@
+{# Print layout — same head + lab-safety as main (Story 3.1 + AR13 rule 11). #}
+{% extends "base.html" %}
+{% block extrahead %}
+  {{ super() }}
+  <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+{% block announce %}
+  {{ super() }}
+  {# Lab safety: Story 3.4 — in-page macro on home + Lab 8 only. #}
+{% endblock %}
+{% block scripts %}
+  <div id="css-a11y-announcer" class="css-sr-only" aria-live="polite" aria-atomic="true" role="status"></div>
+  {{ super() }}
+{% endblock %}

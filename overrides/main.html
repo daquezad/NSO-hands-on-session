@@ -1,0 +1,29 @@
+{# Override extension point for Material theme — Story 3.1: robots noindex + lab safety; Story 3.7: global copy announcer. #}
+{% extends "base.html" %}
+{% block extrahead %}
+  {{ super() }}
+  <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+{% block announce %}
+  {{ super() }}
+  {# Lab safety: Story 3.4 — use {{ lab_safety(...) }} in index.md and Lab 8 only (see lint rule 11). #}
+{% endblock %}
+{% block header %}
+  {{ super() }}
+  {# Story 3.10: floating pill toggles Material’s #__toc (drawer / secondary sidebar). Hidden on 404 until __toc exists. #}
+  <label class="css-toc-fab" for="__toc" title="Table of contents" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M3 14h4v-2H3v2zm0 5h4v-2H3v2zm0-10h4V7H3v2zm5 5h14v-2H8v2zm0 5h14v-2H8v2zM8 7v2h14V7H8z"/></svg>
+    <span class="css-toc-fab__text">Contents</span>
+  </label>
+{% endblock %}
+{% block scripts %}
+  <div id="css-a11y-announcer" class="css-sr-only" aria-live="polite" aria-atomic="true" role="status"></div>
+  {{ super() }}
+  <script>
+    (function () {
+      var toc = document.getElementById("__toc");
+      var fab = document.querySelector(".css-toc-fab");
+      if (toc && fab) fab.removeAttribute("hidden");
+    })();
+  </script>
+{% endblock %}

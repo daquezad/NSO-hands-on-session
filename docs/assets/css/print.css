@@ -1,0 +1,99 @@
+/*
+ * PDF / print-site only (Story 6.3). Loaded after screen `extra.css` for Chromium --print-to-pdf.
+ * Dynamic @page margin strings (NSO version) are injected into `print_page/index.html` in `hooks.py`
+ * so they stay aligned with `_data/versions.yaml`.
+ */
+
+/* Cover layout (plugin wraps template in #print-site-cover-page) */
+#print-site-cover-page .pdf-cover {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.pdf-cover__classification {
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.pdf-cover__title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+
+.pdf-cover__meta {
+  margin: 0.35rem 0;
+  font-size: 1rem;
+}
+
+.pdf-cover__bug {
+  margin-top: 2rem;
+}
+
+.pdf-cover__bug-link {
+  font-weight: 600;
+}
+
+@media print {
+  /* Reading order: cover → TOC → body (plugin order); avoid splitting headings where feasible */
+  #print-site-page h1,
+  #print-site-page h2,
+  #print-site-page h3,
+  #print-site-page h4 {
+    break-inside: avoid;
+    page-break-after: avoid;
+  }
+
+  #print-site-page h2,
+  #print-site-page h3,
+  #print-site-page h4 {
+    break-before: avoid;
+  }
+
+  /* Code: wrap / shrink instead of overflowing page width */
+  #print-site-page pre,
+  #print-site-page code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  #print-site-page .highlight pre {
+    max-width: 100%;
+  }
+
+  /* Admonitions + tables */
+  #print-site-page .admonition,
+  #print-site-page table {
+    break-inside: avoid;
+    max-width: 100%;
+  }
+
+  #print-site-page table {
+    table-layout: fixed;
+  }
+
+  /* Mermaid / diagram blocks (pre-rendered as img/svg in site) */
+  #print-site-page .mermaid,
+  #print-site-page img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Tabbed content: show all tabs in print (Material keeps active panel; avoid clipping) */
+  #print-site-page .tabbed-content {
+    break-inside: avoid;
+  }
+
+  /* Link legibility when printed (Material + print-site may add full URLs separately) */
+  #print-site-page a[href^="http"] {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
