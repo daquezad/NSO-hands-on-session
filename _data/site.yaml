@@ -1,5 +1,3 @@
 # Site / PDF metadata (Story 6.3). Merged into MkDocs `extra` by `hooks.on_config`.
-# Forks can point `bug_report_url` at an internal tracker without editing Python.
-#
-# GitHub accepts `title=`, `labels=`, and `template=` (template filename under .github/ISSUE_TEMPLATE/).
-bug_report_url: "https://github.com/daquezad/NSO-hands-on-session/issues/new?template=bug_report.md&title=Workbook%3A+&labels=bug"
+proctor_name: "David Quezada Rivero"
+team_name: "Internet and Mass Scale Infrastructure"
