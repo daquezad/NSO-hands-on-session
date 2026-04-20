@@ -897,9 +897,9 @@
 </span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC
 </span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>ncs
 </span></code></pre></div>
-<p>Then <strong>Reload packages</strong> in the Web UI and confirm <strong>STATIC</strong> is gone. Prefer <strong><a href="../reset-lab/">Reset the Lab</a></strong> if the NSO instance is inconsistent.</p>
+<p>Then <strong>Reload packages</strong> in the Web UI and confirm <strong>STATIC</strong> is gone.</p>
 </div>
-<p>If re-deploy cannot clear drift or the service model is inconsistent, use <strong>Commit Manager</strong> rollbacks first, then <strong><a href="../reset-lab/">Reset the Lab</a></strong> if you need a clean VM.</p>
+<p>If re-deploy cannot clear drift or the service model is inconsistent, use <strong>Commit Manager</strong> rollbacks first, then restore the VM snapshot if you need a clean start.</p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

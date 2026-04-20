@@ -583,7 +583,7 @@
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Commit fails or device shows out-of-sync after commit.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Another session holds a lock, or sync-from needed before edit.</p><p class="css-common-error__fix"><strong>Fix</strong> Close other NSO sessions, run check-sync, retry commit; see Lab 5 for rollback files.</p></div></details>
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: SSH to xr-1 refused or wrong interface output.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong management IP, routing from linux-host, or change not committed.</p><p class="css-common-error__fix"><strong>Fix</strong> Confirm IP in Web UI devices detail, ping from linux-host, re-check Commit Manager succeeded.</p></div></details>
 </div>
-<p>If commits leave the device and CDB out of sync, use Commit Manager rollbacks (see <a href="../05-rollbacks/">5. Rollbacks</a>) or <strong><a href="../reset-lab/">Reset the Lab</a></strong> for a broader recovery path.</p>
+<p>If commits leave the device and CDB out of sync, use Commit Manager rollbacks (see <a href="../05-rollbacks/">5. Rollbacks</a>).</p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

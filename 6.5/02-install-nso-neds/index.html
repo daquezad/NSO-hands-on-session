@@ -747,7 +747,7 @@
 <p>In the Web UI, confirm <strong>ncs:packages</strong> lists <strong>cisco-ios-xr</strong> (name may vary slightly by build).</p>
 <h2 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">¶</a></h2>
 <div aria-label="Common errors" class="css-common-errors" role="region">
-<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Installer or ncs-setup fails with permission or existing directory errors.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Prior partial install or wrong working directory leaves files in ~/NSO-INSTALL or work/.</p><p class="css-common-error__fix"><strong>Fix</strong> Stop NSO (`ncs --stop`), remove the partial trees after backup if needed, or restore the VM snapshot — see Rollback below and Reset the Lab.</p></div></details>
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Installer or ncs-setup fails with permission or existing directory errors.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Prior partial install or wrong working directory leaves files in ~/NSO-INSTALL or work/.</p><p class="css-common-error__fix"><strong>Fix</strong> Stop NSO (`ncs --stop`), remove the partial trees after backup if needed, or restore the VM snapshot.</p></div></details>
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Web UI returns connection refused or TLS errors after editing ncs.conf.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong server-alias IP, daemon not restarted, or firewall blocking the port.</p><p class="css-common-error__fix"><strong>Fix</strong> Fix `server-alias` to match how learners browse (IP vs hostname), restart `ncs`, and retest. Ask the class to use the exact URL you published.</p></div></details>
 </div>
 <div class="admonition warning">
@@ -756,9 +756,8 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 </span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL<span class="w"> </span>~/NSO-6.5-free/work/nso-instance
 </span></code></pre></div>
-<p>Prefer <strong><a href="../reset-lab/">Reset the Lab</a></strong> (snapshot restore) when the system is in an unknown state.</p>
 </div>
-<p>If NSO will not start or packages will not reload after multiple attempts, restore the VM snapshot and repeat this lab. Details: <strong><a href="../reset-lab/">Reset the Lab</a></strong>.</p>
+<p>If NSO will not start or packages will not reload after multiple attempts, restore the VM snapshot and repeat this lab.</p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

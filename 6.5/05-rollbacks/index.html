@@ -551,7 +551,7 @@
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Load is greyed out or rollback list is empty.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> No prior commit in this session, or wrong NSO instance.</p><p class="css-common-error__fix"><strong>Fix</strong> Confirm you committed at least one change in Lab 4; check **Commit Manager** history and lab instructions for the correct instance path.</p></div></details>
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Device still shows 10.1.1.30 after commit.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong rollback selected, or commit not applied to devices.</p><p class="css-common-error__fix"><strong>Fix</strong> Re-open the diff in Commit Manager, pick the rollback whose metadata matches the pre-change state, commit again, then re-run Check-Sync / sync-to if your site requires it.</p></div></details>
 </div>
-<p>If you cannot find a suitable rollback file or loads fail repeatedly, see <strong><a href="../reset-lab/">Reset the Lab</a></strong> for VM-level reset options.</p>
+<p>If you cannot find a suitable rollback file or loads fail repeatedly, restore the VM snapshot and retry.</p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

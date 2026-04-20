@@ -632,7 +632,7 @@
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Apply-Template returns failed or only one device updates.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Authgroup mapping, device lock, or template path not committed.</p><p class="css-common-error__fix"><strong>Fix</strong> Verify both devices in the group share credentials; check Commit Manager for errors, then sync-from on failing device.</p></div></details>
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: show run domain is empty after a successful apply.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Template targeted wrong NED branch or DNS not under domain in your IOS-XR model.</p><p class="css-common-error__fix"><strong>Fix</strong> Re-open the template in Configuration Editor, confirm **Domain** leaves exist in the diff, commit, and re-run Apply-Template.</p></div></details>
 </div>
-<p>If <strong>apply-template</strong> fails for all devices or leaves partial state, roll back the last commits or follow <strong><a href="../reset-lab/">Reset the Lab</a></strong>.</p>
+<p>If <strong>apply-template</strong> fails for all devices or leaves partial state, roll back the last commits or restore the VM snapshot.</p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

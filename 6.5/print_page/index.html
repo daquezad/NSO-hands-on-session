@@ -922,13 +922,13 @@
 <h2 id="01-connect-workstation-common-errors">Common Errors<a class="headerlink" href="#01-connect-workstation-common-errors" title="Permanent link">&para;</a></h2>
 <div class="css-common-errors" role="region" aria-label="Common errors">
 
-<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Black or frozen VM console after Remote Access.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Browser session timed out, GPU acceleration glitch, or console tab lost focus.</p><p class="css-common-error__fix"><strong>Fix</strong> Refresh the Remote Access page, close other heavy tabs, and reopen VM Console. If it persists, snapshot-restore per Reset the Lab.</p></div></details>
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Black or frozen VM console after Remote Access.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Browser session timed out, GPU acceleration glitch, or console tab lost focus.</p><p class="css-common-error__fix"><strong>Fix</strong> Refresh the Remote Access page, close other heavy tabs, and reopen VM Console. If it persists, restore the VM snapshot.</p></div></details>
 
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Integrated terminal in VS Code does not open or closes immediately.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> VS Code started before the desktop session finished loading, or extension host crashed.</p><p class="css-common-error__fix"><strong>Fix</strong> Quit VS Code fully and reopen from the menu. If needed, use an external terminal app temporarily and continue Lab 2 from there.</p></div></details>
 
 </div>
 
-<p>If the desktop or console is unusable after these steps, restore the lab VM snapshot and retry. For the full reset playbook, see <strong><a href="#reset-lab">Reset the Lab</a></strong>.</p></section><section class="print-page" id="02-install-nso-neds" heading-number="2.2"><h1 id="02-install-nso-neds-lab-2-install-nso-and-neds">Lab 2: Install NSO and NEDs<a class="headerlink" href="#02-install-nso-neds-lab-2-install-nso-and-neds" title="Permanent link">&para;</a></h1>
+<p>If the desktop or console is unusable after these steps, restore the lab VM snapshot and retry.</p></section><section class="print-page" id="02-install-nso-neds" heading-number="2.2"><h1 id="02-install-nso-neds-lab-2-install-nso-and-neds">Lab 2: Install NSO and NEDs<a class="headerlink" href="#02-install-nso-neds-lab-2-install-nso-and-neds" title="Permanent link">&para;</a></h1>
 <h2 id="02-install-nso-neds-learning-objectives">Learning Objectives<a class="headerlink" href="#02-install-nso-neds-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -1087,7 +1087,7 @@
 <h2 id="02-install-nso-neds-common-errors">Common Errors<a class="headerlink" href="#02-install-nso-neds-common-errors" title="Permanent link">&para;</a></h2>
 <div class="css-common-errors" role="region" aria-label="Common errors">
 
-<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Installer or ncs-setup fails with permission or existing directory errors.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Prior partial install or wrong working directory leaves files in ~/NSO-INSTALL or work/.</p><p class="css-common-error__fix"><strong>Fix</strong> Stop NSO (`ncs --stop`), remove the partial trees after backup if needed, or restore the VM snapshot — see Rollback below and Reset the Lab.</p></div></details>
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Installer or ncs-setup fails with permission or existing directory errors.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Prior partial install or wrong working directory leaves files in ~/NSO-INSTALL or work/.</p><p class="css-common-error__fix"><strong>Fix</strong> Stop NSO (`ncs --stop`), remove the partial trees after backup if needed, or restore the VM snapshot.</p></div></details>
 
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Web UI returns connection refused or TLS errors after editing ncs.conf.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong server-alias IP, daemon not restarted, or firewall blocking the port.</p><p class="css-common-error__fix"><strong>Fix</strong> Fix `server-alias` to match how learners browse (IP vs hostname), restart `ncs`, and retest. Ask the class to use the exact URL you published.</p></div></details>
 
@@ -1099,9 +1099,8 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#02-install-nso-neds-__codelineno-18-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#02-install-nso-neds-__codelineno-18-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL<span class="w"> </span>~/NSO-6.5-free/work/nso-instance
 </span></code></pre></div>
-<p>Prefer <strong><a href="#reset-lab">Reset the Lab</a></strong> (snapshot restore) when the system is in an unknown state.</p>
 </div>
-<p>If NSO will not start or packages will not reload after multiple attempts, restore the VM snapshot and repeat this lab. Details: <strong><a href="#reset-lab">Reset the Lab</a></strong>.</p></section><section class="print-page" id="03-register-xrd-routers" heading-number="2.3"><h1 id="03-register-xrd-routers-lab-3-register-xrd-routers">Lab 3: Register XRd Routers<a class="headerlink" href="#03-register-xrd-routers-lab-3-register-xrd-routers" title="Permanent link">&para;</a></h1>
+<p>If NSO will not start or packages will not reload after multiple attempts, restore the VM snapshot and repeat this lab.</p></section><section class="print-page" id="03-register-xrd-routers" heading-number="2.3"><h1 id="03-register-xrd-routers-lab-3-register-xrd-routers">Lab 3: Register XRd Routers<a class="headerlink" href="#03-register-xrd-routers-lab-3-register-xrd-routers" title="Permanent link">&para;</a></h1>
 <h2 id="03-register-xrd-routers-learning-objectives">Learning Objectives<a class="headerlink" href="#03-register-xrd-routers-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -1192,13 +1191,13 @@
 <h2 id="03-register-xrd-routers-common-errors">Common Errors<a class="headerlink" href="#03-register-xrd-routers-common-errors" title="Permanent link">&para;</a></h2>
 <div class="css-common-errors" role="region" aria-label="Common errors">
 
-<details class="css-common-error"><summary class="css-common-error__summary">Symptom: docker ps does not list xr-1 and xr-2.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Containers stopped, Docker not running, or wrong host session.</p><p class="css-common-error__fix"><strong>Fix</strong> On linux-host: `docker ps -a` and start containers per your lab guide; if broken, use Reset the Lab.</p></div></details>
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: docker ps does not list xr-1 and xr-2.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Containers stopped, Docker not running, or wrong host session.</p><p class="css-common-error__fix"><strong>Fix</strong> On linux-host: `docker ps -a` and start containers per your lab guide; if broken, restore the VM snapshot.</p></div></details>
 
-<details class="css-common-error"><summary class="css-common-error__summary">Symptom: sync-from fails with authentication or host key errors.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> SSH keys not fetched or management IP mismatch in NSO vs device.</p><p class="css-common-error__fix"><strong>Fix</strong> Run Fetch SSH Host Keys, verify addresses in `devices.xml`, retry sync-from. See Reset the Lab if CDB is corrupt.</p></div></details>
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: sync-from fails with authentication or host key errors.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> SSH keys not fetched or management IP mismatch in NSO vs device.</p><p class="css-common-error__fix"><strong>Fix</strong> Run Fetch SSH Host Keys, verify addresses in `devices.xml`, retry sync-from. Restore the VM snapshot if CDB is corrupt.</p></div></details>
 
 </div>
 
-<p>If devices cannot be added or <strong>sync-from</strong> never succeeds after fetching SSH host keys, see <strong><a href="#reset-lab">Reset the Lab</a></strong> for snapshot restore versus re-loading device definitions.</p></section><section class="print-page" id="04-configure-devices" heading-number="2.4"><h1 id="04-configure-devices-lab-4-configure-devices">Lab 4: Configure Devices<a class="headerlink" href="#04-configure-devices-lab-4-configure-devices" title="Permanent link">&para;</a></h1>
+<p>If devices cannot be added or <strong>sync-from</strong> never succeeds after fetching SSH host keys, restore the VM snapshot and retry.</p></section><section class="print-page" id="04-configure-devices" heading-number="2.4"><h1 id="04-configure-devices-lab-4-configure-devices">Lab 4: Configure Devices<a class="headerlink" href="#04-configure-devices-lab-4-configure-devices" title="Permanent link">&para;</a></h1>
 <h2 id="04-configure-devices-learning-objectives">Learning Objectives<a class="headerlink" href="#04-configure-devices-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -1286,7 +1285,7 @@
 
 </div>
 
-<p>If commits leave the device and CDB out of sync, use Commit Manager rollbacks (see <a href="#05-rollbacks">5. Rollbacks</a>) or <strong><a href="#reset-lab">Reset the Lab</a></strong> for a broader recovery path.</p></section><section class="print-page" id="05-rollbacks" heading-number="2.5"><h1 id="05-rollbacks-lab-5-rollbacks">Lab 5: Rollbacks<a class="headerlink" href="#05-rollbacks-lab-5-rollbacks" title="Permanent link">&para;</a></h1>
+<p>If commits leave the device and CDB out of sync, use Commit Manager rollbacks (see <a href="#05-rollbacks">5. Rollbacks</a>).</p></section><section class="print-page" id="05-rollbacks" heading-number="2.5"><h1 id="05-rollbacks-lab-5-rollbacks">Lab 5: Rollbacks<a class="headerlink" href="#05-rollbacks-lab-5-rollbacks" title="Permanent link">&para;</a></h1>
 <h2 id="05-rollbacks-learning-objectives">Learning Objectives<a class="headerlink" href="#05-rollbacks-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -1360,7 +1359,7 @@
 
 </div>
 
-<p>If you cannot find a suitable rollback file or loads fail repeatedly, see <strong><a href="#reset-lab">Reset the Lab</a></strong> for VM-level reset options.</p></section><section class="print-page" id="06-out-of-band-sync" heading-number="2.6"><h1 id="06-out-of-band-sync-lab-6-out-of-band-sync">Lab 6: Out-of-Band Sync<a class="headerlink" href="#06-out-of-band-sync-lab-6-out-of-band-sync" title="Permanent link">&para;</a></h1>
+<p>If you cannot find a suitable rollback file or loads fail repeatedly, restore the VM snapshot and retry.</p></section><section class="print-page" id="06-out-of-band-sync" heading-number="2.6"><h1 id="06-out-of-band-sync-lab-6-out-of-band-sync">Lab 6: Out-of-Band Sync<a class="headerlink" href="#06-out-of-band-sync-lab-6-out-of-band-sync" title="Permanent link">&para;</a></h1>
 <h2 id="06-out-of-band-sync-learning-objectives">Learning Objectives<a class="headerlink" href="#06-out-of-band-sync-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -1373,7 +1372,7 @@
 
 <h2 id="06-out-of-band-sync-prerequisites">Prerequisites<a class="headerlink" href="#06-out-of-band-sync-prerequisites" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#05-rollbacks">Lab 5: Rollbacks</a> completed — <strong>Check-Sync</strong> should be <strong>green</strong> for <strong>xr-1</strong> before you start (restore with <strong>Reset the Lab</strong> if not).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#05-rollbacks">Lab 5: Rollbacks</a> completed — <strong>Check-Sync</strong> should be <strong>green</strong> for <strong>xr-1</strong> before you start.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (examples use <strong>198.51.100.2</strong> — use your lab address).</li>
 </ul>
 <h2 id="06-out-of-band-sync-procedure">Procedure<a class="headerlink" href="#06-out-of-band-sync-procedure" title="Permanent link">&para;</a></h2>
@@ -1473,13 +1472,13 @@
 <h2 id="06-out-of-band-sync-common-errors">Common Errors<a class="headerlink" href="#06-out-of-band-sync-common-errors" title="Permanent link">&para;</a></h2>
 <div class="css-common-errors" role="region" aria-label="Common errors">
 
-<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Check-Sync stays red after Sync-To or shows a looping diff.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Concurrent edits, partial sync, or SSH session left in config mode on the device.</p><p class="css-common-error__fix"><strong>Fix</strong> Close extra sessions, run **Check-Sync** again, then **Sync-To** once; capture Compare-config for the instructor. Use Reset the Lab if stuck.</p></div></details>
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Check-Sync stays red after Sync-To or shows a looping diff.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Concurrent edits, partial sync, or SSH session left in config mode on the device.</p><p class="css-common-error__fix"><strong>Fix</strong> Close extra sessions, run **Check-Sync** again, then **Sync-To** once; capture Compare-config for the instructor. Restore the VM snapshot if stuck.</p></div></details>
 
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Loopback still present after Sync-To.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong device selected, or sync targeted a different NSO instance.</p><p class="css-common-error__fix"><strong>Fix</strong> Confirm **xr-1** address and authgroup; re-run **Sync-To** and verify with `show run interface Loopback 100` on the device.</p></div></details>
 
 </div>
 
-<p>If <strong>sync-to</strong> / <strong>sync-from</strong> loops or <strong>check-sync</strong> stays red with no clear diff, capture screenshots for your instructor and consider <strong><a href="#reset-lab">Reset the Lab</a></strong> if time is short.</p></section><section class="print-page" id="07-device-groups-templates" heading-number="2.7"><h1 id="07-device-groups-templates-lab-7-device-groups-templates">Lab 7: Device Groups &amp; Templates<a class="headerlink" href="#07-device-groups-templates-lab-7-device-groups-templates" title="Permanent link">&para;</a></h1>
+<p>If <strong>sync-to</strong> / <strong>sync-from</strong> loops or <strong>check-sync</strong> stays red with no clear diff, capture screenshots for your instructor and consider restoring the VM snapshot if time is short.</p></section><section class="print-page" id="07-device-groups-templates" heading-number="2.7"><h1 id="07-device-groups-templates-lab-7-device-groups-templates">Lab 7: Device Groups &amp; Templates<a class="headerlink" href="#07-device-groups-templates-lab-7-device-groups-templates" title="Permanent link">&para;</a></h1>
 <h2 id="07-device-groups-templates-learning-objectives">Learning Objectives<a class="headerlink" href="#07-device-groups-templates-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -1595,7 +1594,7 @@
 
 </div>
 
-<p>If <strong>apply-template</strong> fails for all devices or leaves partial state, roll back the last commits or follow <strong><a href="#reset-lab">Reset the Lab</a></strong>.</p></section><section class="print-page" id="08-create-service" heading-number="2.8"><h1 id="08-create-service-lab-8-create-a-service">Lab 8: Create a Service<a class="headerlink" href="#08-create-service-lab-8-create-a-service" title="Permanent link">&para;</a></h1>
+<p>If <strong>apply-template</strong> fails for all devices or leaves partial state, roll back the last commits or restore the VM snapshot.</p></section><section class="print-page" id="08-create-service" heading-number="2.8"><h1 id="08-create-service-lab-8-create-a-service">Lab 8: Create a Service<a class="headerlink" href="#08-create-service-lab-8-create-a-service" title="Permanent link">&para;</a></h1>
 <!-- lab_safety: LAB_SAFETY_MESSAGE empty in mkdocs.yml -->
 
 <h2 id="08-create-service-learning-objectives">Learning Objectives<a class="headerlink" href="#08-create-service-learning-objectives" title="Permanent link">&para;</a></h2>
@@ -1877,9 +1876,9 @@
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#08-create-service-__codelineno-14-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#08-create-service-__codelineno-14-3"></a>ncs
 </span></code></pre></div>
-<p>Then <strong>Reload packages</strong> in the Web UI and confirm <strong>STATIC</strong> is gone. Prefer <strong><a href="#reset-lab">Reset the Lab</a></strong> if the NSO instance is inconsistent.</p>
+<p>Then <strong>Reload packages</strong> in the Web UI and confirm <strong>STATIC</strong> is gone.</p>
 </div>
-<p>If re-deploy cannot clear drift or the service model is inconsistent, use <strong>Commit Manager</strong> rollbacks first, then <strong><a href="#reset-lab">Reset the Lab</a></strong> if you need a clean VM.</p></section><section class="print-page" id="09-rbac-access-control" heading-number="2.9"><h1 id="09-rbac-access-control-lab-9-rbac-access-control">Lab 9: RBAC Access Control<a class="headerlink" href="#09-rbac-access-control-lab-9-rbac-access-control" title="Permanent link">&para;</a></h1>
+<p>If re-deploy cannot clear drift or the service model is inconsistent, use <strong>Commit Manager</strong> rollbacks first, then restore the VM snapshot if you need a clean start.</p></section><section class="print-page" id="09-rbac-access-control" heading-number="2.9"><h1 id="09-rbac-access-control-lab-9-rbac-access-control">Lab 9: RBAC Access Control<a class="headerlink" href="#09-rbac-access-control-lab-9-rbac-access-control" title="Permanent link">&para;</a></h1>
 <h2 id="09-rbac-access-control-learning-objectives">Learning Objectives<a class="headerlink" href="#09-rbac-access-control-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -2071,7 +2070,7 @@
 
 </div>
 
-<p>If you lock yourself out or rules conflict, log in as <strong>admin</strong>, revert the last <strong>NACM</strong> commits in <strong>Commit Manager</strong>, or use <strong><a href="#reset-lab">Reset the Lab</a></strong> for snapshot restore.</p></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+<p>If you lock yourself out or rules conflict, log in as <strong>admin</strong> and revert the last <strong>NACM</strong> commits in <strong>Commit Manager</strong>.</p></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
