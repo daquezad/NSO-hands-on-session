@@ -119,7 +119,6 @@ extra:
   version:
     provider: mike
   nso_version: "6.5"          # stub — update when workbook targets a specific NSO release
-  LAB_SAFETY_MESSAGE: "Lab safety — follow your site’s electrical and equipment guidelines."
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/daquezad/NSO-hands-on-session
