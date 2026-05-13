@@ -9,6 +9,7 @@
 <meta content="Customer Success Specialists - Internet and Mass Scale Infrastructure" name="author"/>
 <link href="https://daquezad.github.io/NSO-hands-on-session/latest/09-rbac-access-control/" rel="canonical"/>
 <link href="../08-create-service/" rel="prev"/>
+<link href="../10-nso-mcp-setup/" rel="next"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Lab 9: RBAC Access Control - NSO Hands-On Adoption Workbook</title>
@@ -409,8 +410,41 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#whats-next">
+<span class="md-ellipsis">
+      
+        What's Next
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../10-nso-mcp-setup/">
+<span class="md-ellipsis">
+    
+  
+    10. NSO MCP — Setup and First Client
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-nso-mcp-services-bgp/">
+<span class="md-ellipsis">
+    
+  
+    11. NSO MCP — Service Models and BGP
+  
+
+    
+  </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -546,6 +580,15 @@
 <span class="md-ellipsis">
       
         Common Errors
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#whats-next">
+<span class="md-ellipsis">
+      
+        What's Next
       
     </span>
 </a>
@@ -737,6 +780,9 @@
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: ncs_cli XPath commands return errors or empty.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong `-u` user, environment not sourced, or display xpath not supported in your build.</p><p class="css-common-error__fix"><strong>Fix</strong> Run `source ~/NSO-INSTALL/ncsrc` first; use **Configuration Editor** copy-path features as a fallback.</p></div></details>
 </div>
 <p>If you lock yourself out or rules conflict, log in as <strong>admin</strong> and revert the last <strong>NACM</strong> commits in <strong>Commit Manager</strong>.</p>
+<h2 id="whats-next">What's Next<a class="headerlink" href="#whats-next" title="Permanent link">¶</a></h2>
+<p>Lab 9 closes the <strong>Day 2 morning</strong> track: you now have NSO operating with proper user, authgroup, and NACM separation — the foundation a production deployment needs.</p>
+<p>The <strong>Day 2 afternoon</strong> session shifts to <strong>NSO 6.7</strong> and its new <strong>Model Context Protocol (MCP) server</strong>. In <a href="../10-nso-mcp-setup/">Lab 10: NSO MCP — Setup and First Client</a>, you will spin up NSO 6.7 in the dCloud "NSO 6.7 MCP" scenario, expose it via MCP, and drive it from a web-based natural-language client — then in <a href="../11-nso-mcp-services-bgp/">Lab 11</a>, use that same client to configure BGP through a custom service package.</p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -760,6 +806,19 @@
 <div class="md-ellipsis">
                 8. Create a Service
               </div>
+</div>
+</a>
+<a aria-label="Next: 10. NSO MCP — Setup and First Client" class="md-footer__link md-footer__link--next" href="../10-nso-mcp-setup/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                10. NSO MCP — Setup and First Client
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
 </div>
 </a>
 </nav>

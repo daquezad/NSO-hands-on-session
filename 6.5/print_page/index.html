@@ -620,6 +620,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-nso-mcp-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. NSO MCP — Setup and First Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-nso-mcp-services-bgp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. NSO MCP — Service Models and BGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -773,6 +829,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#10-nso-mcp-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 10. NSO MCP — Setup and First Client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-nso-mcp-services-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 11. NSO MCP — Service Models and BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -824,10 +902,10 @@
                 </nav>
             </div>
         </section>
-        <section class="print-page" id="index" heading-number="1"><h1 id="index-35-hours-9-labs-build-an-nso-service-that-survives-real-drift">3.5 hours, 9 labs — build an NSO service that survives real drift<a class="headerlink" href="#index-35-hours-9-labs-build-an-nso-service-that-survives-real-drift" title="Permanent link">&para;</a></h1>
-<p class="css-home-subtitle md-typeset">For network engineers and automation leads working through a guided Cisco NSO hands-on lab with XRd peers.</p>
+        <section class="print-page" id="index" heading-number="1"><h1 id="index-6-hours-11-labs-build-an-nso-service-that-survives-real-drift-then-drive-nso-with-natural-language">~6 hours, 11 labs — build an NSO service that survives real drift, then drive NSO with natural language<a class="headerlink" href="#index-6-hours-11-labs-build-an-nso-service-that-survives-real-drift-then-drive-nso-with-natural-language" title="Permanent link">&para;</a></h1>
+<p class="css-home-subtitle md-typeset">For network engineers and automation leads working through a guided Cisco NSO hands-on lab with XRd peers — now extended with an NSO 6.7 MCP afternoon track.</p>
 
-<div class="css-home-meta" role="group" aria-label="About 3 h 30 min total, 9 labs, NSO 6.5 sandbox"><span class="css-home-meta__item"><strong>Time</strong> ~3 h 30 min total</span><span class="css-home-meta__sep" aria-hidden="true">·</span><span class="css-home-meta__item"><strong>Labs</strong> 9 hands-on</span><span class="css-home-meta__sep" aria-hidden="true">·</span><span class="css-home-meta__item"><strong>NSO</strong> 6.5 (sandbox)</span></div>
+<div class="css-home-meta" role="group" aria-label="About 6 h total, 11 labs, NSO 6.5 sandbox"><span class="css-home-meta__item"><strong>Time</strong> ~6 h total</span><span class="css-home-meta__sep" aria-hidden="true">·</span><span class="css-home-meta__item"><strong>Labs</strong> 11 hands-on</span><span class="css-home-meta__sep" aria-hidden="true">·</span><span class="css-home-meta__item"><strong>NSO</strong> 6.5 (sandbox)</span></div>
 
 <h2 id="index-reference-topology">Reference topology<a class="headerlink" href="#index-reference-topology" title="Permanent link">&para;</a></h2>
 <figure class="css-topology" role="group"><img class="css-topology__img" src="../assets/images/mermaid/index/lab-home-topology.svg" alt="Lab reference topology: linux-host workstation, nso-server orchestrator, and xr-1 and xr-2 XRd routers. All devices interconnect for hands-on NSO labs."  decoding="async" /><figcaption class="css-topology__caption">Lab sandbox — workstation, NSO, and XRd peers</figcaption></figure>
@@ -841,8 +919,14 @@
 <tr class="css-journey-tr"><th scope="row" data-label="Lab #">6</th><td data-label="Title"><a href="#06-out-of-band-sync">Out-of-Band Sync</a></td><td data-label="Time">20 min</td><td data-label="Description">Detect and reconcile OOB changes</td></tr>
 <tr class="css-journey-tr"><th scope="row" data-label="Lab #">7</th><td data-label="Title"><a href="#07-device-groups-templates">Device Groups &amp; Templates</a></td><td data-label="Time">25 min</td><td data-label="Description">Groups and templates at scale</td></tr>
 <tr class="css-journey-tr css-journey-row--intentional"><th scope="row" data-label="Lab #">8</th><td data-label="Title"><a href="#08-create-service">Create a Service</a></td><td data-label="Time">30 min</td><td data-label="Description"><span class="css-journey-chip" title="This lab includes an intentional failure path">intentional break</span> Python-and-template service package</td></tr>
-<tr class="css-journey-tr"><th scope="row" data-label="Lab #">9</th><td data-label="Title"><a href="#09-rbac-access-control">RBAC Access Control</a></td><td data-label="Time">30 min</td><td data-label="Description">Users, authgroups, NACM rules</td></tr></tbody></table></div>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">9</th><td data-label="Title"><a href="#09-rbac-access-control">RBAC Access Control</a></td><td data-label="Time">30 min</td><td data-label="Description">Users, authgroups, NACM rules</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">10</th><td data-label="Title"><a href="#10-nso-mcp-setup">NSO MCP — Setup and First Client</a></td><td data-label="Time">80 min</td><td data-label="Description">NSO 6.7 + MCP server, web client, policy permit</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">11</th><td data-label="Title"><a href="#11-nso-mcp-services-bgp">NSO MCP — Service Models and BGP</a></td><td data-label="Time">70 min</td><td data-label="Description">Load bgpmgr, configure BGP via natural language</td></tr></tbody></table></div>
 
+<div class="admonition info">
+<p class="admonition-title">Two-day flow</p>
+<p>Labs <strong>1–9</strong> run on the standard NSO <strong>6.5</strong> sandbox (Day 1 + Day 2 morning). Labs <strong>10–11</strong> are a <strong>Day 2 afternoon</strong> continuation using the dCloud <strong>"NSO 6.7 MCP"</strong> scenario — a different host, different NSO release, and the new <strong>Model Context Protocol</strong> server. Each chapter declares its own NSO version in front-matter.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Before you begin</p>
 <p>Provision your sandbox and open a console to the <strong>linux-host</strong> workstation. Commands assume that environment unless noted.</p>
@@ -2063,7 +2147,356 @@
 
 </div>
 
-<p>If you lock yourself out or rules conflict, log in as <strong>admin</strong> and revert the last <strong>NACM</strong> commits in <strong>Commit Manager</strong>.</p></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+<p>If you lock yourself out or rules conflict, log in as <strong>admin</strong> and revert the last <strong>NACM</strong> commits in <strong>Commit Manager</strong>.</p>
+<h2 id="09-rbac-access-control-whats-next">What's Next<a class="headerlink" href="#09-rbac-access-control-whats-next" title="Permanent link">&para;</a></h2>
+<p>Lab 9 closes the <strong>Day 2 morning</strong> track: you now have NSO operating with proper user, authgroup, and NACM separation — the foundation a production deployment needs.</p>
+<p>The <strong>Day 2 afternoon</strong> session shifts to <strong>NSO 6.7</strong> and its new <strong>Model Context Protocol (MCP) server</strong>. In <a href="#10-nso-mcp-setup">Lab 10: NSO MCP — Setup and First Client</a>, you will spin up NSO 6.7 in the dCloud "NSO 6.7 MCP" scenario, expose it via MCP, and drive it from a web-based natural-language client — then in <a href="#11-nso-mcp-services-bgp">Lab 11</a>, use that same client to configure BGP through a custom service package.</p></section><section class="print-page" id="10-nso-mcp-setup" heading-number="2.10"><h1 id="10-nso-mcp-setup-lab-10-nso-mcp-setup-and-first-client">Lab 10: NSO MCP — Setup and First Client<a class="headerlink" href="#10-nso-mcp-setup-lab-10-nso-mcp-setup-and-first-client" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Day 2 — Afternoon session</p>
+</div>
+<!-- lint-allow-hardcoded-version -->
+<div class="language-text highlight"><pre><span></span><code>Day 2 morning covered **RBAC** and the full lifecycle of NSO administration (Labs 5–9). This afternoon session pivots to **NSO 6.7**, where the headline feature is the **Model Context Protocol (MCP) server**. You will set up a fresh NSO 6.7 instance, expose it through MCP, and drive NSO with a natural-language client — all in the dCloud all-in-one scenario.
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">NSO version difference</p>
+</div>
+<!-- lint-allow-hardcoded-version -->
+<div class="language-text highlight"><pre><span></span><code>Labs 1–9 use NSO **6.7**. This lab and Lab 11 require **NSO 6.7 LTS**, which is the version bundled in the dCloud &quot;NSO 6.7 MCP&quot; scenario. Commands and paths in this chapter reference `NSO-6.7-LTS-free/` explicitly because MCP is only available from 6.7 onward.
+</code></pre></div>
+<h2 id="10-nso-mcp-setup-learning-objectives">Learning Objectives<a class="headerlink" href="#10-nso-mcp-setup-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Describe the three building blocks MCP exposes: <strong>resources</strong>, <strong>tools</strong>, and <strong>prompts</strong>.</li>
+</ul>
+<!-- lint-allow-hardcoded-version -->
+<ul>
+<li>Install NSO 6.7 on the dCloud Ubuntu host via the provided Ansible playbook and confirm both XRd routers are in sync.</li>
+<li>Install the <strong>NSO MCP package</strong>, enable the MCP server, and verify it with the bundled <code>test-mcp.sh</code> script (all 5 tests passing).</li>
+<li>Launch the sample <strong>web MCP client</strong> (<code>backend.py</code> + Streamlit <code>frontend.py</code>) and interact with NSO using natural language through a browser.</li>
+<li>Switch the MCP policy from the default <code>restricted</code> (~11 tools) to <code>permit</code> (100+ tools) and observe the larger surface area.</li>
+</ul>
+<h2 id="10-nso-mcp-setup-time-budget">Time Budget<a class="headerlink" href="#10-nso-mcp-setup-time-budget" title="Permanent link">&para;</a></h2>
+<!-- lint-allow-hardcoded-version -->
+<div class="css-time-budget" role="img" aria-label="Estimated time: 80 minutes total — What is MCP? 8 min, Setup NSO 6.7 20 min, Install MCP package 20 min, Run web client 18 min, Change policy 14 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:8"><span class="css-time-budget__seg-label">What is MCP?</span></div><div class="css-time-budget__seg seg--b" style="flex:20"><span class="css-time-budget__seg-label">Setup NSO 6.7</span></div><div class="css-time-budget__seg seg--c" style="flex:20"><span class="css-time-budget__seg-label">Install MCP package</span></div><div class="css-time-budget__seg seg--d" style="flex:18"><span class="css-time-budget__seg-label">Run web client</span></div><div class="css-time-budget__seg seg--a" style="flex:14"><span class="css-time-budget__seg-label">Change policy</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>What is MCP? — 8 min</li><li><span class="css-time-budget__swatch seg--b"></span>Setup NSO 6.7 — 20 min</li><li><span class="css-time-budget__swatch seg--c"></span>Install MCP package — 20 min</li><li><span class="css-time-budget__swatch seg--d"></span>Run web client — 18 min</li><li><span class="css-time-budget__swatch seg--a"></span>Change policy — 14 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 80 min</p></div>
+
+<h2 id="10-nso-mcp-setup-prerequisites">Prerequisites<a class="headerlink" href="#10-nso-mcp-setup-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#09-rbac-access-control">Lab 9: RBAC Access Control</a> completed — the Day 2 morning track is done.</li>
+</ul>
+<!-- lint-allow-hardcoded-version -->
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Your dCloud session for <strong>NSO 6.7 MCP — Demo</strong> is <strong>Active</strong> (all stages of the Launch Progress bar are green; this can take up to ~10 minutes).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the <strong>VM Console</strong> of <strong>Ubuntu 24.04 Desktop</strong> (host <code>198.18.134.27</code>, user <code>cisco</code> / <code>C1sco12345</code>).</li>
+</ul>
+<h2 id="10-nso-mcp-setup-what-is-mcp">What is MCP?<a class="headerlink" href="#10-nso-mcp-setup-what-is-mcp" title="Permanent link">&para;</a></h2>
+<!-- lint-allow-hardcoded-version -->
+<p>The <strong>Model Context Protocol (MCP)</strong> acts as a universal translator between data sources and AI applications. <strong>NSO 6.7</strong> can act as an <strong>MCP server</strong> and exposes three primitives:</p>
+<table>
+<thead>
+<tr>
+<th>MCP primitive</th>
+<th>What NSO provides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Resources</strong> — schema and data</td>
+<td><code>global-settings</code>, <code>zombies</code>, device settings and configurations</td>
+</tr>
+<tr>
+<td><strong>Tools</strong> — executable functions the LLM can call</td>
+<td>Configurable via <code>mcp-policies</code> (the policy decides which tools are exposed)</td>
+</tr>
+<tr>
+<td><strong>Prompts</strong> — pre-defined templates</td>
+<td>Seven prompts shipped with the NSO MCP server</td>
+</tr>
+</tbody>
+</table>
+<p>In this lab, a custom <strong>MCP client</strong> (used later in the procedure) connects to NSO and leverages <strong>Cisco AI</strong> to provide an AI interface through a web browser.</p>
+<h2 id="10-nso-mcp-setup-procedure">Procedure<a class="headerlink" href="#10-nso-mcp-setup-procedure" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Rollback</p>
+<p><!-- lint-allow-hardcoded-version -->
+This lab is <strong>not idempotent</strong> — it installs NSO 6.7 fresh and enables the MCP server with a permissive policy. To roll back the MCP changes without reinstalling NSO, in the NSO CLI:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#10-nso-mcp-setup-__codelineno-0-1"></a>admin@ncs# config t
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#10-nso-mcp-setup-__codelineno-0-2"></a>admin@ncs(config)# no mcp-server enabled
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#10-nso-mcp-setup-__codelineno-0-3"></a>admin@ncs(config)# mcp-server policies default-action restricted
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#10-nso-mcp-setup-__codelineno-0-4"></a>admin@ncs(config)# commit
+</span></code></pre></div>
+<p>To fully undo the install, the simplest path in the dCloud scenario is to <strong>end the dCloud session</strong> and restart it — the Ansible playbook will reprovision the host.</p>
+</div>
+<h3 id="10-nso-mcp-setup-step-1-open-a-terminal-on-the-ubuntu-host">Step 1: Open a terminal on the Ubuntu host<a class="headerlink" href="#10-nso-mcp-setup-step-1-open-a-terminal-on-the-ubuntu-host" title="Permanent link">&para;</a></h3>
+<p>Once the dCloud scenario is active, open the <strong>VM Console</strong> of <strong>Ubuntu 24.04 Desktop</strong>.</p>
+<p><img alt="dCloud VM Console launcher for Ubuntu 24.04 Desktop" src="../assets/images/lab10/dcloud-vm-console-ubuntu.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Win11 alternative</p>
+<p>You can also work from the <strong>Win11</strong> host (<code>198.18.133.100</code>, user <code>dcloud</code>, no password) using <strong>TeraTerm</strong>. Use <strong>VM Console</strong> rather than Web RDP — Web RDP is very slow in this scenario.</p>
+</div>
+<p>On Ubuntu, open <strong>Terminal</strong>.</p>
+<!-- lint-allow-hardcoded-version -->
+<h3 id="10-nso-mcp-setup-step-2-install-nso-67-with-the-provided-ansible-playbook">Step 2: Install NSO 6.7 with the provided Ansible playbook<a class="headerlink" href="#10-nso-mcp-setup-step-2-install-nso-67-with-the-provided-ansible-playbook" title="Permanent link">&para;</a></h3>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#10-nso-mcp-setup-__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#10-nso-mcp-setup-__codelineno-1-2"></a>ansible-playbook<span class="w"> </span>nso.yml
+</span></code></pre></div>
+<p>Wait a few minutes for the playbook to complete — NSO will be installed automatically.</p>
+<p>Once it finishes, source the environment and open the NSO CLI:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#10-nso-mcp-setup-__codelineno-2-1"></a><span class="nb">cd</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#10-nso-mcp-setup-__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span>NSO-6.7/ncsrc
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#10-nso-mcp-setup-__codelineno-2-3"></a>ncs_cli<span class="w"> </span>-Cu<span class="w"> </span>admin
+</span></code></pre></div>
+<h3 id="10-nso-mcp-setup-step-3-confirm-the-xrd-routers-are-reachable">Step 3: Confirm the XRd routers are reachable<a class="headerlink" href="#10-nso-mcp-setup-step-3-confirm-the-xrd-routers-are-reachable" title="Permanent link">&para;</a></h3>
+<p>Inside the NSO CLI, sync both XRd devices and verify they are present:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#10-nso-mcp-setup-__codelineno-3-1"></a>admin@ncs# devices sync-from
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#10-nso-mcp-setup-__codelineno-3-2"></a>admin@ncs# show devices device
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="two XRd devices listed and sync-from result: true"></span></p>
+<p><img alt="NSO CLI showing devices sync-from with two XRd routers in sync" src="../assets/images/lab10/nso-cli-sync-from-xrd.png" /></p>
+<p>If either device fails to sync, stop here and resolve before continuing — MCP needs a working device tree to expose meaningful tools.</p>
+<h3 id="10-nso-mcp-setup-step-4-install-the-nso-mcp-package">Step 4: Install the NSO MCP package<a class="headerlink" href="#10-nso-mcp-setup-step-4-install-the-nso-mcp-package" title="Permanent link">&para;</a></h3>
+<p>The MCP package is included in the NSO installer bundle. From the <strong>Linux terminal</strong> (not the NSO CLI), copy it into the packages directory:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#10-nso-mcp-setup-__codelineno-4-1"></a><span class="nb">cd</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#10-nso-mcp-setup-__codelineno-4-2"></a>cp<span class="w"> </span>NSO-6.7-LTS-free/work/ncs-6.7-cisco-nso-adaptive-mcp-server-1.0.0.tar.gz<span class="w"> </span>ncs-run/packages
+</span></code></pre></div>
+<p>Then in the <strong>NSO CLI</strong>, reload packages and enable MCP:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#10-nso-mcp-setup-__codelineno-5-1"></a>admin@ncs# packages reload
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#10-nso-mcp-setup-__codelineno-5-2"></a>admin@ncs# config t
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#10-nso-mcp-setup-__codelineno-5-3"></a>admin@ncs(config)# mcp-server enabled
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#10-nso-mcp-setup-__codelineno-5-4"></a>admin@ncs(config)# commit
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#10-nso-mcp-setup-__codelineno-5-5"></a>admin@ncs(config)# end
+</span></code></pre></div>
+<p><img alt="NSO CLI showing mcp-server enabled committed in the running configuration" src="../assets/images/lab10/nso-mcp-server-enabled.png" /></p>
+<h3 id="10-nso-mcp-setup-step-5-verify-the-mcp-server-with-the-bundled-test-script">Step 5: Verify the MCP server with the bundled test script<a class="headerlink" href="#10-nso-mcp-setup-step-5-verify-the-mcp-server-with-the-bundled-test-script" title="Permanent link">&para;</a></h3>
+<p>The MCP package contains a <code>test-mcp.sh</code> test script. Confirm MCP is up and running:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#10-nso-mcp-setup-__codelineno-6-1"></a><span class="nb">cd</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#10-nso-mcp-setup-__codelineno-6-2"></a>tar<span class="w"> </span>zxvf<span class="w"> </span>NSO-6.7-LTS-free/work/ncs-6.7-cisco-nso-adaptive-mcp-server-1.0.0.tar.gz
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#10-nso-mcp-setup-__codelineno-6-3"></a><span class="nb">cd</span><span class="w"> </span>cisco-nso-adaptive-mcp-server
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#10-nso-mcp-setup-__codelineno-6-4"></a>./test-mcp.sh
+</span></code></pre></div>
+<p>If any test fails, go back to the NSO CLI, run <code>packages reload</code> again, and re-run <code>./test-mcp.sh</code>. Continue only when <strong>all 5 tests pass</strong>.</p>
+<p><img alt="test-mcp.sh output showing all 5 tests passed" src="../assets/images/lab10/test-mcp-all-tests-passed.png" /></p>
+<p>NSO MCP is now ready.</p>
+<h3 id="10-nso-mcp-setup-step-6-start-the-web-mcp-client-backend-frontend">Step 6: Start the web MCP client (backend + frontend)<a class="headerlink" href="#10-nso-mcp-setup-step-6-start-the-web-mcp-client-backend-frontend" title="Permanent link">&para;</a></h3>
+<p>The scenario includes a sample web MCP client. It runs as two programs in two terminal tabs.</p>
+<p><strong>Terminal tab 1 — backend:</strong></p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#10-nso-mcp-setup-__codelineno-7-1"></a><span class="nb">cd</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#10-nso-mcp-setup-__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/web-ui
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#10-nso-mcp-setup-__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#10-nso-mcp-setup-__codelineno-7-4"></a>python3<span class="w"> </span>backend.py
+</span></code></pre></div>
+<p><strong>Terminal tab 2 — frontend</strong> (open a new tab, then):</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#10-nso-mcp-setup-__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/web-ui
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#10-nso-mcp-setup-__codelineno-8-2"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#10-nso-mcp-setup-__codelineno-8-3"></a>streamlit<span class="w"> </span>run<span class="w"> </span>frontend.py
+</span></code></pre></div>
+<p>Firefox should open automatically. If not, launch Firefox manually and browse to <a href="http://localhost:8501/">http://localhost:8501/</a>.</p>
+<p>Confirm the <strong>NSO MCP tools</strong> appear in the left-hand menu of the web UI:</p>
+<p><img alt="Streamlit web MCP client with NSO MCP tools listed on the left menu" src="../assets/images/lab10/mcp-web-client-tools-menu.png" /></p>
+<h3 id="10-nso-mcp-setup-step-7-drive-nso-with-natural-language">Step 7: Drive NSO with natural language<a class="headerlink" href="#10-nso-mcp-setup-step-7-drive-nso-with-natural-language" title="Permanent link">&para;</a></h3>
+<p>In the chat box, ask NSO about its devices in plain English (e.g. <em>"List the devices managed by NSO."</em>).</p>
+<p><img alt="Web MCP client answering a natural-language question about NSO devices" src="../assets/images/lab10/mcp-web-client-natural-language.png" /></p>
+<h3 id="10-nso-mcp-setup-step-8-change-the-mcp-policy-from-restricted-to-permit">Step 8: Change the MCP policy from <code>restricted</code> to <code>permit</code><a class="headerlink" href="#10-nso-mcp-setup-step-8-change-the-mcp-policy-from-restricted-to-permit" title="Permanent link">&para;</a></h3>
+<p>By default, for security reasons, the active MCP policy is <strong><code>restricted</code></strong> — it exposes only <strong>11 tools</strong>. Switch the default action to <strong><code>permit</code></strong> so more tools become available.</p>
+<p>In the NSO CLI:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#10-nso-mcp-setup-__codelineno-9-1"></a>$ ncs_cli -Cu admin
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#10-nso-mcp-setup-__codelineno-9-2"></a>admin@ncs# config t
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#10-nso-mcp-setup-__codelineno-9-3"></a>admin@ncs(config)# mcp-server policies default-action permit
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#10-nso-mcp-setup-__codelineno-9-4"></a>admin@ncs(config)# commit
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#10-nso-mcp-setup-__codelineno-9-5"></a>admin@ncs(config)# end
+</span></code></pre></div>
+<p>Back in the web MCP client, press <strong>Refresh tools</strong> in the left menu. You should now see <strong>more than 100 tools</strong>:</p>
+<p><img alt="MCP web client left menu showing 100+ tools after policy change to permit" src="../assets/images/lab10/mcp-policy-permit-100-tools.png" /></p>
+<p>You can now run richer queries — for example, ask the client to show <strong><code>live-status</code></strong> of a device:</p>
+<p><img alt="MCP web client returning live-status output for an XRd device" src="../assets/images/lab10/mcp-live-status-result.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Production policy</p>
+<p><code>permit</code> exposes a very large surface area to whichever LLM is on the other end of the MCP connection. Use <code>restricted</code> (or a hand-curated policy) for anything other than demo / lab scenarios.</p>
+</div>
+<h2 id="10-nso-mcp-setup-verification">Verification<a class="headerlink" href="#10-nso-mcp-setup-verification" title="Permanent link">&para;</a></h2>
+<p>You should now have:</p>
+<!-- lint-allow-hardcoded-version -->
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> NSO 6.7 LTS installed on the Ubuntu host, with both XRd routers in <strong>sync-from: true</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> NSO MCP package loaded, MCP server <strong>enabled</strong> in the running config.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>./test-mcp.sh</code> reporting <strong>5/5 tests passed</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The web MCP client running on <a href="http://localhost:8501/">http://localhost:8501/</a> with the NSO tool menu populated.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> MCP policy switched to <strong><code>permit</code></strong> — the tool count in the left menu jumps from ~11 to <strong>100+</strong>.</li>
+</ul>
+<h2 id="10-nso-mcp-setup-troubleshooting">Troubleshooting<a class="headerlink" href="#10-nso-mcp-setup-troubleshooting" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>test-mcp.sh</code> fails</strong> — run <code>packages reload</code> in the NSO CLI, wait for it to finish, and re-run the test script.</li>
+<li><strong>No tools visible in the web client</strong> — the policy may still be <code>restricted</code> and connection-scoped. Confirm <code>mcp-server policies default-action permit</code> was committed, then press <strong>Refresh tools</strong>.</li>
+<li><strong>Streamlit page won't load</strong> — verify both <code>backend.py</code> and <code>streamlit run frontend.py</code> are running in their own terminal tabs with the venv activated.</li>
+</ul>
+<h2 id="10-nso-mcp-setup-common-errors">Common Errors<a class="headerlink" href="#10-nso-mcp-setup-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: `./test-mcp.sh` reports fewer than 5 passing tests after `packages reload`.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> MCP package partially loaded — `mcp-server enabled` was committed before `packages reload` finished, or the tarball was not copied into `ncs-run/packages` before the reload.</p><p class="css-common-error__fix"><strong>Fix</strong> Re-run `packages reload` in the NSO CLI and wait for it to return cleanly, then run `./test-mcp.sh` again. If the tarball is missing under `ncs-run/packages`, repeat Step 4 (`cp …adaptive-mcp-server…tar.gz ncs-run/packages`).</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Web client shows only ~11 tools even after pressing **Refresh tools**.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> MCP policy is still the default `restricted`, or the commit of `default-action permit` was rolled back.</p><p class="css-common-error__fix"><strong>Fix</strong> In the NSO CLI, run `show running-config mcp-server policies default-action` — if it does not say `permit`, repeat Step 8 and commit. Then press **Refresh tools** in the web client.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Firefox cannot reach &lt;http://localhost:8501/&gt;.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> The Streamlit frontend (`streamlit run frontend.py`) is not running, or its terminal has lost the activated venv.</p><p class="css-common-error__fix"><strong>Fix</strong> Open the frontend terminal tab, confirm the prompt has `(venv)`, and re-run `streamlit run frontend.py`. The backend (`python3 backend.py`) must also be running in its own tab.</p></div></details>
+
+</div>
+
+<h2 id="10-nso-mcp-setup-whats-next">What's Next<a class="headerlink" href="#10-nso-mcp-setup-whats-next" title="Permanent link">&para;</a></h2>
+<p>Lab 10 left NSO MCP exposed with the broad <strong><code>permit</code></strong> policy. In <a href="#11-nso-mcp-services-bgp">Lab 11: NSO MCP — Service Models and BGP</a> you will <strong>load an additional service package</strong> (<code>bgpmgr</code>), watch its tools appear in the MCP client, and use natural language to <strong>configure BGP</strong> between <strong>xr-1</strong> and <strong>xr-2</strong> — then inspect the available tools and prompts from a second MCP client (<code>ollmcp</code>).</p></section><section class="print-page" id="11-nso-mcp-services-bgp" heading-number="2.11"><h1 id="11-nso-mcp-services-bgp-lab-11-nso-mcp-service-models-and-bgp">Lab 11: NSO MCP — Service Models and BGP<a class="headerlink" href="#11-nso-mcp-services-bgp-lab-11-nso-mcp-service-models-and-bgp" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Continuing from Lab 10</p>
+<p>Lab 10 ended with NSO MCP exposed via the <strong>permit</strong> policy and the <strong>web MCP client</strong> running on <a href="http://localhost:8501/">http://localhost:8501/</a>. In this lab you will plug a real <strong>service package</strong> (<code>bgpmgr</code>) into the same MCP client and configure <strong>BGP</strong> between <strong>xr-1</strong> and <strong>xr-2</strong> using natural language — then look under the hood with a second MCP client.</p>
+</div>
+<h2 id="11-nso-mcp-services-bgp-learning-objectives">Learning Objectives<a class="headerlink" href="#11-nso-mcp-services-bgp-learning-objectives" title="Permanent link">&para;</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Clone and compile a custom NSO service package (<code>dcloud-bgpmgr</code>) and load it via <code>packages reload</code>.</li>
+<li>Confirm that the package's tools appear in the MCP web client after pressing <strong>Refresh Tools</strong>.</li>
+<li>Use the MCP client to ask <strong>what parameters</strong> the BGP service requires, and to <strong>apply</strong> the configuration.</li>
+<li>Verify BGP neighbor state through MCP (no direct <code>show bgp</code> on the device CLI required).</li>
+<li>Launch the <strong><code>ollmcp</code></strong> CPU-only MCP client and list NSO <strong>tools</strong> and <strong>prompts</strong> via <code>/t</code> and <code>/prompts</code>.</li>
+</ul>
+<h2 id="11-nso-mcp-services-bgp-time-budget">Time Budget<a class="headerlink" href="#11-nso-mcp-services-bgp-time-budget" title="Permanent link">&para;</a></h2>
+<div class="css-time-budget" role="img" aria-label="Estimated time: 70 minutes total — Load bgpmgr package 18 min, Inspect MCP tools 12 min, Configure BGP via MCP 28 min, Analyze with ollmcp 12 min"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:18"><span class="css-time-budget__seg-label">Load bgpmgr package</span></div><div class="css-time-budget__seg seg--b" style="flex:12"><span class="css-time-budget__seg-label">Inspect MCP tools</span></div><div class="css-time-budget__seg seg--c" style="flex:28"><span class="css-time-budget__seg-label">Configure BGP via MCP</span></div><div class="css-time-budget__seg seg--d" style="flex:12"><span class="css-time-budget__seg-label">Analyze with ollmcp</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>Load bgpmgr package — 18 min</li><li><span class="css-time-budget__swatch seg--b"></span>Inspect MCP tools — 12 min</li><li><span class="css-time-budget__swatch seg--c"></span>Configure BGP via MCP — 28 min</li><li><span class="css-time-budget__swatch seg--d"></span>Analyze with ollmcp — 12 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 70 min</p></div>
+
+<h2 id="11-nso-mcp-services-bgp-prerequisites">Prerequisites<a class="headerlink" href="#11-nso-mcp-services-bgp-prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#10-nso-mcp-setup">Lab 10: NSO MCP — Setup and First Client</a> completed.</li>
+</ul>
+<!-- lint-allow-hardcoded-version -->
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> NSO 6.7 LTS is running, MCP server is <strong>enabled</strong> and <strong>policy default-action is <code>permit</code></strong> (100+ tools visible in the web client).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The web MCP client is reachable at <a href="http://localhost:8501/">http://localhost:8501/</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Both <strong>xr-1</strong> and <strong>xr-2</strong> are in <code>sync-from: true</code> state.</li>
+</ul>
+<h2 id="11-nso-mcp-services-bgp-procedure">Procedure<a class="headerlink" href="#11-nso-mcp-services-bgp-procedure" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Rollback</p>
+<p>This lab is <strong>not idempotent</strong> — it loads a service package and writes BGP configuration to <strong>xr-1</strong> and <strong>xr-2</strong> via that package. To roll back, in the NSO CLI:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#11-nso-mcp-services-bgp-__codelineno-0-1"></a>admin@ncs# config t
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#11-nso-mcp-services-bgp-__codelineno-0-2"></a>admin@ncs(config)# devices device xr-1 config no router bgp
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#11-nso-mcp-services-bgp-__codelineno-0-3"></a>admin@ncs(config)# devices device xr-2 config no router bgp
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#11-nso-mcp-services-bgp-__codelineno-0-4"></a>admin@ncs(config)# commit
+</span></code></pre></div>
+<p>To also remove the <code>bgpmgr</code> package, delete it from <code>~/ncs-run/packages/dcloud-bgpmgr</code> and run <code>packages reload</code> in the NSO CLI.</p>
+</div>
+<h3 id="11-nso-mcp-services-bgp-step-1-clone-and-compile-the-bgpmgr-service-package">Step 1: Clone and compile the <code>bgpmgr</code> service package<a class="headerlink" href="#11-nso-mcp-services-bgp-step-1-clone-and-compile-the-bgpmgr-service-package" title="Permanent link">&para;</a></h3>
+<p>Loading a service package adds extra tools to NSO MCP automatically. Clone the demo package into the NSO packages directory:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#11-nso-mcp-services-bgp-__codelineno-1-1"></a><span class="nb">cd</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#11-nso-mcp-services-bgp-__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>ncs-run/packages
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#11-nso-mcp-services-bgp-__codelineno-1-3"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hitakaha/dcloud-bgpmgr
+</span></code></pre></div>
+<p>Compile the package:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#11-nso-mcp-services-bgp-__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>dcloud-bgpmgr/src
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#11-nso-mcp-services-bgp-__codelineno-2-2"></a>make<span class="w"> </span>clean
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#11-nso-mcp-services-bgp-__codelineno-2-3"></a>make
+</span></code></pre></div>
+<h3 id="11-nso-mcp-services-bgp-step-2-load-the-package-into-nso">Step 2: Load the package into NSO<a class="headerlink" href="#11-nso-mcp-services-bgp-step-2-load-the-package-into-nso" title="Permanent link">&para;</a></h3>
+<p>In the NSO CLI:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#11-nso-mcp-services-bgp-__codelineno-3-1"></a>$ ncs_cli -Cu admin
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#11-nso-mcp-services-bgp-__codelineno-3-2"></a>admin@ncs# packages reload
+</span></code></pre></div>
+<p>Wait for the reload to complete.</p>
+<h3 id="11-nso-mcp-services-bgp-step-3-confirm-bgpmgr-tools-appear-in-the-mcp-web-client">Step 3: Confirm <code>bgpmgr</code> tools appear in the MCP web client<a class="headerlink" href="#11-nso-mcp-services-bgp-step-3-confirm-bgpmgr-tools-appear-in-the-mcp-web-client" title="Permanent link">&para;</a></h3>
+<p>Go back to the <strong>web-ui</strong> (<a href="http://localhost:8501/">http://localhost:8501/</a>) and press <strong>Refresh Tools</strong> on the left menu. You should now see <strong><code>bgpmgr</code></strong> tools listed alongside the core NSO tools.</p>
+<p><img alt="Web MCP client left menu showing bgpmgr service tools loaded" src="../assets/images/lab11/mcp-bgpmgr-tools-loaded.png" /></p>
+<h3 id="11-nso-mcp-services-bgp-step-4-clear-any-existing-bgp-configuration-on-xr-1-and-xr-2">Step 4: Clear any existing BGP configuration on <code>xr-1</code> and <code>xr-2</code><a class="headerlink" href="#11-nso-mcp-services-bgp-step-4-clear-any-existing-bgp-configuration-on-xr-1-and-xr-2" title="Permanent link">&para;</a></h3>
+<p>Both XRd routers currently carry BGP configuration from earlier labs. Remove it through NSO so we have a clean slate to configure via MCP:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#11-nso-mcp-services-bgp-__codelineno-4-1"></a>$ ncs_cli -Cu admin
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#11-nso-mcp-services-bgp-__codelineno-4-2"></a>admin@ncs# config t
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#11-nso-mcp-services-bgp-__codelineno-4-3"></a>admin@ncs(config)# devices device xr-1 config
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#11-nso-mcp-services-bgp-__codelineno-4-4"></a>admin@ncs(config-config)# no router bgp
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#11-nso-mcp-services-bgp-__codelineno-4-5"></a>admin@ncs(config-config)# top
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#11-nso-mcp-services-bgp-__codelineno-4-6"></a>admin@ncs(config)# devices device xr-2 config
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#11-nso-mcp-services-bgp-__codelineno-4-7"></a>admin@ncs(config-config)# no router bgp
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#11-nso-mcp-services-bgp-__codelineno-4-8"></a>admin@ncs(config-config)# commit
+</span></code></pre></div>
+<h3 id="11-nso-mcp-services-bgp-step-5-confirm-there-are-no-bgp-neighbors-via-mcp">Step 5: Confirm there are no BGP neighbors — via MCP<a class="headerlink" href="#11-nso-mcp-services-bgp-step-5-confirm-there-are-no-bgp-neighbors-via-mcp" title="Permanent link">&para;</a></h3>
+<p>In the web MCP client, ask the assistant to verify there are no BGP neighbors:</p>
+<blockquote>
+<p><em>"List BGP neighbors on xr-1 and xr-2."</em></p>
+</blockquote>
+<p><img alt="MCP web client confirming there are no BGP neighbors on xr-1 or xr-2" src="../assets/images/lab11/mcp-no-bgp-neighbors.png" /></p>
+<h3 id="11-nso-mcp-services-bgp-step-6-ask-the-assistant-which-parameters-bgpmgr-needs">Step 6: Ask the assistant which parameters <code>bgpmgr</code> needs<a class="headerlink" href="#11-nso-mcp-services-bgp-step-6-ask-the-assistant-which-parameters-bgpmgr-needs" title="Permanent link">&para;</a></h3>
+<p>Use the MCP client to discover the package surface without reading the YANG model directly:</p>
+<blockquote>
+<p><em>"What parameters do I need to configure BGP through the bgpmgr package?"</em></p>
+</blockquote>
+<p><img alt="MCP web client explaining the required parameters for the bgpmgr service" src="../assets/images/lab11/mcp-bgpmgr-required-parameters.png" /></p>
+<h3 id="11-nso-mcp-services-bgp-step-7-configure-bgp-between-xr-1-and-xr-2-through-the-assistant">Step 7: Configure BGP between <code>xr-1</code> and <code>xr-2</code> through the assistant<a class="headerlink" href="#11-nso-mcp-services-bgp-step-7-configure-bgp-between-xr-1-and-xr-2-through-the-assistant" title="Permanent link">&para;</a></h3>
+<p>Now ask the assistant to configure BGP using the parameters it just listed:</p>
+<blockquote>
+<p><em>"Configure BGP between xr-1 and xr-2 using bgpmgr."</em></p>
+</blockquote>
+<p>The assistant will translate your request into the appropriate <code>bgpmgr</code> service invocation and commit it through NSO.</p>
+<p><img alt="MCP web client driving the bgpmgr service to configure BGP between xr-1 and xr-2" src="../assets/images/lab11/mcp-configure-bgp.png" /></p>
+<h3 id="11-nso-mcp-services-bgp-step-8-verify-bgp-neighbors-are-up-via-mcp">Step 8: Verify BGP neighbors are up — via MCP<a class="headerlink" href="#11-nso-mcp-services-bgp-step-8-verify-bgp-neighbors-are-up-via-mcp" title="Permanent link">&para;</a></h3>
+<p>Ask the assistant again, the same way you would ask a colleague:</p>
+<blockquote>
+<p><em>"Are the BGP neighbors up between xr-1 and xr-2?"</em></p>
+</blockquote>
+<p><img alt="MCP web client showing BGP neighbors in Established state between xr-1 and xr-2" src="../assets/images/lab11/mcp-bgp-neighbors-up.png" /></p>
+<h3 id="11-nso-mcp-services-bgp-step-9-inspect-mcp-tools-and-prompts-with-ollmcp">Step 9: Inspect MCP tools and prompts with <code>ollmcp</code><a class="headerlink" href="#11-nso-mcp-services-bgp-step-9-inspect-mcp-tools-and-prompts-with-ollmcp" title="Permanent link">&para;</a></h3>
+<p>The scenario ships a second MCP client (<code>ollmcp</code>) intended for Ollama. We will use it purely for <strong>analysis</strong> — listing what NSO MCP exposes.</p>
+<p>Open a new terminal tab and run:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#11-nso-mcp-services-bgp-__codelineno-5-1"></a><span class="nb">cd</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#11-nso-mcp-services-bgp-__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/ollmcp
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#11-nso-mcp-services-bgp-__codelineno-5-3"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#11-nso-mcp-services-bgp-__codelineno-5-4"></a>ollmcp<span class="w"> </span>-j<span class="w"> </span>ollama-mcp-config.json
+</span></code></pre></div>
+<p>At the <code>ollmcp</code> prompt, type <strong><code>/t</code></strong> to list all NSO tools currently exposed by MCP:</p>
+<p><img alt="ollmcp tool listing for NSO MCP" src="../assets/images/lab11/ollmcp-tools-listing.png" /></p>
+<p>Type <strong><code>/prompts</code></strong> to list all available MCP prompts:</p>
+<p><img alt="ollmcp prompts listing for NSO MCP" src="../assets/images/lab11/ollmcp-prompts-listing.png" /></p>
+<p>For more information about this client, see <a href="https://github.com/jonigl/mcp-client-for-ollama">https://github.com/jonigl/mcp-client-for-ollama</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">ollmcp performance</p>
+<p>The Ollama-based MCP client in this scenario runs <strong>CPU-only (no GPU)</strong> and is consequently very slow. Treat it as an analysis / introspection tool, not an interactive assistant.</p>
+</div>
+<h2 id="11-nso-mcp-services-bgp-verification">Verification<a class="headerlink" href="#11-nso-mcp-services-bgp-verification" title="Permanent link">&para;</a></h2>
+<p>You should now have:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The <strong><code>bgpmgr</code></strong> package compiled and loaded — its tools appear in the MCP web client after <strong>Refresh Tools</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> BGP configuration on <strong>xr-1</strong> / <strong>xr-2</strong> authored end-to-end <strong>through MCP</strong> (no manual <code>router bgp</code> block typed by hand).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> BGP neighbors between <strong>xr-1</strong> and <strong>xr-2</strong> reported as <strong>up / Established</strong> by the MCP assistant.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong><code>ollmcp</code></strong> running and able to list NSO tools (<code>/t</code>) and prompts (<code>/prompts</code>).</li>
+</ul>
+<h2 id="11-nso-mcp-services-bgp-troubleshooting">Troubleshooting<a class="headerlink" href="#11-nso-mcp-services-bgp-troubleshooting" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>bgpmgr</code> tools don't appear after Refresh Tools</strong> — confirm <code>packages reload</code> finished cleanly in the NSO CLI (<code>show packages package bgpmgr oper-status</code>). Then press <strong>Refresh Tools</strong> again.</li>
+</ul>
+<!-- lint-allow-hardcoded-version -->
+<ul>
+<li><strong><code>make</code> fails compiling the package</strong> — verify you are inside <code>~/ncs-run/packages/dcloud-bgpmgr/src/</code> and that <code>NSO-6.7/ncsrc</code> has been sourced in the shell.</li>
+<li><strong>MCP cannot reach the devices</strong> — re-check <code>devices sync-from</code> in NSO CLI and that the device authgroups still resolve.</li>
+<li><strong>The assistant refuses or returns an empty plan</strong> — your MCP policy may have been switched back to <code>restricted</code>. Re-verify <code>mcp-server policies default-action permit</code> is committed.</li>
+</ul>
+<h2 id="11-nso-mcp-services-bgp-common-errors">Common Errors<a class="headerlink" href="#11-nso-mcp-services-bgp-common-errors" title="Permanent link">&para;</a></h2>
+<div class="css-common-errors" role="region" aria-label="Common errors">
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: `bgpmgr` tools never appear in the MCP web client.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> `packages reload` failed (compile error in `dcloud-bgpmgr/src/`) or finished with the package in error state, so MCP cannot expose its tools.</p><p class="css-common-error__fix"><strong>Fix</strong> Run `show packages package dcloud-bgpmgr oper-status` in the NSO CLI. If `oper-status` is anything other than `up`, rebuild: `cd ~/ncs-run/packages/dcloud-bgpmgr/src &amp;&amp; make clean &amp;&amp; make`, then re-run `packages reload` and press **Refresh Tools** in the web client.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Assistant says BGP is configured, but neighbors do not come up.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> AS numbers, neighbor addresses, or update-source were inferred incorrectly by the LLM (e.g., neighbor address pointed at a loopback that is not advertised yet).</p><p class="css-common-error__fix"><strong>Fix</strong> Ask the assistant to *&#x27;show the running BGP configuration on xr-1 and xr-2&#x27;* and reconcile against the topology table in Lab 10. Re-invoke the `bgpmgr` service with corrected parameters and commit.</p></div></details>
+
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Assistant refuses to act or returns an empty plan in this lab.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> MCP policy was reverted to `restricted` between Lab 10 and Lab 11, so the service-write tools are no longer exposed.</p><p class="css-common-error__fix"><strong>Fix</strong> In the NSO CLI: `show running-config mcp-server policies default-action` — if it does not say `permit`, repeat Step 8 of Lab 10.</p></div></details>
+
+</div>
+
+<h2 id="11-nso-mcp-services-bgp-whats-next">What's Next<a class="headerlink" href="#11-nso-mcp-services-bgp-whats-next" title="Permanent link">&para;</a></h2>
+<!-- lint-allow-hardcoded-version -->
+<p>Labs 10 and 11 introduced <strong>NSO 6.7 MCP</strong> as a way to drive NSO with natural language and to plug custom service packages into the same interface. From here, useful next steps outside this workbook include:</p>
+<ul>
+<li>Designing a <strong>custom <code>mcp-server policies</code></strong> that exposes only the tools your operators should actually use (vs. the broad <code>permit</code> default).</li>
+<li>Building your own service package and watching its tools appear automatically in the MCP client — the workflow is the same as <code>bgpmgr</code> in this lab.</li>
+<li>Wiring MCP into a production-grade client (the <strong><code>web-ui</code></strong> and <strong><code>ollmcp</code></strong> clients in this scenario are demonstrations — real deployments will use a different client/LLM combination).</li>
+</ul></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
@@ -2116,6 +2549,16 @@
 
                 .print-site-enumerate-headings #09-rbac-access-control h2:before { content: '2.9.' counter(counter-09-rbac-access-control-2) ' ' }
                 .print-site-enumerate-headings #09-rbac-access-control h2 {  counter-increment: counter-09-rbac-access-control-2 }
+            
+.print-site-enumerate-headings #10-nso-mcp-setup > h1:before { content: '2.10 ' }
+
+                .print-site-enumerate-headings #10-nso-mcp-setup h2:before { content: '2.10.' counter(counter-10-nso-mcp-setup-2) ' ' }
+                .print-site-enumerate-headings #10-nso-mcp-setup h2 {  counter-increment: counter-10-nso-mcp-setup-2 }
+            
+.print-site-enumerate-headings #11-nso-mcp-services-bgp > h1:before { content: '2.11 ' }
+
+                .print-site-enumerate-headings #11-nso-mcp-services-bgp h2:before { content: '2.11.' counter(counter-11-nso-mcp-services-bgp-2) ' ' }
+                .print-site-enumerate-headings #11-nso-mcp-services-bgp h2 {  counter-increment: counter-11-nso-mcp-services-bgp-2 }
             </style>
 
 

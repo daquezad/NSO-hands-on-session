@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Cisco Network Services Orchestrator - Hands-On Lab Guide" name="description"/>
+<meta content="Customer Success Specialists - Internet and Mass Scale Infrastructure" name="author"/>
+<link href="https://daquezad.github.io/NSO-hands-on-session/latest/10-nso-mcp-setup/" rel="canonical"/>
+<link href="../09-rbac-access-control/" rel="prev"/>
+<link href="../11-nso-mcp-services-bgp/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<title>Lab 10: NSO MCP — Setup and First Client - NSO Hands-On Adoption Workbook</title>
+<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../css/print-site.css" rel="stylesheet"/>
+<link href="../css/print-site-material.css" rel="stylesheet"/>
+<link href="../stylesheets/extra.css" rel="stylesheet"/>
+<link href="../assets/css/print.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<meta content="noindex, nofollow" name="robots"/>
+</head>
+<body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#lab-10-nso-mcp-setup-and-first-client">
+          Skip to content
+        </a>
+<a class="md-skip" href="#workbook-navigation">Skip to navigation</a><a class="md-skip" href="#verification">Skip to verification</a></div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+</div>
+</aside>
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="NSO Hands-On Adoption Workbook" class="md-header__button md-logo" data-md-component="logo" href=".." title="NSO Hands-On Adoption Workbook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4v2h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7 7l4 4-4 4h2.85l3.28-3.28c.37-.39.37-1.02 0-1.42L9.83 7zm10 6h-3v2h3z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            NSO Hands-On Adoption Workbook
+            <span aria-label="NSO release" class="css-workbook-header-nso"> · NSO </span>
+</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Lab 10: NSO MCP — Setup and First Client
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="custom" data-md-color-media="" data-md-color-primary="custom" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="custom" data-md-color-media="" data-md-color-primary="custom" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<label class="css-toc-fab" for="__toc" hidden="" title="Table of contents">
+<svg aria-hidden="true" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 14h4v-2H3v2zm0 5h4v-2H3v2zm0-10h4V7H3v2zm5 5h14v-2H8v2zm0 5h14v-2H8v2zM8 7v2h14V7H8z"></path></svg>
+<span class="css-toc-fab__text">Contents</span>
+</label>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" id="workbook-navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="NSO Hands-On Adoption Workbook" class="md-nav__button md-logo" data-md-component="logo" href=".." title="NSO Hands-On Adoption Workbook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4v2h1a1 1 0 0 1 1 1h7v2h-7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1H2v-2h7a1 1 0 0 1 1-1h1v-2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7 7l4 4-4 4h2.85l3.28-3.28c.37-.39.37-1.02 0-1.42L9.83 7zm10 6h-3v2h3z"></path></svg>
+</a>
+    NSO Hands-On Adoption Workbook
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Lab Guide
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01-connect-workstation/">
+<span class="md-ellipsis">
+    
+  
+    1. Connect to the Workstation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02-install-nso-neds/">
+<span class="md-ellipsis">
+    
+  
+    2. Install NSO and NEDs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03-register-xrd-routers/">
+<span class="md-ellipsis">
+    
+  
+    3. Register XRd Routers
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../04-configure-devices/">
+<span class="md-ellipsis">
+    
+  
+    4. Configure Devices
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../05-rollbacks/">
+<span class="md-ellipsis">
+    
+  
+    5. Rollbacks
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../06-out-of-band-sync/">
+<span class="md-ellipsis">
+    
+  
+    6. Out-of-Band Sync
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../07-device-groups-templates/">
+<span class="md-ellipsis">
+    
+  
+    7. Device Groups &amp; Templates
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../08-create-service/">
+<span class="md-ellipsis">
+    
+  
+    8. Create a Service
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../09-rbac-access-control/">
+<span class="md-ellipsis">
+    
+  
+    9. RBAC Access Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    10. NSO MCP — Setup and First Client
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    10. NSO MCP — Setup and First Client
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-objectives">
+<span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#time-budget">
+<span class="md-ellipsis">
+      
+        Time Budget
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
+<span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-is-mcp">
+<span class="md-ellipsis">
+      
+        What is MCP?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#procedure">
+<span class="md-ellipsis">
+      
+        Procedure
+      
+    </span>
+</a>
+<nav aria-label="Procedure" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-1-open-a-terminal-on-the-ubuntu-host">
+<span class="md-ellipsis">
+      
+        Step 1: Open a terminal on the Ubuntu host
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-2-install-nso-67-with-the-provided-ansible-playbook">
+<span class="md-ellipsis">
+      
+        Step 2: Install NSO 6.7 with the provided Ansible playbook
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-3-confirm-the-xrd-routers-are-reachable">
+<span class="md-ellipsis">
+      
+        Step 3: Confirm the XRd routers are reachable
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-4-install-the-nso-mcp-package">
+<span class="md-ellipsis">
+      
+        Step 4: Install the NSO MCP package
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-5-verify-the-mcp-server-with-the-bundled-test-script">
+<span class="md-ellipsis">
+      
+        Step 5: Verify the MCP server with the bundled test script
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-6-start-the-web-mcp-client-backend-frontend">
+<span class="md-ellipsis">
+      
+        Step 6: Start the web MCP client (backend + frontend)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-7-drive-nso-with-natural-language">
+<span class="md-ellipsis">
+      
+        Step 7: Drive NSO with natural language
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-8-change-the-mcp-policy-from-restricted-to-permit">
+<span class="md-ellipsis">
+      
+        Step 8: Change the MCP policy from restricted to permit
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verification">
+<span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#troubleshooting">
+<span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-errors">
+<span class="md-ellipsis">
+      
+        Common Errors
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#whats-next">
+<span class="md-ellipsis">
+      
+        What's Next
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../11-nso-mcp-services-bgp/">
+<span class="md-ellipsis">
+    
+  
+    11. NSO MCP — Service Models and BGP
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-objectives">
+<span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#time-budget">
+<span class="md-ellipsis">
+      
+        Time Budget
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prerequisites">
+<span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-is-mcp">
+<span class="md-ellipsis">
+      
+        What is MCP?
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#procedure">
+<span class="md-ellipsis">
+      
+        Procedure
+      
+    </span>
+</a>
+<nav aria-label="Procedure" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-1-open-a-terminal-on-the-ubuntu-host">
+<span class="md-ellipsis">
+      
+        Step 1: Open a terminal on the Ubuntu host
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-2-install-nso-67-with-the-provided-ansible-playbook">
+<span class="md-ellipsis">
+      
+        Step 2: Install NSO 6.7 with the provided Ansible playbook
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-3-confirm-the-xrd-routers-are-reachable">
+<span class="md-ellipsis">
+      
+        Step 3: Confirm the XRd routers are reachable
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-4-install-the-nso-mcp-package">
+<span class="md-ellipsis">
+      
+        Step 4: Install the NSO MCP package
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-5-verify-the-mcp-server-with-the-bundled-test-script">
+<span class="md-ellipsis">
+      
+        Step 5: Verify the MCP server with the bundled test script
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-6-start-the-web-mcp-client-backend-frontend">
+<span class="md-ellipsis">
+      
+        Step 6: Start the web MCP client (backend + frontend)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-7-drive-nso-with-natural-language">
+<span class="md-ellipsis">
+      
+        Step 7: Drive NSO with natural language
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-8-change-the-mcp-policy-from-restricted-to-permit">
+<span class="md-ellipsis">
+      
+        Step 8: Change the MCP policy from restricted to permit
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verification">
+<span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#troubleshooting">
+<span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-errors">
+<span class="md-ellipsis">
+      
+        Common Errors
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#whats-next">
+<span class="md-ellipsis">
+      
+        What's Next
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="lab-10-nso-mcp-setup-and-first-client">Lab 10: NSO MCP — Setup and First Client<a class="headerlink" href="#lab-10-nso-mcp-setup-and-first-client" title="Permanent link">¶</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Day 2 — Afternoon session</p>
+</div>
+<!-- lint-allow-hardcoded-version -->
+<div class="language-text highlight"><pre><span></span><code>Day 2 morning covered **RBAC** and the full lifecycle of NSO administration (Labs 5–9). This afternoon session pivots to **NSO 6.7**, where the headline feature is the **Model Context Protocol (MCP) server**. You will set up a fresh NSO 6.7 instance, expose it through MCP, and drive NSO with a natural-language client — all in the dCloud all-in-one scenario.
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">NSO version difference</p>
+</div>
+<!-- lint-allow-hardcoded-version -->
+<div class="language-text highlight"><pre><span></span><code>Labs 1–9 use NSO **6.7**. This lab and Lab 11 require **NSO 6.7 LTS**, which is the version bundled in the dCloud "NSO 6.7 MCP" scenario. Commands and paths in this chapter reference `NSO-6.7-LTS-free/` explicitly because MCP is only available from 6.7 onward.
+</code></pre></div>
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">¶</a></h2>
+<p>By the end of this lab you will be able to:</p>
+<ul>
+<li>Describe the three building blocks MCP exposes: <strong>resources</strong>, <strong>tools</strong>, and <strong>prompts</strong>.</li>
+</ul>
+<!-- lint-allow-hardcoded-version -->
+<ul>
+<li>Install NSO 6.7 on the dCloud Ubuntu host via the provided Ansible playbook and confirm both XRd routers are in sync.</li>
+<li>Install the <strong>NSO MCP package</strong>, enable the MCP server, and verify it with the bundled <code>test-mcp.sh</code> script (all 5 tests passing).</li>
+<li>Launch the sample <strong>web MCP client</strong> (<code>backend.py</code> + Streamlit <code>frontend.py</code>) and interact with NSO using natural language through a browser.</li>
+<li>Switch the MCP policy from the default <code>restricted</code> (~11 tools) to <code>permit</code> (100+ tools) and observe the larger surface area.</li>
+</ul>
+<h2 id="time-budget">Time Budget<a class="headerlink" href="#time-budget" title="Permanent link">¶</a></h2>
+<!-- lint-allow-hardcoded-version -->
+<div aria-label="Estimated time: 80 minutes total — What is MCP? 8 min, Setup NSO 6.7 20 min, Install MCP package 20 min, Run web client 18 min, Change policy 14 min" class="css-time-budget" role="img"><div class="css-time-budget__ribbon"><div class="css-time-budget__seg seg--a" style="flex:8"><span class="css-time-budget__seg-label">What is MCP?</span></div><div class="css-time-budget__seg seg--b" style="flex:20"><span class="css-time-budget__seg-label">Setup NSO 6.7</span></div><div class="css-time-budget__seg seg--c" style="flex:20"><span class="css-time-budget__seg-label">Install MCP package</span></div><div class="css-time-budget__seg seg--d" style="flex:18"><span class="css-time-budget__seg-label">Run web client</span></div><div class="css-time-budget__seg seg--a" style="flex:14"><span class="css-time-budget__seg-label">Change policy</span></div></div><ul class="css-time-budget__legend"><li><span class="css-time-budget__swatch seg--a"></span>What is MCP? — 8 min</li><li><span class="css-time-budget__swatch seg--b"></span>Setup NSO 6.7 — 20 min</li><li><span class="css-time-budget__swatch seg--c"></span>Install MCP package — 20 min</li><li><span class="css-time-budget__swatch seg--d"></span>Run web client — 18 min</li><li><span class="css-time-budget__swatch seg--a"></span>Change policy — 14 min</li></ul><p class="css-time-budget__total"><strong>Total</strong> — 80 min</p></div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <a href="../09-rbac-access-control/">Lab 9: RBAC Access Control</a> completed — the Day 2 morning track is done.</li>
+</ul>
+<!-- lint-allow-hardcoded-version -->
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Your dCloud session for <strong>NSO 6.7 MCP — Demo</strong> is <strong>Active</strong> (all stages of the Launch Progress bar are green; this can take up to ~10 minutes).</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> You can open the <strong>VM Console</strong> of <strong>Ubuntu 24.04 Desktop</strong> (host <code>198.18.134.27</code>, user <code>cisco</code> / <code>C1sco12345</code>).</li>
+</ul>
+<h2 id="what-is-mcp">What is MCP?<a class="headerlink" href="#what-is-mcp" title="Permanent link">¶</a></h2>
+<!-- lint-allow-hardcoded-version -->
+<p>The <strong>Model Context Protocol (MCP)</strong> acts as a universal translator between data sources and AI applications. <strong>NSO 6.7</strong> can act as an <strong>MCP server</strong> and exposes three primitives:</p>
+<table>
+<thead>
+<tr>
+<th>MCP primitive</th>
+<th>What NSO provides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Resources</strong> — schema and data</td>
+<td><code>global-settings</code>, <code>zombies</code>, device settings and configurations</td>
+</tr>
+<tr>
+<td><strong>Tools</strong> — executable functions the LLM can call</td>
+<td>Configurable via <code>mcp-policies</code> (the policy decides which tools are exposed)</td>
+</tr>
+<tr>
+<td><strong>Prompts</strong> — pre-defined templates</td>
+<td>Seven prompts shipped with the NSO MCP server</td>
+</tr>
+</tbody>
+</table>
+<p>In this lab, a custom <strong>MCP client</strong> (used later in the procedure) connects to NSO and leverages <strong>Cisco AI</strong> to provide an AI interface through a web browser.</p>
+<h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Rollback</p>
+<p><!-- lint-allow-hardcoded-version -->
+This lab is <strong>not idempotent</strong> — it installs NSO 6.7 fresh and enables the MCP server with a permissive policy. To roll back the MCP changes without reinstalling NSO, in the NSO CLI:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>admin@ncs# config t
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>admin@ncs(config)# no mcp-server enabled
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>admin@ncs(config)# mcp-server policies default-action restricted
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>admin@ncs(config)# commit
+</span></code></pre></div>
+<p>To fully undo the install, the simplest path in the dCloud scenario is to <strong>end the dCloud session</strong> and restart it — the Ansible playbook will reprovision the host.</p>
+</div>
+<h3 id="step-1-open-a-terminal-on-the-ubuntu-host">Step 1: Open a terminal on the Ubuntu host<a class="headerlink" href="#step-1-open-a-terminal-on-the-ubuntu-host" title="Permanent link">¶</a></h3>
+<p>Once the dCloud scenario is active, open the <strong>VM Console</strong> of <strong>Ubuntu 24.04 Desktop</strong>.</p>
+<p><img alt="dCloud VM Console launcher for Ubuntu 24.04 Desktop" src="../assets/images/lab10/dcloud-vm-console-ubuntu.png"/></p>
+<div class="admonition tip">
+<p class="admonition-title">Win11 alternative</p>
+<p>You can also work from the <strong>Win11</strong> host (<code>198.18.133.100</code>, user <code>dcloud</code>, no password) using <strong>TeraTerm</strong>. Use <strong>VM Console</strong> rather than Web RDP — Web RDP is very slow in this scenario.</p>
+</div>
+<p>On Ubuntu, open <strong>Terminal</strong>.</p>
+<!-- lint-allow-hardcoded-version -->
+<h3 id="step-2-install-nso-67-with-the-provided-ansible-playbook">Step 2: Install NSO 6.7 with the provided Ansible playbook<a class="headerlink" href="#step-2-install-nso-67-with-the-provided-ansible-playbook" title="Permanent link">¶</a></h3>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>ansible-playbook<span class="w"> </span>nso.yml
+</span></code></pre></div>
+<p>Wait a few minutes for the playbook to complete — NSO will be installed automatically.</p>
+<p>Once it finishes, source the environment and open the NSO CLI:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">cd</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span>NSO-6.7/ncsrc
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>ncs_cli<span class="w"> </span>-Cu<span class="w"> </span>admin
+</span></code></pre></div>
+<h3 id="step-3-confirm-the-xrd-routers-are-reachable">Step 3: Confirm the XRd routers are reachable<a class="headerlink" href="#step-3-confirm-the-xrd-routers-are-reachable" title="Permanent link">¶</a></h3>
+<p>Inside the NSO CLI, sync both XRd devices and verify they are present:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>admin@ncs# devices sync-from
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>admin@ncs# show devices device
+</span></code></pre></div>
+<p><span class="paired-landmark" data-landmark="two XRd devices listed and sync-from result: true"></span></p>
+<p><img alt="NSO CLI showing devices sync-from with two XRd routers in sync" src="../assets/images/lab10/nso-cli-sync-from-xrd.png"/></p>
+<p>If either device fails to sync, stop here and resolve before continuing — MCP needs a working device tree to expose meaningful tools.</p>
+<h3 id="step-4-install-the-nso-mcp-package">Step 4: Install the NSO MCP package<a class="headerlink" href="#step-4-install-the-nso-mcp-package" title="Permanent link">¶</a></h3>
+<p>The MCP package is included in the NSO installer bundle. From the <strong>Linux terminal</strong> (not the NSO CLI), copy it into the packages directory:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">cd</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>cp<span class="w"> </span>NSO-6.7-LTS-free/work/ncs-6.7-cisco-nso-adaptive-mcp-server-1.0.0.tar.gz<span class="w"> </span>ncs-run/packages
+</span></code></pre></div>
+<p>Then in the <strong>NSO CLI</strong>, reload packages and enable MCP:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>admin@ncs# packages reload
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>admin@ncs# config t
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>admin@ncs(config)# mcp-server enabled
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>admin@ncs(config)# commit
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>admin@ncs(config)# end
+</span></code></pre></div>
+<p><img alt="NSO CLI showing mcp-server enabled committed in the running configuration" src="../assets/images/lab10/nso-mcp-server-enabled.png"/></p>
+<h3 id="step-5-verify-the-mcp-server-with-the-bundled-test-script">Step 5: Verify the MCP server with the bundled test script<a class="headerlink" href="#step-5-verify-the-mcp-server-with-the-bundled-test-script" title="Permanent link">¶</a></h3>
+<p>The MCP package contains a <code>test-mcp.sh</code> test script. Confirm MCP is up and running:</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nb">cd</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>tar<span class="w"> </span>zxvf<span class="w"> </span>NSO-6.7-LTS-free/work/ncs-6.7-cisco-nso-adaptive-mcp-server-1.0.0.tar.gz
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nb">cd</span><span class="w"> </span>cisco-nso-adaptive-mcp-server
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>./test-mcp.sh
+</span></code></pre></div>
+<p>If any test fails, go back to the NSO CLI, run <code>packages reload</code> again, and re-run <code>./test-mcp.sh</code>. Continue only when <strong>all 5 tests pass</strong>.</p>
+<p><img alt="test-mcp.sh output showing all 5 tests passed" src="../assets/images/lab10/test-mcp-all-tests-passed.png"/></p>
+<p>NSO MCP is now ready.</p>
+<h3 id="step-6-start-the-web-mcp-client-backend-frontend">Step 6: Start the web MCP client (backend + frontend)<a class="headerlink" href="#step-6-start-the-web-mcp-client-backend-frontend" title="Permanent link">¶</a></h3>
+<p>The scenario includes a sample web MCP client. It runs as two programs in two terminal tabs.</p>
+<p><strong>Terminal tab 1 — backend:</strong></p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">cd</span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/web-ui
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>python3<span class="w"> </span>backend.py
+</span></code></pre></div>
+<p><strong>Terminal tab 2 — frontend</strong> (open a new tab, then):</p>
+<!-- lint-skip: no-output -->
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/web-ui
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>streamlit<span class="w"> </span>run<span class="w"> </span>frontend.py
+</span></code></pre></div>
+<p>Firefox should open automatically. If not, launch Firefox manually and browse to <a href="http://localhost:8501/">http://localhost:8501/</a>.</p>
+<p>Confirm the <strong>NSO MCP tools</strong> appear in the left-hand menu of the web UI:</p>
+<p><img alt="Streamlit web MCP client with NSO MCP tools listed on the left menu" src="../assets/images/lab10/mcp-web-client-tools-menu.png"/></p>
+<h3 id="step-7-drive-nso-with-natural-language">Step 7: Drive NSO with natural language<a class="headerlink" href="#step-7-drive-nso-with-natural-language" title="Permanent link">¶</a></h3>
+<p>In the chat box, ask NSO about its devices in plain English (e.g. <em>"List the devices managed by NSO."</em>).</p>
+<p><img alt="Web MCP client answering a natural-language question about NSO devices" src="../assets/images/lab10/mcp-web-client-natural-language.png"/></p>
+<h3 id="step-8-change-the-mcp-policy-from-restricted-to-permit">Step 8: Change the MCP policy from <code>restricted</code> to <code>permit</code><a class="headerlink" href="#step-8-change-the-mcp-policy-from-restricted-to-permit" title="Permanent link">¶</a></h3>
+<p>By default, for security reasons, the active MCP policy is <strong><code>restricted</code></strong> — it exposes only <strong>11 tools</strong>. Switch the default action to <strong><code>permit</code></strong> so more tools become available.</p>
+<p>In the NSO CLI:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>$ ncs_cli -Cu admin
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>admin@ncs# config t
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>admin@ncs(config)# mcp-server policies default-action permit
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>admin@ncs(config)# commit
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a>admin@ncs(config)# end
+</span></code></pre></div>
+<p>Back in the web MCP client, press <strong>Refresh tools</strong> in the left menu. You should now see <strong>more than 100 tools</strong>:</p>
+<p><img alt="MCP web client left menu showing 100+ tools after policy change to permit" src="../assets/images/lab10/mcp-policy-permit-100-tools.png"/></p>
+<p>You can now run richer queries — for example, ask the client to show <strong><code>live-status</code></strong> of a device:</p>
+<p><img alt="MCP web client returning live-status output for an XRd device" src="../assets/images/lab10/mcp-live-status-result.png"/></p>
+<div class="admonition warning">
+<p class="admonition-title">Production policy</p>
+<p><code>permit</code> exposes a very large surface area to whichever LLM is on the other end of the MCP connection. Use <code>restricted</code> (or a hand-curated policy) for anything other than demo / lab scenarios.</p>
+</div>
+<h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h2>
+<p>You should now have:</p>
+<!-- lint-allow-hardcoded-version -->
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> NSO 6.7 LTS installed on the Ubuntu host, with both XRd routers in <strong>sync-from: true</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> NSO MCP package loaded, MCP server <strong>enabled</strong> in the running config.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <code>./test-mcp.sh</code> reporting <strong>5/5 tests passed</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> The web MCP client running on <a href="http://localhost:8501/">http://localhost:8501/</a> with the NSO tool menu populated.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> MCP policy switched to <strong><code>permit</code></strong> — the tool count in the left menu jumps from ~11 to <strong>100+</strong>.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong><code>test-mcp.sh</code> fails</strong> — run <code>packages reload</code> in the NSO CLI, wait for it to finish, and re-run the test script.</li>
+<li><strong>No tools visible in the web client</strong> — the policy may still be <code>restricted</code> and connection-scoped. Confirm <code>mcp-server policies default-action permit</code> was committed, then press <strong>Refresh tools</strong>.</li>
+<li><strong>Streamlit page won't load</strong> — verify both <code>backend.py</code> and <code>streamlit run frontend.py</code> are running in their own terminal tabs with the venv activated.</li>
+</ul>
+<h2 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">¶</a></h2>
+<div aria-label="Common errors" class="css-common-errors" role="region">
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: `./test-mcp.sh` reports fewer than 5 passing tests after `packages reload`.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> MCP package partially loaded — `mcp-server enabled` was committed before `packages reload` finished, or the tarball was not copied into `ncs-run/packages` before the reload.</p><p class="css-common-error__fix"><strong>Fix</strong> Re-run `packages reload` in the NSO CLI and wait for it to return cleanly, then run `./test-mcp.sh` again. If the tarball is missing under `ncs-run/packages`, repeat Step 4 (`cp …adaptive-mcp-server…tar.gz ncs-run/packages`).</p></div></details>
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Web client shows only ~11 tools even after pressing **Refresh tools**.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> MCP policy is still the default `restricted`, or the commit of `default-action permit` was rolled back.</p><p class="css-common-error__fix"><strong>Fix</strong> In the NSO CLI, run `show running-config mcp-server policies default-action` — if it does not say `permit`, repeat Step 8 and commit. Then press **Refresh tools** in the web client.</p></div></details>
+<details class="css-common-error"><summary class="css-common-error__summary">Symptom: Firefox cannot reach &lt;http://localhost:8501/&gt;.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> The Streamlit frontend (`streamlit run frontend.py`) is not running, or its terminal has lost the activated venv.</p><p class="css-common-error__fix"><strong>Fix</strong> Open the frontend terminal tab, confirm the prompt has `(venv)`, and re-run `streamlit run frontend.py`. The backend (`python3 backend.py`) must also be running in its own tab.</p></div></details>
+</div>
+<h2 id="whats-next">What's Next<a class="headerlink" href="#whats-next" title="Permanent link">¶</a></h2>
+<p>Lab 10 left NSO MCP exposed with the broad <strong><code>permit</code></strong> policy. In <a href="../11-nso-mcp-services-bgp/">Lab 11: NSO MCP — Service Models and BGP</a> you will <strong>load an additional service package</strong> (<code>bgpmgr</code>), watch its tools appear in the MCP client, and use natural language to <strong>configure BGP</strong> between <strong>xr-1</strong> and <strong>xr-2</strong> — then inspect the available tools and prompts from a second MCP client (<code>ollmcp</code>).</p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: 9. RBAC Access Control" class="md-footer__link md-footer__link--prev" href="../09-rbac-access-control/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                9. RBAC Access Control
+              </div>
+</div>
+</a>
+<a aria-label="Next: 11. NSO MCP — Service Models and BGP" class="md-footer__link md-footer__link--next" href="../11-nso-mcp-services-bgp/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                11. NSO MCP — Service Models and BGP
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      © Cisco Confidential
+    </div>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/daquezad/NSO-hands-on-session" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div aria-label="Classification: Cisco Confidential" class="css-classification-banner md-typeset" role="contentinfo">
+<div class="css-classification-banner__inner md-grid">
+      Cisco Confidential
+    </div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<div aria-atomic="true" aria-live="polite" class="css-sr-only" id="css-a11y-announcer" role="status"></div>
+<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../js/print-site.js"></script>
+<script src="../javascripts/paired.js"></script>
+<script src="../javascripts/common-errors.js"></script>
+<script>
+    (function () {
+      var toc = document.getElementById("__toc");
+      var fab = document.querySelector(".css-toc-fab");
+      if (toc && fab) fab.removeAttribute("hidden");
+    })();
+  </script>
+</body>
+</html>
