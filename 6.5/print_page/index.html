@@ -7,7 +7,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Cisco Network Services Orchestrator - Hands-On Lab Guide">
+        <meta name="description" content="Cisco Network Services Orchestrator - Hands-On Lab Workbook">
       
       
         <meta name="author" content="Customer Success Specialists - Internet and Mass Scale Infrastructure">
@@ -882,14 +882,14 @@
   <h1 class="pdf-cover__title">NSO Hands-On Adoption Workbook</h1>
   
   <p class="pdf-cover__meta">
-    <strong>Proctor</strong> David Quezada Rivero
+    <strong>Presenter</strong> David Quezada Rivero
   </p>
   <p class="pdf-cover__meta">
     <strong>Team</strong> Internet and Mass Scale Infrastructure
   </p>
   
   <p class="pdf-cover__meta pdf-cover__meta--date">
-    <strong>Build date (UTC)</strong> 2026-05-26
+    <strong>Date: </strong> 2026-05-26
   </p>
   
 </div>
@@ -918,14 +918,14 @@
 <tr class="css-journey-tr"><th scope="row" data-label="Lab #">5</th><td data-label="Title"><a href="#05-rollbacks">Rollbacks</a></td><td data-label="Time">20 min</td><td data-label="Description">Rollback files and revert commits</td></tr>
 <tr class="css-journey-tr"><th scope="row" data-label="Lab #">6</th><td data-label="Title"><a href="#06-out-of-band-sync">Out-of-Band Sync</a></td><td data-label="Time">20 min</td><td data-label="Description">Detect and reconcile OOB changes</td></tr>
 <tr class="css-journey-tr"><th scope="row" data-label="Lab #">7</th><td data-label="Title"><a href="#07-device-groups-templates">Device Groups &amp; Templates</a></td><td data-label="Time">25 min</td><td data-label="Description">Groups and templates at scale</td></tr>
-<tr class="css-journey-tr css-journey-row--intentional"><th scope="row" data-label="Lab #">8</th><td data-label="Title"><a href="#08-create-service">Create a Service</a></td><td data-label="Time">30 min</td><td data-label="Description"><span class="css-journey-chip" title="This lab includes an intentional failure path">intentional break</span> Python-and-template service package</td></tr>
-<tr class="css-journey-tr"><th scope="row" data-label="Lab #">9</th><td data-label="Title"><a href="#09-rbac-access-control">RBAC Access Control</a></td><td data-label="Time">30 min</td><td data-label="Description">Users, authgroups, NACM rules</td></tr>
+<tr class="css-journey-tr"><th scope="row" data-label="Lab #">8</th><td data-label="Title"><a href="#08-create-service">Create a Service</a></td><td data-label="Time">30 min</td><td data-label="Description">Python-and-template service package</td></tr>
+<tr class="css-journey-tr css-journey-row--intentional"><th scope="row" data-label="Lab #">9</th><td data-label="Title"><a href="#09-rbac-access-control">RBAC Access Control</a></td><td data-label="Time">30 min</td><td data-label="Description"><span class="css-journey-chip" title="This lab includes an intentional failure path">intentional break</span> Users, authgroups, NACM rules</td></tr>
 <tr class="css-journey-tr"><th scope="row" data-label="Lab #">10</th><td data-label="Title"><a href="#10-nso-mcp-setup">NSO MCP — Setup and First Client</a></td><td data-label="Time">80 min</td><td data-label="Description">NSO 6.7 + MCP server, web client, policy permit</td></tr>
 <tr class="css-journey-tr"><th scope="row" data-label="Lab #">11</th><td data-label="Title"><a href="#11-nso-mcp-services-bgp">NSO MCP — Service Models and BGP</a></td><td data-label="Time">70 min</td><td data-label="Description">Load bgpmgr, configure BGP via natural language</td></tr></tbody></table></div>
 
 <div class="admonition info">
 <p class="admonition-title">Two-day flow</p>
-<p>Labs <strong>1–11</strong> run on the standard NSO <strong>6.5</strong> sandbox (Day 1 + Day 2 afternoon). Labs <strong>10–11</strong> are a <strong>Day 2 afternoon</strong> continuation using the dCloud <strong>"NSO 6.7 MCP"</strong> scenario — a NSO release, and the new <strong>Model Context Protocol</strong> server. Each chapter declares its own NSO version in front-matter.</p>
+<p>Labs <strong>1–9</strong> run on the standard NSO <strong>6.5</strong> sandbox (Day 1). Labs <strong>10–11</strong> are a <strong>Day 2</strong> continuation using the dCloud <strong>"NSO 6.7 MCP"</strong> scenario — a NSO release, and the new <strong>Model Context Protocol</strong> server. Each chapter declares its own NSO version in front-matter.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Before you begin</p>
@@ -958,10 +958,6 @@
 <li>Open <strong>VM Console</strong> from the <strong>Remote Access</strong> menu (wording may vary slightly by platform).</li>
 </ol>
 <p><img alt="Lab portal — select the VM and open VM Console from Remote Access" src="../assets/images/01/lab-portal-vm-console.png" /></p>
-<ol>
-<li>On Windows, if you see “You’re almost done setting up your PC,” choose <strong>Remind me in 3 days</strong> to reach the desktop.</li>
-</ol>
-<p><img alt="Windows desktop after initial setup prompt" src="../assets/images/01/windows-desktop-setup.png" /></p>
 <p>Wait until you see the desktop background and can move the pointer inside the VM.</p>
 <h3 id="01-connect-workstation-step-2-orient-yourself-on-the-desktop">Step 2: Orient yourself on the desktop<a class="headerlink" href="#01-connect-workstation-step-2-orient-yourself-on-the-desktop" title="Permanent link">&para;</a></h3>
 <p>Alternatively, if you chose <strong>Ubuntu 24.04 Desktop</strong>, you will see a desktop similar to this:</p>
@@ -1798,8 +1794,10 @@
 </span></code></pre></div>
 <h3 id="08-create-service-step-5-populate-the-service-template">Step 5: Populate the service template<a class="headerlink" href="#08-create-service-step-5-populate-the-service-template" title="Permanent link">&para;</a></h3>
 <p>The generated skeleton includes an <strong>XML template</strong> and a <strong>YANG model</strong> — you will edit both.</p>
-<p><img alt="Default STATIC-template.xml content" src="../assets/images/lab08/vscode-xml-template-file.png" /></p>
-<p><img alt="Default STATIC.yang content" src="../assets/images/lab08/vscode-yang-file.png" /></p>
+<p>This is what we will find in the XML file:
+<img alt="Default STATIC-template.xml content" src="../assets/images/lab08/vscode-xml-template-file.png" /></p>
+<p>And this is what we will find on the YANG file:
+<img alt="Default STATIC.yang content" src="../assets/images/lab08/vscode-yang-file.png" /></p>
 <p>Copy only the <strong><code>router</code></strong> subtree (inside <strong><code>&lt;config&gt;</code></strong>) into <strong><code>STATIC-template.xml</code></strong>:</p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#08-create-service-__codelineno-8-1"></a><span class="nt">&lt;router</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://tail-f.com/ned/cisco-ios-xr&quot;</span><span class="nt">&gt;</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#08-create-service-__codelineno-8-2"></a><span class="w">  </span><span class="nt">&lt;static&gt;</span>
@@ -1821,16 +1819,15 @@
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#08-create-service-__codelineno-8-18"></a><span class="nt">&lt;/router&gt;</span>
 </span></code></pre></div>
 <h3 id="08-create-service-step-6-add-yang-variables">Step 6: Add YANG variables<a class="headerlink" href="#08-create-service-step-6-add-yang-variables" title="Permanent link">&para;</a></h3>
-<p>Replace literals with service inputs. Typical leaves:</p>
-<ol>
-<li><strong>Destination prefix</strong> (for example <code>11.11.11.11/32</code>)</li>
-<li><strong>Forwarding address</strong> (for example <code>10.1.1.2</code>)</li>
-<li><strong>Metric</strong> (default <strong>100</strong>)</li>
-<li><strong>Description</strong> (default <strong><code>set by NSO</code></strong>)</li>
-</ol>
 <p><img alt="Four variables identified: destination prefix, forwarding address, metric, description" src="../assets/images/lab08/slide-variables-identification.png" /></p>
 <h4 id="08-create-service-update-static-templatexml">Update <code>STATIC-template.xml</code><a class="headerlink" href="#08-create-service-update-static-templatexml" title="Permanent link">&para;</a></h4>
-<p>Reference those leaves with your template engine’s variable syntax (for example <code>{$DEST}</code> / <code>{$CONTEXT}</code> patterns — follow the generated skeleton comments).</p>
+<p>Reference those leaves with your template engine’s variable syntax:</p>
+<ol>
+<li><strong>Destination prefix</strong> (for example <code>11.11.11.11/32</code> -&gt; <code>{/dest-prefix}</code>)</li>
+<li><strong>Forwarding address</strong> (for example <code>10.1.1.2</code> -&gt; <code>{/fwd-address}</code>)</li>
+<li><strong>Metric</strong> (default <strong>100</strong> -&gt; <code>{/metric}</code>)</li>
+<li><strong>Description</strong> (default <strong><code>set by NSO</code></strong> -&gt; <code>{/description}</code>)</li>
+</ol>
 <p><img alt="XML template with variable placeholders" src="../assets/images/lab08/slide-xml-with-variables.png" /></p>
 <h4 id="08-create-service-update-staticyang">Update <code>STATIC.yang</code><a class="headerlink" href="#08-create-service-update-staticyang" title="Permanent link">&para;</a></h4>
 <p>Make <strong><code>dest-prefix</code></strong> and <strong><code>fwd-address</code></strong> mandatory; give <strong><code>metric</code></strong> and <strong><code>description</code></strong> defaults (exact syntax follows your YANG tutorial).</p>
@@ -2196,7 +2193,7 @@
 </ul>
 <!-- lint-allow-hardcoded-version -->
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Your dCloud session for <strong>NSO 6.7 MCP — Demo</strong> is <strong>Active</strong> (all stages of the Launch Progress bar are green; this can take up to ~10 minutes).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Your dCloud session for <strong>NSO 6.7 MCP — Demo</strong> is <strong>Active</strong>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the <strong>VM Console</strong> of <strong>Ubuntu 24.04 Desktop</strong>.</li>
 </ul>
 <h2 id="10-nso-mcp-setup-what-is-mcp">What is MCP?<a class="headerlink" href="#10-nso-mcp-setup-what-is-mcp" title="Permanent link">&para;</a></h2>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Cisco Network Services Orchestrator - Hands-On Lab Guide" name="description"/>
+<meta content="Cisco Network Services Orchestrator - Hands-On Lab Workbook" name="description"/>
 <meta content="Customer Success Specialists - Internet and Mass Scale Infrastructure" name="author"/>
 <link href="https://daquezad.github.io/NSO-hands-on-session/latest/08-create-service/" rel="canonical"/>
 <link href="../07-device-groups-templates/" rel="prev"/>
@@ -785,8 +785,10 @@
 </span></code></pre></div>
 <h3 id="step-5-populate-the-service-template">Step 5: Populate the service template<a class="headerlink" href="#step-5-populate-the-service-template" title="Permanent link">¶</a></h3>
 <p>The generated skeleton includes an <strong>XML template</strong> and a <strong>YANG model</strong> — you will edit both.</p>
-<p><img alt="Default STATIC-template.xml content" src="../assets/images/lab08/vscode-xml-template-file.png"/></p>
-<p><img alt="Default STATIC.yang content" src="../assets/images/lab08/vscode-yang-file.png"/></p>
+<p>This is what we will find in the XML file:
+<img alt="Default STATIC-template.xml content" src="../assets/images/lab08/vscode-xml-template-file.png"/></p>
+<p>And this is what we will find on the YANG file:
+<img alt="Default STATIC.yang content" src="../assets/images/lab08/vscode-yang-file.png"/></p>
 <p>Copy only the <strong><code>router</code></strong> subtree (inside <strong><code>&lt;config&gt;</code></strong>) into <strong><code>STATIC-template.xml</code></strong>:</p>
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nt">&lt;router</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">"http://tail-f.com/ned/cisco-ios-xr"</span><span class="nt">&gt;</span>
 </span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="nt">&lt;static&gt;</span>
@@ -808,16 +810,15 @@
 </span><span id="__span-8-18"><a href="#__codelineno-8-18" id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="nt">&lt;/router&gt;</span>
 </span></code></pre></div>
 <h3 id="step-6-add-yang-variables">Step 6: Add YANG variables<a class="headerlink" href="#step-6-add-yang-variables" title="Permanent link">¶</a></h3>
-<p>Replace literals with service inputs. Typical leaves:</p>
-<ol>
-<li><strong>Destination prefix</strong> (for example <code>11.11.11.11/32</code>)</li>
-<li><strong>Forwarding address</strong> (for example <code>10.1.1.2</code>)</li>
-<li><strong>Metric</strong> (default <strong>100</strong>)</li>
-<li><strong>Description</strong> (default <strong><code>set by NSO</code></strong>)</li>
-</ol>
 <p><img alt="Four variables identified: destination prefix, forwarding address, metric, description" src="../assets/images/lab08/slide-variables-identification.png"/></p>
 <h4 id="update-static-templatexml">Update <code>STATIC-template.xml</code><a class="headerlink" href="#update-static-templatexml" title="Permanent link">¶</a></h4>
-<p>Reference those leaves with your template engine’s variable syntax (for example <code>{$DEST}</code> / <code>{$CONTEXT}</code> patterns — follow the generated skeleton comments).</p>
+<p>Reference those leaves with your template engine’s variable syntax:</p>
+<ol>
+<li><strong>Destination prefix</strong> (for example <code>11.11.11.11/32</code> -&gt; <code>{/dest-prefix}</code>)</li>
+<li><strong>Forwarding address</strong> (for example <code>10.1.1.2</code> -&gt; <code>{/fwd-address}</code>)</li>
+<li><strong>Metric</strong> (default <strong>100</strong> -&gt; <code>{/metric}</code>)</li>
+<li><strong>Description</strong> (default <strong><code>set by NSO</code></strong> -&gt; <code>{/description}</code>)</li>
+</ol>
 <p><img alt="XML template with variable placeholders" src="../assets/images/lab08/slide-xml-with-variables.png"/></p>
 <h4 id="update-staticyang">Update <code>STATIC.yang</code><a class="headerlink" href="#update-staticyang" title="Permanent link">¶</a></h4>
 <p>Make <strong><code>dest-prefix</code></strong> and <strong><code>fwd-address</code></strong> mandatory; give <strong><code>metric</code></strong> and <strong><code>description</code></strong> defaults (exact syntax follows your YANG tutorial).</p>
