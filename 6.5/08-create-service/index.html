@@ -822,10 +822,30 @@
 <h4 id="update-staticyang">Update <code>STATIC.yang</code><a class="headerlink" href="#update-staticyang" title="Permanent link">¶</a></h4>
 <p>Make <strong><code>dest-prefix</code></strong> and <strong><code>fwd-address</code></strong> mandatory; give <strong><code>metric</code></strong> and <strong><code>description</code></strong> defaults (exact syntax follows your YANG tutorial).</p>
 <p><img alt="YANG model with leaf definitions and defaults" src="../assets/images/lab08/slide-yang-with-variables.png"/></p>
+<div class="language-yang highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c">// replace with your own stuff here</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="k">leaf</span><span class="w"> </span><span class="nv">dest-prefix</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nn">inet</span><span class="p">:</span><span class="nv">ipv4-prefix</span><span class="p">;</span>
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="k">mandatory</span><span class="w"> </span><span class="nc">true</span><span class="p">;</span>
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="p">}</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="k">leaf</span><span class="w"> </span><span class="nv">fwd-address</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nn">inet</span><span class="p">:</span><span class="nv">ipv4-address</span><span class="p">;</span>
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">    </span><span class="k">mandatory</span><span class="w"> </span><span class="nc">true</span><span class="p">;</span>
+</span><span id="__span-9-9"><a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="p">}</span>
+</span><span id="__span-9-10"><a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="k">leaf</span><span class="w"> </span><span class="nv">metric</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-12"><a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nc">uint16</span><span class="p">;</span>
+</span><span id="__span-9-13"><a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="s2">"100"</span><span class="p">;</span>
+</span><span id="__span-9-14"><a href="#__codelineno-9-14" id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="p">}</span>
+</span><span id="__span-9-15"><a href="#__codelineno-9-15" id="__codelineno-9-15" name="__codelineno-9-15"></a>
+</span><span id="__span-9-16"><a href="#__codelineno-9-16" id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="k">leaf</span><span class="w"> </span><span class="k">description</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-17"><a href="#__codelineno-9-17" id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nc">string</span><span class="p">;</span>
+</span><span id="__span-9-18"><a href="#__codelineno-9-18" id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="s2">"set by NSO"</span><span class="p">;</span>
+</span><span id="__span-9-19"><a href="#__codelineno-9-19" id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="p">}</span>
+</span></code></pre></div>
 <h3 id="step-7-compile-the-package">Step 7: Compile the package<a class="headerlink" href="#step-7-compile-the-package" title="Permanent link">¶</a></h3>
-<div aria-label="Command and expected output" class="paired" role="group"><div class="paired__command"><div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC/src
-</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>make
-</span></code></pre></div></div><div class="paired__output"><div class="paired__output-head"><span class="paired__label">↓ Expected output</span><span class="paired__landmark-hint">Look for: <code>STATIC.fxs</code></span></div><div class="paired__output-body"><div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>… ncsc … -o ../load-dir/STATIC.fxs yang/STATIC.yang
+<div aria-label="Command and expected output" class="paired" role="group"><div class="paired__command"><div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC/src
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>make
+</span></code></pre></div></div><div class="paired__output"><div class="paired__output-head"><span class="paired__label">↓ Expected output</span><span class="paired__landmark-hint">Look for: <code>STATIC.fxs</code></span></div><div class="paired__output-body"><div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>… ncsc … -o ../load-dir/STATIC.fxs yang/STATIC.yang
 </span></code></pre></div></div><div aria-atomic="true" aria-live="polite" class="paired__live paired__live--sr"></div></div></div>
 <p><em>(Warnings policy depends on your flags; </em><em><code>--fail-on-warnings</code></em><em> may stop the build if YANG has issues.)</em></p>
 <h3 id="step-8-reload-packages">Step 8: Reload packages<a class="headerlink" href="#step-8-reload-packages" title="Permanent link">¶</a></h3>
@@ -840,11 +860,12 @@
 <p><img alt="STATIC package listed after reload" src="../assets/images/lab08/webui-packages-static-listed.png"/></p>
 <h3 id="step-9-deploy-the-service-instance">Step 9: Deploy the service instance<a class="headerlink" href="#step-9-deploy-the-service-instance" title="Permanent link">¶</a></h3>
 <ol>
-<li><strong>Homepage → Services</strong>.</li>
-</ol>
-<p><img alt="Services section on the NSO homepage" src="../assets/images/lab08/webui-services-homepage.png"/></p>
-<ol>
-<li>Select the <strong>STATIC</strong> service.</li>
+<li>
+<p><strong>Homepage → Services</strong>.</p>
+</li>
+<li>
+<p>Select the <strong>STATIC</strong> service.</p>
+</li>
 </ol>
 <p><img alt="Select the STATIC service" src="../assets/images/lab08/webui-services-static-select.png"/></p>
 <ol>
@@ -899,15 +920,16 @@
 <h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h2>
 <p>On <strong>xr-1</strong>, confirm the static route exists after re-deploy (documentation address — use yours):</p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>show run router static
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>show run router static
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="11.11.11.11"></span></p>
 <p><em>Expected output:</em></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>router static
-</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a> address-family ipv4 unicast
-</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a>  11.11.11.11/32 10.1.1.2 description "set by NSO" metric 100
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>router static
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a> address-family ipv4 unicast
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>  11.11.11.11/32 10.1.1.2 description "set by NSO" metric 100
 </span></code></pre></div>
 <h2 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">¶</a></h2>
 <div aria-label="Common errors" class="css-common-errors" role="region">
@@ -917,9 +939,9 @@
 <div class="admonition warning">
 <p class="admonition-title">Rollback</p>
 <p>To remove this lab’s <strong>STATIC</strong> package and instance (destructive — coordinate with your class):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
-</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC
-</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>ncs
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC
+</span><span id="__span-15-3"><a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>ncs
 </span></code></pre></div>
 <p>Then <strong>Reload packages</strong> in the Web UI and confirm <strong>STATIC</strong> is gone.</p>
 </div>

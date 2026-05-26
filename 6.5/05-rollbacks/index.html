@@ -523,7 +523,7 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> <a href="../04-configure-devices/">Lab 4: Configure Devices</a> completed — at least one successful <strong>commit</strong> exists so NSO generated rollback files.</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> You can open the NSO Web UI as <strong>admin</strong> and SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (use the management IP from your lab sheet; examples use <strong>198.51.100.2</strong>).</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> You can open the NSO Web UI as <strong>admin</strong> and SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (use the management IP from your lab sheet; examples use <strong>172.30.0.2</strong>).</li>
 </ul>
 <h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">¶</a></h2>
 <p>NSO creates a <strong>rollback file</strong> for every commit so you can revert configuration changes safely.</p>
@@ -547,7 +547,8 @@
 <h3 id="step-3-verify-on-the-device">Step 3: Verify on the device<a class="headerlink" href="#step-3-verify-on-the-device" title="Permanent link">¶</a></h3>
 <p>SSH to <strong>xr-1</strong> and confirm the IPv4 address on the data interface is restored to <strong>10.1.1.3</strong>.</p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
 <p><em>(Replace with your lab management address.)</em></p>
 <p>At the XR prompt:</p>
@@ -567,7 +568,7 @@
 <h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h2>
 <p>Confirm the same address from NSO (optional second check):</p>
 <div aria-label="Command and expected output" class="paired" role="group"><div class="paired__command"><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show running-config devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div></div><div class="paired__output"><div class="paired__output-head"><span class="paired__label">↓ Expected output</span><span class="paired__landmark-hint">Look for: <code>10.1.1.3</code></span></div><div class="paired__output-body"><div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>address 10.1.1.3 255.255.255.0
 </span></code></pre></div></div><div aria-atomic="true" aria-live="polite" class="paired__live paired__live--sr"></div></div></div>
 <h2 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">¶</a></h2>
@@ -575,7 +576,6 @@
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Load is greyed out or rollback list is empty.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> No prior commit in this session, or wrong NSO instance.</p><p class="css-common-error__fix"><strong>Fix</strong> Confirm you committed at least one change in Lab 4; check **Commit Manager** history and lab instructions for the correct instance path.</p></div></details>
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Device still shows 10.1.1.30 after commit.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong rollback selected, or commit not applied to devices.</p><p class="css-common-error__fix"><strong>Fix</strong> Re-open the diff in Commit Manager, pick the rollback whose metadata matches the pre-change state, commit again, then re-run Check-Sync / sync-to if your site requires it.</p></div></details>
 </div>
-<p>If you cannot find a suitable rollback file or loads fail repeatedly, restore the VM snapshot and retry.</p>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

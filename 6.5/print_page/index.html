@@ -889,7 +889,7 @@
   </p>
   
   <p class="pdf-cover__meta pdf-cover__meta--date">
-    <strong>Build date (UTC)</strong> 2026-05-13
+    <strong>Build date (UTC)</strong> 2026-05-26
   </p>
   
 </div>
@@ -981,18 +981,18 @@
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="linux-host"></span></p>
 <p><em>Expected output:</em></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#01-connect-workstation-__codelineno-1-1"></a>linux-host
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#01-connect-workstation-__codelineno-1-1"></a>xrd-host
 </span></code></pre></div>
 <p>If the name differs, ask your facilitator—some environments use a different label, but the workflow is the same.</p>
 <h2 id="01-connect-workstation-verification">Verification<a class="headerlink" href="#01-connect-workstation-verification" title="Permanent link">&para;</a></h2>
-<p>Confirm you are on <strong>linux-host</strong> and the shell is responsive. Run these in order in the same terminal:</p>
+<p>Confirm you are on <strong>xrd-host</strong> and the shell is responsive. Run these in order in the same terminal:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#01-connect-workstation-__codelineno-2-1"></a>hostname
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#01-connect-workstation-__codelineno-2-2"></a>whoami
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#01-connect-workstation-__codelineno-2-3"></a><span class="nb">pwd</span>
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="linux-host"></span></p>
 <p><em>Expected output:</em></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#01-connect-workstation-__codelineno-3-1"></a>linux-host
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#01-connect-workstation-__codelineno-3-1"></a>xrd-host
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#01-connect-workstation-__codelineno-3-2"></a>cisco
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#01-connect-workstation-__codelineno-3-3"></a>/home/cisco
 </span></code></pre></div>
@@ -1022,7 +1022,6 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> The NSO free-trial bundle for this workbook is available under your home directory (folder name may match <code>NSO-6.5-free</code> or your site’s layout — adjust paths below if your facilitator uses a different bundle).</li>
 </ul>
 <h2 id="02-install-nso-neds-procedure">Procedure<a class="headerlink" href="#02-install-nso-neds-procedure" title="Permanent link">&para;</a></h2>
-<p>Commands use <strong><code>6.5</code></strong> so they track <code>mkdocs.yml</code> <code>extra.nso_version</code>. If your lab still ships a different directory name, substitute your path <strong>inside the command fences</strong> only.</p>
 <h3 id="02-install-nso-neds-step-1-locate-the-installer-files">Step 1: Locate the installer files<a class="headerlink" href="#02-install-nso-neds-step-1-locate-the-installer-files" title="Permanent link">&para;</a></h3>
 <p>Open VS Code and work in the <strong>Terminal</strong> panel (or any shell on <strong>linux-host</strong>).</p>
 <p><img alt="VS Code connected via SSH to linux-host with terminal open" src="../assets/images/lab02/vscode-terminal-open.png" /></p>
@@ -1086,12 +1085,11 @@
 <li><strong>Inside <code>&lt;webui&gt;</code></strong>, add a <strong><code>&lt;server-alias&gt;</code></strong> whose value is the <strong>same IPv4 address</strong> learners will type in the browser (the management address of <strong>linux-host</strong> running NSO — <strong>not</strong> the router address from Lab 4).</li>
 </ol>
 <p>Example (RFC 5737 documentation range — <strong>substitute your lab IP</strong>):</p>
-<div class="language-xml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#02-install-nso-neds-__codelineno-8-1"></a><span class="nt">&lt;server-alias&gt;</span>198.51.100.27<span class="nt">&lt;/server-alias&gt;</span>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#02-install-nso-neds-__codelineno-8-1"></a><span class="nt">&lt;server-alias&gt;</span>198.18.134.27<span class="nt">&lt;/server-alias&gt;</span>
 </span></code></pre></div>
 <ol>
 <li>Ensure the Web UI listens where you expect (often <strong><code>&lt;transport&gt;&lt;tcp&gt;&lt;ip&gt;0.0.0.0&lt;/ip&gt;</code></strong> … under <code>&lt;webui&gt;</code>). If your file already has TCP/WebUI transport settings, <strong>do not duplicate</strong> them — only add or fix <strong><code>server-alias</code></strong> so it matches the URL you publish in Step 9.</li>
 </ol>
-<p><strong>Consistency check:</strong> <strong><code>server-alias</code></strong> = IP in <strong><code>http://&lt;IP&gt;:8080/...</code></strong> (same host as NSO). It must <strong>not</strong> be the XRd device management IP (Lab 4 uses a <strong>different</strong> example address for <strong>xr-1</strong>).</p>
 <div class="admonition warning">
 <p class="admonition-title">Security Note</p>
 <p>Binding Web UI to <code>0.0.0.0</code> is for lab use only. In production, restrict access to specific interfaces.</p>
@@ -1111,7 +1109,7 @@
 </span></code></pre></div>
 <h3 id="02-install-nso-neds-step-9-access-the-web-ui">Step 9: Access the Web UI<a class="headerlink" href="#02-install-nso-neds-step-9-access-the-web-ui" title="Permanent link">&para;</a></h3>
 <p>Open Firefox and navigate to the login URL your environment provides. Example:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#02-install-nso-neds-__codelineno-12-1"></a>http://198.51.100.27:8080/login.html
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#02-install-nso-neds-__codelineno-12-1"></a>http://198.18.134.27:8080/login.html
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Default Credentials</p>
@@ -1127,11 +1125,10 @@
 <!-- lint-skip: no-output -->
 
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#02-install-nso-neds-__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-6.5-free/work/
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#02-install-nso-neds-__codelineno-13-2"></a>bash<span class="w"> </span>../ncs-6.5-cisco-iosxr-7.x-freetrial.signed.bin<span class="w"> </span>--skip-verification
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#02-install-nso-neds-__codelineno-13-2"></a>bash<span class="w"> </span>../ncs-6.5-cisco-iosxr-7.69-freetrial.signed.bin<span class="w"> </span>--skip-verification
 </span></code></pre></div>
-<p><em>(Replace <code>7.x</code> in the filename with the exact IOS-XR NED package name from <code>ls *.bin</code> in Step 1 if it differs.)</em></p>
 <h4 id="02-install-nso-neds-copy-the-ned-archive-into-the-instance">Copy the NED archive into the instance<a class="headerlink" href="#02-install-nso-neds-copy-the-ned-archive-into-the-instance" title="Permanent link">&para;</a></h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#02-install-nso-neds-__codelineno-14-1"></a>cp<span class="w"> </span>ncs-6.5-cisco-iosxr-*.tar.gz<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#02-install-nso-neds-__codelineno-14-1"></a>cp<span class="w"> </span>ncs-6.5-cisco-iosxr-69.tar.gz<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="packages"></span></p>
 <p><em>Expected output:</em></p>
@@ -1293,7 +1290,6 @@
 <h2 id="04-configure-devices-procedure">Procedure<a class="headerlink" href="#04-configure-devices-procedure" title="Permanent link">&para;</a></h2>
 <h3 id="04-configure-devices-step-1-browse-device-configuration-in-the-web-ui">Step 1: Browse device configuration in the Web UI<a class="headerlink" href="#04-configure-devices-step-1-browse-device-configuration-in-the-web-ui" title="Permanent link">&para;</a></h3>
 <p>Navigate to <strong>xr-1</strong> in the Web UI to inspect interface configuration. Use the search bar or expand the configuration tree.</p>
-<p><img alt="xr-1 device detail — type config in the search bar to navigate to the configuration section" src="../assets/images/lab04/webui-xr1-device-detail.png" /></p>
 <p>Follow this path to reach the GigabitEthernet IPv4 address container:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#04-configure-devices-__codelineno-0-1"></a>/ncs:devices/device{xr-1}/config/cisco-ios-xr:interface/GigabitEthernet{0/0/0/0}/ipv4/address/
 </span></code></pre></div>
@@ -1325,9 +1321,9 @@
 <p>SSH to <strong>xr-1</strong> and confirm the interface address in running configuration.</p>
 <!-- lint-skip: no-output -->
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#04-configure-devices-__codelineno-1-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#04-configure-devices-__codelineno-1-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#04-configure-devices-__codelineno-1-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
-<p><em>(Use the management IP your lab assigns; <code>198.51.100.2</code> is an example documentation address.)</em></p>
 <p>At the XR prompt, run:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#04-configure-devices-__codelineno-2-1"></a>show run interface gigabitEthernet 0/0/0/0
 </span></code></pre></div>
@@ -1345,7 +1341,7 @@
 <h2 id="04-configure-devices-verification">Verification<a class="headerlink" href="#04-configure-devices-verification" title="Permanent link">&para;</a></h2>
 <p>From <strong>linux-host</strong>, confirm the committed value is visible in NSO (same shell environment as prior labs):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#04-configure-devices-__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#04-configure-devices-__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#04-configure-devices-__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show running-config devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="10.1.1.30"></span></p>
 <p><em>Expected output:</em></p>
@@ -1376,7 +1372,7 @@
 <h2 id="05-rollbacks-prerequisites">Prerequisites<a class="headerlink" href="#05-rollbacks-prerequisites" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#04-configure-devices">Lab 4: Configure Devices</a> completed — at least one successful <strong>commit</strong> exists so NSO generated rollback files.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the NSO Web UI as <strong>admin</strong> and SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (use the management IP from your lab sheet; examples use <strong>198.51.100.2</strong>).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the NSO Web UI as <strong>admin</strong> and SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (use the management IP from your lab sheet; examples use <strong>172.30.0.2</strong>).</li>
 </ul>
 <h2 id="05-rollbacks-procedure">Procedure<a class="headerlink" href="#05-rollbacks-procedure" title="Permanent link">&para;</a></h2>
 <p>NSO creates a <strong>rollback file</strong> for every commit so you can revert configuration changes safely.</p>
@@ -1401,7 +1397,8 @@
 <p>SSH to <strong>xr-1</strong> and confirm the IPv4 address on the data interface is restored to <strong>10.1.1.3</strong>.</p>
 <!-- lint-skip: no-output -->
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#05-rollbacks-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#05-rollbacks-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#05-rollbacks-__codelineno-0-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
 <p><em>(Replace with your lab management address.)</em></p>
 <p>At the XR prompt:</p>
@@ -1421,7 +1418,7 @@
 <h2 id="05-rollbacks-verification">Verification<a class="headerlink" href="#05-rollbacks-verification" title="Permanent link">&para;</a></h2>
 <p>Confirm the same address from NSO (optional second check):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#05-rollbacks-__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#05-rollbacks-__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#05-rollbacks-__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show running-config devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="10.1.1.3"></span></p>
 <p><em>Expected output:</em></p>
@@ -1434,9 +1431,7 @@
 
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Device still shows 10.1.1.30 after commit.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong rollback selected, or commit not applied to devices.</p><p class="css-common-error__fix"><strong>Fix</strong> Re-open the diff in Commit Manager, pick the rollback whose metadata matches the pre-change state, commit again, then re-run Check-Sync / sync-to if your site requires it.</p></div></details>
 
-</div>
-
-<p>If you cannot find a suitable rollback file or loads fail repeatedly, restore the VM snapshot and retry.</p></section><section class="print-page" id="06-out-of-band-sync" heading-number="2.6"><h1 id="06-out-of-band-sync-lab-6-out-of-band-sync">Lab 6: Out-of-Band Sync<a class="headerlink" href="#06-out-of-band-sync-lab-6-out-of-band-sync" title="Permanent link">&para;</a></h1>
+</div></section><section class="print-page" id="06-out-of-band-sync" heading-number="2.6"><h1 id="06-out-of-band-sync-lab-6-out-of-band-sync">Lab 6: Out-of-Band Sync<a class="headerlink" href="#06-out-of-band-sync-lab-6-out-of-band-sync" title="Permanent link">&para;</a></h1>
 <h2 id="06-out-of-band-sync-learning-objectives">Learning Objectives<a class="headerlink" href="#06-out-of-band-sync-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -1450,7 +1445,7 @@
 <h2 id="06-out-of-band-sync-prerequisites">Prerequisites<a class="headerlink" href="#06-out-of-band-sync-prerequisites" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="#05-rollbacks">Lab 5: Rollbacks</a> completed — <strong>Check-Sync</strong> should be <strong>green</strong> for <strong>xr-1</strong> before you start.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (examples use <strong>198.51.100.2</strong> — use your lab address).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can SSH from <strong>linux-host</strong> to <strong>xr-1</strong> (examples use <strong>172.30.0.2</strong>).</li>
 </ul>
 <h2 id="06-out-of-band-sync-procedure">Procedure<a class="headerlink" href="#06-out-of-band-sync-procedure" title="Permanent link">&para;</a></h2>
 <p>One of NSO’s core workflows is detecting changes made <strong>on the device</strong> that did not go through NSO — <strong>out-of-band</strong> configuration.</p>
@@ -1458,7 +1453,8 @@
 <p>SSH to <strong>xr-1</strong> and configure <strong>Loopback100</strong> on the device CLI (not through NSO).</p>
 <!-- lint-skip: no-output -->
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#06-out-of-band-sync-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#06-out-of-band-sync-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#06-out-of-band-sync-__codelineno-0-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
 <p>At the XR prompt, use a configuration session like this (prompts and timestamps will match your session):</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#06-out-of-band-sync-__codelineno-1-1"></a>RP/0/RP0/CPU0:xr-1#configure terminal
@@ -1540,12 +1536,6 @@
 <p><em>Expected output:</em></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#06-out-of-band-sync-__codelineno-7-1"></a>% No such configuration item(s)
 </span></code></pre></div>
-<p>Optional — inspect sync from the NSO CLI (output varies by release; rely on the Web UI if this is empty):</p>
-<!-- lint-skip: no-output -->
-
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#06-out-of-band-sync-__codelineno-8-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#06-out-of-band-sync-__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show devices check-sync&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
-</span></code></pre></div>
 <h2 id="06-out-of-band-sync-common-errors">Common Errors<a class="headerlink" href="#06-out-of-band-sync-common-errors" title="Permanent link">&para;</a></h2>
 <div class="css-common-errors" role="region" aria-label="Common errors">
 
@@ -1553,9 +1543,7 @@
 
 <details class="css-common-error"><summary class="css-common-error__summary">Symptom: Loopback still present after Sync-To.</summary><div class="css-common-error__body"><p class="css-common-error__cause"><strong>Cause</strong> Wrong device selected, or sync targeted a different NSO instance.</p><p class="css-common-error__fix"><strong>Fix</strong> Confirm **xr-1** address and authgroup; re-run **Sync-To** and verify with `show run interface Loopback 100` on the device.</p></div></details>
 
-</div>
-
-<p>If <strong>sync-to</strong> / <strong>sync-from</strong> loops or <strong>check-sync</strong> stays red with no clear diff, capture screenshots for your instructor and consider restoring the VM snapshot if time is short.</p></section><section class="print-page" id="07-device-groups-templates" heading-number="2.7"><h1 id="07-device-groups-templates-lab-7-device-groups-templates">Lab 7: Device Groups &amp; Templates<a class="headerlink" href="#07-device-groups-templates-lab-7-device-groups-templates" title="Permanent link">&para;</a></h1>
+</div></section><section class="print-page" id="07-device-groups-templates" heading-number="2.7"><h1 id="07-device-groups-templates-lab-7-device-groups-templates">Lab 7: Device Groups &amp; Templates<a class="headerlink" href="#07-device-groups-templates-lab-7-device-groups-templates" title="Permanent link">&para;</a></h1>
 <h2 id="07-device-groups-templates-learning-objectives">Learning Objectives<a class="headerlink" href="#07-device-groups-templates-learning-objectives" title="Permanent link">&para;</a></h2>
 <p>By the end of this lab you will be able to:</p>
 <ul>
@@ -1596,7 +1584,7 @@
 </ol>
 <p><img alt="Configuration Editor showing the ncs:devices module" src="../assets/images/lab07/webui-config-editor-devices.png" /></p>
 <ol>
-<li>In the <strong>template</strong> tile, click <strong>+</strong>.</li>
+<li>In the <strong>template</strong> tile, click <strong>+</strong> add name 'set-dns'.</li>
 </ol>
 <p><img alt="Click the + button to create a new template" src="../assets/images/lab07/webui-template-create-plus.png" /></p>
 <ol>
@@ -1652,7 +1640,8 @@
 <p>On <strong>xr-1</strong>, confirm DNS settings from the template:</p>
 <!-- lint-skip: no-output -->
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#07-device-groups-templates-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#07-device-groups-templates-__codelineno-0-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#07-device-groups-templates-__codelineno-0-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#07-device-groups-templates-__codelineno-1-1"></a>show run domain
 </span></code></pre></div>
@@ -1846,13 +1835,33 @@
 <h4 id="08-create-service-update-staticyang">Update <code>STATIC.yang</code><a class="headerlink" href="#08-create-service-update-staticyang" title="Permanent link">&para;</a></h4>
 <p>Make <strong><code>dest-prefix</code></strong> and <strong><code>fwd-address</code></strong> mandatory; give <strong><code>metric</code></strong> and <strong><code>description</code></strong> defaults (exact syntax follows your YANG tutorial).</p>
 <p><img alt="YANG model with leaf definitions and defaults" src="../assets/images/lab08/slide-yang-with-variables.png" /></p>
+<div class="language-yang highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#08-create-service-__codelineno-9-1"></a><span class="c">// replace with your own stuff here</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#08-create-service-__codelineno-9-2"></a><span class="k">leaf</span><span class="w"> </span><span class="nv">dest-prefix</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#08-create-service-__codelineno-9-3"></a><span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nn">inet</span><span class="p">:</span><span class="nv">ipv4-prefix</span><span class="p">;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#08-create-service-__codelineno-9-4"></a><span class="w">    </span><span class="k">mandatory</span><span class="w"> </span><span class="nc">true</span><span class="p">;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#08-create-service-__codelineno-9-5"></a><span class="p">}</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#08-create-service-__codelineno-9-6"></a><span class="k">leaf</span><span class="w"> </span><span class="nv">fwd-address</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#08-create-service-__codelineno-9-7"></a><span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nn">inet</span><span class="p">:</span><span class="nv">ipv4-address</span><span class="p">;</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#08-create-service-__codelineno-9-8"></a><span class="w">    </span><span class="k">mandatory</span><span class="w"> </span><span class="nc">true</span><span class="p">;</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#08-create-service-__codelineno-9-9"></a><span class="p">}</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#08-create-service-__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#08-create-service-__codelineno-9-11"></a><span class="k">leaf</span><span class="w"> </span><span class="nv">metric</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#08-create-service-__codelineno-9-12"></a><span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nc">uint16</span><span class="p">;</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#08-create-service-__codelineno-9-13"></a><span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="s2">&quot;100&quot;</span><span class="p">;</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#08-create-service-__codelineno-9-14"></a><span class="p">}</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#08-create-service-__codelineno-9-15"></a>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#08-create-service-__codelineno-9-16"></a><span class="k">leaf</span><span class="w"> </span><span class="k">description</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#08-create-service-__codelineno-9-17"></a><span class="w">    </span><span class="k">type</span><span class="w"> </span><span class="nc">string</span><span class="p">;</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#08-create-service-__codelineno-9-18"></a><span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="s2">&quot;set by NSO&quot;</span><span class="p">;</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#08-create-service-__codelineno-9-19"></a><span class="p">}</span>
+</span></code></pre></div>
 <h3 id="08-create-service-step-7-compile-the-package">Step 7: Compile the package<a class="headerlink" href="#08-create-service-step-7-compile-the-package" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#08-create-service-__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC/src
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#08-create-service-__codelineno-9-2"></a>make
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#08-create-service-__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC/src
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#08-create-service-__codelineno-10-2"></a>make
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="STATIC.fxs"></span></p>
 <p><em>Expected output:</em></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#08-create-service-__codelineno-10-1"></a>… ncsc … -o ../load-dir/STATIC.fxs yang/STATIC.yang
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#08-create-service-__codelineno-11-1"></a>… ncsc … -o ../load-dir/STATIC.fxs yang/STATIC.yang
 </span></code></pre></div>
 <p><em>(Warnings policy depends on your flags; </em><em><code>--fail-on-warnings</code></em><em> may stop the build if YANG has issues.)</em></p>
 <h3 id="08-create-service-step-8-reload-packages">Step 8: Reload packages<a class="headerlink" href="#08-create-service-step-8-reload-packages" title="Permanent link">&para;</a></h3>
@@ -1867,11 +1876,12 @@
 <p><img alt="STATIC package listed after reload" src="../assets/images/lab08/webui-packages-static-listed.png" /></p>
 <h3 id="08-create-service-step-9-deploy-the-service-instance">Step 9: Deploy the service instance<a class="headerlink" href="#08-create-service-step-9-deploy-the-service-instance" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Homepage → Services</strong>.</li>
-</ol>
-<p><img alt="Services section on the NSO homepage" src="../assets/images/lab08/webui-services-homepage.png" /></p>
-<ol>
-<li>Select the <strong>STATIC</strong> service.</li>
+<li>
+<p><strong>Homepage → Services</strong>.</p>
+</li>
+<li>
+<p>Select the <strong>STATIC</strong> service.</p>
+</li>
 </ol>
 <p><img alt="Select the STATIC service" src="../assets/images/lab08/webui-services-static-select.png" /></p>
 <ol>
@@ -1927,15 +1937,16 @@
 <p>On <strong>xr-1</strong>, confirm the static route exists after re-deploy (documentation address — use yours):</p>
 <!-- lint-skip: no-output -->
 
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#08-create-service-__codelineno-11-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#08-create-service-__codelineno-12-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#08-create-service-__codelineno-12-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#08-create-service-__codelineno-12-1"></a>show run router static
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#08-create-service-__codelineno-13-1"></a>show run router static
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="11.11.11.11"></span></p>
 <p><em>Expected output:</em></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#08-create-service-__codelineno-13-1"></a>router static
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#08-create-service-__codelineno-13-2"></a> address-family ipv4 unicast
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#08-create-service-__codelineno-13-3"></a>  11.11.11.11/32 10.1.1.2 description &quot;set by NSO&quot; metric 100
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#08-create-service-__codelineno-14-1"></a>router static
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#08-create-service-__codelineno-14-2"></a> address-family ipv4 unicast
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#08-create-service-__codelineno-14-3"></a>  11.11.11.11/32 10.1.1.2 description &quot;set by NSO&quot; metric 100
 </span></code></pre></div>
 <h2 id="08-create-service-common-errors">Common Errors<a class="headerlink" href="#08-create-service-common-errors" title="Permanent link">&para;</a></h2>
 <div class="css-common-errors" role="region" aria-label="Common errors">
@@ -1949,9 +1960,9 @@
 <div class="admonition warning">
 <p class="admonition-title">Rollback</p>
 <p>To remove this lab’s <strong>STATIC</strong> package and instance (destructive — coordinate with your class):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#08-create-service-__codelineno-14-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#08-create-service-__codelineno-14-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#08-create-service-__codelineno-14-3"></a>ncs
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#08-create-service-__codelineno-15-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#08-create-service-__codelineno-15-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/NSO-INSTALL/nso-instance/packages/STATIC
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#08-create-service-__codelineno-15-3"></a>ncs
 </span></code></pre></div>
 <p>Then <strong>Reload packages</strong> in the Web UI and confirm <strong>STATIC</strong> is gone.</p>
 </div>
@@ -1969,7 +1980,7 @@
 <h2 id="09-rbac-access-control-prerequisites">Prerequisites<a class="headerlink" href="#09-rbac-access-control-prerequisites" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can log in to the NSO Web UI as <strong>admin</strong> and open <strong>Configuration Editor</strong> for <strong>aaa</strong>, <strong>nacm</strong>, and <strong>devices</strong>.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Device definitions for <strong>xr-1</strong> / <strong>xr-2</strong> use management addresses consistent with your lab (examples use <strong>198.51.100.2</strong> for <strong>xr-1</strong> in XPath samples).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Device definitions for <strong>xr-1</strong> / <strong>xr-2</strong> use management addresses consistent with your lab (examples use <strong>172.30.0.2</strong> for <strong>xr-1</strong> in XPath samples).</li>
 </ul>
 <h2 id="09-rbac-access-control-procedure">Procedure<a class="headerlink" href="#09-rbac-access-control-procedure" title="Permanent link">&para;</a></h2>
 <p>NSO combines <strong>AAA users</strong>, <strong>authgroups</strong> (device credential mapping), and <strong>NACM</strong> (northbound access rules) for fine-grained control.</p>
@@ -2054,12 +2065,12 @@
 <!-- lint-skip: no-output -->
 
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#09-rbac-access-control-__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#09-rbac-access-control-__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration devices device xr-1 | display xpath&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#09-rbac-access-control-__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show running-config devices device xr-1 | display xpath&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div>
 <p><em>Expected output (illustrative — addresses follow your lab):</em></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#09-rbac-access-control-__codelineno-3-1"></a>/devices/device[name=&#39;xr-1&#39;]/address 198.51.100.2
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#09-rbac-access-control-__codelineno-3-1"></a>/devices/device[name=&#39;xr-1&#39;]/address 172.30.0.2
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#09-rbac-access-control-__codelineno-3-2"></a>/devices/device[name=&#39;xr-1&#39;]/authgroup XR
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#09-rbac-access-control-__codelineno-3-3"></a>/devices/device[name=&#39;xr-1&#39;]/device-type/cli/ned-id cisco-iosxr-cli-7.x
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#09-rbac-access-control-__codelineno-3-3"></a>/devices/device[name=&#39;xr-1&#39;]/device-type/cli/ned-id cisco-iosxr-cli-7.69
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Access operations</p>
@@ -2125,7 +2136,7 @@
 <h2 id="09-rbac-access-control-verification">Verification<a class="headerlink" href="#09-rbac-access-control-verification" title="Permanent link">&para;</a></h2>
 <p>Confirm <strong><code>read_user</code></strong> still exists (admin session):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#09-rbac-access-control-__codelineno-6-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#09-rbac-access-control-__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration aaa authentication users user read_user&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#09-rbac-access-control-__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show running-config aaa authentication users user read_user&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="read_user"></span></p>
 <p><em>Expected output:</em></p>
@@ -2136,7 +2147,7 @@
 <!-- lint-skip: no-output -->
 
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#09-rbac-access-control-__codelineno-8-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#09-rbac-access-control-__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show configuration nacm nacm rule-list read_rule&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#09-rbac-access-control-__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;show running-config nacm rule-list read_rule&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div>
 <h2 id="09-rbac-access-control-common-errors">Common Errors<a class="headerlink" href="#09-rbac-access-control-common-errors" title="Permanent link">&para;</a></h2>
 <div class="css-common-errors" role="region" aria-label="Common errors">
@@ -2186,7 +2197,7 @@
 <!-- lint-allow-hardcoded-version -->
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Your dCloud session for <strong>NSO 6.7 MCP — Demo</strong> is <strong>Active</strong> (all stages of the Launch Progress bar are green; this can take up to ~10 minutes).</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the <strong>VM Console</strong> of <strong>Ubuntu 24.04 Desktop</strong> (host <code>198.18.134.27</code>, user <code>cisco</code> / <code>C1sco12345</code>).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> You can open the <strong>VM Console</strong> of <strong>Ubuntu 24.04 Desktop</strong>.</li>
 </ul>
 <h2 id="10-nso-mcp-setup-what-is-mcp">What is MCP?<a class="headerlink" href="#10-nso-mcp-setup-what-is-mcp" title="Permanent link">&para;</a></h2>
 <!-- lint-allow-hardcoded-version -->
@@ -2226,89 +2237,105 @@ This lab is <strong>not idempotent</strong> — it installs NSO 6.7 fresh and en
 </span></code></pre></div>
 <p>To fully undo the install, the simplest path in the dCloud scenario is to <strong>end the dCloud session</strong> and restart it — the Ansible playbook will reprovision the host.</p>
 </div>
-<h3 id="10-nso-mcp-setup-step-1-open-a-terminal-on-the-ubuntu-host">Step 1: Open a terminal on the Ubuntu host<a class="headerlink" href="#10-nso-mcp-setup-step-1-open-a-terminal-on-the-ubuntu-host" title="Permanent link">&para;</a></h3>
+<h3 id="10-nso-mcp-setup-step-1-validate-the-running-nso-65-instance-and-shut-it-down">Step 1: Validate the running NSO 6.5 instance and shut it down<a class="headerlink" href="#10-nso-mcp-setup-step-1-validate-the-running-nso-65-instance-and-shut-it-down" title="Permanent link">&para;</a></h3>
+<p>Before moving to the new dCloud scenario you must cleanly stop the NSO 6.5 instance that has been running throughout Labs 1–9. Work on the <strong>xrd-host</strong> terminal you have been using all day.</p>
+<p>Source the NSO 6.5 environment and confirm the version:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#10-nso-mcp-setup-__codelineno-1-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#10-nso-mcp-setup-__codelineno-1-2"></a>ncs<span class="w"> </span>--version
+</span></code></pre></div>
+<!-- lint-allow-hardcoded-version -->
+<p>The output must show <strong>6.5</strong> — this confirms the correct environment is sourced.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#10-nso-mcp-setup-__codelineno-2-1"></a>6.5
+</span></code></pre></div>
+<p>Stop the NSO 6.5 daemon:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#10-nso-mcp-setup-__codelineno-3-1"></a>ncs<span class="w"> </span>--stop<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div>
+<p>Verify the daemon is no longer listening:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#10-nso-mcp-setup-__codelineno-4-1"></a>ncs<span class="w"> </span>--status
+</span></code></pre></div>
+<p>Expected output:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#10-nso-mcp-setup-__codelineno-5-1"></a>connection refused (status)
+</span></code></pre></div>
+<p><code>connection refused</code> means NSO 6.5 has stopped cleanly. You can now proceed to the new dCloud scenario that bundles <strong>NSO 6.7</strong>.</p>
+<hr />
+<h3 id="10-nso-mcp-setup-step-2-open-a-terminal-on-the-ubuntu-host">Step 2: Open a terminal on the Ubuntu host<a class="headerlink" href="#10-nso-mcp-setup-step-2-open-a-terminal-on-the-ubuntu-host" title="Permanent link">&para;</a></h3>
 <p>Once the dCloud scenario is active, open the <strong>VM Console</strong> of <strong>Ubuntu 24.04 Desktop</strong>.</p>
 <p><img alt="dCloud VM Console launcher for Ubuntu 24.04 Desktop" src="../assets/images/lab10/dcloud-vm-console-ubuntu.png" /></p>
-<div class="admonition tip">
-<p class="admonition-title">Win11 alternative</p>
-<p>You can also work from the <strong>Win11</strong> host (<code>198.18.133.100</code>, user <code>dcloud</code>, no password) using <strong>TeraTerm</strong>. Use <strong>VM Console</strong> rather than Web RDP — Web RDP is very slow in this scenario.</p>
-</div>
 <p>On Ubuntu, open <strong>Terminal</strong>.</p>
 <!-- lint-allow-hardcoded-version -->
-<h3 id="10-nso-mcp-setup-step-2-install-nso-67-with-the-provided-ansible-playbook">Step 2: Install NSO 6.7 with the provided Ansible playbook<a class="headerlink" href="#10-nso-mcp-setup-step-2-install-nso-67-with-the-provided-ansible-playbook" title="Permanent link">&para;</a></h3>
+<h3 id="10-nso-mcp-setup-step-3-install-nso-67-with-the-provided-ansible-playbook">Step 3: Install NSO 6.7 with the provided Ansible playbook<a class="headerlink" href="#10-nso-mcp-setup-step-3-install-nso-67-with-the-provided-ansible-playbook" title="Permanent link">&para;</a></h3>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#10-nso-mcp-setup-__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#10-nso-mcp-setup-__codelineno-1-2"></a>ansible-playbook<span class="w"> </span>nso.yml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#10-nso-mcp-setup-__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/NSO-6.7-LTS-free
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#10-nso-mcp-setup-__codelineno-6-2"></a>ansible-playbook<span class="w"> </span>nso.yml
 </span></code></pre></div>
 <p>Wait a few minutes for the playbook to complete — NSO will be installed automatically.</p>
 <p>Once it finishes, source the environment and open the NSO CLI:</p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#10-nso-mcp-setup-__codelineno-2-1"></a><span class="nb">cd</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#10-nso-mcp-setup-__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span>NSO-6.7/ncsrc
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#10-nso-mcp-setup-__codelineno-2-3"></a>ncs_cli<span class="w"> </span>-Cu<span class="w"> </span>admin
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#10-nso-mcp-setup-__codelineno-7-1"></a><span class="nb">cd</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#10-nso-mcp-setup-__codelineno-7-2"></a><span class="nb">source</span><span class="w"> </span>NSO-6.7/ncsrc
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#10-nso-mcp-setup-__codelineno-7-3"></a>ncs_cli<span class="w"> </span>-Cu<span class="w"> </span>admin
 </span></code></pre></div>
-<h3 id="10-nso-mcp-setup-step-3-confirm-the-xrd-routers-are-reachable">Step 3: Confirm the XRd routers are reachable<a class="headerlink" href="#10-nso-mcp-setup-step-3-confirm-the-xrd-routers-are-reachable" title="Permanent link">&para;</a></h3>
+<h3 id="10-nso-mcp-setup-step-4-confirm-the-xrd-routers-are-reachable">Step 4: Confirm the XRd routers are reachable<a class="headerlink" href="#10-nso-mcp-setup-step-4-confirm-the-xrd-routers-are-reachable" title="Permanent link">&para;</a></h3>
 <p>Inside the NSO CLI, sync both XRd devices and verify they are present:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#10-nso-mcp-setup-__codelineno-3-1"></a>admin@ncs# devices sync-from
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#10-nso-mcp-setup-__codelineno-3-2"></a>admin@ncs# show devices device
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#10-nso-mcp-setup-__codelineno-8-1"></a>admin@ncs# devices sync-from
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#10-nso-mcp-setup-__codelineno-8-2"></a>admin@ncs# show devices device
 </span></code></pre></div>
 <p><span class="paired-landmark" data-landmark="two XRd devices listed and sync-from result: true"></span></p>
 <p><img alt="NSO CLI showing devices sync-from with two XRd routers in sync" src="../assets/images/lab10/nso-cli-sync-from-xrd.png" /></p>
 <p>If either device fails to sync, stop here and resolve before continuing — MCP needs a working device tree to expose meaningful tools.</p>
-<h3 id="10-nso-mcp-setup-step-4-install-the-nso-mcp-package">Step 4: Install the NSO MCP package<a class="headerlink" href="#10-nso-mcp-setup-step-4-install-the-nso-mcp-package" title="Permanent link">&para;</a></h3>
+<h3 id="10-nso-mcp-setup-step-5-install-the-nso-mcp-package">Step 5: Install the NSO MCP package<a class="headerlink" href="#10-nso-mcp-setup-step-5-install-the-nso-mcp-package" title="Permanent link">&para;</a></h3>
 <p>The MCP package is included in the NSO installer bundle. From the <strong>Linux terminal</strong> (not the NSO CLI), copy it into the packages directory:</p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#10-nso-mcp-setup-__codelineno-4-1"></a><span class="nb">cd</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#10-nso-mcp-setup-__codelineno-4-2"></a>cp<span class="w"> </span>NSO-6.7-LTS-free/work/ncs-6.7-cisco-nso-adaptive-mcp-server-1.0.0.tar.gz<span class="w"> </span>ncs-run/packages
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#10-nso-mcp-setup-__codelineno-9-1"></a><span class="nb">cd</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#10-nso-mcp-setup-__codelineno-9-2"></a>cp<span class="w"> </span>NSO-6.7-LTS-free/work/ncs-6.7-cisco-nso-adaptive-mcp-server-1.0.0.tar.gz<span class="w"> </span>ncs-run/packages
 </span></code></pre></div>
 <p>Then in the <strong>NSO CLI</strong>, reload packages and enable MCP:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#10-nso-mcp-setup-__codelineno-5-1"></a>admin@ncs# packages reload
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#10-nso-mcp-setup-__codelineno-5-2"></a>admin@ncs# config t
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#10-nso-mcp-setup-__codelineno-5-3"></a>admin@ncs(config)# mcp-server enabled
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#10-nso-mcp-setup-__codelineno-5-4"></a>admin@ncs(config)# commit
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#10-nso-mcp-setup-__codelineno-5-5"></a>admin@ncs(config)# end
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#10-nso-mcp-setup-__codelineno-10-1"></a>admin@ncs# packages reload
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#10-nso-mcp-setup-__codelineno-10-2"></a>admin@ncs# config t
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#10-nso-mcp-setup-__codelineno-10-3"></a>admin@ncs(config)# mcp-server enabled
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#10-nso-mcp-setup-__codelineno-10-4"></a>admin@ncs(config)# commit
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#10-nso-mcp-setup-__codelineno-10-5"></a>admin@ncs(config)# end
 </span></code></pre></div>
-<p><img alt="NSO CLI showing mcp-server enabled committed in the running configuration" src="../assets/images/lab10/nso-mcp-server-enabled.png" /></p>
-<h3 id="10-nso-mcp-setup-step-5-verify-the-mcp-server-with-the-bundled-test-script">Step 5: Verify the MCP server with the bundled test script<a class="headerlink" href="#10-nso-mcp-setup-step-5-verify-the-mcp-server-with-the-bundled-test-script" title="Permanent link">&para;</a></h3>
+<h3 id="10-nso-mcp-setup-step-6-verify-the-mcp-server-with-the-bundled-test-script">Step 6: Verify the MCP server with the bundled test script<a class="headerlink" href="#10-nso-mcp-setup-step-6-verify-the-mcp-server-with-the-bundled-test-script" title="Permanent link">&para;</a></h3>
 <p>The MCP package contains a <code>test-mcp.sh</code> test script. Confirm MCP is up and running:</p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#10-nso-mcp-setup-__codelineno-6-1"></a><span class="nb">cd</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#10-nso-mcp-setup-__codelineno-6-2"></a>tar<span class="w"> </span>zxvf<span class="w"> </span>NSO-6.7-LTS-free/work/ncs-6.7-cisco-nso-adaptive-mcp-server-1.0.0.tar.gz
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#10-nso-mcp-setup-__codelineno-6-3"></a><span class="nb">cd</span><span class="w"> </span>cisco-nso-adaptive-mcp-server
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#10-nso-mcp-setup-__codelineno-6-4"></a>./test-mcp.sh
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#10-nso-mcp-setup-__codelineno-11-1"></a><span class="nb">cd</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#10-nso-mcp-setup-__codelineno-11-2"></a>tar<span class="w"> </span>zxvf<span class="w"> </span>NSO-6.7-LTS-free/work/ncs-6.7-cisco-nso-adaptive-mcp-server-1.0.0.tar.gz
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#10-nso-mcp-setup-__codelineno-11-3"></a><span class="nb">cd</span><span class="w"> </span>cisco-nso-adaptive-mcp-server
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#10-nso-mcp-setup-__codelineno-11-4"></a>./test-mcp.sh
 </span></code></pre></div>
 <p>If any test fails, go back to the NSO CLI, run <code>packages reload</code> again, and re-run <code>./test-mcp.sh</code>. Continue only when <strong>all 5 tests pass</strong>.</p>
 <p><img alt="test-mcp.sh output showing all 5 tests passed" src="../assets/images/lab10/test-mcp-all-tests-passed.png" /></p>
 <p>NSO MCP is now ready.</p>
-<h3 id="10-nso-mcp-setup-step-6-start-the-web-mcp-client-backend-frontend">Step 6: Start the web MCP client (backend + frontend)<a class="headerlink" href="#10-nso-mcp-setup-step-6-start-the-web-mcp-client-backend-frontend" title="Permanent link">&para;</a></h3>
+<h3 id="10-nso-mcp-setup-step-7-start-the-web-mcp-client-backend-frontend">Step 7: Start the web MCP client (backend + frontend)<a class="headerlink" href="#10-nso-mcp-setup-step-7-start-the-web-mcp-client-backend-frontend" title="Permanent link">&para;</a></h3>
 <p>The scenario includes a sample web MCP client. It runs as two programs in two terminal tabs.</p>
 <p><strong>Terminal tab 1 — backend:</strong></p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#10-nso-mcp-setup-__codelineno-7-1"></a><span class="nb">cd</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#10-nso-mcp-setup-__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/web-ui
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#10-nso-mcp-setup-__codelineno-7-3"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#10-nso-mcp-setup-__codelineno-7-4"></a>python3<span class="w"> </span>backend.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#10-nso-mcp-setup-__codelineno-12-1"></a><span class="nb">cd</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#10-nso-mcp-setup-__codelineno-12-2"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/web-ui
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#10-nso-mcp-setup-__codelineno-12-3"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#10-nso-mcp-setup-__codelineno-12-4"></a>python3<span class="w"> </span>backend.py
 </span></code></pre></div>
 <p><strong>Terminal tab 2 — frontend</strong> (open a new tab, then):</p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#10-nso-mcp-setup-__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/web-ui
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#10-nso-mcp-setup-__codelineno-8-2"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#10-nso-mcp-setup-__codelineno-8-3"></a>streamlit<span class="w"> </span>run<span class="w"> </span>frontend.py
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#10-nso-mcp-setup-__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>NSO-6.7-LTS-free/web-ui
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#10-nso-mcp-setup-__codelineno-13-2"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#10-nso-mcp-setup-__codelineno-13-3"></a>streamlit<span class="w"> </span>run<span class="w"> </span>frontend.py
 </span></code></pre></div>
 <p>Firefox should open automatically. If not, launch Firefox manually and browse to <a href="http://localhost:8501/">http://localhost:8501/</a>.</p>
 <p>Confirm the <strong>NSO MCP tools</strong> appear in the left-hand menu of the web UI:</p>
 <p><img alt="Streamlit web MCP client with NSO MCP tools listed on the left menu" src="../assets/images/lab10/mcp-web-client-tools-menu.png" /></p>
-<h3 id="10-nso-mcp-setup-step-7-drive-nso-with-natural-language">Step 7: Drive NSO with natural language<a class="headerlink" href="#10-nso-mcp-setup-step-7-drive-nso-with-natural-language" title="Permanent link">&para;</a></h3>
+<h3 id="10-nso-mcp-setup-step-8-drive-nso-with-natural-language">Step 8: Drive NSO with natural language<a class="headerlink" href="#10-nso-mcp-setup-step-8-drive-nso-with-natural-language" title="Permanent link">&para;</a></h3>
 <p>In the chat box, ask NSO about its devices in plain English (e.g. <em>"List the devices managed by NSO."</em>).</p>
 <p><img alt="Web MCP client answering a natural-language question about NSO devices" src="../assets/images/lab10/mcp-web-client-natural-language.png" /></p>
-<h3 id="10-nso-mcp-setup-step-8-change-the-mcp-policy-from-restricted-to-permit">Step 8: Change the MCP policy from <code>restricted</code> to <code>permit</code><a class="headerlink" href="#10-nso-mcp-setup-step-8-change-the-mcp-policy-from-restricted-to-permit" title="Permanent link">&para;</a></h3>
+<h3 id="10-nso-mcp-setup-step-9-change-the-mcp-policy-from-restricted-to-permit">Step 9: Change the MCP policy from <code>restricted</code> to <code>permit</code><a class="headerlink" href="#10-nso-mcp-setup-step-9-change-the-mcp-policy-from-restricted-to-permit" title="Permanent link">&para;</a></h3>
 <p>By default, for security reasons, the active MCP policy is <strong><code>restricted</code></strong> — it exposes only <strong>11 tools</strong>. Switch the default action to <strong><code>permit</code></strong> so more tools become available.</p>
 <p>In the NSO CLI:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#10-nso-mcp-setup-__codelineno-9-1"></a>$ ncs_cli -Cu admin
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#10-nso-mcp-setup-__codelineno-9-2"></a>admin@ncs# config t
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#10-nso-mcp-setup-__codelineno-9-3"></a>admin@ncs(config)# mcp-server policies default-action permit
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#10-nso-mcp-setup-__codelineno-9-4"></a>admin@ncs(config)# commit
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#10-nso-mcp-setup-__codelineno-9-5"></a>admin@ncs(config)# end
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#10-nso-mcp-setup-__codelineno-14-1"></a>$ ncs_cli -Cu admin
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#10-nso-mcp-setup-__codelineno-14-2"></a>admin@ncs# config t
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#10-nso-mcp-setup-__codelineno-14-3"></a>admin@ncs(config)# mcp-server policies default-action permit
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#10-nso-mcp-setup-__codelineno-14-4"></a>admin@ncs(config)# commit
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#10-nso-mcp-setup-__codelineno-14-5"></a>admin@ncs(config)# end
 </span></code></pre></div>
 <p>Back in the web MCP client, press <strong>Refresh tools</strong> in the left menu. You should now see <strong>more than 100 tools</strong>:</p>
 <p><img alt="MCP web client left menu showing 100+ tools after policy change to permit" src="../assets/images/lab10/mcp-policy-permit-100-tools.png" /></p>

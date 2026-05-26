@@ -586,7 +586,7 @@
 </ol>
 <p><img alt="Configuration Editor showing the ncs:devices module" src="../assets/images/lab07/webui-config-editor-devices.png"/></p>
 <ol>
-<li>In the <strong>template</strong> tile, click <strong>+</strong>.</li>
+<li>In the <strong>template</strong> tile, click <strong>+</strong> add name 'set-dns'.</li>
 </ol>
 <p><img alt="Click the + button to create a new template" src="../assets/images/lab07/webui-template-create-plus.png"/></p>
 <ol>
@@ -641,7 +641,8 @@
 <h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h2>
 <p>On <strong>xr-1</strong>, confirm DNS settings from the template:</p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>show run domain
 </span></code></pre></div>

@@ -613,7 +613,7 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> You can log in to the NSO Web UI as <strong>admin</strong> and open <strong>Configuration Editor</strong> for <strong>aaa</strong>, <strong>nacm</strong>, and <strong>devices</strong>.</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Device definitions for <strong>xr-1</strong> / <strong>xr-2</strong> use management addresses consistent with your lab (examples use <strong>198.51.100.2</strong> for <strong>xr-1</strong> in XPath samples).</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Device definitions for <strong>xr-1</strong> / <strong>xr-2</strong> use management addresses consistent with your lab (examples use <strong>172.30.0.2</strong> for <strong>xr-1</strong> in XPath samples).</li>
 </ul>
 <h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">¶</a></h2>
 <p>NSO combines <strong>AAA users</strong>, <strong>authgroups</strong> (device credential mapping), and <strong>NACM</strong> (northbound access rules) for fine-grained control.</p>
@@ -694,12 +694,12 @@
 <p>For deeper paths:</p>
 <!-- lint-skip: no-output -->
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show configuration devices device xr-1 | display xpath"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show running-config devices device xr-1 | display xpath"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div>
 <p><em>Expected output (illustrative — addresses follow your lab):</em></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>/devices/device[name='xr-1']/address 198.51.100.2
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>/devices/device[name='xr-1']/address 172.30.0.2
 </span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>/devices/device[name='xr-1']/authgroup XR
-</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>/devices/device[name='xr-1']/device-type/cli/ned-id cisco-iosxr-cli-7.x
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>/devices/device[name='xr-1']/device-type/cli/ned-id cisco-iosxr-cli-7.69
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Access operations</p>
@@ -765,14 +765,14 @@
 <h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h2>
 <p>Confirm <strong><code>read_user</code></strong> still exists (admin session):</p>
 <div aria-label="Command and expected output" class="paired" role="group"><div class="paired__command"><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show configuration aaa authentication users user read_user"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show running-config aaa authentication users user read_user"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div></div><div class="paired__output"><div class="paired__output-head"><span class="paired__label">↓ Expected output</span><span class="paired__landmark-hint">Look for: <code>read_user</code></span></div><div class="paired__output-body"><div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>user read_user {
 </span></code></pre></div></div><div aria-atomic="true" aria-live="polite" class="paired__live paired__live--sr"></div></div></div>
 <p><em>(Additional password / key lines may follow — you only need to see the </em><em><code>read_user</code></em><em> stanza.)</em></p>
 <p>Confirm NACM rules in the Web UI under <strong>Configuration Editor → nacm:nacm</strong> — <strong><code>read_rule</code></strong> should list <strong><code>deny-config-domain</code></strong>. Optional CLI (output varies):</p>
 <!-- lint-skip: no-output -->
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show configuration nacm nacm rule-list read_rule"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show running-config nacm rule-list read_rule"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div>
 <h2 id="common-errors">Common Errors<a class="headerlink" href="#common-errors" title="Permanent link">¶</a></h2>
 <div aria-label="Common errors" class="css-common-errors" role="region">

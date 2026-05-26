@@ -546,7 +546,6 @@
 <h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">¶</a></h2>
 <h3 id="step-1-browse-device-configuration-in-the-web-ui">Step 1: Browse device configuration in the Web UI<a class="headerlink" href="#step-1-browse-device-configuration-in-the-web-ui" title="Permanent link">¶</a></h3>
 <p>Navigate to <strong>xr-1</strong> in the Web UI to inspect interface configuration. Use the search bar or expand the configuration tree.</p>
-<p><img alt="xr-1 device detail — type config in the search bar to navigate to the configuration section" src="../assets/images/lab04/webui-xr1-device-detail.png"/></p>
 <p>Follow this path to reach the GigabitEthernet IPv4 address container:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>/ncs:devices/device{xr-1}/config/cisco-ios-xr:interface/GigabitEthernet{0/0/0/0}/ipv4/address/
 </span></code></pre></div>
@@ -577,9 +576,9 @@
 <h3 id="step-4-verify-on-the-device">Step 4: Verify on the device<a class="headerlink" href="#step-4-verify-on-the-device" title="Permanent link">¶</a></h3>
 <p>SSH to <strong>xr-1</strong> and confirm the interface address in running configuration.</p>
 <!-- lint-skip: no-output -->
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>ssh<span class="w"> </span>admin@198.51.100.2
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>ssh<span class="w"> </span>admin@172.30.0.2
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="o">(</span>admin@172.30.0.2<span class="o">)</span><span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span><span class="nv">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cisco123<span class="o">)</span>
 </span></code></pre></div>
-<p><em>(Use the management IP your lab assigns; <code>198.51.100.2</code> is an example documentation address.)</em></p>
 <p>At the XR prompt, run:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>show run interface gigabitEthernet 0/0/0/0
 </span></code></pre></div>
@@ -597,7 +596,7 @@
 <h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h2>
 <p>From <strong>linux-host</strong>, confirm the committed value is visible in NSO (same shell environment as prior labs):</p>
 <div aria-label="Command and expected output" class="paired" role="group"><div class="paired__command"><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>~/NSO-INSTALL/ncsrc
-</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show configuration devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"show running-config devices device xr-1 config cisco-ios-xr:interface GigabitEthernet 0/0/0/0 ipv4 address"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>ncs_cli<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-C
 </span></code></pre></div></div><div class="paired__output"><div class="paired__output-head"><span class="paired__label">↓ Expected output</span><span class="paired__landmark-hint">Look for: <code>10.1.1.30</code></span></div><div class="paired__output-body"><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>address 10.1.1.30 255.255.255.0
 </span></code></pre></div></div><div aria-atomic="true" aria-live="polite" class="paired__live paired__live--sr"></div></div></div>
 <p><em>(Path or spacing may wrap differently; look for </em><em>10.1.1.30</em><em>.)</em></p>
